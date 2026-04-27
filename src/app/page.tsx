@@ -109,11 +109,6 @@ export default function CrowdLoopsHome() {
             <div className="logistics-text">It looks and feels like your brand, not ours. Your domain, your colours, your tone.</div>
           </div>
           <div className="logistics-card">
-            <div className="logistics-icon">🔌</div>
-            <div className="logistics-title">API Ready</div>
-            <div className="logistics-text">Connects to your Shopify, Magento, or ERP to sync winning designs directly into your workflow.</div>
-          </div>
-          <div className="logistics-card">
             <div className="logistics-icon">⚖️</div>
             <div className="logistics-title">Legal & Rights</div>
             <div className="logistics-text">Automated IP transfer. Every entry includes a digital contract so the brand owns the winning design rights outright.</div>
