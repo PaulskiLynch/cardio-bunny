@@ -463,6 +463,35 @@ a { color: inherit; }
   font-weight: 700;
 }
 
+.prompt-box {
+  margin: 0;
+  padding: 18px 20px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333;
+}
+.prompt-title {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: #111;
+}
+.prompt-section-title {
+  font-weight: 700;
+  margin: 10px 0 6px;
+}
+.prompt-list {
+  margin: 0;
+  padding-left: 18px;
+}
+.prompt-list li {
+  margin-bottom: 5px;
+}
+
 .form-section {
   padding: 20px;
   border-bottom: 1px solid #ededed;
