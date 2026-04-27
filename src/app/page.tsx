@@ -7,9 +7,9 @@ export default function CrowdLoopsHome() {
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="hero b2b-hero">
         <div style={{ width: '100%' }}>
-          <div className="b2b-eyebrow">The Retail Intelligence Engine</div>
-          <h1 className="b2b-headline">Turn Customer Data Into Your Next Best-Seller.</h1>
-          <div className="b2b-sub">The white-label engine that crowdsources, validates, and pre-sells your collections before you commit to manufacturing.</div>
+          <div className="b2b-eyebrow">CrowdLoops</div>
+          <h1 className="b2b-headline">The retail intelligence engine that turns community creativity into demand-tested products.</h1>
+          <div className="b2b-sub">Launch a branded design challenge, collect real market signals, and produce what your audience already wants.</div>
           <div className="b2b-ctas">
             <Link className="cta" href="/contact">Book a Demo</Link>
             <Link className="cta cta-ghost" href="#case-studies">View Live Events</Link>
