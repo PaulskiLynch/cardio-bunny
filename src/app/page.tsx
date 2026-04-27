@@ -24,12 +24,9 @@ export default async function HomePage() {
         <CountdownTimer />
       </section>
 
-      <section className="section">
-        <h2>Retail Partner</h2>
-        <div className="card-text">Biedronka brings style, quality, and affordability to millions of consumers.</div>
-        <div style={{ marginTop: 18, borderRadius: 18, overflow: 'hidden', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 16px' }}>
-          <img src="/biedronka.png" alt="Biedronka" style={{ maxWidth: '100%', maxHeight: 160, objectFit: 'contain' }} />
-        </div>
+      <section className="section" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap', padding: '20px 24px' }}>
+        <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
+        <img src="/biedronka.png" alt="Biedronka" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
       </section>
 
       <section className="section">
