@@ -812,6 +812,14 @@ details p, details ul {
 }
 .prize-tba-label { font-size: 13px; font-weight: 700; color: #aaa; }
 
+/* ── SWOMP brand ─────────────────────────────────────── */
+.swomp-logo-section { background: #0d1a0f; display: flex; justify-content: center; padding: 24px; }
+.swomp-hero { background: #0d1a0f; }
+.swomp-eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: #5a9a5c; margin-bottom: 10px; }
+.swomp-section { background: #0d1a0f; }
+.swomp-cta { background: #2d5a30; color: #d4c5a0; border-color: #3a6b3d; }
+.swomp-step { background: #1a2e1c; border-color: #2d4a2f; }
+
 /* ── B2B Landing ─────────────────────────────────────── */
 .b2b-hero { text-align: left; }
 .b2b-eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: #e8325a; margin-bottom: 12px; }

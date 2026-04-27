@@ -116,33 +116,53 @@ export default function CrowdLoopsHome() {
         </div>
       </section>
 
-      {/* ── Market Expansion ─────────────────────────────── */}
+      {/* ── Active Events ────────────────────────────────── */}
       <section className="section" id="case-studies">
-        <div className="b2b-label">Market Expansion</div>
-        <h2>Test New Markets With Zero Overhead.</h2>
-        <div className="b2b-sub" style={{ marginBottom: 24 }}>See if your brand resonates in Warsaw before opening a warehouse. Active Loops running now:</div>
-        <div className="market-grid">
-          <div className="market-card">
-            <div className="market-flag">🇵🇱</div>
-            <div className="market-name">Poland</div>
-            <div className="market-event">Cardio Bunny x Biedronka</div>
-            <div className="market-status open">🟢 Entry Open</div>
-            <Link href="/biedronka" className="market-link">View Live Loop →</Link>
-          </div>
-          <div className="market-card">
-            <div className="market-flag">🇬🇧</div>
-            <div className="market-name">United Kingdom</div>
-            <div className="market-event">Cardio Bunny UK</div>
-            <div className="market-status open">🟢 Entry Open</div>
-            <Link href="/uk" className="market-link">View Live Loop →</Link>
-          </div>
-          <div className="market-card">
-            <div className="market-flag">🇹🇷</div>
-            <div className="market-name">Türkiye</div>
-            <div className="market-event">Cardio Bunny Türkiye</div>
-            <div className="market-status open">🟢 Entry Open</div>
-            <Link href="/turkiye" className="market-link">View Live Loop →</Link>
-          </div>
+        <div className="b2b-label">Live Events</div>
+        <h2>Active Loops Running Now.</h2>
+        <div className="b2b-sub" style={{ marginBottom: 24 }}>CrowdLoops works across fashion, beverages, lifestyle — any product category where community taste matters.</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <Link href="/biedronka" style={{ textDecoration: 'none' }}>
+            <div className="event-card">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>
+                <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ height: 32, objectFit: 'contain' }} />
+                <img src="/biedronka.png" alt="Biedronka" style={{ height: 32, objectFit: 'contain' }} />
+              </div>
+              <div className="event-card-title">Cardio Bunny x Biedronka 🇵🇱</div>
+              <div className="event-card-text">Fashion — Design a matching activewear set. Top vote gets produced and sold in Biedronka stores across Poland.</div>
+              <div className="event-card-status open">🟢 Entry Open</div>
+            </div>
+          </Link>
+          <Link href="/uk" style={{ textDecoration: 'none' }}>
+            <div className="event-card">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>
+                <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ height: 32, objectFit: 'contain' }} />
+              </div>
+              <div className="event-card-title">Cardio Bunny UK 🇬🇧</div>
+              <div className="event-card-text">Fashion — Design a matching activewear set for the UK market. Retail partner announcement coming soon.</div>
+              <div className="event-card-status open">🟢 Entry Open</div>
+            </div>
+          </Link>
+          <Link href="/turkiye" style={{ textDecoration: 'none' }}>
+            <div className="event-card">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>
+                <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ height: 32, objectFit: 'contain' }} />
+              </div>
+              <div className="event-card-title">Cardio Bunny Türkiye 🇹🇷</div>
+              <div className="event-card-text">Fashion — Design a matching activewear set for the Türkiye market. Retail partner announcement coming soon.</div>
+              <div className="event-card-status open">🟢 Entry Open</div>
+            </div>
+          </Link>
+          <Link href="/swomp" style={{ textDecoration: 'none' }}>
+            <div className="event-card" style={{ background: '#0d1a0f', borderColor: '#3a6b3d' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>
+                <img src="/swomp-logo.png" alt="SWOMP WATER+" style={{ height: 36, objectFit: 'contain' }} />
+              </div>
+              <div className="event-card-title" style={{ color: '#d4c5a0' }}>SWOMP WATER+</div>
+              <div className="event-card-text" style={{ color: '#a0b89a' }}>Beverages — Design the back panel of our new electrolyte water can. Winning entry wins €1,000 and goes into production.</div>
+              <div className="event-card-status open">🟢 Entry Open</div>
+            </div>
+          </Link>
         </div>
       </section>
 
