@@ -754,6 +754,24 @@ details p, details ul {
 .story-title { font-size: 22px; font-weight: 950; margin-bottom: 8px; }
 .story-text { color: #444; font-size: 16px; line-height: 1.4; }
 
+/* ── Event cards ─────────────────────────────────────── */
+.event-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px;
+  border: 2px solid #e8e8e8;
+  transition: border-color 0.15s;
+  color: inherit;
+}
+.event-card:hover { border-color: #111; }
+.event-card-soon { cursor: default; }
+.event-card-soon:hover { border-color: #e8e8e8; }
+.event-card-title { font-size: 18px; font-weight: 950; margin-bottom: 6px; }
+.event-card-text { font-size: 14px; color: #555; line-height: 1.5; margin-bottom: 12px; }
+.event-card-status { font-size: 13px; font-weight: 700; }
+.event-card-status.open { color: #1a8a1a; }
+.event-card-status.soon { color: #999; }
+
 /* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 560px) {
   .hero { border-radius: 16px; padding: 20px; }

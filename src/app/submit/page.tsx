@@ -44,7 +44,7 @@ export default function SubmitPage() {
 
   return (
     <main className="page">
-      <Link className="top-link" href="/">← Back</Link>
+      <Link className="top-link" href="/biedronka">← Back</Link>
 
       <div className="portal">
         <header className="portal-header">
