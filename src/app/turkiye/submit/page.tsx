@@ -26,17 +26,17 @@ export default function TurkiyeSubmitPage() {
     const form = e.currentTarget
     const data = new FormData(form)
     if (!data.get('image') || !(data.get('image') as File).size) {
-      setError('Please upload a design image.')
+      setError('Lütfen bir tasarım görseli yükleyin.')
       return
     }
     setSubmitting(true)
     try {
       const res = await fetch('/api/entries', { method: 'POST', body: data })
       const json = await res.json()
-      if (!res.ok) throw new Error(json.error || 'Submission failed')
+      if (!res.ok) throw new Error(json.error || 'Gönderim başarısız oldu')
       setConfirmed({ entryId: json.entryId })
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
+      setError(err instanceof Error ? err.message : 'Bir şeyler ters gitti')
     } finally {
       setSubmitting(false)
     }
@@ -44,31 +44,31 @@ export default function TurkiyeSubmitPage() {
 
   return (
     <main className="page">
-      <Link className="top-link" href="/turkiye">← Back</Link>
+      <Link className="top-link" href="/turkiye">← Geri</Link>
 
       <div className="portal">
         <header className="portal-header">
-          <div className="brand">CARDIO BUNNY ACADEMY</div>
-          <div className="phase">Phase 1: Design Open Call — Türkiye</div>
+          <div className="brand">Cardio Bunny Türkiye</div>
+          <div className="phase">Faz 1: Açık Tasarım Çağrısı</div>
         </header>
 
         <div className="status-row">
-          <div>Status: 🟢 Entry Open</div>
-          <div>Your ID: <span>{confirmed ? confirmed.entryId : 'GENERATING...'}</span></div>
+          <div>Durum: 🟢 Başvurular Açık</div>
+          <div>Numaranız: <span>{confirmed ? confirmed.entryId : 'OLUŞTURULUYOR...'}</span></div>
         </div>
 
         <div className="prompt-box">
-          <div className="prompt-title">Image Guidelines</div>
-          <p>Create a fashion design concept image for a matching women's athletic Top and Legging set for Cardio Bunny.</p>
-          <div className="prompt-section-title">The image must clearly show:</div>
+          <div className="prompt-title">Görsel Yönergeleri</div>
+          <p>Cardio Bunny için eşleşen bir kadın atletik Top ve Tayt seti moda tasarım konsept görseli oluşturun.</p>
+          <div className="prompt-section-title">Görsel açıkça göstermelidir:</div>
           <ol className="prompt-list">
-            <li><strong>Full outfit:</strong> A sports top / crop top / bra top with matching full-length leggings.</li>
-            <li><strong>Clear front view:</strong> Show the outfit from the front on a standing model or mannequin, head-to-toe.</li>
-            <li><strong>Fashion design focus:</strong> Clean, simple background: white, light grey, studio, or minimal runway.</li>
-            <li><strong>Realistic activewear style:</strong> Sleek, fitted, sporty. Suitable for gym, yoga, running, or lifestyle wear.</li>
-            <li><strong>Strong visual concept:</strong> Unique colours, patterns, prints, panels, mesh, seams, texture, logos, or bold styling.</li>
-            <li><strong>No distractions:</strong> No extra clothing, bags, heavy props, messy backgrounds, text, or watermarks.</li>
-            <li><strong>Production-friendly:</strong> Should look possible to manufacture and sell as a Cardio Bunny collection.</li>
+            <li><strong>Tam kıyafet:</strong> Eşleşen tam uzunlukta taytlarla birlikte bir spor top / crop top / spor sutyen.</li>
+            <li><strong>Net ön görünüm:</strong> Kıyafeti ayakta duran bir model veya manken üzerinde önden, baştan ayağa gösterin.</li>
+            <li><strong>Moda tasarım odağı:</strong> Temiz, sade arka plan: beyaz, açık gri, stüdyo veya minimal pist.</li>
+            <li><strong>Gerçekçi spor giyim tarzı:</strong> Şık, dar kesim, sportif. Spor salonu, yoga, koşu veya günlük kullanıma uygun.</li>
+            <li><strong>Güçlü görsel konsept:</strong> Eşsiz renkler, desenler, baskılar, paneller, file, dikişler, doku, logolar veya cesur stil.</li>
+            <li><strong>Dikkat dağıtıcı unsur yok:</strong> Ekstra kıyafet, çanta, ağır aksesuar, dağınık arka plan, metin veya filigran yok.</li>
+            <li><strong>Üretime uygun:</strong> Cardio Bunny koleksiyonu olarak üretilip satılabilir görünmelidir.</li>
           </ol>
         </div>
 
@@ -77,37 +77,37 @@ export default function TurkiyeSubmitPage() {
             <input type="hidden" name="competition" value="turkiye" />
             <div className="form-section">
               <label className="form-label" htmlFor="setName">
-                1. What do you call this set?
+                1. Bu sete ne ad veriyorsunuz?
               </label>
-              <input id="setName" name="setName" type="text" placeholder="e.g. Tropical Vibe" required />
+              <input id="setName" name="setName" type="text" placeholder="örn. Tropikal Enerji" required />
             </div>
 
             <div className="form-section">
               <label className="form-label" htmlFor="designerName">
-                2. Your name
+                2. Adınız
               </label>
-              <input id="designerName" name="designerName" type="text" placeholder="Your name or alias" required />
+              <input id="designerName" name="designerName" type="text" placeholder="Adınız veya takma adınız" required />
             </div>
 
             <div className="form-section">
               <label className="form-label" htmlFor="contact">
-                3. Email or WhatsApp
-                <span className="hint">So we can reach you if you win</span>
+                3. E-posta veya WhatsApp
+                <span className="hint">Kazanırsanız sizinle iletişime geçebilmemiz için</span>
               </label>
-              <input id="contact" name="contact" type="text" placeholder="email@example.com or +90..." required />
+              <input id="contact" name="contact" type="text" placeholder="email@example.com veya +90..." required />
             </div>
 
             <div className="form-section">
               <div className="form-label">
-                4. Upload your design
-                <span className="hint">Must show a top and a legging</span>
+                4. Tasarımınızı yükleyin
+                <span className="hint">Bir top ve tayt göstermelidir</span>
               </div>
               <div className="upload-box" onClick={() => fileRef.current?.click()}>
                 {preview
-                  ? <img src={preview} alt="Preview" />
+                  ? <img src={preview} alt="Önizleme" />
                   : <>
                       <div className="upload-plus">+</div>
-                      <div className="upload-main">DRAG YOUR PICTURE HERE</div>
+                      <div className="upload-main">RESMİNİZİ BURAYA SÜRÜKLEYIN</div>
                     </>}
                 <input
                   ref={fileRef}
@@ -118,36 +118,36 @@ export default function TurkiyeSubmitPage() {
                   onChange={handleFile}
                 />
               </div>
-              <div className="upload-rule">AI images, sketches, or mirror selfies are all okay.</div>
-              <div className="upload-rule"><strong>Note:</strong> All uploaded images are checked by moderators before going live.</div>
+              <div className="upload-rule">Yapay zeka görselleri, çizimler veya ayna selfileri kabul edilmektedir.</div>
+              <div className="upload-rule"><strong>Not:</strong> Yüklenen tüm görseller yayına girmeden önce moderatörler tarafından incelenir.</div>
             </div>
 
             <div className="form-section">
               <label className="form-label" htmlFor="hook">
-                5. Why is this cool?
+                5. Bu neden harika?
               </label>
-              <textarea id="hook" name="hook" placeholder="Tell us in one short sentence..." required />
+              <textarea id="hook" name="hook" placeholder="Bize kısa bir cümleyle anlatın..." required />
             </div>
 
             <div className="form-section">
               {error && <div style={{ color: '#c00', marginBottom: 12, fontWeight: 700 }}>{error}</div>}
               <button className="submit-button" type="submit" disabled={submitting}>
-                {submitting ? 'SUBMITTING...' : '🚀 JOIN THE ACADEMY'}
+                {submitting ? 'GÖNDERİLİYOR...' : '🚀 AKADEMİYE KATIL'}
               </button>
-              <div className="button-note">By clicking, you're in the running for global showrooms and 20% profits.</div>
+              <div className="button-note">Tıklayarak küresel mağazalar ve %20 kâr payı için yarışa giriyorsunuz.</div>
             </div>
           </form>
         ) : (
           <div className="form-section">
             <div className="confirmation">
               <div className="stamp">
-                <div className="stamp-title">SUBMITTED!</div>
-                <div className="stamp-id">ENTRY ID: {confirmed.entryId}</div>
+                <div className="stamp-title">GÖNDERİLDİ!</div>
+                <div className="stamp-id">KATILIM NO: {confirmed.entryId}</div>
               </div>
               <div className="live-text">
-                Your entry has been sent to moderators. Once approved, you'll get your live link to share for votes.
+                Başvurunuz moderatörlere gönderildi. Onaylandıktan sonra oy toplamak için paylaşabileceğiniz bir link alacaksınız.
               </div>
-              <button className="copy-button" disabled>LINK AVAILABLE AFTER APPROVAL</button>
+              <button className="copy-button" disabled>LİNK ONAYDAN SONRA KULLANILABILIR</button>
             </div>
           </div>
         )}

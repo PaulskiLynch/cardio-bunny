@@ -48,8 +48,8 @@ export default function UKSubmitPage() {
 
       <div className="portal">
         <header className="portal-header">
-          <div className="brand">CARDIO BUNNY ACADEMY</div>
-          <div className="phase">Phase 1: Design Open Call — UK</div>
+          <div className="brand">Cardio Bunny UK</div>
+          <div className="phase">Phase 1: Design Open Call</div>
         </header>
 
         <div className="status-row">
