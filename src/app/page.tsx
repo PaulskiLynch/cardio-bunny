@@ -39,7 +39,7 @@ export default function CrowdLoopsHome() {
           <div className="integration-row">
             <div className="integration-step">03</div>
             <div className="integration-body">
-              <div className="integration-focus">Produce — Guaranteed Demand</div>
+              <div className="integration-focus">Produce — Demand-Led Production</div>
               <div className="integration-benefit">Identify the Winning Loop and move to production with a built-in customer base already ready to buy.</div>
             </div>
           </div>
@@ -111,7 +111,7 @@ export default function CrowdLoopsHome() {
           <div className="logistics-card">
             <div className="logistics-icon">⚖️</div>
             <div className="logistics-title">Legal & Rights</div>
-            <div className="logistics-text">Automated IP transfer. Every entry includes a digital contract so the brand owns the winning design rights outright.</div>
+            <div className="logistics-text">Automated IP transfer. Every entry includes a digital contract so rights are transferred under the event terms for selected/winning entries, subject to the official rules.</div>
           </div>
         </div>
       </section>
