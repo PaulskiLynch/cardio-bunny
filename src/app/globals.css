@@ -754,6 +754,69 @@ details p, details ul {
 .story-title { font-size: 22px; font-weight: 950; margin-bottom: 8px; }
 .story-text { color: #444; font-size: 16px; line-height: 1.4; }
 
+/* ── B2B Landing ─────────────────────────────────────── */
+.b2b-hero { text-align: left; }
+.b2b-eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: #e8325a; margin-bottom: 12px; }
+.b2b-headline { font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 950; line-height: 1.1; margin-bottom: 16px; }
+.b2b-sub { font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 0; }
+.b2b-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.b2b-label { font-size: 11px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: #e8325a; margin-bottom: 8px; }
+.cta-ghost { background: transparent; border: 2px solid #111; color: #111; }
+.cta-ghost:hover { background: #111; color: #fff; }
+
+/* ── Integration table ───────────────────────────────── */
+.integration-table { display: flex; flex-direction: column; gap: 0; border: 2px solid #111; border-radius: 16px; overflow: hidden; margin-top: 20px; }
+.integration-row { display: flex; gap: 0; border-bottom: 2px solid #111; }
+.integration-row:last-child { border-bottom: none; }
+.integration-step { min-width: 56px; background: #111; color: #fff; font-size: 20px; font-weight: 950; display: flex; align-items: center; justify-content: center; padding: 20px 12px; }
+.integration-body { padding: 18px 16px; }
+.integration-focus { font-size: 14px; font-weight: 900; margin-bottom: 6px; }
+.integration-benefit { font-size: 13px; color: #555; line-height: 1.5; }
+
+/* ── Dashboard mockup ────────────────────────────────── */
+.dashboard-frame { border-radius: 16px; overflow: hidden; border: 2px solid #222; box-shadow: 0 8px 32px rgba(0,0,0,0.12); max-width: 480px; margin: 0 auto; }
+.dashboard-bar { background: #1a1a1a; padding: 10px 14px; display: flex; align-items: center; gap: 6px; }
+.dashboard-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dashboard-dot.red { background: #ff5f57; }
+.dashboard-dot.amber { background: #ffbd2e; }
+.dashboard-dot.green { background: #28c840; }
+.dashboard-url { font-size: 11px; color: #888; margin-left: 8px; font-family: monospace; }
+.dashboard-body { background: #f7f7f7; padding: 18px 16px; }
+.dashboard-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.dashboard-title { font-size: 11px; font-weight: 900; letter-spacing: 0.1em; color: #888; }
+.dashboard-tag { font-size: 10px; font-weight: 900; background: #28c840; color: #fff; padding: 2px 8px; border-radius: 20px; }
+.dashboard-event-name { font-size: 14px; font-weight: 900; margin-bottom: 16px; color: #111; }
+.dashboard-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+.dashboard-metric { background: #fff; border-radius: 10px; padding: 12px 8px; text-align: center; border: 1px solid #e8e8e8; }
+.dashboard-metric-val { font-size: 20px; font-weight: 950; color: #111; }
+.dashboard-metric-label { font-size: 10px; color: #888; font-weight: 700; margin-top: 2px; }
+.dashboard-insights { background: #fff; border-radius: 10px; padding: 12px; border: 1px solid #e8e8e8; margin-bottom: 14px; display: flex; flex-direction: column; gap: 10px; }
+.dashboard-insight-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+.insight-label { font-weight: 700; color: #555; }
+.insight-tags { font-weight: 900; color: #e8325a; }
+.insight-val { font-weight: 900; color: #111; }
+.insight-val.trust { color: #28c840; }
+.dashboard-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.dash-btn { padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 900; border: 2px solid #111; background: #fff; cursor: pointer; }
+.dash-btn-dark { background: #111; color: #fff; }
+
+/* ── Logistics grid ──────────────────────────────────── */
+.logistics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.logistics-card { background: #fff; border: 2px solid #e8e8e8; border-radius: 16px; padding: 20px 16px; }
+.logistics-icon { font-size: 28px; margin-bottom: 10px; }
+.logistics-title { font-size: 14px; font-weight: 950; margin-bottom: 8px; }
+.logistics-text { font-size: 13px; color: #555; line-height: 1.5; }
+
+/* ── Market grid ─────────────────────────────────────── */
+.market-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.market-card { background: #fff; border: 2px solid #e8e8e8; border-radius: 16px; padding: 18px 14px; display: flex; flex-direction: column; gap: 4px; }
+.market-flag { font-size: 32px; margin-bottom: 6px; }
+.market-name { font-size: 15px; font-weight: 950; }
+.market-event { font-size: 12px; color: #777; margin-bottom: 6px; }
+.market-status { font-size: 12px; font-weight: 700; margin-bottom: 10px; }
+.market-status.open { color: #1a8a1a; }
+.market-link { font-size: 12px; font-weight: 900; color: #111; text-decoration: underline; margin-top: auto; }
+
 /* ── Event cards ─────────────────────────────────────── */
 .event-card {
   background: #fff;
@@ -778,7 +841,10 @@ details p, details ul {
   .section { border-radius: 16px; padding: 20px; }
   .subhead { font-size: 18px; }
   .cta { width: 100%; font-size: 18px; }
+  .b2b-ctas { flex-direction: column; }
   .reward-grid { grid-template-columns: 1fr; }
+  .logistics-grid { grid-template-columns: 1fr; }
+  .market-grid { grid-template-columns: 1fr; }
   .status-row { flex-direction: column; }
   .form-label { font-size: 18px; }
   .upload-main { font-size: 18px; }
