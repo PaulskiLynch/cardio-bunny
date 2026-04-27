@@ -20,6 +20,7 @@ export default async function HomePage() {
           <div className="hero-actions">
             <Link className="cta" href="/submit">🚀 START DESIGNING / ENTER NOW</Link>
           </div>
+          <img src="/hero-image.png" alt="" style={{ width: '100%', borderRadius: 18, objectFit: 'cover', display: 'block', marginTop: 16 }} />
         </div>
         <CountdownTimer />
       </section>
@@ -56,12 +57,9 @@ export default async function HomePage() {
       </section>
 
       <section className="section">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 18 }}>
-          <div>
-            <h2 style={{ margin: 0 }}>Community Favorites</h2>
-            <div className="card-text">Vote for the designs you want to see made.</div>
-          </div>
-          <Link href="/designs" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>See all</Link>
+        <div style={{ marginBottom: 18 }}>
+          <h2 style={{ margin: 0 }}>Community Favorites</h2>
+          <div className="card-text">Vote for the designs you want to see made.</div>
         </div>
         <div className="design-grid">
           {top4.length === 0 && (
@@ -88,6 +86,9 @@ export default async function HomePage() {
               </div>
             </article>
           ))}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: 20 }}>
+          <Link href="/designs" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>See all</Link>
         </div>
       </section>
 
