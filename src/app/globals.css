@@ -754,6 +754,64 @@ details p, details ul {
 .story-title { font-size: 22px; font-weight: 950; margin-bottom: 8px; }
 .story-text { color: #444; font-size: 16px; line-height: 1.4; }
 
+/* ── Demo notice ─────────────────────────────────────── */
+.demo-notice {
+  background: #fff3cd;
+  border: 2px solid #f0c040;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #7a5c00;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* ── Prize section ───────────────────────────────────── */
+.prize-section { display: flex; flex-direction: column; gap: 14px; }
+.prize-top10 {
+  background: #f5f5f5;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.prize-top10-badge {
+  background: #111; color: #fff;
+  font-size: 11px; font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 4px 10px; border-radius: 20px;
+  white-space: nowrap; margin-top: 2px;
+}
+.prize-top10-text { font-size: 14px; color: #333; line-height: 1.5; }
+.prize-grand {
+  background: #111;
+  color: #fff;
+  border-radius: 14px;
+  padding: 18px;
+}
+.prize-grand-header {
+  font-size: 11px; font-weight: 900;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #e8325a; margin-bottom: 12px;
+}
+.prize-cash {
+  font-size: 28px; font-weight: 950;
+  margin-bottom: 14px;
+}
+.prize-items { display: flex; flex-direction: column; gap: 10px; }
+.prize-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.5; }
+.prize-item-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.prize-item-text { color: #ddd; }
+.prize-item-text strong { color: #fff; }
+.prize-tba {
+  border: 2px dashed #444;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex; gap: 10px; align-items: center;
+  opacity: 0.6;
+}
+.prize-tba-label { font-size: 13px; font-weight: 700; color: #aaa; }
+
 /* ── B2B Landing ─────────────────────────────────────── */
 .b2b-hero { text-align: left; }
 .b2b-eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: #e8325a; margin-bottom: 12px; }

@@ -14,7 +14,9 @@ export default async function CardioUKPage() {
 
   return (
     <main className="page">
-<section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
+      <div className="demo-notice">⚠️ Demo Only — This is not a live competition.</div>
+
+      <section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
         <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '60%', objectFit: 'contain' }} />
         <div style={{ fontWeight: 900, fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#555' }}>United Kingdom</div>
       </section>
@@ -32,27 +34,33 @@ export default async function CardioUKPage() {
       </section>
 
       <section className="section">
-        <h2>What You Can Win</h2>
-        <div className="reward-grid">
-          <div className="reward-card">
-            <div className="icon">🏆</div>
-            <div className="card-title">WIN</div>
-            <div className="card-text">Your collection can be selected, produced, and sold.</div>
+        <h2>Prizes</h2>
+        <div className="prize-section">
+          <div className="prize-top10">
+            <div className="prize-top10-badge">TOP 10</div>
+            <div className="prize-top10-text">1 full day of training with the Cardio Bunny global design team.</div>
           </div>
-          <div className="reward-card">
-            <div className="icon">💸</div>
-            <div className="card-title">EARN</div>
-            <div className="card-text">You can earn a percentage of profits from pieces sold.</div>
+          <div className="prize-grand">
+            <div className="prize-grand-header">🏆 Grand Winner</div>
+            <div className="prize-cash">£2,000</div>
+            <div className="prize-items">
+              <div className="prize-item">
+                <div className="prize-item-icon">🌍</div>
+                <div className="prize-item-text"><strong>Global Fame:</strong> Your name and design showcased in Cardio Bunny showrooms worldwide. 🇺🇸 🇬🇧 🇦🇪 🇮🇳 🇨🇦</div>
+              </div>
+              <div className="prize-item">
+                <div className="prize-item-icon">📰</div>
+                <div className="prize-item-text"><strong>Press:</strong> Feature profile article in a leading fashion magazine.</div>
+              </div>
+              <div className="prize-item">
+                <div className="prize-item-icon">📸</div>
+                <div className="prize-item-text"><strong>Production:</strong> Professional Miami-based photo shoot of your winning collection.</div>
+              </div>
+            </div>
           </div>
-          <div className="reward-card">
-            <div className="icon">🚀</div>
-            <div className="card-title">SCALE</div>
-            <div className="card-text">Cardio Bunny helps take the winning idea from design to retail.</div>
-          </div>
-          <div className="reward-card">
-            <div className="icon">🌟</div>
-            <div className="card-title">RECOGNITION</div>
-            <div className="card-text">Your name and entry can be seen by the community and supporters.</div>
+          <div className="prize-tba">
+            <div className="prize-item-icon">🛍</div>
+            <div className="prize-tba-label">Retail Partner: TBA — Your design could be sold nationwide. Partner announcement coming soon.</div>
           </div>
         </div>
       </section>

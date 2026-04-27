@@ -14,6 +14,8 @@ export default async function TurkiyePage() {
 
   return (
     <main className="page">
+      <div className="demo-notice">⚠️ Yalnızca Demo — Bu aktif bir yarışma değildir.</div>
+
       <section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
         <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '60%', objectFit: 'contain' }} />
         <div style={{ fontWeight: 900, fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#555' }}>Türkiye</div>
@@ -32,27 +34,33 @@ export default async function TurkiyePage() {
       </section>
 
       <section className="section">
-        <h2>Neler Kazanabilirsin</h2>
-        <div className="reward-grid">
-          <div className="reward-card">
-            <div className="icon">🏆</div>
-            <div className="card-title">KAZAN</div>
-            <div className="card-text">Koleksiyonun seçilebilir, üretilebilir ve satılabilir.</div>
+        <h2>Ödüller</h2>
+        <div className="prize-section">
+          <div className="prize-top10">
+            <div className="prize-top10-badge">İLK 10</div>
+            <div className="prize-top10-text">Cardio Bunny küresel tasarım ekibiyle 1 tam gün eğitim.</div>
           </div>
-          <div className="reward-card">
-            <div className="icon">💸</div>
-            <div className="card-title">KAZANÇ</div>
-            <div className="card-text">Satılan her üründen kar payı kazanabilirsin.</div>
+          <div className="prize-grand">
+            <div className="prize-grand-header">🏆 Büyük Kazanan</div>
+            <div className="prize-cash">~125.000 TRY</div>
+            <div className="prize-items">
+              <div className="prize-item">
+                <div className="prize-item-icon">🌍</div>
+                <div className="prize-item-text"><strong>Küresel Şöhret:</strong> Adın ve tasarımın uluslararası Cardio Bunny showroomlarında sergilenecek. 🇺🇸 🇦🇪 🇮🇳 🇬🇧 🇨🇦</div>
+              </div>
+              <div className="prize-item">
+                <div className="prize-item-icon">📰</div>
+                <div className="prize-item-text"><strong>Basın:</strong> Önde gelen bir moda dergisinde özel profil makalesi.</div>
+              </div>
+              <div className="prize-item">
+                <div className="prize-item-icon">📸</div>
+                <div className="prize-item-text"><strong>Prodüksiyon:</strong> Miami'de kazanan koleksiyonun profesyonel fotoğraf çekimi.</div>
+              </div>
+            </div>
           </div>
-          <div className="reward-card">
-            <div className="icon">🚀</div>
-            <div className="card-title">BÜYÜME</div>
-            <div className="card-text">Cardio Bunny, kazanan fikri tasarımdan raflara taşımana yardımcı olur.</div>
-          </div>
-          <div className="reward-card">
-            <div className="icon">🌟</div>
-            <div className="card-title">TANINMA</div>
-            <div className="card-text">Adın ve başvurun topluluk ve destekçiler tarafından görülebilir.</div>
+          <div className="prize-tba">
+            <div className="prize-item-icon">🛍</div>
+            <div className="prize-tba-label">Perakende Ortağı: Açıklanacak — Tasarımın ulusal mağazalarda satılabilir. Ortak duyurusu yakında.</div>
           </div>
         </div>
       </section>

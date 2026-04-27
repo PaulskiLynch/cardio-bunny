@@ -14,6 +14,8 @@ export default async function BiedronkaPage() {
 
   return (
     <main className="page">
+      <div className="demo-notice">⚠️ Tylko Demo — To nie jest aktywny konkurs.</div>
+
       <section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
           <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
@@ -35,27 +37,33 @@ export default async function BiedronkaPage() {
       </section>
 
       <section className="section">
-        <h2>Co Możesz Wygrać</h2>
-        <div className="reward-grid">
-          <div className="reward-card">
-            <div className="icon">🏆</div>
-            <div className="card-title">WYGRAJ</div>
-            <div className="card-text">Twoja kolekcja może zostać wybrana, wyprodukowana i sprzedana.</div>
+        <h2>Nagrody</h2>
+        <div className="prize-section">
+          <div className="prize-top10">
+            <div className="prize-top10-badge">TOP 10</div>
+            <div className="prize-top10-text">1 pełny dzień intensywnego szkolenia z zespołami Fashion & Design Cardio Bunny i Biedronki.</div>
           </div>
-          <div className="reward-card">
-            <div className="icon">💸</div>
-            <div className="card-title">ZARABIAJ</div>
-            <div className="card-text">Możesz zarobić procent od zysków ze sprzedanych sztuk.</div>
-          </div>
-          <div className="reward-card">
-            <div className="icon">🚀</div>
-            <div className="card-title">SKALUJ</div>
-            <div className="card-text">Cardio Bunny pomoże przekształcić zwycięski projekt w produkt dostępny w sklepach.</div>
-          </div>
-          <div className="reward-card">
-            <div className="icon">🌟</div>
-            <div className="card-title">UZNANIE</div>
-            <div className="card-text">Twoje imię i zgłoszenie będzie widoczne dla społeczności i fanów marki.</div>
+          <div className="prize-grand">
+            <div className="prize-grand-header">🏆 Zwycięzca Główny</div>
+            <div className="prize-cash">10 000 PLN</div>
+            <div className="prize-items">
+              <div className="prize-item">
+                <div className="prize-item-icon">🛍</div>
+                <div className="prize-item-text"><strong>Sprzedaż Ogólnopolska:</strong> Twój projekt wyprodukowany i sprzedawany w sklepach Biedronka w całej Polsce.</div>
+              </div>
+              <div className="prize-item">
+                <div className="prize-item-icon">🌍</div>
+                <div className="prize-item-text"><strong>Światowa Sława:</strong> Twoje imię i projekt prezentowane w showroomach Cardio Bunny. 🇺🇸 🇦🇪 🇮🇳 🇵🇱 🇬🇧 🇨🇦</div>
+              </div>
+              <div className="prize-item">
+                <div className="prize-item-icon">📰</div>
+                <div className="prize-item-text"><strong>Prasa:</strong> Artykuł profilowy w wiodącym magazynie mody.</div>
+              </div>
+              <div className="prize-item">
+                <div className="prize-item-icon">📸</div>
+                <div className="prize-item-text"><strong>Produkcja:</strong> Profesjonalna sesja zdjęciowa w Miami Twojej zwycięskiej kolekcji.</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
