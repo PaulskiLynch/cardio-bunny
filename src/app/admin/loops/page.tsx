@@ -2,6 +2,7 @@ import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { prisma } from '@/lib/db'
 import { LoginForm } from '../AdminClient'
+import DeleteLoopButton from './[id]/edit/DeleteLoopButton'
 
 export const dynamic = 'force-dynamic'
 
@@ -50,6 +51,7 @@ export default async function LoopsAdminPage() {
                 <Link href={`/loops/${loop.slug}`} className="loop-action-link">View</Link>
                 <Link href={`/studio/${loop.id}`} className="loop-action-link">Studio</Link>
                 <Link href={`/admin/loops/${loop.id}/edit`} className="loop-action-link">Edit</Link>
+                <DeleteLoopButton id={loop.id} />
               </div>
             </div>
           ))}
