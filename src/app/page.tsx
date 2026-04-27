@@ -38,6 +38,17 @@ export default function CrowdLoopsHome() {
             </div>
           </Link>
 
+          <Link href="/turkiye" style={{ textDecoration: 'none' }}>
+            <div className="event-card">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>
+                <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ height: 36, objectFit: 'contain' }} />
+              </div>
+              <div className="event-card-title">Cardio Bunny Türkiye</div>
+              <div className="event-card-text">Design a matching activewear set for the Türkiye market. Top community vote gets produced and sold.</div>
+              <div className="event-card-status open">🟢 Entry Open</div>
+            </div>
+          </Link>
+
         </div>
       </section>
 
