@@ -34,6 +34,8 @@ export default async function EditLoopPage({
     ctaText: loop.ctaText,
     deadline: loop.deadline,
     accentColor: loop.accentColor,
+    logoUrl: loop.logoUrl,
+    heroImageUrl: loop.heroImageUrl,
     brief: loop.brief,
     guidelines: loop.guidelines,
     prizes: loop.prizes,

@@ -2049,4 +2049,68 @@ details p, details ul {
   transition: opacity 0.15s;
 }
 
+/* ── Loop image pickers ──────────────────────────────── */
+.loop-image-picker {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  border: 2px dashed #ccc;
+  background: #fafafa;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s;
+}
+
+.loop-image-picker:hover {
+  border-color: #999;
+}
+
+.loop-image-picker-wide {
+  width: 100%;
+  height: 140px;
+}
+
+.loop-image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.loop-image-preview-wide {
+  object-fit: cover;
+}
+
+.loop-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #aaa;
+  font-size: 11px;
+  text-align: center;
+  padding: 8px;
+}
+
+.loop-image-plus {
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  color: #bbb;
+}
+
+.loop-image-remove {
+  margin-top: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  color: #c00;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 700;
+}
+
 .inq-action-btn:hover { opacity: 0.75; }

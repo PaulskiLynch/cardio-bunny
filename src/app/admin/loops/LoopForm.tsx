@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
 interface PrizeItem {
@@ -31,6 +31,8 @@ export interface LoopInitial {
   ctaText: string
   deadline: string
   accentColor: string
+  logoUrl: string
+  heroImageUrl: string
   brief: string
   guidelines: string
   prizes: string
@@ -61,8 +63,31 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
   const [ctaText, setCtaText]         = useState(initial?.ctaText ?? 'Submit Your Design')
   const [deadline, setDeadline]       = useState(initial?.deadline ?? '')
   const [accentColor, setAccentColor] = useState(initial?.accentColor ?? '#e8325a')
+  const [logoUrl, setLogoUrl]         = useState(initial?.logoUrl ?? '')
+  const [heroImageUrl, setHeroImageUrl] = useState(initial?.heroImageUrl ?? '')
   const [brief, setBrief]             = useState(initial?.brief ?? '')
   const [autoApprove, setAutoApprove] = useState(initial?.autoApprove ?? false)
+
+  const logoRef     = useRef<HTMLInputElement>(null)
+  const heroRef     = useRef<HTMLInputElement>(null)
+  const [uploadingLogo, setUploadingLogo]   = useState(false)
+  const [uploadingHero, setUploadingHero]   = useState(false)
+
+  async function uploadImage(file: File, setter: (url: string) => void, setBusy: (b: boolean) => void) {
+    setBusy(true)
+    try {
+      const fd = new FormData()
+      fd.append('file', file)
+      const res = await fetch('/api/upload', { method: 'POST', body: fd })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error)
+      setter(json.url)
+    } catch {
+      setError('Image upload failed')
+    } finally {
+      setBusy(false)
+    }
+  }
 
   const [guidelines, setGuidelines] = useState<string[]>(() => {
     try { return JSON.parse(initial?.guidelines ?? '[]') } catch { return [''] }
@@ -139,6 +164,8 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
       ctaText,
       deadline,
       accentColor,
+      logoUrl,
+      heroImageUrl,
       brief,
       autoApprove,
       guidelines: JSON.stringify(guidelines.filter(g => g.trim())),
@@ -352,6 +379,61 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
       {/* ── APPEARANCE & SETTINGS ────────────────────── */}
       <div className="loop-section">
         <div className="loop-section-title">Appearance &amp; Settings</div>
+
+        {/* Logo */}
+        <div className="loop-field">
+          <label>Brand Logo <span className="loop-hint">Shown at the top of the competition page</span></label>
+          <div className="loop-image-picker" onClick={() => logoRef.current?.click()}>
+            {logoUrl
+              ? <img src={logoUrl} alt="Logo" className="loop-image-preview" />
+              : <div className="loop-image-placeholder">
+                  <span className="loop-image-plus">{uploadingLogo ? '…' : '+'}</span>
+                  <span>Upload logo</span>
+                </div>
+            }
+            <input
+              ref={logoRef}
+              type="file"
+              accept="image/*"
+              style={{ display: 'none' }}
+              onChange={e => {
+                const f = e.target.files?.[0]
+                if (f) uploadImage(f, setLogoUrl, setUploadingLogo)
+              }}
+            />
+          </div>
+          {logoUrl && (
+            <button type="button" className="loop-image-remove" onClick={() => setLogoUrl('')}>Remove logo</button>
+          )}
+        </div>
+
+        {/* Hero image */}
+        <div className="loop-field">
+          <label>Hero Image <span className="loop-hint">Banner shown inside the hero section</span></label>
+          <div className="loop-image-picker loop-image-picker-wide" onClick={() => heroRef.current?.click()}>
+            {heroImageUrl
+              ? <img src={heroImageUrl} alt="Hero" className="loop-image-preview loop-image-preview-wide" />
+              : <div className="loop-image-placeholder">
+                  <span className="loop-image-plus">{uploadingHero ? '…' : '+'}</span>
+                  <span>Upload hero image</span>
+                </div>
+            }
+            <input
+              ref={heroRef}
+              type="file"
+              accept="image/*"
+              style={{ display: 'none' }}
+              onChange={e => {
+                const f = e.target.files?.[0]
+                if (f) uploadImage(f, setHeroImageUrl, setUploadingHero)
+              }}
+            />
+          </div>
+          {heroImageUrl && (
+            <button type="button" className="loop-image-remove" onClick={() => setHeroImageUrl('')}>Remove image</button>
+          )}
+        </div>
+
         <div className="loop-field">
           <label>Accent Colour</label>
           <div className="loop-color-row">
