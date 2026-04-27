@@ -18,8 +18,9 @@ export default async function CardioUKPage() {
         <Link className="top-link" href="/">← CrowdLoops</Link>
       </div>
 
-      <section className="section" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap', padding: '20px 24px' }}>
+      <section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
         <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '60%', objectFit: 'contain' }} />
+        <div style={{ fontWeight: 900, fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#555' }}>United Kingdom</div>
       </section>
 
       <section className="hero">

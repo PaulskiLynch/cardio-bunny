@@ -18,9 +18,12 @@ export default async function BiedronkaPage() {
         <Link className="top-link" href="/">← CrowdLoops</Link>
       </div>
 
-      <section className="section" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap', padding: '20px 24px' }}>
-        <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
-        <img src="/biedronka.png" alt="Biedronka" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
+      <section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
+          <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
+          <img src="/biedronka.png" alt="Biedronka" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
+        </div>
+        <div style={{ fontWeight: 900, fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#555' }}>Poland</div>
       </section>
 
       <section className="hero">
