@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import CountdownTimer from '@/components/CountdownTimer'
+import VoteCard from '@/components/VoteCard'
 import { prisma } from '@/lib/db'
 
 export const dynamic = 'force-dynamic'
@@ -68,23 +69,14 @@ export default async function HomePage() {
             </div>
           )}
           {top4.map(entry => (
-            <article key={entry.id} className="entry-card">
-              <div className="entry-image">
-                <span className="entry-id-badge">ID: {entry.entryId}</span>
-                {entry.imageUrl
-                  ? <img src={entry.imageUrl} alt={entry.setName} />
-                  : <span>{entry.setName}</span>}
-              </div>
-              <div className="entry-body">
-                <div className="designer-row">
-                  <div className="designer-name">{entry.designerName}</div>
-                  <div className="vote-count">{entry.voteCount.toLocaleString()} Votes</div>
-                </div>
-                <Link href={`/entry/${entry.entryId}`} className="vote-button" style={{ display: 'block', textAlign: 'center', textDecoration: 'none', lineHeight: '26px' }}>
-                  ♥ VOTE
-                </Link>
-              </div>
-            </article>
+            <VoteCard
+              key={entry.id}
+              entryId={entry.entryId}
+              setName={entry.setName}
+              designerName={entry.designerName}
+              imageUrl={entry.imageUrl}
+              initialVotes={entry.voteCount}
+            />
           ))}
         </div>
         <div style={{ textAlign: 'center', marginTop: 20 }}>

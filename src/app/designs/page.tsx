@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { prisma } from '@/lib/db'
+import VoteCard from '@/components/VoteCard'
 
 export const dynamic = 'force-dynamic'
 
@@ -74,37 +75,14 @@ export default async function DesignsPage({
           </div>
         )}
         {entries.map(entry => (
-          <article key={entry.id} className="entry-card">
-            <div className="entry-image">
-              <span className="entry-id-badge">ID: {entry.entryId}</span>
-              {entry.imageUrl
-                ? <img src={entry.imageUrl} alt={entry.setName} />
-                : <span>{entry.setName}</span>}
-            </div>
-            <div className="entry-body">
-              <div className="designer-row">
-                <div className="designer-name">{entry.designerName}</div>
-                <div className="vote-count">{entry.voteCount.toLocaleString()} Votes</div>
-              </div>
-              <div className="action-row">
-                <Link
-                  href={`/entry/${entry.entryId}`}
-                  className="vote-button"
-                  style={{ display: 'block', textAlign: 'center', textDecoration: 'none', lineHeight: '26px' }}
-                >
-                  VOTE
-                </Link>
-                <Link
-                  href={`/entry/${entry.entryId}`}
-                  className="share-button"
-                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}
-                  aria-label="Share entry"
-                >
-                  ✈
-                </Link>
-              </div>
-            </div>
-          </article>
+          <VoteCard
+            key={entry.id}
+            entryId={entry.entryId}
+            setName={entry.setName}
+            designerName={entry.designerName}
+            imageUrl={entry.imageUrl}
+            initialVotes={entry.voteCount}
+          />
         ))}
       </section>
 
