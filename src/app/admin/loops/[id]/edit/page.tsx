@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/db'
 import { LoginForm } from '../../../AdminClient'
 import LoopForm, { type LoopInitial } from '../../LoopForm'
+import DeleteLoopButton from './DeleteLoopButton'
 
 export const dynamic = 'force-dynamic'
 
@@ -46,7 +47,7 @@ export default async function EditLoopPage({
         <h1>Edit Loop</h1>
         <div className="subtitle">{loop.brandName}</div>
       </section>
-      <div style={{ marginBottom: 20, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+      <div style={{ marginBottom: 20, display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'center' }}>
         <Link href="/admin/loops" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
           ← All Loops
         </Link>
@@ -56,6 +57,7 @@ export default async function EditLoopPage({
         <Link href={`/studio/${loop.id}`} style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
           Studio ↗
         </Link>
+        <DeleteLoopButton id={loop.id} />
       </div>
       <LoopForm initial={initial} />
     </main>

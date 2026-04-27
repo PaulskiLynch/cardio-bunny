@@ -50,8 +50,9 @@ export default function StartPage() {
       <nav className="site-nav">
         <Link href="/" className="site-nav-brand">CrowdLoops</Link>
         <div className="site-nav-links">
+          <Link href="/" className="site-nav-link">Home</Link>
           <Link href="/#case-studies" className="site-nav-link">Live Loops</Link>
-          <Link href="/" className="site-nav-link">For Retailers</Link>
+          <Link href="/#retailers" className="site-nav-link">For Retailers</Link>
           <Link href="/start" className="site-nav-link active">Start</Link>
         </div>
       </nav>
