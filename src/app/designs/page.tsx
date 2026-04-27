@@ -31,6 +31,10 @@ export default async function DesignsPage({
 
   return (
     <main className="page">
+      <div style={{ padding: '12px 16px 0' }}>
+        <Link className="top-link" href="/">← Home</Link>
+      </div>
+
       <header className="search-header">
         <form method="GET">
           <input
