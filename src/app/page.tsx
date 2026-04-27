@@ -25,6 +25,14 @@ export default async function HomePage() {
       </section>
 
       <section className="section">
+        <h2>Retail Partner</h2>
+        <div className="card-text">Biedronka brings style, quality, and affordability to millions of consumers.</div>
+        <div style={{ marginTop: 18, borderRadius: 18, overflow: 'hidden', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 16px' }}>
+          <img src="/biedronka.png" alt="Biedronka" style={{ maxWidth: '100%', maxHeight: 160, objectFit: 'contain' }} />
+        </div>
+      </section>
+
+      <section className="section">
         <h2>What You Can Win</h2>
         <div className="reward-grid">
           <div className="reward-card">
@@ -104,14 +112,6 @@ export default async function HomePage() {
             <div className="card-title">GO GLOBAL</div>
             <div className="card-text">Top designs get produced and sold by Cardio Bunny.</div>
           </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <h2>Retail Backing</h2>
-        <div className="card-text">Biedronka brings style, quality, and affordability to millions of consumers.</div>
-        <div style={{ marginTop: 18, borderRadius: 18, overflow: 'hidden', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px 16px' }}>
-          <img src="/biedronka.png" alt="Biedronka" style={{ maxWidth: '100%', maxHeight: 160, objectFit: 'contain' }} />
         </div>
       </section>
 
