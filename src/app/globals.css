@@ -921,3 +921,53 @@ details p, details ul {
   .upload-main { font-size: 18px; }
   .submit-button { font-size: 20px; }
 }
+
+/* ── Desktop ─────────────────────────────────────────── */
+@media (min-width: 900px) {
+  .page {
+    max-width: 1200px;
+    padding: 0 32px 48px;
+  }
+
+  /* Hero — text left, countdown right */
+  .hero {
+    grid-template-columns: 1fr 380px;
+    align-items: start;
+    padding: 48px 40px;
+    gap: 40px;
+  }
+  .hero h1 { font-size: 72px; }
+  .subhead { font-size: 20px; }
+
+  /* Sections wider padding */
+  .section { padding: 36px 40px; }
+
+  /* Design grid — 3 or 4 columns */
+  .design-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Reward grid — always 4 across */
+  .reward-grid { grid-template-columns: repeat(4, 1fr); }
+
+  /* Steps — always side by side */
+  .steps { flex-direction: row; }
+
+  /* Event list on hub — 2 columns */
+  .event-card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+  /* B2B sections */
+  .b2b-headline { font-size: 3rem; }
+  .integration-table { font-size: 15px; }
+  .logistics-grid { grid-template-columns: repeat(2, 1fr); }
+  .market-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Dashboard wider */
+  .dashboard-frame { max-width: 600px; }
+
+  /* Portal (forms) stay narrow and centred */
+  .portal { max-width: 640px; margin: 0 auto; }
+
+  /* Prize section side by side */
+  .prize-section { flex-direction: row; align-items: flex-start; }
+  .prize-top10 { flex: 1; }
+  .prize-grand { flex: 2; }
+}

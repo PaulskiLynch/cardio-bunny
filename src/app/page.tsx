@@ -121,7 +121,7 @@ export default function CrowdLoopsHome() {
         <div className="b2b-label">Live Events</div>
         <h2>Active Loops Running Now.</h2>
         <div className="b2b-sub" style={{ marginBottom: 24 }}>CrowdLoops works across fashion, beverages, lifestyle — any product category where community taste matters.</div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div className="event-card-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
           <Link href="/biedronka" style={{ textDecoration: 'none' }}>
             <div className="event-card">
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>
