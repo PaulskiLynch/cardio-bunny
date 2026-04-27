@@ -179,27 +179,27 @@ export default function CrowdLoopsHome() {
       {/* ── Retailer FAQ ─────────────────────────────────── */}
       <section className="section">
         <div className="b2b-label">Retailer FAQ</div>
-        <h2>Questions We Always Get.</h2>
+        <h2>Questions Buying, Legal, and Marketing Teams Always Ask.</h2>
         <div className="faq-list">
           <details open>
             <summary>How do you handle IP and design rights?</summary>
-            <p>Our engine manages the full legal transfer of design rights upon submission. Every entrant digitally signs an IP agreement before uploading — so the moment a design is submitted, the brand owns it.</p>
+            <p>Every entrant accepts event-specific terms before submitting. Those terms include the rights needed for the brand to review, promote, select, and produce winning designs. Final ownership and usage rights are configured to match your legal requirements.</p>
           </details>
           <details>
             <summary>Can we moderate entries before they go live?</summary>
-            <p>Yes. You get a private dashboard to approve or reject every submission before it appears publicly. Nothing goes live without your sign-off.</p>
+            <p>Yes. Your team gets a private dashboard to approve, reject, or hide submissions before they appear publicly. Nothing has to go live without your sign-off.</p>
           </details>
           <details>
             <summary>How do you prevent fake votes?</summary>
-            <p>Multi-factor authentication combined with behavioral fingerprinting. Each voter gets a Trust Score — bots and repeat devices are flagged and excluded from the count automatically.</p>
+            <p>CrowdLoops uses layered vote protection, including login controls, device signals, rate limits, duplicate-pattern detection, and voter Trust Scores. Suspicious activity is flagged for review and can be excluded from winner selection.</p>
           </details>
           <details>
             <summary>How long does it take to launch?</summary>
-            <p>48 hours from brief to live portal. We configure the white-label engine, point it to your domain, and you're collecting real customer designs within two days.</p>
+            <p>A standard Loop can launch in around 48 hours once the brief, rules, branding assets, and approval flow are confirmed. More complex legal, retail, or localisation requirements may take longer.</p>
           </details>
           <details>
             <summary>What markets can we launch in?</summary>
-            <p>Any market, any language. We have active Loops running in Poland, the UK, and Türkiye. New markets typically take 24–48 hours to localise and launch.</p>
+            <p>CrowdLoops can be localised for different markets, languages, and retail partners. Current and planned Loops include Poland, the UK, and Türkiye, with new markets usually configured within 24–48 hours after assets and rules are approved.</p>
           </details>
         </div>
       </section>
