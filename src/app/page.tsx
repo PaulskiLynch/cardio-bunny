@@ -49,8 +49,8 @@ export default function CrowdLoopsHome() {
       {/* ── Dashboard Mockup ─────────────────────────────── */}
       <section className="section">
         <div className="b2b-label">Intelligence Dashboard</div>
-        <h2>A Software Tool. Not a Marketing Agency.</h2>
-        <div className="b2b-sub" style={{ marginBottom: 24 }}>Every Loop generates live market intelligence your buying team can act on.</div>
+        <h2>A Software Tool — Not a Marketing Agency.</h2>
+        <div className="b2b-sub" style={{ marginBottom: 24 }}>Every Loop turns community submissions, votes, and intent signals into a live demand dashboard — helping buying teams decide what to back before manufacturing starts.</div>
         <div className="dashboard-frame">
           <div className="dashboard-bar">
             <span className="dashboard-dot red" /><span className="dashboard-dot amber" /><span className="dashboard-dot green" />
@@ -69,24 +69,24 @@ export default function CrowdLoopsHome() {
               </div>
               <div className="dashboard-metric">
                 <div className="dashboard-metric-val">12.5k</div>
-                <div className="dashboard-metric-label">Voters</div>
+                <div className="dashboard-metric-label">Verified Voters</div>
               </div>
               <div className="dashboard-metric">
                 <div className="dashboard-metric-val">+18%</div>
-                <div className="dashboard-metric-label">Growth</div>
+                <div className="dashboard-metric-label">Week-on-Week Growth</div>
               </div>
             </div>
             <div className="dashboard-insights">
               <div className="dashboard-insight-row">
-                <span className="insight-label">Sentiment Trend</span>
+                <span className="insight-label">Top Style Signals</span>
                 <span className="insight-tags">#BOLD &nbsp;#NEON &nbsp;#GYM</span>
               </div>
               <div className="dashboard-insight-row">
-                <span className="insight-label">Notify Me Clicks</span>
+                <span className="insight-label">Notify-Me Clicks</span>
                 <span className="insight-val">3,841</span>
               </div>
               <div className="dashboard-insight-row">
-                <span className="insight-label">Trust Score</span>
+                <span className="insight-label">Vote Integrity</span>
                 <span className="insight-val trust">98.2% Human ✓</span>
               </div>
             </div>
