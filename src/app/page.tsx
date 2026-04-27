@@ -9,10 +9,37 @@ export default function CrowdLoopsHome() {
         <div style={{ width: '100%' }}>
           <div className="b2b-eyebrow">CrowdLoops</div>
           <h1 className="b2b-headline">The retail intelligence engine that turns community creativity into demand-tested products.</h1>
-          <div className="b2b-sub">Launch a branded design challenge, collect real market signals, and produce what your audience already wants.</div>
+          <div className="b2b-sub">CrowdLoops is a white-label community design challenge that helps retailers engage customers, discover new talent, and validate demand before production.</div>
           <div className="b2b-ctas">
             <Link className="cta" href="/contact">Book a Demo</Link>
             <Link className="cta cta-ghost" href="#case-studies">View Live Events</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Why Retailers Use CrowdLoops ────────────────── */}
+      <section className="section">
+        <div className="b2b-label">Why Retailers Use CrowdLoops</div>
+        <div className="logistics-grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+          <div className="logistics-card">
+            <div className="logistics-icon">🎯</div>
+            <div className="logistics-title">Reach New Audiences</div>
+            <div className="logistics-text">Invite younger, digital-first customers to co-create products with your brand.</div>
+          </div>
+          <div className="logistics-card">
+            <div className="logistics-icon">💬</div>
+            <div className="logistics-title">Show You Listen</div>
+            <div className="logistics-text">Turn customer feedback into visible product decisions, not just surveys.</div>
+          </div>
+          <div className="logistics-card">
+            <div className="logistics-icon">🌱</div>
+            <div className="logistics-title">Support Emerging Talent</div>
+            <div className="logistics-text">Give everyday creators a real route from idea to shelf.</div>
+          </div>
+          <div className="logistics-card">
+            <div className="logistics-icon">📊</div>
+            <div className="logistics-title">Test Demand Before Production</div>
+            <div className="logistics-text">Use submissions, votes, shares, and notify-me clicks to identify which concepts have traction before committing inventory.</div>
           </div>
         </div>
       </section>
