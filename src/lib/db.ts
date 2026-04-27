@@ -1,9 +1,8 @@
 import { PrismaClient } from '@/generated/prisma/client'
 import { PrismaLibSql } from '@prisma/adapter-libsql'
 
-function makePrisma() {
-  const url = process.env.DATABASE_URL
-  if (!url) throw new Error('DATABASE_URL is not set')
+function makePrisma(): PrismaClient {
+  const url = process.env.DATABASE_URL!
   const authToken = process.env.TURSO_AUTH_TOKEN
   const adapter = new PrismaLibSql({ url, authToken })
   return new PrismaClient({ adapter })
@@ -11,6 +10,10 @@ function makePrisma() {
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient }
 
-export const prisma = globalForPrisma.prisma ?? makePrisma()
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+// Proxy defers construction until first property access — safe during build
+export const prisma: PrismaClient = new Proxy({} as PrismaClient, {
+  get(_target, prop) {
+    if (!globalForPrisma.prisma) globalForPrisma.prisma = makePrisma()
+    return (globalForPrisma.prisma as any)[prop]
+  },
+})
