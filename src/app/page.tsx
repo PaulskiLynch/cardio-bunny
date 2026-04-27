@@ -61,7 +61,7 @@ export default function CrowdLoopsHome() {
               <span className="dashboard-title">CROWDLOOPS STUDIO</span>
               <span className="dashboard-tag">LIVE</span>
             </div>
-            <div className="dashboard-event-name">Cardio Bunny x Biedronka (PL) &nbsp;🟢 D-12</div>
+            <div className="dashboard-event-name">YourBrand x RetailPartner (UK) &nbsp;🟢 D-12</div>
             <div className="dashboard-metrics">
               <div className="dashboard-metric">
                 <div className="dashboard-metric-val">1,420</div>
