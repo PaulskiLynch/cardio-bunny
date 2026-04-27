@@ -7,7 +7,7 @@ export default function CrowdLoopsHome() {
         <div style={{ width: '100%' }}>
           <div style={{ fontSize: 13, fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 8, opacity: 0.7 }}>Welcome to</div>
           <h1 style={{ fontSize: 'clamp(2rem, 8vw, 3.5rem)', marginBottom: 12 }}>CrowdLoops</h1>
-          <div className="subhead">The platform where communities design what gets made. Vote for your favourites. Win if yours gets picked.</div>
+          <div className="subhead">The platform where communities, retailers and brand owners build products together. Vote for your favourites. Win if yours gets picked.</div>
         </div>
       </section>
 
