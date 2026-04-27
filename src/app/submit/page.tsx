@@ -74,6 +74,7 @@ export default function SubmitPage() {
 
         {!confirmed ? (
           <form onSubmit={handleSubmit}>
+            <input type="hidden" name="competition" value="biedronka" />
             <div className="form-section">
               <label className="form-label" htmlFor="setName">
                 1. What do you call this set?

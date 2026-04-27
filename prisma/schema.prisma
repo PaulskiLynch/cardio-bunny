@@ -22,5 +22,6 @@ model Entry {
   imageUrl     String
   status       String   @default("pending")
   voteCount    Int      @default(0)
+  competition  String   @default("biedronka")
   createdAt    DateTime @default(now())
 }

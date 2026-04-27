@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic'
 
 export default async function BiedronkaPage() {
   const top4 = await prisma.entry.findMany({
-    where: { status: 'approved' },
+    where: { status: 'approved', competition: 'biedronka' },
     orderBy: { voteCount: 'desc' },
     take: 4,
   })
@@ -84,7 +84,7 @@ export default async function BiedronkaPage() {
           ))}
         </div>
         <div style={{ textAlign: 'center', marginTop: 20 }}>
-          <Link href="/designs" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>See all</Link>
+          <Link href="/designs?competition=biedronka" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>See all</Link>
         </div>
       </section>
 
@@ -113,7 +113,7 @@ export default async function BiedronkaPage() {
         <h2>Ready to change your life?</h2>
         <Link className="cta cta-dark" href="/submit">ENTER THE ACADEMY</Link>
         <div className="footer-links">
-          <Link href="/designs">All Designs</Link>
+          <Link href="/designs?competition=biedronka">All Designs</Link>
           <Link href="/help">FAQs & Rules</Link>
         </div>
       </section>

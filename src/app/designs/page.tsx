@@ -9,15 +9,16 @@ const SORTS = { hot: 'voteCount', new: 'createdAt', top: 'voteCount' } as const
 export default async function DesignsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ sort?: string; q?: string }>
+  searchParams: Promise<{ sort?: string; q?: string; competition?: string }>
 }) {
-  const { sort = 'hot', q = '' } = await searchParams
+  const { sort = 'hot', q = '', competition = '' } = await searchParams
 
   const orderBy = sort === 'new' ? { createdAt: 'desc' as const } : { voteCount: 'desc' as const }
 
   const entries = await prisma.entry.findMany({
     where: {
       status: 'approved',
+      ...(competition ? { competition } : {}),
       ...(q ? {
         OR: [
           { designerName: { contains: q } },
