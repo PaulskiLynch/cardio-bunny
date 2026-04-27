@@ -6,6 +6,7 @@ import Link from 'next/link'
 interface Props {
   slug: string
   brandName: string
+  logoUrl: string
   brief: string
   guidelines: string[]
   ctaText: string
@@ -13,7 +14,7 @@ interface Props {
   status: string
 }
 
-export default function LoopSubmitForm({ slug, brandName, brief, guidelines, ctaText, accentColor, status }: Props) {
+export default function LoopSubmitForm({ slug, brandName, logoUrl, brief, guidelines, ctaText, accentColor, status }: Props) {
   const [preview, setPreview]       = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [confirmed, setConfirmed]   = useState<string | null>(null)
@@ -53,7 +54,12 @@ export default function LoopSubmitForm({ slug, brandName, brief, guidelines, cta
 
       <div className="portal">
         <header className="portal-header">
-          <div className="brand">{brandName}</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            {logoUrl && (
+              <img src={logoUrl} alt={brandName} style={{ height: 28, maxWidth: 100, objectFit: 'contain' }} />
+            )}
+            <div className="brand">{brandName}</div>
+          </div>
           <div className="phase">Design Open Call</div>
         </header>
 

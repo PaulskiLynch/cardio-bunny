@@ -20,6 +20,7 @@ export default async function LoopSubmitPage({
     <LoopSubmitForm
       slug={loop.slug}
       brandName={loop.brandName}
+      logoUrl={loop.logoUrl}
       brief={loop.brief}
       guidelines={guidelines}
       ctaText={loop.ctaText}

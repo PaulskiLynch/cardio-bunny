@@ -46,10 +46,29 @@ export default async function LoopPublicPage({
         </div>
       )}
 
-      <section className="hero" style={{ background: '#111' }}>
-        <div>
-          <div style={{ fontSize: 13, fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase', color: accent, marginBottom: 10 }}>
-            {loop.brandName}
+      <section className="hero" style={{ background: '#111', padding: 0, overflow: 'hidden' }}>
+        {loop.heroImageUrl && (
+          <div style={{ position: 'relative', width: '100%', height: 180 }}>
+            <img
+              src={loop.heroImageUrl}
+              alt=""
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 40%, #111 100%)' }} />
+          </div>
+        )}
+        <div style={{ padding: '20px 20px 24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+            {loop.logoUrl && (
+              <img
+                src={loop.logoUrl}
+                alt={loop.brandName}
+                style={{ height: 36, maxWidth: 120, objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+              />
+            )}
+            <div style={{ fontSize: 13, fontWeight: 900, letterSpacing: '0.12em', textTransform: 'uppercase', color: accent }}>
+              {loop.brandName}
+            </div>
           </div>
           <h1 style={{ color: '#fff' }}>{loop.heroTitle}</h1>
           {loop.heroSubhead && (
@@ -64,10 +83,12 @@ export default async function LoopPublicPage({
               {loop.ctaText || 'Submit Your Design'}
             </Link>
           </div>
+          {loop.deadline && (
+            <div style={{ marginTop: 18 }}>
+              <CountdownTimer deadline={`${loop.deadline}T23:59:59Z`} label="ENTRIES CLOSE IN" />
+            </div>
+          )}
         </div>
-        {loop.deadline && (
-          <CountdownTimer deadline={`${loop.deadline}T23:59:59Z`} label="ENTRIES CLOSE IN" />
-        )}
       </section>
 
       {prizes.length > 0 && (
