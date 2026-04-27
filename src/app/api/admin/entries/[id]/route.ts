@@ -14,7 +14,7 @@ export async function PATCH(
   const { id } = await ctx.params
   const { status } = await req.json()
 
-  if (!['approved', 'rejected'].includes(status)) {
+  if (!['approved', 'rejected', 'pending'].includes(status)) {
     return Response.json({ error: 'Invalid status.' }, { status: 400 })
   }
 

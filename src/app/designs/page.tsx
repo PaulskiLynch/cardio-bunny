@@ -4,31 +4,45 @@ import VoteCard from '@/components/VoteCard'
 
 export const dynamic = 'force-dynamic'
 
-const SORTS = { hot: 'voteCount', new: 'createdAt', top: 'voteCount' } as const
-
 export default async function DesignsPage({
   searchParams,
 }: {
   searchParams: Promise<{ sort?: string; q?: string; competition?: string }>
 }) {
-  const { sort = 'hot', q = '', competition = '' } = await searchParams
+  const { sort = 'top', q = '', competition = '' } = await searchParams
 
   const orderBy = sort === 'new' ? { createdAt: 'desc' as const } : { voteCount: 'desc' as const }
 
-  const entries = await prisma.entry.findMany({
-    where: {
-      status: 'approved',
-      ...(competition ? { competition } : {}),
-      ...(q ? {
-        OR: [
-          { designerName: { contains: q } },
-          { entryId: { contains: q.toUpperCase() } },
-          { setName: { contains: q } },
-        ]
-      } : {}),
-    },
-    orderBy,
-  })
+  const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+
+  const baseWhere = {
+    status: 'approved',
+    ...(competition ? { competition } : {}),
+    ...(q ? {
+      OR: [
+        { designerName: { contains: q } },
+        { entryId: { contains: q.toUpperCase() } },
+        { setName: { contains: q } },
+      ]
+    } : {}),
+  }
+
+  const [entries, brandRows] = await Promise.all([
+    prisma.entry.findMany({
+      where: sort === 'hot'
+        ? { ...baseWhere, createdAt: { gte: sevenDaysAgo } }
+        : baseWhere,
+      orderBy,
+    }),
+    prisma.entry.findMany({
+      where: { status: 'approved' },
+      distinct: ['competition'],
+      select: { competition: true },
+      orderBy: { competition: 'asc' },
+    }),
+  ])
+
+  const brands = brandRows.map(r => r.competition)
 
   return (
     <main className="page">
@@ -45,28 +59,34 @@ export default async function DesignsPage({
             defaultValue={q}
             placeholder="Search Designer Name or Entry ID"
           />
+          {competition && <input type="hidden" name="competition" value={competition} />}
           <div className="sort-row">
-            <button
-              className={`sort-button${sort === 'hot' ? ' active' : ''}`}
-              type="submit"
-              name="sort"
-              value="hot"
-            >Hot</button>
-            <button
-              className={`sort-button${sort === 'top' ? ' active' : ''}`}
-              type="submit"
-              name="sort"
-              value="top"
-            >Top</button>
-            <button
-              className={`sort-button${sort === 'new' ? ' active' : ''}`}
-              type="submit"
-              name="sort"
-              value="new"
-            >New</button>
+            <button className={`sort-button${sort === 'top' ? ' active' : ''}`} type="submit" name="sort" value="top">Top</button>
+            <button className={`sort-button${sort === 'hot' ? ' active' : ''}`} type="submit" name="sort" value="hot">Hot (7d)</button>
+            <button className={`sort-button${sort === 'new' ? ' active' : ''}`} type="submit" name="sort" value="new">New</button>
           </div>
         </form>
       </header>
+
+      {brands.length > 0 && (
+        <div className="intel-tabs" style={{ margin: '0 0 4px', padding: '0 0 2px' }}>
+          <Link
+            href={`/designs${sort !== 'hot' ? `?sort=${sort}` : ''}${q ? `${sort !== 'hot' ? '&' : '?'}q=${encodeURIComponent(q)}` : ''}`}
+            className={`intel-tab${!competition ? ' active' : ''}`}
+          >
+            All
+          </Link>
+          {brands.map(b => (
+            <Link
+              key={b}
+              href={`/designs?competition=${encodeURIComponent(b)}${sort !== 'hot' ? `&sort=${sort}` : ''}${q ? `&q=${encodeURIComponent(q)}` : ''}`}
+              className={`intel-tab${competition === b ? ' active' : ''}`}
+            >
+              {b}
+            </Link>
+          ))}
+        </div>
+      )}
 
       <section className="feed-title">
         <h1>Vote for the next drop.</h1>

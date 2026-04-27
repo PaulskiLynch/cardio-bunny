@@ -11,11 +11,12 @@ interface Props {
   imageUrl: string | null
   initialVotes: number
   competition: string
+  questions?: Question[]
 }
 
 type Phase = 'idle' | 'feedback' | 'done'
 
-export default function VoteCard({ entryId, setName, designerName, imageUrl, initialVotes, competition }: Props) {
+export default function VoteCard({ entryId, setName, designerName, imageUrl, initialVotes, competition, questions: questionsProp }: Props) {
   const [votes, setVotes]       = useState(initialVotes)
   const [voted, setVoted]       = useState(false)
   const [loading, setLoading]   = useState(false)
@@ -27,7 +28,7 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
 
   const storageKey    = `voted_${entryId}`
   const feedbackKey   = `feedback_${entryId}`
-  const questions     = getQuestions(competition)
+  const questions     = questionsProp ?? getQuestions(competition)
 
   useEffect(() => {
     if (localStorage.getItem(storageKey)) setVoted(true)

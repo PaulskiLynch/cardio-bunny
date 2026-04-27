@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false)
@@ -26,6 +27,7 @@ export default function ContactPage() {
 
   return (
     <main className="page">
+      <Link className="top-link" href="/">← Back</Link>
       <div className="portal" style={{ maxWidth: 560, margin: '0 auto' }}>
         <header className="portal-header">
           <div className="brand">CrowdLoops</div>

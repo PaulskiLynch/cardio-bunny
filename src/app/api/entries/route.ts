@@ -32,8 +32,11 @@ export async function POST(req: NextRequest) {
       if (++attempt > 10) throw new Error('Could not generate unique entry ID')
     }
 
+    const loop = await prisma.loop.findUnique({ where: { slug: competition } }).catch(() => null)
+    const status = loop?.autoApprove ? 'approved' : 'pending'
+
     const entry = await prisma.entry.create({
-      data: { entryId, designerName, contact, setName, hook, imageUrl, competition },
+      data: { entryId, designerName, contact, setName, hook, imageUrl, competition, status },
     })
 
     return Response.json({ entryId: entry.entryId }, { status: 201 })

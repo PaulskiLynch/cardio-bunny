@@ -10,6 +10,7 @@ interface Entry {
   setName: string
   hook: string
   imageUrl: string
+  competition: string
   createdAt: string
 }
 
@@ -34,7 +35,12 @@ export function AdminCard({ entry, onDone }: { entry: Entry; onDone: () => void 
           : <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#777', fontWeight: 900 }}>No Image</div>}
       </div>
       <div className="admin-body">
-        <div className="admin-meta">Entry ID: {entry.entryId}</div>
+        <div className="admin-meta" style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+          <span style={{ fontWeight: 900, background: '#111', color: '#fff', fontSize: 10, padding: '2px 7px', borderRadius: 20, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+            {entry.competition}
+          </span>
+          <span>{entry.entryId}</span>
+        </div>
         <div className="admin-name">{entry.designerName} — {entry.setName}</div>
         <div className="admin-meta">{entry.contact}</div>
         <div className="admin-hook">{entry.hook}</div>

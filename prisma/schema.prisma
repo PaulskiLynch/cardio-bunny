@@ -22,13 +22,60 @@ model DemoRequest {
   createdAt DateTime @default(now())
 }
 
+model Loop {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  status        String   @default("demo")
+  brandName     String   @map("brand_name")
+  retailPartner String   @default("") @map("retail_partner")
+  market        String   @default("en")
+  heroTitle     String   @map("hero_title")
+  heroSubhead   String   @map("hero_subhead")
+  ctaText       String   @default("Submit Your Design") @map("cta_text")
+  deadline      String   @default("")
+  accentColor   String   @default("#e8325a") @map("accent_color")
+  logoUrl       String   @default("") @map("logo_url")
+  heroImageUrl  String   @default("") @map("hero_image_url")
+  brief         String   @default("")
+  guidelines    String   @default("[]")
+  prizes        String   @default("[]")
+  questions     String   @default("[]")
+  autoApprove   Boolean  @default(false) @map("auto_approve")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@map("loops")
+}
+
 model FeedbackResponse {
   id          String   @id @default(cuid())
-  entryId     String
+  entryId     String   @map("entry_id")
   competition String
-  questionId  String
+  questionId  String   @map("question_id")
   answer      String
-  createdAt   DateTime @default(now())
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("feedback_responses")
+}
+
+model LoopInquiry {
+  id              String   @id @default(cuid())
+  brandName       String   @map("brand_name")
+  retailPartner   String   @default("") @map("retail_partner")
+  productCategory String   @default("") @map("product_category")
+  market          String   @default("")
+  language        String   @default("")
+  brief           String   @default("")
+  prize           String   @default("")
+  campaignType    String   @default("demo") @map("campaign_type")
+  contactName     String   @map("contact_name")
+  email           String
+  phone           String   @default("")
+  status          String   @default("new")
+  notes           String   @default("")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@map("loopinquiry")
 }
 
 model Entry {

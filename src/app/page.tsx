@@ -4,6 +4,18 @@ export default function CrowdLoopsHome() {
   return (
     <main className="page">
 
+      {/* ── Nav ──────────────────────────────────────────── */}
+      <nav className="site-nav">
+        <Link href="/" className="site-nav-brand">CrowdLoops</Link>
+        <div className="site-nav-links">
+          <Link href="#case-studies" className="site-nav-link">Live Loops</Link>
+          <Link href="#how-it-works" className="site-nav-link">How It Works</Link>
+          <Link href="#retailers" className="site-nav-link">For Retailers</Link>
+          <Link href="/start" className="site-nav-link site-nav-cta">Start a Competition</Link>
+          <Link href="/admin" className="site-nav-link" style={{ color: '#aaa', fontSize: 11 }}>Partner Sign In</Link>
+        </div>
+      </nav>
+
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="hero b2b-hero">
         <div style={{ width: '100%' }}>
@@ -11,8 +23,8 @@ export default function CrowdLoopsHome() {
           <h1 className="b2b-headline">The retail intelligence engine that turns community creativity into demand-tested products.</h1>
           <div className="b2b-sub">CrowdLoops is a white-label community design challenge that helps retailers engage customers, discover new talent, and validate demand before production.</div>
           <div className="b2b-ctas">
-            <Link className="cta" href="/contact">Book a Demo</Link>
-            <Link className="cta cta-ghost" href="#case-studies">View Live Events</Link>
+            <Link className="cta" href="/start">Start a Competition</Link>
+            <Link className="cta cta-ghost" href="/contact">Book a Demo</Link>
           </div>
         </div>
       </section>
@@ -45,7 +57,7 @@ export default function CrowdLoopsHome() {
       </section>
 
       {/* ── 3-Step Integration ───────────────────────────── */}
-      <section className="section">
+      <section className="section" id="how-it-works">
         <div className="b2b-label">The 3-Step Integration</div>
         <h2>From Brief to Best-Seller in 3 Steps.</h2>
         <div className="integration-table">
@@ -203,7 +215,7 @@ export default function CrowdLoopsHome() {
       </section>
 
       {/* ── Retailer FAQ ─────────────────────────────────── */}
-      <section className="section">
+      <section className="section" id="retailers">
         <div className="b2b-label">Retailer FAQ</div>
         <h2>Questions Buying, Legal, and Marketing Teams Always Ask.</h2>
         <div className="faq-list">
@@ -233,8 +245,11 @@ export default function CrowdLoopsHome() {
       {/* ── Bottom CTA ───────────────────────────────────── */}
       <section className="section" style={{ textAlign: 'center', padding: '40px 24px' }}>
         <h2>Ready to Reach a New Audience?</h2>
-        <div className="b2b-sub" style={{ marginBottom: 24 }}>Book a 20-minute demo. We'll show you a live Loop in your category.</div>
-        <Link className="cta cta-dark" href="/contact">Book a Demo</Link>
+        <div className="b2b-sub" style={{ marginBottom: 28 }}>Tell us about your brand and we&apos;ll turn it into a Loop — usually within 48 hours.</div>
+        <Link className="cta" href="/start" style={{ marginBottom: 14, display: 'inline-block' }}>Start a Competition</Link>
+        <div style={{ marginTop: 12 }}>
+          <Link href="/contact" style={{ fontSize: 14, fontWeight: 700, textDecoration: 'underline', color: '#555' }}>or book a 20-minute demo first →</Link>
+        </div>
       </section>
 
     </main>
