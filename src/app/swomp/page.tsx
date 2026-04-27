@@ -114,7 +114,7 @@ export default async function SwompPage() {
         <Link className="cta swomp-cta" href="/swomp/submit">SUBMIT YOUR DESIGN</Link>
         <div className="footer-links">
           <Link href="/designs?competition=swomp" style={{ color: '#a0b89a' }}>All Designs</Link>
-          <Link href="/help" style={{ color: '#a0b89a' }}>FAQs & Rules</Link>
+          <Link href="/legal" style={{ color: '#a0b89a' }}>Terms &amp; Privacy</Link>
         </div>
       </section>
     </main>

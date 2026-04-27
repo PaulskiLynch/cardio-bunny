@@ -103,7 +103,7 @@ export default function SwompSubmitPage() {
                     </>}
                 <input ref={fileRef} name="image" type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFile} />
               </div>
-              <div className="upload-rule">All entries are reviewed by moderators before going live.</div>
+              <div className="upload-rule">All entries are reviewed by moderators before going live. AI-generated work is welcome. You must hold all rights to what you submit — do not include third-party characters, celebrities, or trademarked imagery.</div>
             </div>
             <div className="form-section">
               <label className="form-label" htmlFor="hook">5. Tell us about your design</label>
@@ -114,7 +114,7 @@ export default function SwompSubmitPage() {
               <button className="submit-button" type="submit" disabled={submitting} style={{ background: '#2d5a30' }}>
                 {submitting ? 'SUBMITTING...' : '🌿 SUBMIT YOUR DESIGN'}
               </button>
-              <div className="button-note">By submitting you confirm this is your original work and agree to the competition terms.</div>
+              <div className="button-note">By submitting, you confirm this is your own work and that you hold all necessary rights to it (including any AI-generated content). You grant a licence to display, promote, and — for the winning entry — develop the design for production, subject to the official rules and technical, legal, and commercial review. You agree to the <a href="/legal" style={{ color: 'inherit' }}>competition terms and privacy policy</a>.</div>
             </div>
           </form>
         ) : (

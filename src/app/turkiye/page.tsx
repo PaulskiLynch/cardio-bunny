@@ -63,6 +63,9 @@ export default async function TurkiyePage() {
             <div className="prize-tba-label">Perakende Ortağı: Örnek — kazanan tasarım ulusal bir perakende ortağı aracılığıyla satılabilir. Ortak duyurusu yakında.</div>
           </div>
         </div>
+        <div style={{ marginTop: 16, padding: '12px 16px', background: '#f5f5f5', borderRadius: 8, fontSize: 12, color: '#555', lineHeight: 1.6 }}>
+          Kazanan; halk oyları, uygunluk kontrolleri, marka değerlendirmesi ve resmi kurallara uygunluk temelinde belirlenir. Kazanan tasarım, teknik, yasal, güvenlik ve ticari incelemeye tabi olarak üretime geliştirilebilir.
+        </div>
       </section>
 
       <section className="section">
@@ -118,7 +121,7 @@ export default async function TurkiyePage() {
         <Link className="cta cta-dark" href="/turkiye/submit">DEMO TASARIM GÖNDER</Link>
         <div className="footer-links">
           <Link href="/designs?competition=turkiye">Tüm Tasarımlar</Link>
-          <Link href="/help">SSS ve Kurallar</Link>
+          <Link href="/legal">Şartlar ve Gizlilik</Link>
         </div>
       </section>
     </main>

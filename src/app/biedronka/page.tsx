@@ -17,10 +17,7 @@ export default async function BiedronkaPage() {
       <div className="demo-notice">⚠️ DEMO — To nie jest aktywny konkurs. Ta strona pokazuje przykładowy format wydarzenia CrowdLoops. Zgłoszenia, głosy, nagrody i produkcja są pokazane wyłącznie demonstracyjnie.</div>
 
       <section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
-          <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
-          <img src="/biedronka.png" alt="Biedronka" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
-        </div>
+        <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '60%', objectFit: 'contain' }} />
         <div style={{ fontWeight: 900, fontSize: 13, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#555' }}>Polska</div>
       </section>
 
@@ -65,6 +62,9 @@ export default async function BiedronkaPage() {
               </div>
             </div>
           </div>
+        </div>
+        <div style={{ marginTop: 16, padding: '12px 16px', background: '#f5f5f5', borderRadius: 8, fontSize: 12, color: '#555', lineHeight: 1.6 }}>
+          Zwycięzca jest wyłaniany na podstawie głosów publiczności, weryfikacji kwalifikowalności, oceny marki i zgodności z regulaminem. Zwycięski projekt może zostać rozwinięty pod kątem produkcji po przeglądzie technicznym, prawnym, bezpieczeństwa i handlowym.
         </div>
       </section>
 
@@ -121,7 +121,7 @@ export default async function BiedronkaPage() {
         <Link className="cta cta-dark" href="/biedronka/submit">PRZEŚLIJ PRZYKŁADOWY PROJEKT</Link>
         <div className="footer-links">
           <Link href="/designs?competition=biedronka">Wszystkie Projekty</Link>
-          <Link href="/help">FAQ i Zasady</Link>
+          <Link href="/legal">Regulamin i Prywatność</Link>
         </div>
       </section>
     </main>

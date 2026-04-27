@@ -63,6 +63,9 @@ export default async function CardioUKPage() {
             <div className="prize-tba-label">Retail Partner: Example — the winning design may be sold through a national retail partner. Partner TBA.</div>
           </div>
         </div>
+        <div style={{ marginTop: 16, padding: '12px 16px', background: '#f5f5f5', borderRadius: 8, fontSize: 12, color: '#555', lineHeight: 1.6 }}>
+          Winner selected based on public votes, eligibility checks, brand review, and compliance with official rules. The winning design may be developed for production subject to technical, legal, safety, and commercial review.
+        </div>
       </section>
 
       <section className="section">
@@ -118,7 +121,7 @@ export default async function CardioUKPage() {
         <Link className="cta cta-dark" href="/uk/submit">SUBMIT A DEMO DESIGN</Link>
         <div className="footer-links">
           <Link href="/designs?competition=uk">All Designs</Link>
-          <Link href="/help">FAQs & Rules</Link>
+          <Link href="/legal">Terms &amp; Privacy</Link>
         </div>
       </section>
     </main>

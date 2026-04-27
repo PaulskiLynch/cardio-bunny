@@ -119,6 +119,7 @@ export default async function KonkerzPage() {
         <div className="footer-links">
           <Link href="/designs?competition=konkerz" style={{ color: '#c8905a' }}>All Entries</Link>
           <a href="https://konkerz.com" target="_blank" rel="noopener noreferrer" style={{ color: '#c8905a' }}>konkerz.com</a>
+          <Link href="/legal" style={{ color: '#c8905a' }}>Terms &amp; Privacy</Link>
         </div>
       </section>
     </main>

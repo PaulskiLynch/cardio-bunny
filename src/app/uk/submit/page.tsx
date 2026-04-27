@@ -118,7 +118,7 @@ export default function UKSubmitPage() {
                   onChange={handleFile}
                 />
               </div>
-              <div className="upload-rule">AI images, sketches, or mirror selfies are all okay.</div>
+              <div className="upload-rule">AI images, sketches, or mirror selfies are all okay. You must hold all rights to any content you submit — do not include third-party characters, celebrities, or trademarked imagery.</div>
               <div className="upload-rule"><strong>Note:</strong> All uploaded images are checked by moderators before going live.</div>
             </div>
 
@@ -132,9 +132,9 @@ export default function UKSubmitPage() {
             <div className="form-section">
               {error && <div style={{ color: '#c00', marginBottom: 12, fontWeight: 700 }}>{error}</div>}
               <button className="submit-button" type="submit" disabled={submitting}>
-                {submitting ? 'SUBMITTING...' : '🚀 JOIN THE ACADEMY'}
+                {submitting ? 'SUBMITTING...' : '🚀 SUBMIT YOUR DESIGN'}
               </button>
-              <div className="button-note">By clicking, you're in the running for global showrooms and 20% profits.</div>
+              <div className="button-note">By submitting, you confirm this is your own work and that you hold all necessary rights to it (including any AI-generated content). You grant a licence to display, promote, and — for selected entries — develop your design for production, subject to the official rules and technical, legal, and commercial review. You agree to the <a href="/legal" style={{ color: 'inherit' }}>competition terms and privacy policy</a>.</div>
             </div>
           </form>
         ) : (

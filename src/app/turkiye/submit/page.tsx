@@ -118,7 +118,7 @@ export default function TurkiyeSubmitPage() {
                   onChange={handleFile}
                 />
               </div>
-              <div className="upload-rule">Yapay zeka görselleri, çizimler veya ayna selfileri kabul edilmektedir.</div>
+              <div className="upload-rule">Yapay zeka görselleri, çizimler veya ayna selfileri kabul edilmektedir. Gönderdiğiniz tüm içeriklerin haklarına sahip olmalısınız — üçüncü taraf karakterler, ünlüler veya tescilli imgeler içermeyin.</div>
               <div className="upload-rule"><strong>Not:</strong> Yüklenen tüm görseller yayına girmeden önce moderatörler tarafından incelenir.</div>
             </div>
 
@@ -132,9 +132,9 @@ export default function TurkiyeSubmitPage() {
             <div className="form-section">
               {error && <div style={{ color: '#c00', marginBottom: 12, fontWeight: 700 }}>{error}</div>}
               <button className="submit-button" type="submit" disabled={submitting}>
-                {submitting ? 'GÖNDERİLİYOR...' : '🚀 AKADEMİYE KATIL'}
+                {submitting ? 'GÖNDERİLİYOR...' : '🚀 TASARIMINI GÖNDER'}
               </button>
-              <div className="button-note">Tıklayarak küresel mağazalar ve %20 kâr payı için yarışa giriyorsunuz.</div>
+              <div className="button-note">Göndererek, bunun kendi çalışmanız olduğunu ve gerekli tüm haklara sahip olduğunuzu (yapay zeka içerikleri dahil) onaylıyorsunuz. Seçilen girdiler için tasarımınızı görüntüleme, tanıtma ve teknik, yasal ve ticari incelemeye tabi olarak üretime geliştirme amacıyla lisans veriyorsunuz. <a href="/legal" style={{ color: 'inherit' }}>Yarışma şartlarını ve gizlilik politikasını</a> kabul ediyorsunuz.</div>
             </div>
           </form>
         ) : (

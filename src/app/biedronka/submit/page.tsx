@@ -48,7 +48,7 @@ export default function BiedronkaSubmitPage() {
 
       <div className="portal">
         <header className="portal-header">
-          <div className="brand">Cardio Bunny & Biedronka</div>
+          <div className="brand">Cardio Bunny Poland</div>
           <div className="phase">Faza 1: Otwarty Nabór Projektów</div>
         </header>
 
@@ -118,7 +118,7 @@ export default function BiedronkaSubmitPage() {
                   onChange={handleFile}
                 />
               </div>
-              <div className="upload-rule">Obrazy AI, szkice lub selfie w lustrze są akceptowane.</div>
+              <div className="upload-rule">Obrazy AI, szkice lub selfie w lustrze są akceptowane. Musisz posiadać wszystkie prawa do przesyłanych treści. Nie przesyłaj materiałów zawierających cudze znaki towarowe, postacie ani wizerunki.</div>
               <div className="upload-rule"><strong>Uwaga:</strong> Wszystkie przesłane zdjęcia są sprawdzane przez moderatorów przed publikacją.</div>
             </div>
 
@@ -132,9 +132,9 @@ export default function BiedronkaSubmitPage() {
             <div className="form-section">
               {error && <div style={{ color: '#c00', marginBottom: 12, fontWeight: 700 }}>{error}</div>}
               <button className="submit-button" type="submit" disabled={submitting}>
-                {submitting ? 'WYSYŁANIE...' : '🚀 DOŁĄCZ DO AKADEMII'}
+                {submitting ? 'WYSYŁANIE...' : '🚀 PRZEŚLIJ SWÓJ PROJEKT'}
               </button>
-              <div className="button-note">Klikając, masz szansę na globalne salony i 20% zysków ze sprzedaży.</div>
+              <div className="button-note">Przesyłając projekt, potwierdzasz, że jest to Twoja własna praca i posiadasz do niej wszystkie niezbędne prawa (w tym do treści AI). Udzielasz licencji na wyświetlanie, promocję i — dla wybranych zgłoszeń — rozwinięcie projektu pod kątem produkcji, zgodnie z regulaminem i po przeglądzie technicznym, prawnym i handlowym. Wyrażasz zgodę na <a href="/legal" style={{ color: 'inherit' }}>regulamin i politykę prywatności</a>.</div>
             </div>
           </form>
         ) : (

@@ -113,8 +113,8 @@ export default function CrowdLoopsHome() {
                 <span className="insight-val">3,841</span>
               </div>
               <div className="dashboard-insight-row">
-                <span className="insight-label">Vote Integrity</span>
-                <span className="insight-val trust">98.2% Human ✓</span>
+                <span className="insight-label">Vote Quality</span>
+                <span className="insight-val trust">98.2% Verified ✓</span>
               </div>
             </div>
             <div className="dashboard-actions">
@@ -146,18 +146,17 @@ export default function CrowdLoopsHome() {
       {/* ── Active Events ────────────────────────────────── */}
       <section className="section" id="case-studies">
         <div className="b2b-label">Featured Loop Formats</div>
-        <h2>Active Loops Running Now.</h2>
-        <div className="b2b-sub" style={{ marginBottom: 24 }}>CrowdLoops works across fashion, beverages, toys, lifestyle — any product category where community taste matters.</div>
+        <h2>Demo Loops Running Now.</h2>
+        <div className="b2b-sub" style={{ marginBottom: 24 }}>CrowdLoops works across fashion, beverages, toys, lifestyle — any product category where community taste matters. These are demo events showing the platform format.</div>
         <div className="event-card-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
           <Link href="/biedronka" style={{ textDecoration: 'none' }}>
             <div className="event-card">
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>
                 <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ height: 32, objectFit: 'contain' }} />
-                <img src="/biedronka.png" alt="Biedronka" style={{ height: 32, objectFit: 'contain' }} />
               </div>
-              <div className="event-card-title">Cardio Bunny x Biedronka 🇵🇱</div>
-              <div className="event-card-text">Fashion — Design a matching activewear set. Top vote gets produced and sold in Biedronka stores across Poland.</div>
-              <div className="event-card-status open">🟢 Entry Open</div>
+              <div className="event-card-title">Cardio Bunny Poland 🇵🇱</div>
+              <div className="event-card-text">Fashion — Design a matching activewear set. Winning design may be developed for production with an example retail partner in Poland.</div>
+              <div className="event-card-status open">🟢 Demo Open</div>
             </div>
           </Link>
           <Link href="/uk" style={{ textDecoration: 'none' }}>
@@ -167,7 +166,7 @@ export default function CrowdLoopsHome() {
               </div>
               <div className="event-card-title">Cardio Bunny UK 🇬🇧</div>
               <div className="event-card-text">Fashion — Design a matching activewear set for the UK market. Retail partner announcement coming soon.</div>
-              <div className="event-card-status open">🟢 Entry Open</div>
+              <div className="event-card-status open">🟢 Demo Open</div>
             </div>
           </Link>
           <Link href="/turkiye" style={{ textDecoration: 'none' }}>
@@ -177,7 +176,7 @@ export default function CrowdLoopsHome() {
               </div>
               <div className="event-card-title">Cardio Bunny Türkiye 🇹🇷</div>
               <div className="event-card-text">Fashion — Design a matching activewear set for the Türkiye market. Retail partner announcement coming soon.</div>
-              <div className="event-card-status open">🟢 Entry Open</div>
+              <div className="event-card-status open">🟢 Demo Open</div>
             </div>
           </Link>
           <Link href="/konkerz" style={{ textDecoration: 'none' }}>
@@ -187,7 +186,7 @@ export default function CrowdLoopsHome() {
               </div>
               <div className="event-card-title" style={{ color: '#ff6b00' }}>Konkerz — Grumpy Grandpa</div>
               <div className="event-card-text" style={{ color: '#c8905a' }}>Toys — Design the hero character for the Grumpy Grandpa Battleball. Winning design wins £1,000 and goes into production.</div>
-              <div className="event-card-status open">🟢 Entry Open</div>
+              <div className="event-card-status open">🟢 Demo Open</div>
             </div>
           </Link>
           <Link href="/swomp" style={{ textDecoration: 'none' }}>
@@ -197,7 +196,7 @@ export default function CrowdLoopsHome() {
               </div>
               <div className="event-card-title" style={{ color: '#d4c5a0' }}>SWOMP WATER+</div>
               <div className="event-card-text" style={{ color: '#a0b89a' }}>Beverages — Design the back panel of our new electrolyte water can. Winning entry wins €1,000 and goes into production.</div>
-              <div className="event-card-status open">🟢 Entry Open</div>
+              <div className="event-card-status open">🟢 Demo Open</div>
             </div>
           </Link>
         </div>
