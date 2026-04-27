@@ -181,7 +181,7 @@ export default function CrowdLoopsHome() {
 
       {/* ── Bottom CTA ───────────────────────────────────── */}
       <section className="section" style={{ textAlign: 'center', padding: '40px 24px' }}>
-        <h2>Ready to Kill Dead Stock?</h2>
+        <h2>Ready to Reach a New Audience?</h2>
         <div className="b2b-sub" style={{ marginBottom: 24 }}>Book a 20-minute demo. We'll show you a live Loop in your category.</div>
         <Link className="cta cta-dark" href="/contact">Book a Demo</Link>
       </section>
