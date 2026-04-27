@@ -18,6 +18,10 @@ export default async function CardioUKPage() {
         <Link className="top-link" href="/">← CrowdLoops</Link>
       </div>
 
+      <section className="section" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap', padding: '20px 24px' }}>
+        <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '60%', objectFit: 'contain' }} />
+      </section>
+
       <section className="hero">
         <div>
           <h1>Your Design. Made Real.</h1>
@@ -28,10 +32,6 @@ export default async function CardioUKPage() {
           <img src="/hero-image.png" alt="" style={{ width: '100%', borderRadius: 18, objectFit: 'cover', display: 'block', marginTop: 16 }} />
         </div>
         <CountdownTimer deadline="2026-05-31T23:59:59Z" />
-      </section>
-
-      <section className="section" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap', padding: '20px 24px' }}>
-        <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '60%', objectFit: 'contain' }} />
       </section>
 
       <section className="section">
