@@ -27,7 +27,7 @@ export default async function BiedronkaPage() {
           <h1>Your Design. Made Real.</h1>
           <div className="subhead">No experience needed. Use AI, sketch it, or just snap it. If the community loves it, we make it real.</div>
           <div className="hero-actions">
-            <Link className="cta" href="/submit">🚀 START DESIGNING / ENTER NOW</Link>
+            <Link className="cta" href="/biedronka/submit">🚀 START DESIGNING / ENTER NOW</Link>
           </div>
           <img src="/hero-image.png" alt="" style={{ width: '100%', borderRadius: 18, objectFit: 'cover', display: 'block', marginTop: 16 }} />
         </div>
@@ -110,7 +110,7 @@ export default async function BiedronkaPage() {
 
       <section className="section" style={{ textAlign: 'center', padding: '34px 20px' }}>
         <h2>Ready to change your life?</h2>
-        <Link className="cta cta-dark" href="/submit">ENTER THE ACADEMY</Link>
+        <Link className="cta cta-dark" href="/biedronka/submit">ENTER THE ACADEMY</Link>
         <div className="footer-links">
           <Link href="/designs?competition=biedronka">All Designs</Link>
           <Link href="/help">FAQs & Rules</Link>
