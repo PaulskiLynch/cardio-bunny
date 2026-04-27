@@ -60,20 +60,20 @@ model FeedbackResponse {
 
 model LoopInquiry {
   id              String   @id @default(cuid())
-  brandName       String   @map("brand_name")
-  retailPartner   String   @default("") @map("retail_partner")
-  productCategory String   @default("") @map("product_category")
+  brandName       String
+  retailPartner   String   @default("")
+  productCategory String   @default("")
   market          String   @default("")
   language        String   @default("")
   brief           String   @default("")
   prize           String   @default("")
-  campaignType    String   @default("demo") @map("campaign_type")
-  contactName     String   @map("contact_name")
+  campaignType    String   @default("demo")
+  contactName     String
   email           String
   phone           String   @default("")
   status          String   @default("new")
   notes           String   @default("")
-  createdAt       DateTime @default(now()) @map("created_at")
+  createdAt       DateTime @default(now())
 
   @@map("loopinquiry")
 }
