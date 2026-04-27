@@ -23,15 +23,24 @@ export default function VoteClient({ entryId, designerName, initialVotes }: Prop
   }, [storageKey])
 
   async function handleVote() {
-    if (voted) { setSheet(true); return }
+    if (voted) {
+      const res = await fetch(`/api/vote/${entryId}`, { method: 'DELETE' })
+      if (res.ok) {
+        const json = await res.json()
+        setVotes(json.voteCount)
+        setVoted(false)
+        localStorage.removeItem(storageKey)
+      }
+      return
+    }
     const res = await fetch(`/api/vote/${entryId}`, { method: 'POST' })
     if (res.ok) {
       const json = await res.json()
       setVotes(json.voteCount)
       setVoted(true)
       localStorage.setItem(storageKey, '1')
+      setSheet(true)
     }
-    setSheet(true)
   }
 
   function whatsapp() {
@@ -47,8 +56,8 @@ export default function VoteClient({ entryId, designerName, initialVotes }: Prop
   return (
     <>
       <div className="action-row single">
-        <button className="vote-button" onClick={handleVote}>
-          {voted ? '✓ VOTED' : `VOTE FOR ${designerName.toUpperCase()}`}
+        <button className="vote-button" onClick={handleVote} style={voted ? { background: '#222', color: '#fff' } : {}}>
+          {voted ? '✓ VOTED — tap to remove' : `♥ VOTE FOR ${designerName.toUpperCase()}`}
         </button>
         <button className="share-button" style={{ marginTop: 10 }} onClick={() => setSheet(true)}>
           SHARE THIS ENTRY
