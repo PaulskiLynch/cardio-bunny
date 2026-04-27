@@ -113,29 +113,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section" id="rules">
-        <h2>FAQs & Rules</h2>
-        <div className="faq-list">
-          <details open>
-            <summary>Who can enter?</summary>
-            <p>Anyone can enter. No fashion experience is needed.</p>
-          </details>
-          <details>
-            <summary>What can I submit?</summary>
-            <p>A Top and Legging set idea. AI images, sketches, or photos are all accepted.</p>
-          </details>
-          <details>
-            <summary>Will my image go live straight away?</summary>
-            <p>No. All uploaded images are checked by moderators before they appear publicly.</p>
-          </details>
-          <details>
-            <summary>How does voting work?</summary>
-            <p>Approved entries receive an official link. Share your link and ask the community to vote.</p>
-          </details>
-        </div>
-      </section>
-
-      <section className="section" style={{ textAlign: 'center', padding: '34px 20px' }}>
+<section className="section" style={{ textAlign: 'center', padding: '34px 20px' }}>
         <h2>Ready to change your life?</h2>
         <Link className="cta cta-dark" href="/submit">ENTER THE ACADEMY</Link>
         <div className="footer-links">
