@@ -14,11 +14,7 @@ export default async function BiedronkaPage() {
 
   return (
     <main className="page">
-      <div style={{ padding: '12px 16px 0' }}>
-        <Link className="top-link" href="/">← CrowdLoops</Link>
-      </div>
-
-      <section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
+<section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
           <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
           <img src="/biedronka.png" alt="Biedronka" style={{ maxHeight: 56, maxWidth: '45%', objectFit: 'contain' }} />
