@@ -14,7 +14,7 @@ export default async function CardioUKPage() {
 
   return (
     <main className="page">
-      <div className="demo-notice">⚠️ Demo Only — This is not a live competition.</div>
+      <div className="demo-notice">⚠️ DEMO — This is not a live competition. This page shows an example CrowdLoops event format. Submissions, votes, prizes, and production are shown for demonstration purposes only.</div>
 
       <section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
         <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ maxHeight: 56, maxWidth: '60%', objectFit: 'contain' }} />
@@ -26,7 +26,7 @@ export default async function CardioUKPage() {
           <h1>Your Design. Made Real.</h1>
           <div className="subhead">No experience needed. Use AI, sketch it, or just snap it. If the community loves it, we make it real.</div>
           <div className="hero-actions">
-            <Link className="cta" href="/uk/submit">🚀 START DESIGNING / ENTER NOW</Link>
+            <Link className="cta" href="/uk/submit">🚀 SEE THE DEMO / REGISTER INTEREST</Link>
           </div>
           <img src="/hero-image.png" alt="" style={{ width: '100%', borderRadius: 18, objectFit: 'cover', display: 'block', marginTop: 16 }} />
         </div>
@@ -34,11 +34,11 @@ export default async function CardioUKPage() {
       </section>
 
       <section className="section">
-        <h2>Prizes</h2>
+        <h2>Example Prizes</h2>
         <div className="prize-section">
           <div className="prize-top10">
             <div className="prize-top10-badge">TOP 10</div>
-            <div className="prize-top10-text">1 full day of training with the Cardio Bunny global design team.</div>
+            <div className="prize-top10-text">Example — top 10 designs may be featured by the brand and retail partner.</div>
           </div>
           <div className="prize-grand">
             <div className="prize-grand-header">🏆 Grand Winner</div>
@@ -46,21 +46,21 @@ export default async function CardioUKPage() {
             <div className="prize-items">
               <div className="prize-item">
                 <div className="prize-item-icon">🌍</div>
-                <div className="prize-item-text"><strong>Global Fame:</strong> Your name and design showcased in Cardio Bunny showrooms worldwide. 🇺🇸 🇬🇧 🇦🇪 🇮🇳 🇨🇦</div>
+                <div className="prize-item-text"><strong>Global Exposure:</strong> Example — your name and design may be showcased in brand channels worldwide.</div>
               </div>
               <div className="prize-item">
                 <div className="prize-item-icon">📰</div>
-                <div className="prize-item-text"><strong>Press:</strong> Feature profile article in a leading fashion magazine.</div>
+                <div className="prize-item-text"><strong>Press:</strong> Example — a winner profile may be featured in fashion and lifestyle media.</div>
               </div>
               <div className="prize-item">
                 <div className="prize-item-icon">📸</div>
-                <div className="prize-item-text"><strong>Production:</strong> Professional Miami-based photo shoot of your winning collection.</div>
+                <div className="prize-item-text"><strong>Production:</strong> Example — the winning design may receive a professional photo shoot.</div>
               </div>
             </div>
           </div>
           <div className="prize-tba">
             <div className="prize-item-icon">🛍</div>
-            <div className="prize-tba-label">Retail Partner: TBA — Your design could be sold nationwide. Partner announcement coming soon.</div>
+            <div className="prize-tba-label">Retail Partner: Example — the winning design may be sold through a national retail partner. Partner TBA.</div>
           </div>
         </div>
       </section>
@@ -108,14 +108,14 @@ export default async function CardioUKPage() {
           <div className="step-card">
             <div className="step-number">3</div>
             <div className="card-title">GO GLOBAL</div>
-            <div className="card-text">Top designs get produced and sold by Cardio Bunny.</div>
+            <div className="card-text">In a live event — top designs may be produced and sold by Cardio Bunny and their retail partner.</div>
           </div>
         </div>
       </section>
 
       <section className="section" style={{ textAlign: 'center', padding: '34px 20px' }}>
-        <h2>Ready to change your life?</h2>
-        <Link className="cta cta-dark" href="/uk/submit">ENTER THE ACADEMY</Link>
+        <h2>Want to see how this kind of competition works?</h2>
+        <Link className="cta cta-dark" href="/uk/submit">SUBMIT A DEMO DESIGN</Link>
         <div className="footer-links">
           <Link href="/designs?competition=uk">All Designs</Link>
           <Link href="/help">FAQs & Rules</Link>

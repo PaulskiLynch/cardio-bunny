@@ -14,7 +14,7 @@ export default async function BiedronkaPage() {
 
   return (
     <main className="page">
-      <div className="demo-notice">⚠️ Tylko Demo — To nie jest aktywny konkurs.</div>
+      <div className="demo-notice">⚠️ DEMO — To nie jest aktywny konkurs. Ta strona pokazuje przykładowy format wydarzenia CrowdLoops. Zgłoszenia, głosy, nagrody i produkcja są pokazane wyłącznie demonstracyjnie.</div>
 
       <section className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '20px 24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
@@ -29,7 +29,7 @@ export default async function BiedronkaPage() {
           <h1>Twój Projekt. Zrealizowany.</h1>
           <div className="subhead">Bez doświadczenia. Użyj AI, narysuj szkic lub zrób zdjęcie. Jeśli społeczność to pokocha — zrobimy to.</div>
           <div className="hero-actions">
-            <Link className="cta" href="/biedronka/submit">🚀 ZACZNIJ PROJEKTOWAĆ / ZAPISZ SIĘ</Link>
+            <Link className="cta" href="/biedronka/submit">🚀 ZOBACZ DEMO / ZAPISZ SIĘ NA POWIADOMIENIA</Link>
           </div>
           <img src="/hero-image.png" alt="" style={{ width: '100%', borderRadius: 18, objectFit: 'cover', display: 'block', marginTop: 16 }} />
         </div>
@@ -37,11 +37,11 @@ export default async function BiedronkaPage() {
       </section>
 
       <section className="section">
-        <h2>Nagrody</h2>
+        <h2>Przykładowe nagrody</h2>
         <div className="prize-section">
           <div className="prize-top10">
             <div className="prize-top10-badge">TOP 10</div>
-            <div className="prize-top10-text">1 pełny dzień intensywnego szkolenia z zespołami Fashion & Design Cardio Bunny i Biedronki.</div>
+            <div className="prize-top10-text">Przykład — top 10 projektów może zostać wyróżnionych przez markę i partnerów detalicznych.</div>
           </div>
           <div className="prize-grand">
             <div className="prize-grand-header">🏆 Zwycięzca Główny</div>
@@ -49,19 +49,19 @@ export default async function BiedronkaPage() {
             <div className="prize-items">
               <div className="prize-item">
                 <div className="prize-item-icon">🛍</div>
-                <div className="prize-item-text"><strong>Sprzedaż Ogólnopolska:</strong> Twój projekt wyprodukowany i sprzedawany w sklepach Biedronka w całej Polsce.</div>
+                <div className="prize-item-text"><strong>Sprzedaż Ogólnopolska:</strong> Przykład — zwycięski projekt może zostać wyprodukowany i sprzedawany w sklepach partnera detalicznego.</div>
               </div>
               <div className="prize-item">
                 <div className="prize-item-icon">🌍</div>
-                <div className="prize-item-text"><strong>Światowa Sława:</strong> Twoje imię i projekt prezentowane w showroomach Cardio Bunny. 🇺🇸 🇦🇪 🇮🇳 🇵🇱 🇬🇧 🇨🇦</div>
+                <div className="prize-item-text"><strong>Światowa Ekspozycja:</strong> Przykład — imię autora i projekt mogą zostać zaprezentowane w kanałach marki.</div>
               </div>
               <div className="prize-item">
                 <div className="prize-item-icon">📰</div>
-                <div className="prize-item-text"><strong>Prasa:</strong> Artykuł profilowy w wiodącym magazynie mody.</div>
+                <div className="prize-item-text"><strong>Prasa:</strong> Przykład — profil zwycięzcy może zostać przedstawiony w mediach branżowych.</div>
               </div>
               <div className="prize-item">
                 <div className="prize-item-icon">📸</div>
-                <div className="prize-item-text"><strong>Produkcja:</strong> Profesjonalna sesja zdjęciowa w Miami Twojej zwycięskiej kolekcji.</div>
+                <div className="prize-item-text"><strong>Produkcja:</strong> Przykład — zwycięski projekt może otrzymać profesjonalną sesję zdjęciową.</div>
               </div>
             </div>
           </div>
@@ -111,14 +111,14 @@ export default async function BiedronkaPage() {
           <div className="step-card">
             <div className="step-number">3</div>
             <div className="card-title">IDŹ GLOBALNIE</div>
-            <div className="card-text">Najlepsze projekty są produkowane i sprzedawane przez Cardio Bunny.</div>
+            <div className="card-text">W prawdziwym konkursie — najlepsze projekty mogą zostać wyprodukowane i sprzedane przez Cardio Bunny.</div>
           </div>
         </div>
       </section>
 
       <section className="section" style={{ textAlign: 'center', padding: '34px 20px' }}>
-        <h2>Gotowy zmienić swoje życie?</h2>
-        <Link className="cta cta-dark" href="/biedronka/submit">WEJDŹ DO AKADEMII</Link>
+        <h2>Chcesz zobaczyć, jak działa taki konkurs?</h2>
+        <Link className="cta cta-dark" href="/biedronka/submit">PRZEŚLIJ PRZYKŁADOWY PROJEKT</Link>
         <div className="footer-links">
           <Link href="/designs?competition=biedronka">Wszystkie Projekty</Link>
           <Link href="/help">FAQ i Zasady</Link>
