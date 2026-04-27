@@ -801,7 +801,7 @@ details p, details ul {
 .dash-btn-dark { background: #111; color: #fff; }
 
 /* ── Logistics grid ──────────────────────────────────── */
-.logistics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+.logistics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 20px; }
 .logistics-card { background: #fff; border: 2px solid #e8e8e8; border-radius: 16px; padding: 20px 16px; }
 .logistics-icon { font-size: 28px; margin-bottom: 10px; }
 .logistics-title { font-size: 14px; font-weight: 950; margin-bottom: 8px; }
