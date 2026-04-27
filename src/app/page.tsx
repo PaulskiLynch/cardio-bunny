@@ -11,7 +11,7 @@ export default function CrowdLoopsHome() {
           <h1 className="b2b-headline">Turn Customer Data Into Your Next Best-Seller.</h1>
           <div className="b2b-sub">The white-label engine that crowdsources, validates, and pre-sells your collections before you commit to manufacturing.</div>
           <div className="b2b-ctas">
-            <a className="cta" href="mailto:hello@crowdloops.com?subject=Demo Request">Book a Demo</a>
+            <Link className="cta" href="/contact">Book a Demo</Link>
             <Link className="cta cta-ghost" href="#case-studies">View Live Events</Link>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function CrowdLoopsHome() {
       <section className="section" style={{ textAlign: 'center', padding: '40px 24px' }}>
         <h2>Ready to Kill Dead Stock?</h2>
         <div className="b2b-sub" style={{ marginBottom: 24 }}>Book a 20-minute demo. We'll show you a live Loop in your category.</div>
-        <a className="cta cta-dark" href="mailto:hello@crowdloops.com?subject=Demo Request">Book a Demo</a>
+        <Link className="cta cta-dark" href="/contact">Book a Demo</Link>
       </section>
 
     </main>

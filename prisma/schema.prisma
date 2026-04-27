@@ -12,6 +12,16 @@ datasource db {
   provider = "sqlite"
 }
 
+model DemoRequest {
+  id        String   @id @default(cuid())
+  name      String
+  company   String
+  email     String
+  phone     String?
+  message   String
+  createdAt DateTime @default(now())
+}
+
 model Entry {
   id           String   @id @default(cuid())
   entryId      String   @unique
