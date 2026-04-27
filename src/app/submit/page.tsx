@@ -58,17 +58,17 @@ export default function SubmitPage() {
         </div>
 
         <div className="prompt-box">
-          <div className="prompt-title">Image Prompt for Competition Entries</div>
+          <div className="prompt-title">Image Guidelines</div>
           <p>Create a fashion design concept image for a matching women's athletic Top and Legging set for Cardio Bunny.</p>
           <div className="prompt-section-title">The image must clearly show:</div>
           <ol className="prompt-list">
-            <li><strong>Full outfit</strong> — A sports top / crop top / bra top with matching full-length leggings.</li>
-            <li><strong>Clear front view</strong> — Show the outfit from the front on a standing model or mannequin, head-to-toe.</li>
-            <li><strong>Fashion design focus</strong> — Clean, simple background: white, light grey, studio, or minimal runway.</li>
-            <li><strong>Realistic activewear style</strong> — Sleek, fitted, sporty. Suitable for gym, yoga, running, or lifestyle wear.</li>
-            <li><strong>Strong visual concept</strong> — Unique colours, patterns, prints, panels, mesh, seams, texture, logos, or bold styling.</li>
-            <li><strong>No distractions</strong> — No extra clothing, bags, heavy props, messy backgrounds, text, or watermarks.</li>
-            <li><strong>Production-friendly</strong> — Should look possible to manufacture and sell as a Cardio Bunny collection.</li>
+            <li><strong>Full outfit:</strong> A sports top / crop top / bra top with matching full-length leggings.</li>
+            <li><strong>Clear front view:</strong> Show the outfit from the front on a standing model or mannequin, head-to-toe.</li>
+            <li><strong>Fashion design focus:</strong> Clean, simple background: white, light grey, studio, or minimal runway.</li>
+            <li><strong>Realistic activewear style:</strong> Sleek, fitted, sporty. Suitable for gym, yoga, running, or lifestyle wear.</li>
+            <li><strong>Strong visual concept:</strong> Unique colours, patterns, prints, panels, mesh, seams, texture, logos, or bold styling.</li>
+            <li><strong>No distractions:</strong> No extra clothing, bags, heavy props, messy backgrounds, text, or watermarks.</li>
+            <li><strong>Production-friendly:</strong> Should look possible to manufacture and sell as a Cardio Bunny collection.</li>
           </ol>
         </div>
 
