@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 function pad(n: number) { return String(n).padStart(2, '0') }
 
-export default function CountdownTimer({ deadline = '2026-05-31T23:59:59Z' }: { deadline?: string }) {
+export default function CountdownTimer({ deadline = '2026-05-31T23:59:59Z', label = 'SUBMISSIONS CLOSE IN' }: { deadline?: string; label?: string }) {
   const DEADLINE = new Date(deadline)
   const [parts, setParts] = useState({ d: '00', h: '00', m: '00', s: '00' })
 
@@ -25,7 +25,7 @@ export default function CountdownTimer({ deadline = '2026-05-31T23:59:59Z' }: { 
 
   return (
     <div className="countdown">
-      <div className="countdown-label">SUBMISSIONS CLOSE IN</div>
+      <div className="countdown-label">{label}</div>
       <div className="countdown-time">{parts.d}:{parts.h}:{parts.m}:{parts.s}</div>
       <div className="countdown-small">DAYS : HOURS : MINS : SECS</div>
     </div>

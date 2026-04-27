@@ -21,51 +21,51 @@ export default async function TurkiyePage() {
 
       <section className="hero">
         <div>
-          <h1>Your Design. Made Real.</h1>
-          <div className="subhead">No experience needed. Use AI, sketch it, or just snap it. If the community loves it, we make it real.</div>
+          <h1>Tasarımın. Gerçek Olsun.</h1>
+          <div className="subhead">Deneyim gerekmez. Yapay zeka kullan, çiz veya fotoğrafla. Topluluk beğenirse, gerçeğe dönüştürürüz.</div>
           <div className="hero-actions">
-            <Link className="cta" href="/turkiye/submit">🚀 START DESIGNING / ENTER NOW</Link>
+            <Link className="cta" href="/turkiye/submit">🚀 TASARIMA BAŞLA / ŞİMDİ KATIL</Link>
           </div>
           <img src="/hero-image.png" alt="" style={{ width: '100%', borderRadius: 18, objectFit: 'cover', display: 'block', marginTop: 16 }} />
         </div>
-        <CountdownTimer deadline="2026-05-31T23:59:59Z" />
+        <CountdownTimer deadline="2026-05-31T23:59:59Z" label="BAŞVURULAR KAPANIYOR" />
       </section>
 
       <section className="section">
-        <h2>What You Can Win</h2>
+        <h2>Neler Kazanabilirsin</h2>
         <div className="reward-grid">
           <div className="reward-card">
             <div className="icon">🏆</div>
-            <div className="card-title">WIN</div>
-            <div className="card-text">Your collection can be selected, produced, and sold.</div>
+            <div className="card-title">KAZAN</div>
+            <div className="card-text">Koleksiyonun seçilebilir, üretilebilir ve satılabilir.</div>
           </div>
           <div className="reward-card">
             <div className="icon">💸</div>
-            <div className="card-title">EARN</div>
-            <div className="card-text">You can earn a percentage of profits from pieces sold.</div>
+            <div className="card-title">KAZANÇ</div>
+            <div className="card-text">Satılan her üründen kar payı kazanabilirsin.</div>
           </div>
           <div className="reward-card">
             <div className="icon">🚀</div>
-            <div className="card-title">SCALE</div>
-            <div className="card-text">Cardio Bunny helps take the winning idea from design to retail.</div>
+            <div className="card-title">BÜYÜME</div>
+            <div className="card-text">Cardio Bunny, kazanan fikri tasarımdan raflara taşımana yardımcı olur.</div>
           </div>
           <div className="reward-card">
             <div className="icon">🌟</div>
-            <div className="card-title">RECOGNITION</div>
-            <div className="card-text">Your name and entry can be seen by the community and supporters.</div>
+            <div className="card-title">TANINMA</div>
+            <div className="card-text">Adın ve başvurun topluluk ve destekçiler tarafından görülebilir.</div>
           </div>
         </div>
       </section>
 
       <section className="section">
         <div style={{ marginBottom: 18 }}>
-          <h2 style={{ margin: 0 }}>Community Favorites</h2>
-          <div className="card-text">Vote for the designs you want to see made.</div>
+          <h2 style={{ margin: 0 }}>Topluluk Favorileri</h2>
+          <div className="card-text">Görmek istediğin tasarımlara oy ver.</div>
         </div>
         <div className="design-grid">
           {top4.length === 0 && (
             <div style={{ textAlign: 'center', padding: '40px 0', color: '#777', fontWeight: 700 }}>
-              No approved entries yet. Be the first to submit!
+              Henüz onaylı başvuru yok. İlk sen ol!
             </div>
           )}
           {top4.map(entry => (
@@ -80,37 +80,37 @@ export default async function TurkiyePage() {
           ))}
         </div>
         <div style={{ textAlign: 'center', marginTop: 20 }}>
-          <Link href="/designs?competition=turkiye" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>See all</Link>
+          <Link href="/designs?competition=turkiye" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>Tümünü gör</Link>
         </div>
       </section>
 
       <section className="section">
-        <h2>Create. Share. Win.</h2>
+        <h2>Yarat. Paylaş. Kazan.</h2>
         <div className="steps">
           <div className="step-card">
             <div className="step-number">1</div>
-            <div className="card-title">UPLOAD</div>
-            <div className="card-text">Drop your Top & Legging idea. AI, sketch, or photo all accepted.</div>
+            <div className="card-title">YÜKLE</div>
+            <div className="card-text">Top ve Tayt fikrini paylaş. Yapay zeka, çizim veya fotoğraf kabul edilir.</div>
           </div>
           <div className="step-card">
             <div className="step-number">2</div>
-            <div className="card-title">SHARE</div>
-            <div className="card-text">Get your official ID and share your link for votes.</div>
+            <div className="card-title">PAYLAŞ</div>
+            <div className="card-text">Resmi numaranı al ve oy toplamak için linkini paylaş.</div>
           </div>
           <div className="step-card">
             <div className="step-number">3</div>
-            <div className="card-title">GO GLOBAL</div>
-            <div className="card-text">Top designs get produced and sold by Cardio Bunny.</div>
+            <div className="card-title">GLOBAL OL</div>
+            <div className="card-text">En iyi tasarımlar Cardio Bunny tarafından üretilir ve satılır.</div>
           </div>
         </div>
       </section>
 
       <section className="section" style={{ textAlign: 'center', padding: '34px 20px' }}>
-        <h2>Ready to change your life?</h2>
-        <Link className="cta cta-dark" href="/turkiye/submit">ENTER THE ACADEMY</Link>
+        <h2>Hayatını değiştirmeye hazır mısın?</h2>
+        <Link className="cta cta-dark" href="/turkiye/submit">AKADEMİYE KATIL</Link>
         <div className="footer-links">
-          <Link href="/designs?competition=turkiye">All Designs</Link>
-          <Link href="/help">FAQs & Rules</Link>
+          <Link href="/designs?competition=turkiye">Tüm Tasarımlar</Link>
+          <Link href="/help">SSS ve Kurallar</Link>
         </div>
       </section>
     </main>
