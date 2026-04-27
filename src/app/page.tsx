@@ -153,6 +153,16 @@ export default function CrowdLoopsHome() {
               <div className="event-card-status open">🟢 Entry Open</div>
             </div>
           </Link>
+          <Link href="/konkerz" style={{ textDecoration: 'none' }}>
+            <div className="event-card" style={{ background: '#1a0800', borderColor: '#8b3a00' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>
+                <img src="/konkerz-logo.png" alt="Konkerz" style={{ height: 40, objectFit: 'contain' }} />
+              </div>
+              <div className="event-card-title" style={{ color: '#ff6b00' }}>Konkerz — Grumpy Grandpa</div>
+              <div className="event-card-text" style={{ color: '#c8905a' }}>Toys — Design the hero character for the Grumpy Grandpa Battleball. Winning design wins £1,000 and goes into production.</div>
+              <div className="event-card-status open">🟢 Entry Open</div>
+            </div>
+          </Link>
           <Link href="/swomp" style={{ textDecoration: 'none' }}>
             <div className="event-card" style={{ background: '#0d1a0f', borderColor: '#3a6b3d' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>

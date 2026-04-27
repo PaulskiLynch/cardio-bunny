@@ -812,6 +812,11 @@ details p, details ul {
 }
 .prize-tba-label { font-size: 13px; font-weight: 700; color: #aaa; }
 
+/* ── Konkerz brand ───────────────────────────────────── */
+.konkerz-eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: #ff6b00; margin-bottom: 10px; }
+.konkerz-cta { background: #8b3a00; color: #ff6b00; border-color: #ff6b00; }
+.konkerz-cta:hover { background: #ff6b00; color: #1a0800; }
+
 /* ── SWOMP brand ─────────────────────────────────────── */
 .swomp-logo-section { background: #0d1a0f; display: flex; justify-content: center; padding: 24px; }
 .swomp-hero { background: #0d1a0f; }
