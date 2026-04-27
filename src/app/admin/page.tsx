@@ -40,8 +40,11 @@ export default async function AdminPage() {
         </div>
       </section>
 
-      <div style={{ marginBottom: 14 }}>
-        <Link href="/designs" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline', marginRight: 16 }}>
+      <div style={{ marginBottom: 14, display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+        <Link href="/admin/intelligence" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
+          📊 Loop Intelligence
+        </Link>
+        <Link href="/designs" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
           View public designs
         </Link>
         <Link href="/" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>

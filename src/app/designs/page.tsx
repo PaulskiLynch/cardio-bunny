@@ -87,6 +87,7 @@ export default async function DesignsPage({
             designerName={entry.designerName}
             imageUrl={entry.imageUrl}
             initialVotes={entry.voteCount}
+            competition={entry.competition}
           />
         ))}
       </section>

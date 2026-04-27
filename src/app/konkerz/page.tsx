@@ -84,6 +84,7 @@ export default async function KonkerzPage() {
               designerName={entry.designerName}
               imageUrl={entry.imageUrl}
               initialVotes={entry.voteCount}
+              competition="konkerz"
             />
           ))}
         </div>

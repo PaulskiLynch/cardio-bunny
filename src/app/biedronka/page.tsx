@@ -87,6 +87,7 @@ export default async function BiedronkaPage() {
               designerName={entry.designerName}
               imageUrl={entry.imageUrl}
               initialVotes={entry.voteCount}
+              competition="biedronka"
             />
           ))}
         </div>

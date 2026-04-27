@@ -87,6 +87,7 @@ export default async function TurkiyePage() {
               designerName={entry.designerName}
               imageUrl={entry.imageUrl}
               initialVotes={entry.voteCount}
+              competition="turkiye"
             />
           ))}
         </div>

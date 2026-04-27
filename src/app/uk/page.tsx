@@ -87,6 +87,7 @@ export default async function CardioUKPage() {
               designerName={entry.designerName}
               imageUrl={entry.imageUrl}
               initialVotes={entry.voteCount}
+              competition="uk"
             />
           ))}
         </div>

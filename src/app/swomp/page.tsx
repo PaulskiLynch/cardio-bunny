@@ -80,6 +80,7 @@ export default async function SwompPage() {
               designerName={entry.designerName}
               imageUrl={entry.imageUrl}
               initialVotes={entry.voteCount}
+              competition="swomp"
             />
           ))}
         </div>

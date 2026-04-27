@@ -22,6 +22,15 @@ model DemoRequest {
   createdAt DateTime @default(now())
 }
 
+model FeedbackResponse {
+  id          String   @id @default(cuid())
+  entryId     String
+  competition String
+  questionId  String
+  answer      String
+  createdAt   DateTime @default(now())
+}
+
 model Entry {
   id           String   @id @default(cuid())
   entryId      String   @unique
