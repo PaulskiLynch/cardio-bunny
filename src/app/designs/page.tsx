@@ -47,7 +47,7 @@ export default async function DesignsPage({
   return (
     <main className="page">
       <div style={{ padding: '12px 16px 0' }}>
-        <Link className="top-link" href="/">← Home</Link>
+        <Link className="top-link" href={competition ? `/${competition}` : '/'}>← {competition ? 'Back' : 'Home'}</Link>
       </div>
 
       <header className="search-header">
@@ -68,19 +68,15 @@ export default async function DesignsPage({
         </form>
       </header>
 
-      {brands.length > 0 && (
+      {/* Brand tabs — only on the unfiltered /designs page, not when scoped to a competition */}
+      {!competition && brands.length > 1 && (
         <div className="intel-tabs" style={{ margin: '0 0 4px', padding: '0 0 2px' }}>
-          <Link
-            href={`/designs${sort !== 'hot' ? `?sort=${sort}` : ''}${q ? `${sort !== 'hot' ? '&' : '?'}q=${encodeURIComponent(q)}` : ''}`}
-            className={`intel-tab${!competition ? ' active' : ''}`}
-          >
-            All
-          </Link>
+          <Link href="/designs" className="intel-tab active">All</Link>
           {brands.map(b => (
             <Link
               key={b}
-              href={`/designs?competition=${encodeURIComponent(b)}${sort !== 'hot' ? `&sort=${sort}` : ''}${q ? `&q=${encodeURIComponent(q)}` : ''}`}
-              className={`intel-tab${competition === b ? ' active' : ''}`}
+              href={`/designs?competition=${encodeURIComponent(b)}`}
+              className="intel-tab"
             >
               {b}
             </Link>
