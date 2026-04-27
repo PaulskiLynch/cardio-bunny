@@ -27,14 +27,16 @@ export default function CrowdLoopsHome() {
             </div>
           </Link>
 
-          <div className="event-card event-card-soon">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>
-              <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ height: 36, objectFit: 'contain', opacity: 0.4 }} />
+          <Link href="/uk" style={{ textDecoration: 'none' }}>
+            <div className="event-card">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 10 }}>
+                <img src="/cardio-bunny-logo.png" alt="Cardio Bunny" style={{ height: 36, objectFit: 'contain' }} />
+              </div>
+              <div className="event-card-title">Cardio Bunny UK</div>
+              <div className="event-card-text">Design a matching activewear set for the UK market. Top community vote gets produced and sold.</div>
+              <div className="event-card-status open">🟢 Entry Open</div>
             </div>
-            <div className="event-card-title" style={{ opacity: 0.4 }}>Cardio Bunny UK</div>
-            <div className="event-card-text" style={{ opacity: 0.4 }}>Design a set for the UK market. Coming soon.</div>
-            <div className="event-card-status soon">⏳ Coming Soon</div>
-          </div>
+          </Link>
 
         </div>
       </section>

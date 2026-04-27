@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from 'react'
 
-const DEADLINE = new Date('2026-05-31T23:59:59Z')
-
 function pad(n: number) { return String(n).padStart(2, '0') }
 
-export default function CountdownTimer() {
+export default function CountdownTimer({ deadline = '2026-05-31T23:59:59Z' }: { deadline?: string }) {
+  const DEADLINE = new Date(deadline)
   const [parts, setParts] = useState({ d: '00', h: '00', m: '00', s: '00' })
 
   useEffect(() => {
