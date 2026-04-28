@@ -3,7 +3,7 @@ import { Resend } from 'resend'
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL ?? 'paullynch.ie@gmail.com'
-const FROM = 'CrowdLoops <notifications@crowdloops.com>'
+const FROM = 'CrowdLoops <noreply@crowdloops.com>'
 
 export async function notifyNewEntry({
   entryId,
