@@ -31,8 +31,11 @@ export default function RosterApplyPage() {
   const [role, setRole]           = useState('')
   const [reach, setReach]         = useState('')
   const [platform, setPlatform]   = useState('')
-  const [portfolio, setPortfolio] = useState('')
-  const [avatarUrl, setAvatarUrl] = useState('')
+  const [portfolio, setPortfolio]   = useState('')
+  const [avatarUrl, setAvatarUrl]   = useState('')
+  const [followers, setFollowers]   = useState('')
+  const [engagement, setEngagement] = useState('')
+  const [location, setLocation]     = useState('')
   const [uploading, setUploading] = useState(false)
   const fileRef = useRef<HTMLInputElement>(null)
   const [submitting, setSubmitting] = useState(false)
@@ -66,7 +69,7 @@ export default function RosterApplyPage() {
     const res = await fetch('/api/partner-apply', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ competition: '', handle, name, specialty, role, reach, platform, portfolioUrl: portfolio, avatarUrl }),
+      body: JSON.stringify({ competition: '', handle, name, specialty, role, reach, platform, portfolioUrl: portfolio, avatarUrl, followers, engagement, location }),
     })
     if (res.ok) {
       setDone(true)
@@ -172,6 +175,45 @@ export default function RosterApplyPage() {
                 <option value="">— Select —</option>
                 {PLATFORMS.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
               </select>
+            </div>
+
+            <div className="form-section">
+              <label className="form-label" htmlFor="followers">
+                Followers / reach
+                <span className="hint">e.g. 42k followers, 18 active clients, PR reach: 2.4M</span>
+              </label>
+              <input
+                id="followers"
+                value={followers}
+                onChange={e => setFollowers(e.target.value)}
+                placeholder="e.g. 42k followers"
+              />
+            </div>
+
+            <div className="form-section">
+              <label className="form-label" htmlFor="engagement">
+                Engagement / results
+                <span className="hint">e.g. 4.8% eng., Avg. reach: 1.2M, 12 trade outlets</span>
+              </label>
+              <input
+                id="engagement"
+                value={engagement}
+                onChange={e => setEngagement(e.target.value)}
+                placeholder="e.g. 4.8% engagement"
+              />
+            </div>
+
+            <div className="form-section">
+              <label className="form-label" htmlFor="location">
+                Location
+                <span className="hint">City and country</span>
+              </label>
+              <input
+                id="location"
+                value={location}
+                onChange={e => setLocation(e.target.value)}
+                placeholder="e.g. Dublin, IE"
+              />
             </div>
 
             <div className="form-section">

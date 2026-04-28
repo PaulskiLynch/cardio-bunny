@@ -114,6 +114,9 @@ model PartnerApplication {
   platform     String
   portfolioUrl String   @default("") @map("portfolio_url")
   avatarUrl    String   @default("") @map("avatar_url")
+  followers    String   @default("")
+  engagement   String   @default("")
+  location     String   @default("")
   status       String   @default("new")
   createdAt    DateTime @default(now()) @map("created_at")
 

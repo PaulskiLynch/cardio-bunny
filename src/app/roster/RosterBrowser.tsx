@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 
 const ROLE_LABEL: Record<string, string> = {
@@ -34,44 +34,28 @@ interface Profile {
   platform: string
   portfolioUrl: string
   avatarUrl: string
+  followers: string
+  engagement: string
+  location: string
 }
 
 export default function RosterBrowser({ initial }: { initial: Profile[] }) {
+  const [search, setSearch]           = useState('')
   const [roleFilter, setRole]         = useState('all')
   const [reachFilter, setReach]       = useState('all')
   const [platformFilter, setPlatform] = useState('all')
-  const [index, setIndex]             = useState(0)
-  const touchStartX = useRef<number | null>(null)
+  const [showMore, setShowMore]       = useState(false)
+
+  const q = search.toLowerCase()
 
   const filtered = initial.filter(p => {
+    if (q && !p.handle.toLowerCase().includes(q) && !p.name.toLowerCase().includes(q) &&
+        !p.specialty.toLowerCase().includes(q) && !p.location.toLowerCase().includes(q)) return false
     if (roleFilter     !== 'all' && p.role     !== roleFilter)     return false
     if (reachFilter    !== 'all' && p.reach    !== reachFilter)    return false
     if (platformFilter !== 'all' && p.platform !== platformFilter) return false
     return true
   })
-
-  const total      = filtered.length
-  const safeIndex  = Math.min(index, Math.max(0, total - 1))
-  const current    = filtered[safeIndex]
-
-  function changeFilter(setter: (v: string) => void, val: string) {
-    setter(val)
-    setIndex(0)
-  }
-
-  function prev() { setIndex(i => Math.max(0, i - 1)) }
-  function next() { setIndex(i => Math.min(total - 1, i + 1)) }
-
-  function onTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX
-  }
-  function onTouchEnd(e: React.TouchEvent) {
-    if (touchStartX.current === null) return
-    const dx = e.changedTouches[0].clientX - touchStartX.current
-    if (dx < -50) next()
-    else if (dx > 50) prev()
-    touchStartX.current = null
-  }
 
   if (initial.length === 0) {
     return (
@@ -84,90 +68,114 @@ export default function RosterBrowser({ initial }: { initial: Profile[] }) {
 
   return (
     <div>
-      {/* Filters */}
-      <div className="roster-filters">
-        <div className="roster-filter-group">
-          {['all', 'creator', 'agency', 'pr', 'designer'].map(v => (
-            <button key={v} className={`roster-pill${roleFilter === v ? ' active' : ''}`}
-              style={roleFilter === v ? { background: '#111', color: '#fff', borderColor: '#111' } : {}}
-              onClick={() => changeFilter(setRole, v)}>
-              {v === 'all' ? 'All Roles' : ROLE_LABEL[v]}
-            </button>
-          ))}
-        </div>
-        <div className="roster-filter-group">
-          {['all', 'nano', 'micro', 'mid', 'macro'].map(v => (
-            <button key={v} className={`roster-pill${reachFilter === v ? ' active' : ''}`}
-              style={reachFilter === v ? { background: '#111', color: '#fff', borderColor: '#111' } : {}}
-              onClick={() => changeFilter(setReach, v)}>
-              {v === 'all' ? 'All Reach' : REACH_LABEL[v]}
-            </button>
-          ))}
-        </div>
-        <div className="roster-filter-group">
-          {['all', 'tiktok', 'instagram', 'youtube', 'multi'].map(v => (
-            <button key={v} className={`roster-pill${platformFilter === v ? ' active' : ''}`}
-              style={platformFilter === v ? { background: '#111', color: '#fff', borderColor: '#111' } : {}}
-              onClick={() => changeFilter(setPlatform, v)}>
-              {v === 'all' ? 'All Platforms' : PLATFORM_LABEL[v]}
-            </button>
-          ))}
-        </div>
+      {/* Search */}
+      <input
+        className="roster-search-bar"
+        type="search"
+        placeholder="Search by name, niche, location…"
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+      />
+
+      {/* Primary filter: role */}
+      <div className="roster-filter-bar">
+        {['all', 'creator', 'agency', 'pr', 'designer'].map(v => (
+          <button
+            key={v}
+            className={`roster-pill${roleFilter === v ? ' active' : ''}`}
+            style={roleFilter === v ? { background: '#111', color: '#fff', borderColor: '#111' } : {}}
+            onClick={() => setRole(v)}
+          >
+            {v === 'all' ? 'All types' : ROLE_LABEL[v]}
+          </button>
+        ))}
+        <button
+          className="roster-pill"
+          style={{ marginLeft: 'auto', borderStyle: 'dashed' }}
+          onClick={() => setShowMore(s => !s)}
+        >
+          {showMore ? 'Fewer filters' : 'More filters'}
+        </button>
       </div>
 
-      {total === 0 ? (
+      {/* Expanded filters */}
+      {showMore && (
+        <div style={{ marginBottom: 14 }}>
+          <div className="roster-filter-bar" style={{ marginBottom: 6 }}>
+            {['all', 'nano', 'micro', 'mid', 'macro'].map(v => (
+              <button key={v} className={`roster-pill${reachFilter === v ? ' active' : ''}`}
+                style={reachFilter === v ? { background: '#111', color: '#fff', borderColor: '#111' } : {}}
+                onClick={() => setReach(v)}>
+                {v === 'all' ? 'All reach' : REACH_LABEL[v]}
+              </button>
+            ))}
+          </div>
+          <div className="roster-filter-bar">
+            {['all', 'tiktok', 'instagram', 'youtube', 'multi'].map(v => (
+              <button key={v} className={`roster-pill${platformFilter === v ? ' active' : ''}`}
+                style={platformFilter === v ? { background: '#111', color: '#fff', borderColor: '#111' } : {}}
+                onClick={() => setPlatform(v)}>
+                {v === 'all' ? 'All platforms' : PLATFORM_LABEL[v]}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Result count */}
+      <div style={{ fontSize: 12, color: '#888', marginBottom: 12 }}>
+        {filtered.length} result{filtered.length !== 1 ? 's' : ''}
+        {(search || roleFilter !== 'all' || reachFilter !== 'all' || platformFilter !== 'all') && (
+          <button
+            onClick={() => { setSearch(''); setRole('all'); setReach('all'); setPlatform('all') }}
+            style={{ marginLeft: 10, fontWeight: 700, fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', color: '#888' }}
+          >
+            Clear all
+          </button>
+        )}
+      </div>
+
+      {filtered.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '32px 0', color: '#777', fontWeight: 700 }}>
-          No profiles match this filter.
+          No profiles match.
         </div>
       ) : (
-        <>
-          {/* Nav */}
-          <div className="roster-nav">
-            <button className="roster-nav-btn" onClick={prev} disabled={safeIndex === 0}>←</button>
-            <span className="roster-nav-counter">{safeIndex + 1} / {total}</span>
-            <button className="roster-nav-btn" onClick={next} disabled={safeIndex === total - 1}>→</button>
-          </div>
-
-          {/* Card */}
-          <div
-            className="roster-public-card"
-            onTouchStart={onTouchStart}
-            onTouchEnd={onTouchEnd}
-          >
-            {/* Content sample image */}
-            {current.avatarUrl ? (
-              <div className="roster-public-image">
-                <img src={current.avatarUrl} alt={current.handle} />
+        <div className="roster-list">
+          {filtered.map(p => {
+            const statParts = [p.followers, p.engagement, p.location].filter(Boolean)
+            return (
+              <div key={p.id} className="roster-list-card">
+                <div className="roster-list-img">
+                  {p.avatarUrl
+                    ? <img src={p.avatarUrl} alt={p.handle} />
+                    : <span style={{ fontSize: 28 }}>📷</span>
+                  }
+                </div>
+                <div className="roster-list-body">
+                  <div className="roster-handle" style={{ fontSize: 15, marginBottom: 2 }}>{p.handle}</div>
+                  {p.name && <div className="roster-real-name">{p.name}</div>}
+                  {p.specialty && <div className="roster-specialty" style={{ marginBottom: 6 }}>{p.specialty}</div>}
+                  {statParts.length > 0 && (
+                    <div className="roster-stat-line">{statParts.join(' · ')}</div>
+                  )}
+                  <div className="roster-badges" style={{ marginTop: 8, marginBottom: 10 }}>
+                    <span className="roster-badge">{ROLE_LABEL[p.role] ?? p.role}</span>
+                    <span className="roster-badge">{PLATFORM_LABEL[p.platform] ?? p.platform}</span>
+                    <span className="roster-badge">{REACH_LABEL[p.reach] ?? p.reach}</span>
+                  </div>
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    <Link href="/contact" className="roster-invite-btn">Invite to Loop</Link>
+                    {p.portfolioUrl && (
+                      <a href={p.portfolioUrl} target="_blank" rel="noopener noreferrer" className="roster-view-btn">
+                        View work ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
-            ) : (
-              <div className="roster-public-image roster-public-image-placeholder">
-                <span style={{ fontSize: 40 }}>📷</span>
-              </div>
-            )}
-
-            <div className="roster-public-body">
-              <div className="roster-handle">{current.handle}</div>
-              {current.name && <div className="roster-real-name">{current.name}</div>}
-              {current.specialty && <div className="roster-specialty">{current.specialty}</div>}
-
-              <div className="roster-badges" style={{ marginTop: 12 }}>
-                <span className="roster-badge">{ROLE_LABEL[current.role] ?? current.role}</span>
-                <span className="roster-badge">{REACH_LABEL[current.reach] ?? current.reach}</span>
-                <span className="roster-badge">{PLATFORM_LABEL[current.platform] ?? current.platform}</span>
-              </div>
-
-              {current.portfolioUrl && (
-                <a href={current.portfolioUrl} target="_blank" rel="noopener noreferrer" className="roster-portfolio-link" style={{ marginTop: 16, display: 'inline-block' }}>
-                  View work ↗
-                </a>
-              )}
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: 16, fontSize: 12, color: '#aaa' }}>
-            Swipe or use arrows to browse · {total} profile{total !== 1 ? 's' : ''}
-          </div>
-        </>
+            )
+          })}
+        </div>
       )}
     </div>
   )
