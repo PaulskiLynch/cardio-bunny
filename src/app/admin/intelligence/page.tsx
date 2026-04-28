@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers'
 import Link from 'next/link'
+import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 import { getQuestions } from '@/lib/questions'
 import { LoginForm } from '../AdminClient'
@@ -26,7 +27,7 @@ export default async function IntelligencePage({
 }) {
   const cookieStore = await cookies()
   const auth = cookieStore.get('admin_auth')?.value
-  if (auth !== process.env.ADMIN_PASSWORD) {
+  if (!isAdminCookie(auth)) {
     return <main className="page"><LoginForm /></main>
   }
 
