@@ -39,9 +39,10 @@ export default async function LoopPublicPage({
 
   const accent = loop.accentColor || '#e8325a'
   const isDemo = loop.status === 'demo'
+  const dark = !!loop.pageBg
 
   return (
-    <main className="page">
+    <main className={`page${dark ? ' page-dark' : ''}`} style={dark ? { background: loop.pageBg } : {}}>
       {isDemo && (
         <div className="demo-notice">
           ⚠️ DEMO — This is not an active competition. Submissions, votes, and prizes are shown for demonstration purposes only.

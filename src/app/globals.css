@@ -96,6 +96,24 @@ a { color: inherit; }
   margin-top: 14px;
 }
 
+/* ── Dark page theme (pageBg loops e.g. Konkerz, SWOMP) ── */
+.page-dark .section { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+.page-dark .section h2 { color: #fff; }
+.page-dark .section p,
+.page-dark .section li,
+.page-dark .card-text,
+.page-dark .how-step-desc,
+.page-dark .rules-item,
+.page-dark .prize-top10-text,
+.page-dark .prize-item-text,
+.page-dark .prize-tba-label { color: #bbb; }
+.page-dark .prize-top10 { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); }
+.page-dark .prize-grand { border-color: rgba(255,255,255,0.2); }
+.page-dark .integration-row { border-color: rgba(255,255,255,0.1); }
+.page-dark .integration-benefit { color: #aaa; }
+.page-dark .verified-badge { color: #888; }
+.page-dark .footer-links a { color: #888; }
+
 .section h2 {
   font-size: 34px;
   margin: 0 0 18px;
@@ -968,8 +986,9 @@ details p, details ul {
 
   /* Prize section side by side */
   .prize-section { flex-direction: row; align-items: flex-start; }
-  .prize-top10 { flex: 1; }
-  .prize-grand { flex: 2; }
+  .prize-top10 { flex: 1; min-width: 0; }
+  .prize-grand { flex: 2; min-width: 0; }
+  .prize-tba { flex: 1; min-width: 0; }
 }
 
 /* ── Feedback modal ──────────────────────────────────── */

@@ -25,9 +25,11 @@ export default async function EntryPage({
   }
   if (questions.length === 0) questions = getQuestions(entry.competition)
 
+  const backHref = loop ? `/loops/${entry.competition}` : `/${entry.competition}`
+
   return (
     <main className="page">
-      <Link className="top-link" href="/designs">← Back to all designs</Link>
+      <Link className="top-link" href={backHref}>← Back to competition</Link>
 
       <section className="feed-title">
         <h1>Vote for {entry.designerName}.</h1>
@@ -63,7 +65,7 @@ export default async function EntryPage({
       </section>
 
       <div className="mini-links">
-        <Link href="/designs">View leaderboard</Link>
+        <Link href={backHref}>View leaderboard</Link>
         <Link href="/help">FAQs & Rules</Link>
       </div>
     </main>
