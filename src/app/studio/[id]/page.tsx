@@ -6,6 +6,7 @@ import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 import { StudioEntriesTable, StudioModeration } from './StudioClient'
 import { StudioSignInGate, StudioDeniedGate } from './StudioGate'
+import RosterDeck from './RosterDeck'
 import { getQuestions, type Question } from '@/lib/questions'
 
 export const dynamic = 'force-dynamic'
@@ -15,6 +16,7 @@ const ADMIN_TABS = [
   { id: 'entries',     label: 'Entries' },
   { id: 'moderation',  label: 'Moderation' },
   { id: 'feedback',    label: 'Feedback' },
+  { id: 'roster',      label: 'Roster' },
   { id: 'exports',     label: 'Exports' },
   { id: 'settings',    label: 'Settings' },
 ]
@@ -24,6 +26,7 @@ const MODERATOR_TABS = [
   { id: 'entries',     label: 'Entries' },
   { id: 'moderation',  label: 'Moderation' },
   { id: 'feedback',    label: 'Feedback' },
+  { id: 'roster',      label: 'Roster' },
   { id: 'exports',     label: 'Exports' },
 ]
 
@@ -69,7 +72,7 @@ export default async function StudioPage({
 
   const TABS = isAdmin ? ADMIN_TABS : MODERATOR_TABS
 
-  const [entries, feedbackRows, notifyCount] = await Promise.all([
+  const [entries, feedbackRows, notifyCount, rosterApps] = await Promise.all([
     prisma.entry.findMany({
       where: { competition: loop.slug },
       orderBy: { voteCount: 'desc' },
@@ -79,6 +82,10 @@ export default async function StudioPage({
       select: { questionId: true, answer: true },
     }),
     prisma.notifySignup.count({ where: { competition: loop.slug } }),
+    prisma.partnerApplication.findMany({
+      where: { competition: loop.slug },
+      orderBy: { createdAt: 'desc' },
+    }),
   ])
 
   const totalEntries  = entries.length
@@ -183,6 +190,9 @@ export default async function StudioPage({
             {t.label}
             {t.id === 'moderation' && pendingCount > 0 && (
               <span className="studio-tab-badge" style={{ background: accent }}>{pendingCount}</span>
+            )}
+            {t.id === 'roster' && rosterApps.filter(a => a.status === 'new').length > 0 && (
+              <span className="studio-tab-badge" style={{ background: accent }}>{rosterApps.filter(a => a.status === 'new').length}</span>
             )}
           </Link>
         ))}
@@ -309,6 +319,42 @@ export default async function StudioPage({
                 )
               })
             )}
+          </>
+        )}
+
+        {/* Roster */}
+        {tab === 'roster' && (
+          <>
+            <div className="studio-section-title">
+              Partner Roster
+              <span style={{ fontWeight: 400, fontSize: 13, color: '#aaa', marginLeft: 10 }}>
+                {rosterApps.length} application{rosterApps.length !== 1 ? 's' : ''}
+                {rosterApps.filter(a => a.status === 'shortlisted').length > 0 && ` · ${rosterApps.filter(a => a.status === 'shortlisted').length} shortlisted`}
+              </span>
+            </div>
+            <div style={{ fontSize: 13, color: '#888', marginBottom: 16, lineHeight: 1.6 }}>
+              Share this link so creators and agencies can apply:{' '}
+              <a
+                href={`/loops/${loop.slug}/partner`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontWeight: 900, textDecoration: 'underline', color: accent }}
+              >
+                crowdloops.com/loops/{loop.slug}/partner ↗
+              </a>
+            </div>
+            <RosterDeck
+              initial={rosterApps.map(a => ({
+                id: a.id,
+                handle: a.handle,
+                role: a.role,
+                reach: a.reach,
+                platform: a.platform,
+                portfolioUrl: a.portfolioUrl,
+                status: a.status,
+              }))}
+              accentColor={accent}
+            />
           </>
         )}
 

@@ -102,6 +102,20 @@ model Vote {
   @@map("votes")
 }
 
+model PartnerApplication {
+  id           String   @id @default(cuid())
+  competition  String
+  handle       String
+  role         String
+  reach        String
+  platform     String
+  portfolioUrl String   @default("") @map("portfolio_url")
+  status       String   @default("new")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("partner_applications")
+}
+
 model Entry {
   id           String   @id @default(cuid())
   entryId      String   @unique

@@ -2392,6 +2392,119 @@ details p, details ul {
   line-height: 1.6;
 }
 
+/* ── Roster Deck ────────────────────────────────────── */
+.roster-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.roster-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.roster-pill {
+  font-size: 12px;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1.5px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.15s;
+}
+.roster-pill.active { color: #fff; }
+.roster-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.roster-nav-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.roster-nav-btn:disabled { opacity: 0.3; cursor: default; }
+.roster-nav-counter { font-size: 13px; font-weight: 900; color: #888; }
+.roster-card {
+  background: #fff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 24px 20px;
+  position: relative;
+  margin-bottom: 16px;
+}
+.roster-card-shortlisted { border-color: #2a7a2a; }
+.roster-card-passed { opacity: 0.5; }
+.roster-status-flag {
+  position: absolute;
+  top: 14px; right: 14px;
+  font-size: 11px; font-weight: 900;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.roster-handle {
+  font-size: 22px;
+  font-weight: 950;
+  margin-bottom: 10px;
+}
+.roster-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.roster-badge {
+  font-size: 11px;
+  font-weight: 900;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: #f0f0f0;
+  color: #555;
+}
+.roster-portfolio-link {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: underline;
+  color: #555;
+  margin-bottom: 20px;
+}
+.roster-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.roster-action-btn {
+  font-size: 13px;
+  font-weight: 900;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+}
+.roster-action-btn:disabled { opacity: 0.4; cursor: default; }
+.roster-shortlist { }
+.roster-pass { color: #888; }
+.roster-shortlist-summary {
+  font-size: 12px;
+  color: #555;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 10px 14px;
+  line-height: 1.6;
+}
+
 /* ── Rules at a glance ──────────────────────────────── */
 .rules-list {
   display: flex;
