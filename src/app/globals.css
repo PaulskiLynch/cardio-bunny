@@ -2712,6 +2712,87 @@ details p, details ul {
   line-height: 1.5;
 }
 
+/* ── Referral share block ───────────────────────────── */
+.referral-block {
+  background: #f7fbf7;
+  border: 1.5px solid #c3e6c3;
+  border-radius: 14px;
+  padding: 16px 16px 18px;
+  margin: 16px 0;
+}
+.referral-block-title {
+  font-size: 14px;
+  font-weight: 950;
+  margin-bottom: 4px;
+}
+.referral-block-sub {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.referral-share-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.referral-btn-primary {
+  font-size: 12px;
+  font-weight: 900;
+  padding: 8px 16px;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.referral-btn-secondary {
+  font-size: 12px;
+  font-weight: 900;
+  padding: 8px 16px;
+  background: #fff;
+  color: #111;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.referral-progress-wrap {
+  margin-bottom: 8px;
+}
+.referral-progress-bar {
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.referral-progress-fill {
+  height: 100%;
+  background: #2a7a2a;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+  min-width: 4px;
+}
+.referral-progress-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #555;
+}
+.referral-stats {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #555;
+  flex-wrap: wrap;
+}
+.referral-hint {
+  font-size: 12px;
+  color: #888;
+  font-style: italic;
+}
+
 /* ── Rules at a glance ──────────────────────────────── */
 .rules-list {
   display: flex;

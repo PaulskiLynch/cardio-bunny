@@ -11,26 +11,32 @@ interface Props {
   initialVoted: boolean
   competition: string
   questions: Question[]
+  shareRef: string | null
 }
 
 type Phase = 'idle' | 'feedback' | 'done' | 'share'
 
-export default function VoteClient({ entryId, designerName, initialVotes, initialVoted, competition, questions }: Props) {
+export default function VoteClient({ entryId, designerName, initialVotes, initialVoted, competition, questions, shareRef }: Props) {
   const { isSignedIn } = useUser()
   const { openSignIn } = useClerk()
 
-  const [votes, setVotes]         = useState(initialVotes)
-  const [voted, setVoted]         = useState(initialVoted)
-  const [voteError, setVoteError] = useState('')
-  const [phase, setPhase]         = useState<Phase>('idle')
-  const [currentQ, setCurrentQ]   = useState(0)
-  const [answers, setAnswers]     = useState<Record<string, string>>({})
-  const [textDraft, setTextDraft] = useState('')
+  const [votes, setVotes]           = useState(initialVotes)
+  const [voted, setVoted]           = useState(initialVoted)
+  const [voteError, setVoteError]   = useState('')
+  const [phase, setPhase]           = useState<Phase>('idle')
+  const [currentQ, setCurrentQ]     = useState(0)
+  const [answers, setAnswers]       = useState<Record<string, string>>({})
+  const [textDraft, setTextDraft]   = useState('')
   const [submitting, setSubmitting] = useState(false)
-  const [copied, setCopied]       = useState(false)
+  const [copied, setCopied]         = useState(false)
+  const [bonusBanner, setBonusBanner] = useState(false)
 
   const feedbackKey = `feedback_${entryId}`
-  const shareUrl    = typeof window !== 'undefined' ? window.location.href : ''
+
+  function buildShareUrl() {
+    if (typeof window === 'undefined') return ''
+    return `${window.location.origin}/entry/${entryId}?ref=${entryId}`
+  }
 
   async function handleVote() {
     if (!isSignedIn) { openSignIn({ fallbackRedirectUrl: window.location.href, signUpFallbackRedirectUrl: window.location.href }); return }
@@ -48,11 +54,16 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
         }
         return
       }
-      const res = await fetch(`/api/vote/${entryId}`, { method: 'POST' })
+      const res = await fetch(`/api/vote/${entryId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ref: shareRef }),
+      })
       if (res.ok) {
         const json = await res.json()
         setVotes(json.voteCount)
         setVoted(true)
+        if (json.bonusAwarded) setBonusBanner(true)
         if (questions.length > 0 && !localStorage.getItem(feedbackKey)) {
           setPhase('feedback')
           setCurrentQ(0)
@@ -126,13 +137,14 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
   }
 
   async function copyLink() {
-    await navigator.clipboard.writeText(shareUrl)
+    await navigator.clipboard.writeText(buildShareUrl())
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
 
   function whatsapp() {
-    const text = `Help ${designerName} win — vote here: ${shareUrl}`
+    const url = buildShareUrl()
+    const text = `Vote for ${designerName} — every vote via this link earns them bonus votes: ${url}`
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
   }
 
@@ -141,6 +153,12 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
 
   return (
     <>
+      {bonusBanner && (
+        <div style={{ background: '#fffbe6', border: '1.5px solid #f0d800', borderRadius: 8, padding: '10px 14px', fontSize: 13, fontWeight: 700, color: '#7a6000', marginBottom: 10 }}>
+          🎉 Bonus! This referral vote just earned {designerName} +5 extra votes.
+        </div>
+      )}
+
       <div className="action-row single">
         <button
           className="vote-button"
@@ -233,12 +251,12 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
         <div className="sheet-handle" />
         <div className="success-title">Share This Entry</div>
         <div className="success-text">
-          Want to see {designerName} win? Every share brings them closer to the shelf.
+          Votes via this link earn {designerName} bonus votes — every 10 referral votes adds +5 to their total.
         </div>
         <div className="share-actions">
           <button className="share-action" onClick={whatsapp}>SHARE ON WHATSAPP</button>
           <button className="share-action" onClick={copyLink}>
-            {copied ? 'LINK COPIED!' : 'COPY VOTE LINK'}
+            {copied ? 'LINK COPIED!' : 'COPY REFERRAL LINK'}
           </button>
         </div>
         <button className="close-sheet" onClick={() => setPhase('idle')}>CLOSE</button>

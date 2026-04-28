@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { currentUser } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import CopyLink from './CopyLink'
+import ReferralShare from './ReferralShare'
 
 export const dynamic = 'force-dynamic'
 
@@ -48,8 +49,11 @@ export default async function MyEntryPage({
         }).catch(() => null)
       : null
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://crowdloops.com')
-  const voteUrl = entry ? `${baseUrl}/entry/${entry.entryId}` : ''
+  const baseUrl      = process.env.NEXT_PUBLIC_BASE_URL ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://crowdloops.com')
+  const voteUrl      = entry ? `${baseUrl}/entry/${entry.entryId}` : ''
+  const referralUrl  = entry ? `${baseUrl}/entry/${entry.entryId}?ref=${entry.entryId}` : ''
+  const referralVotes = entry?.referralVotes ?? 0
+  const bonusVotes    = entry?.bonusVotes ?? 0
 
   const cfg = entry ? STATUS_CONFIG[entry.status as keyof typeof STATUS_CONFIG] ?? STATUS_CONFIG.pending : null
 
@@ -131,11 +135,33 @@ export default async function MyEntryPage({
             {/* Votes + share (approved only) */}
             {entry.status === 'approved' && (
               <>
-                <div style={{ fontSize: 36, fontWeight: 950, letterSpacing: '-0.04em', marginBottom: 4 }}>
-                  {entry.voteCount.toLocaleString()}
+                <div style={{ display: 'flex', gap: 24, alignItems: 'flex-end', marginBottom: 4 }}>
+                  <div>
+                    <div style={{ fontSize: 36, fontWeight: 950, letterSpacing: '-0.04em', lineHeight: 1 }}>
+                      {entry.voteCount.toLocaleString()}
+                    </div>
+                    <div style={{ fontSize: 13, color: '#888', fontWeight: 700 }}>TOTAL VOTES</div>
+                  </div>
+                  {bonusVotes > 0 && (
+                    <div style={{ paddingBottom: 2 }}>
+                      <div style={{ fontSize: 22, fontWeight: 950, letterSpacing: '-0.03em', color: '#1a7a1a', lineHeight: 1 }}>
+                        +{bonusVotes}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#1a7a1a', fontWeight: 700 }}>BONUS</div>
+                    </div>
+                  )}
                 </div>
-                <div style={{ fontSize: 13, color: '#888', fontWeight: 700, marginBottom: 20 }}>VOTES SO FAR</div>
-                <CopyLink url={voteUrl} />
+
+                <ReferralShare
+                  url={referralUrl}
+                  designerName={entry.designerName}
+                  referralVotes={referralVotes}
+                  bonusVotes={bonusVotes}
+                />
+
+                <div style={{ marginTop: 8 }}>
+                  <CopyLink url={voteUrl} />
+                </div>
                 <div style={{ marginTop: 12 }}>
                   <Link
                     href={`/entry/${entry.entryId}`}

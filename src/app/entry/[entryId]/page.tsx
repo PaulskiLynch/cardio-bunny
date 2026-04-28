@@ -10,10 +10,12 @@ export const dynamic = 'force-dynamic'
 
 export default async function EntryPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ entryId: string }>
+  searchParams: Promise<{ ref?: string }>
 }) {
-  const { entryId } = await params
+  const [{ entryId }, { ref = null }] = await Promise.all([params, searchParams])
   const entry = await prisma.entry.findFirst({
     where: { entryId, status: 'approved' },
   })
@@ -82,6 +84,7 @@ export default async function EntryPage({
               initialVoted={!!existingVote}
               competition={entry.competition}
               questions={questions}
+              shareRef={ref}
             />
           </div>
         </article>

@@ -97,6 +97,7 @@ model Vote {
   entryId     String   @map("entry_id")
   userId      String   @map("user_id")
   competition String
+  isReferral  Boolean  @default(false) @map("is_referral")
   createdAt   DateTime @default(now()) @map("created_at")
 
   @@unique([entryId, userId])
@@ -124,15 +125,17 @@ model PartnerApplication {
 }
 
 model Entry {
-  id           String   @id @default(cuid())
-  entryId      String   @unique
-  designerName String
-  contact      String
-  setName      String
-  hook         String
-  imageUrl     String
-  status       String   @default("pending")
-  voteCount    Int      @default(0)
-  competition  String   @default("biedronka")
-  createdAt    DateTime @default(now())
+  id            String   @id @default(cuid())
+  entryId       String   @unique
+  designerName  String
+  contact       String
+  setName       String
+  hook          String
+  imageUrl      String
+  status        String   @default("pending")
+  voteCount     Int      @default(0)
+  referralVotes Int      @default(0) @map("referral_votes")
+  bonusVotes    Int      @default(0) @map("bonus_votes")
+  competition   String   @default("biedronka")
+  createdAt     DateTime @default(now())
 }
