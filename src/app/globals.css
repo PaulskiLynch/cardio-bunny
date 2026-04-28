@@ -99,6 +99,8 @@ a { color: inherit; }
 /* ── Dark page theme (pageBg loops e.g. Konkerz, SWOMP) ── */
 .page-dark .section { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
 .page-dark .section h2 { color: #fff; }
+.page-dark .how-step-title { color: #fff; }
+
 .page-dark .section p,
 .page-dark .section li,
 .page-dark .card-text,

@@ -18,6 +18,14 @@ export default function InquiryActions({ id, status }: { id: string; status: str
     setBusy(false)
   }
 
+  async function deleteInquiry() {
+    if (!confirm('Delete this inquiry? This cannot be undone.')) return
+    setBusy(true)
+    await fetch(`/api/admin/inquiries/${id}`, { method: 'DELETE' })
+    router.refresh()
+    setBusy(false)
+  }
+
   return (
     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 4 }}>
       {status !== 'reviewed' && status !== 'converted' && status !== 'declined' && (
@@ -50,6 +58,14 @@ export default function InquiryActions({ id, status }: { id: string; status: str
           ↩ Reopen
         </button>
       )}
+      <button
+        className="inq-action-btn"
+        style={{ background: '#fee', color: '#c00', border: 'none', cursor: 'pointer', marginLeft: 'auto' }}
+        onClick={deleteInquiry}
+        disabled={busy}
+      >
+        🗑 Delete
+      </button>
     </div>
   )
 }

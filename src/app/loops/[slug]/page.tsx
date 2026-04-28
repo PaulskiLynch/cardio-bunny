@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { cookies } from 'next/headers'
 import { auth, currentUser } from '@clerk/nextjs/server'
+import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 import VoteCard from '@/components/VoteCard'
 import CountdownTimer from '@/components/CountdownTimer'
@@ -25,12 +27,16 @@ export default async function LoopPublicPage({
   const loop = await prisma.loop.findUnique({ where: { slug } })
   if (!loop) notFound()
 
-  const [{ userId }, clerkUser] = await Promise.all([auth(), currentUser()])
+  const [{ userId }, clerkUser, cookieStore] = await Promise.all([auth(), currentUser(), cookies()])
+  const isAdmin = isAdminCookie(cookieStore.get('admin_auth')?.value)
   const userEmail = clerkUser?.emailAddresses?.[0]?.emailAddress?.toLowerCase() ?? ''
 
   let moderatorEmails: string[] = []
-  try { moderatorEmails = JSON.parse(loop.moderatorEmails).map((e: string) => e.toLowerCase()) } catch {}
-  const isModerator = userEmail && moderatorEmails.includes(userEmail)
+  try {
+    const raw = (loop as Record<string, unknown>).moderatorEmails
+    if (typeof raw === 'string') moderatorEmails = JSON.parse(raw).map((e: string) => e.toLowerCase())
+  } catch {}
+  const isModerator = isAdmin || (!!userEmail && moderatorEmails.includes(userEmail))
 
   const entries = await prisma.entry.findMany({
     where: { competition: slug, status: 'approved' },
