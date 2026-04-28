@@ -78,6 +78,15 @@ model LoopInquiry {
   @@map("loopinquiry")
 }
 
+model NotifySignup {
+  id          String   @id @default(cuid())
+  competition String
+  email       String   @default("")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("notify_signups")
+}
+
 model Entry {
   id           String   @id @default(cuid())
   entryId      String   @unique

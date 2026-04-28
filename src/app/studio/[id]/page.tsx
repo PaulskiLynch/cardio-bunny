@@ -39,7 +39,7 @@ export default async function StudioPage({
   const loop = await prisma.loop.findUnique({ where: { id } })
   if (!loop) notFound()
 
-  const [entries, feedbackRows] = await Promise.all([
+  const [entries, feedbackRows, notifyCount] = await Promise.all([
     prisma.entry.findMany({
       where: { competition: loop.slug },
       orderBy: { voteCount: 'desc' },
@@ -48,6 +48,7 @@ export default async function StudioPage({
       where: { competition: loop.slug },
       select: { questionId: true, answer: true },
     }),
+    prisma.notifySignup.count({ where: { competition: loop.slug } }),
   ])
 
   const totalEntries  = entries.length
@@ -135,7 +136,7 @@ export default async function StudioPage({
           <div className="studio-stat-label">Feedback Responses</div>
         </div>
         <div className="studio-stat">
-          <div className="studio-stat-value" style={{ color: '#bbb' }}>—</div>
+          <div className="studio-stat-value">{notifyCount}</div>
           <div className="studio-stat-label">Notify-Me Signups</div>
         </div>
       </div>

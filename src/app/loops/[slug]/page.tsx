@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { prisma } from '@/lib/db'
 import VoteCard from '@/components/VoteCard'
 import CountdownTimer from '@/components/CountdownTimer'
+import NotifyForm from './NotifyForm'
 import type { Question } from '@/lib/questions'
 
 export const dynamic = 'force-dynamic'
@@ -177,6 +178,10 @@ export default async function LoopPublicPage({
             View all entries
           </Link>
         </div>
+      </section>
+
+      <section className="section">
+        <NotifyForm competition={slug} status={loop.status} accent={accent} />
       </section>
 
       <section className="section" style={{ textAlign: 'center', padding: '34px 20px' }}>
