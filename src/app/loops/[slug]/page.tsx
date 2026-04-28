@@ -65,15 +65,16 @@ export default async function LoopPublicPage({
         <Link
           href={`/studio/${loop.id}`}
           style={{
-            display: 'flex', alignItems: 'center', gap: 8,
+            display: 'flex', alignItems: 'center', gap: 10,
             padding: '10px 16px', marginBottom: 8,
-            background: '#f5f5f5', borderRadius: 10,
-            fontSize: 13, fontWeight: 900, textDecoration: 'none', color: '#111',
+            background: accent + '18',
+            borderLeft: `4px solid ${accent}`,
+            borderRadius: 8,
+            fontSize: 13, fontWeight: 900, textDecoration: 'none', color: accent,
           }}
         >
-          <span>📊</span>
-          <span>Open Studio for this loop</span>
-          <span style={{ marginLeft: 'auto', color: '#aaa' }}>→</span>
+          <span>📊 Studio</span>
+          <span style={{ marginLeft: 'auto', fontWeight: 400, fontSize: 12, opacity: 0.7 }}>Admin access →</span>
         </Link>
       )}
 
