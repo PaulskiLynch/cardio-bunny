@@ -69,12 +69,12 @@ export default async function LoopPublicPage({
           </div>
         )}
         <div style={{ padding: '24px 20px 28px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
             {loop.logoUrl && (
               <img
                 src={loop.logoUrl}
                 alt={loop.brandName}
-                style={{ height: 40, maxWidth: 140, objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+                style={{ height: 48, maxWidth: 180, objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
               />
             )}
             {!loop.logoUrl && (
@@ -83,15 +83,15 @@ export default async function LoopPublicPage({
               </div>
             )}
           </div>
-          <h1 style={{ color: '#fff', fontSize: 'clamp(36px, 11vw, 60px)', lineHeight: 1, marginBottom: 14 }}>
+          <h1 style={{ color: '#fff', fontSize: 'clamp(36px, 11vw, 60px)', lineHeight: 1, marginBottom: 14, textAlign: 'center' }}>
             {loop.heroTitle}
           </h1>
           {loop.heroSubhead && (
-            <div className="subhead" style={{ fontSize: 16, lineHeight: 1.55, marginBottom: 22 }}>
+            <div className="subhead" style={{ fontSize: 16, lineHeight: 1.55, marginBottom: 22, textAlign: 'center' }}>
               {loop.heroSubhead}
             </div>
           )}
-          <div className="hero-actions">
+          <div className="hero-actions" style={{ justifyContent: 'center' }}>
             <Link
               className="cta"
               href={`/loops/${slug}/submit`}
