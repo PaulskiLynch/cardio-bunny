@@ -42,8 +42,9 @@ model Loop {
   guidelines    String   @default("[]")
   prizes        String   @default("[]")
   questions     String   @default("[]")
-  autoApprove   Boolean  @default(false) @map("auto_approve")
-  pageBg        String   @default("") @map("page_bg")
+  autoApprove      Boolean  @default(false) @map("auto_approve")
+  pageBg           String   @default("") @map("page_bg")
+  moderatorEmails  String   @default("[]") @map("moderator_emails")
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
 

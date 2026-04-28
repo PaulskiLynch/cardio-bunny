@@ -1,21 +1,30 @@
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { currentUser } from '@clerk/nextjs/server'
 import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
-import { LoginForm } from '@/app/admin/AdminClient'
 import { StudioEntriesTable, StudioModeration } from './StudioClient'
+import { StudioSignInGate, StudioDeniedGate } from './StudioGate'
 import { getQuestions, type Question } from '@/lib/questions'
 
 export const dynamic = 'force-dynamic'
 
-const TABS = [
+const ADMIN_TABS = [
   { id: 'overview',    label: 'Overview' },
   { id: 'entries',     label: 'Entries' },
   { id: 'moderation',  label: 'Moderation' },
   { id: 'feedback',    label: 'Feedback' },
   { id: 'exports',     label: 'Exports' },
   { id: 'settings',    label: 'Settings' },
+]
+
+const MODERATOR_TABS = [
+  { id: 'overview',    label: 'Overview' },
+  { id: 'entries',     label: 'Entries' },
+  { id: 'moderation',  label: 'Moderation' },
+  { id: 'feedback',    label: 'Feedback' },
+  { id: 'exports',     label: 'Exports' },
 ]
 
 function pct(n: number, total: number) {
@@ -30,15 +39,35 @@ export default async function StudioPage({
   params: Promise<{ id: string }>
   searchParams: Promise<{ tab?: string }>
 }) {
-  const cookieStore = await cookies()
-  if (!isAdminCookie(cookieStore.get('admin_auth')?.value)) {
-    return <main className="page"><LoginForm /></main>
-  }
+  const [cookieStore, clerkUser, { id }, { tab = 'overview' }] = await Promise.all([
+    cookies(),
+    currentUser(),
+    params,
+    searchParams,
+  ])
 
-  const [{ id }, { tab = 'overview' }] = await Promise.all([params, searchParams])
+  const isAdmin = isAdminCookie(cookieStore.get('admin_auth')?.value)
+  const userEmail = clerkUser?.emailAddresses?.[0]?.emailAddress?.toLowerCase() ?? ''
 
   const loop = await prisma.loop.findUnique({ where: { id } })
   if (!loop) notFound()
+
+  let moderatorEmails: string[] = []
+  try { moderatorEmails = JSON.parse(loop.moderatorEmails).map((e: string) => e.toLowerCase()) } catch {}
+
+  const isModerator = !isAdmin && userEmail && moderatorEmails.includes(userEmail)
+
+  if (!isAdmin && !isModerator) {
+    return (
+      <main className="page">
+        {userEmail
+          ? <StudioDeniedGate email={userEmail} />
+          : <StudioSignInGate />}
+      </main>
+    )
+  }
+
+  const TABS = isAdmin ? ADMIN_TABS : MODERATOR_TABS
 
   const [entries, feedbackRows, notifyCount] = await Promise.all([
     prisma.entry.findMany({
@@ -329,11 +358,13 @@ export default async function StudioPage({
       </div>
 
       {/* ── Back nav ───────────────────────────────────── */}
-      <div style={{ marginTop: 32 }}>
-        <Link href="/admin/loops" style={{ fontWeight: 900, fontSize: 13, textDecoration: 'underline', color: '#888' }}>
-          ← All Loops
-        </Link>
-      </div>
+      {isAdmin && (
+        <div style={{ marginTop: 32 }}>
+          <Link href="/admin/loops" style={{ fontWeight: 900, fontSize: 13, textDecoration: 'underline', color: '#888' }}>
+            ← All Loops
+          </Link>
+        </div>
+      )}
 
     </main>
   )

@@ -52,6 +52,7 @@ export default async function NewLoopPage({
           : '[]',
         questions: '[]',
         autoApprove: false,
+        moderatorEmails: '[]',
         inquiryId: inquiry.id,
       }
     : undefined

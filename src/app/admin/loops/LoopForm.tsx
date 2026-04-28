@@ -39,6 +39,7 @@ export interface LoopInitial {
   prizes: string
   questions: string
   autoApprove: boolean
+  moderatorEmails: string
 }
 
 function uid() { return Math.random().toString(36).slice(2, 8) }
@@ -68,6 +69,9 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
   const [heroImageUrl, setHeroImageUrl] = useState(initial?.heroImageUrl ?? '')
   const [brief, setBrief]             = useState(initial?.brief ?? '')
   const [autoApprove, setAutoApprove] = useState(initial?.autoApprove ?? false)
+  const [moderatorEmailsRaw, setModeratorEmailsRaw] = useState(() => {
+    try { return (JSON.parse(initial?.moderatorEmails ?? '[]') as string[]).join('\n') } catch { return '' }
+  })
 
   const logoRef     = useRef<HTMLInputElement>(null)
   const heroRef     = useRef<HTMLInputElement>(null)
@@ -169,6 +173,9 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
       heroImageUrl,
       brief,
       autoApprove,
+      moderatorEmails: JSON.stringify(
+        moderatorEmailsRaw.split(/[\n,]+/).map(e => e.trim().toLowerCase()).filter(Boolean)
+      ),
       ...(initial?.inquiryId ? { inquiryId: initial.inquiryId } : {}),
       guidelines: JSON.stringify(guidelines.filter(g => g.trim())),
       prizes: JSON.stringify(prizes.map(({ _id, ...p }) => p)),
@@ -468,6 +475,18 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
             />
             Auto-approve submissions (skip moderation queue)
           </label>
+        </div>
+        <div className="loop-field">
+          <label>
+            Studio Moderators
+            <span className="loop-hint">One email per line — they get read-only studio access for this loop</span>
+          </label>
+          <textarea
+            value={moderatorEmailsRaw}
+            onChange={e => setModeratorEmailsRaw(e.target.value)}
+            rows={4}
+            placeholder={'buyer@brand.com\nmarketing@partner.com'}
+          />
         </div>
       </div>
 
