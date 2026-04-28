@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { prisma } from '@/lib/db'
 import VoteCard from '@/components/VoteCard'
+import { getQuestions, type Question } from '@/lib/questions'
 
 export const dynamic = 'force-dynamic'
 
@@ -27,7 +28,7 @@ export default async function DesignsPage({
     } : {}),
   }
 
-  const [entries, brandRows] = await Promise.all([
+  const [entries, brandRows, loopRows] = await Promise.all([
     prisma.entry.findMany({
       where: sort === 'hot'
         ? { ...baseWhere, createdAt: { gte: sevenDaysAgo } }
@@ -40,9 +41,18 @@ export default async function DesignsPage({
       select: { competition: true },
       orderBy: { competition: 'asc' },
     }),
+    prisma.loop.findMany({ select: { slug: true, questions: true } }),
   ])
 
   const brands = brandRows.map(r => r.competition)
+
+  const loopQuestionsMap: Record<string, Question[]> = {}
+  for (const l of loopRows) {
+    try {
+      const qs = JSON.parse(l.questions) as Question[]
+      if (Array.isArray(qs) && qs.length > 0) loopQuestionsMap[l.slug] = qs
+    } catch {}
+  }
 
   return (
     <main className="page">
@@ -104,6 +114,7 @@ export default async function DesignsPage({
             imageUrl={entry.imageUrl}
             initialVotes={entry.voteCount}
             competition={entry.competition}
+            questions={loopQuestionsMap[entry.competition] ?? getQuestions(entry.competition)}
           />
         ))}
       </section>

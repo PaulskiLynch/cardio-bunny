@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/db'
+import { getQuestions, type Question } from '@/lib/questions'
 import VoteClient from './VoteClient'
 
 export const dynamic = 'force-dynamic'
@@ -16,6 +17,13 @@ export default async function EntryPage({
   })
 
   if (!entry) notFound()
+
+  let questions: Question[] = []
+  const loop = await prisma.loop.findUnique({ where: { slug: entry.competition } }).catch(() => null)
+  if (loop) {
+    try { questions = JSON.parse(loop.questions) } catch {}
+  }
+  if (questions.length === 0) questions = getQuestions(entry.competition)
 
   return (
     <main className="page">
@@ -42,6 +50,8 @@ export default async function EntryPage({
               entryId={entry.entryId}
               designerName={entry.designerName}
               initialVotes={entry.voteCount}
+              competition={entry.competition}
+              questions={questions}
             />
           </div>
         </article>
