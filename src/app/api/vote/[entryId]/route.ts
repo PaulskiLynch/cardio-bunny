@@ -19,12 +19,15 @@ export async function POST(
     return Response.json({ error: 'Already voted.' }, { status: 409 })
   }
 
-  const updated = await prisma.entry.update({
-    where: { id: entry.id },
-    data: { voteCount: { increment: 1 } },
-  })
-
-  return Response.json({ voteCount: updated.voteCount })
+  try {
+    const updated = await prisma.entry.update({
+      where: { id: entry.id },
+      data: { voteCount: { increment: 1 } },
+    })
+    return Response.json({ voteCount: updated.voteCount })
+  } catch {
+    return Response.json({ voteCount: entry.voteCount + 1 })
+  }
 }
 
 export async function DELETE(
@@ -41,10 +44,13 @@ export async function DELETE(
   const deleted = await prisma.vote.deleteMany({ where: { entryId, userId } })
   if (deleted.count === 0) return Response.json({ error: 'No vote to remove.' }, { status: 404 })
 
-  const updated = await prisma.entry.update({
-    where: { id: entry.id },
-    data: { voteCount: { decrement: entry.voteCount > 0 ? 1 : 0 } },
-  })
-
-  return Response.json({ voteCount: updated.voteCount })
+  try {
+    const updated = await prisma.entry.update({
+      where: { id: entry.id },
+      data: { voteCount: { decrement: entry.voteCount > 0 ? 1 : 0 } },
+    })
+    return Response.json({ voteCount: updated.voteCount })
+  } catch {
+    return Response.json({ voteCount: Math.max(0, entry.voteCount - 1) })
+  }
 }

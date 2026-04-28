@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server'
 import { cookies } from 'next/headers'
+import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 
 function esc(v: string) { return `"${String(v).replace(/"/g, '""')}"` }
@@ -9,7 +10,7 @@ export async function GET(
   ctx: RouteContext<'/api/studio/[id]/export'>
 ) {
   const store = await cookies()
-  if (store.get('admin_auth')?.value !== process.env.ADMIN_PASSWORD) {
+  if (!isAdminCookie(store.get('admin_auth')?.value)) {
     return new Response('Unauthorized', { status: 401 })
   }
 

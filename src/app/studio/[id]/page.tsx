@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 import { LoginForm } from '@/app/admin/AdminClient'
 import { StudioEntriesTable, StudioModeration } from './StudioClient'
@@ -30,7 +31,7 @@ export default async function StudioPage({
   searchParams: Promise<{ tab?: string }>
 }) {
   const cookieStore = await cookies()
-  if (cookieStore.get('admin_auth')?.value !== process.env.ADMIN_PASSWORD) {
+  if (!isAdminCookie(cookieStore.get('admin_auth')?.value)) {
     return <main className="page"><LoginForm /></main>
   }
 

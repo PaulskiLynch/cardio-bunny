@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
+import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 
 async function isAdmin() {
   const store = await cookies()
-  return store.get('admin_auth')?.value === process.env.ADMIN_PASSWORD
+  return isAdminCookie(store.get('admin_auth')?.value)
 }
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {

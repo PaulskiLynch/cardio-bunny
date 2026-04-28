@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
+import { isAdminCookie } from '@/lib/adminAuth'
 import { put } from '@vercel/blob'
 
 export async function POST(req: NextRequest) {
   const store = await cookies()
-  if (store.get('admin_auth')?.value !== process.env.ADMIN_PASSWORD) {
+  if (!isAdminCookie(store.get('admin_auth')?.value)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

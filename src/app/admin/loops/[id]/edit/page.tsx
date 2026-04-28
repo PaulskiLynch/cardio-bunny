@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 import { LoginForm } from '../../../AdminClient'
 import LoopForm, { type LoopInitial } from '../../LoopForm'
@@ -14,7 +15,7 @@ export default async function EditLoopPage({
   params: Promise<{ id: string }>
 }) {
   const cookieStore = await cookies()
-  if (cookieStore.get('admin_auth')?.value !== process.env.ADMIN_PASSWORD) {
+  if (!isAdminCookie(cookieStore.get('admin_auth')?.value)) {
     return <main className="page"><LoginForm /></main>
   }
 
