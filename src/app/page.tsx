@@ -28,9 +28,7 @@ const DEMO_LOOPS = [
     title: 'Cardio Bunny Poland',
     flag: '🇵🇱',
     category: 'Fashion / Activewear',
-    audience: 'Polish activewear customers',
-    signal: 'Design submissions, votes, notify-me signups',
-    output: 'Validated product shortlist with voter demand data',
+    desc: 'Design a matching activewear set for the Polish market. The community votes, and the top concept may go into production with a retail partner.',
     dark: false,
   },
   {
@@ -38,19 +36,15 @@ const DEMO_LOOPS = [
     title: 'Cardio Bunny UK',
     flag: '🇬🇧',
     category: 'Fashion / Activewear',
-    audience: 'UK activewear customers',
-    signal: 'Design submissions, votes, notify-me signups',
-    output: 'Validated product shortlist with voter demand data',
+    desc: 'Design a matching activewear set for the UK market. Votes determine the shortlist, and the winning concept may be developed for a UK retail launch.',
     dark: false,
   },
   {
     href: '/konkerz',
-    title: 'Konkerz — Grumpy Grandpa',
-    flag: '',
+    title: 'Konkerz',
+    flag: '🧸',
     category: 'Toys / Character Design',
-    audience: 'UK toy buyers and collectors',
-    signal: 'Character submissions, concept votes, age-group feedback',
-    output: 'Production-ready hero character concept',
+    desc: 'Design the hero character for Grumpy Grandpa Battleball. The winning concept wins £1,000 and goes into production as a real toy.',
     dark: true,
     bg: '#1a0800',
     border: '#8b3a00',
@@ -58,11 +52,9 @@ const DEMO_LOOPS = [
   {
     href: '/swomp',
     title: 'SWOMP WATER+',
-    flag: '',
+    flag: '🥤',
     category: 'Beverages / Packaging',
-    audience: 'European health drink consumers',
-    signal: 'Can design submissions, flavour preference votes',
-    output: 'Shortlisted packaging concepts with purchase-intent data',
+    desc: 'Design the back panel of a new electrolyte water can. The top design wins €1,000 and may go into production across European markets.',
     dark: true,
     bg: '#0d1a0f',
     border: '#3a6b3d',
@@ -255,12 +247,12 @@ export default function CrowdLoopsHome() {
                 style={loop.dark ? { background: loop.bg, borderColor: loop.border } : {}}
               >
                 <div className="demo-loop-category" style={loop.dark ? { color: '#aaa' } : {}}>{loop.category}</div>
-                <div className="event-card-title" style={{ fontSize: 15, ...(loop.dark ? { color: '#fff' } : {}) }}>
+                <div className="event-card-title" style={{ fontSize: 15, marginBottom: 8, ...(loop.dark ? { color: '#fff' } : {}) }}>
                   {loop.title} {loop.flag}
                 </div>
+                <div className="demo-loop-desc" style={loop.dark ? { color: '#bbb' } : {}}>{loop.desc}</div>
                 <div style={{ flex: 1 }} />
-                <div className="demo-loop-output" style={loop.dark ? { color: '#bbb' } : {}}>{loop.output}</div>
-                <div className="event-card-status open" style={{ marginTop: 10 }}>🟡 Demo</div>
+                <div className="event-card-status open" style={{ marginTop: 12 }}>🟡 Demo — view example</div>
               </div>
             </Link>
           ))}

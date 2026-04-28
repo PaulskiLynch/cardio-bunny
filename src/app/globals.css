@@ -2252,7 +2252,7 @@ details p, details ul {
 .demo-loop-card {
   display: flex;
   flex-direction: column;
-  aspect-ratio: 1 / 1;
+  min-height: 220px;
   padding: 16px;
 }
 
@@ -2265,10 +2265,10 @@ details p, details ul {
   margin-bottom: 6px;
 }
 
-.demo-loop-output {
+.demo-loop-desc {
   font-size: 12px;
-  color: #666;
-  line-height: 1.45;
+  color: #555;
+  line-height: 1.55;
 }
 
 /* ── How it works steps ─────────────────────────────── */
