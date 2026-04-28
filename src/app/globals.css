@@ -769,8 +769,8 @@ details p, details ul {
   margin-top: 12px;
 }
 
-.story-title { font-size: 22px; font-weight: 950; margin-bottom: 8px; }
-.story-text { color: #444; font-size: 16px; line-height: 1.4; }
+.story-title { font-size: 22px; font-weight: 950; margin-bottom: 10px; }
+.story-text { color: #444; font-size: 18px; line-height: 1.6; }
 
 /* ── Demo notice ─────────────────────────────────────── */
 .demo-notice {
@@ -989,6 +989,18 @@ details p, details ul {
   .prize-top10 { flex: 1; min-width: 0; }
   .prize-grand { flex: 2; min-width: 0; }
   .prize-tba { flex: 1; min-width: 0; }
+
+  /* Entry page — single featured card centred */
+  .design-grid:has(.entry-card.featured) {
+    grid-template-columns: minmax(0, 520px);
+    justify-content: center;
+  }
+  .entry-story {
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
 }
 
 /* ── Feedback modal ──────────────────────────────────── */
