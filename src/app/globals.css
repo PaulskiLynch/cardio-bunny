@@ -845,6 +845,7 @@ details p, details ul {
 
 /* ── B2B Landing ─────────────────────────────────────── */
 .b2b-hero { text-align: left; }
+.b2b-hero .b2b-sub { color: #ccc; }
 .b2b-eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: #e8325a; margin-bottom: 12px; }
 .b2b-headline { font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 950; line-height: 1.1; margin-bottom: 16px; }
 .b2b-sub { font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 0; }
