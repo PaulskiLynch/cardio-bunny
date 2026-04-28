@@ -40,7 +40,7 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
     if (loading) return
 
     if (!isSignedIn) {
-      openSignIn()
+      openSignIn({ afterSignInUrl: window.location.href, afterSignUpUrl: window.location.href })
       return
     }
 
