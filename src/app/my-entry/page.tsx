@@ -36,12 +36,16 @@ export default async function MyEntryPage({
 
   const clerkUser = await currentUser()
   const userEmail = clerkUser?.emailAddresses?.[0]?.emailAddress ?? ''
+  const userEmailLower = userEmail.toLowerCase()
 
-  // Auto-find by Clerk email if no ID typed
+  // Auto-find by Clerk email if no ID typed — check both raw and lowercased stored value
   const entry = entryId
     ? await prisma.entry.findUnique({ where: { entryId } }).catch(() => null)
     : userEmail
-      ? await prisma.entry.findFirst({ where: { contact: userEmail }, orderBy: { createdAt: 'desc' } }).catch(() => null)
+      ? await prisma.entry.findFirst({
+          where: { contact: { in: [userEmail, userEmailLower] } },
+          orderBy: { createdAt: 'desc' },
+        }).catch(() => null)
       : null
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://crowdloops.com')
