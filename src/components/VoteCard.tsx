@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
+import { useUser, useClerk } from '@clerk/nextjs'
 import { getQuestions, type Question } from '@/lib/questions'
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
   designerName: string
   imageUrl: string | null
   initialVotes: number
+  initialVoted: boolean
   competition: string
   questions?: Question[]
   rank?: number
@@ -17,9 +19,12 @@ interface Props {
 
 type Phase = 'idle' | 'feedback' | 'done'
 
-export default function VoteCard({ entryId, setName, designerName, imageUrl, initialVotes, competition, questions: questionsProp, rank }: Props) {
+export default function VoteCard({ entryId, setName, designerName, imageUrl, initialVotes, initialVoted, competition, questions: questionsProp, rank }: Props) {
+  const { isSignedIn } = useUser()
+  const { openSignIn } = useClerk()
+
   const [votes, setVotes]       = useState(initialVotes)
-  const [voted, setVoted]       = useState(false)
+  const [voted, setVoted]       = useState(initialVoted)
   const [loading, setLoading]   = useState(false)
   const [phase, setPhase]       = useState<Phase>('idle')
   const [currentQ, setCurrentQ] = useState(0)
@@ -27,17 +32,18 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
   const [textDraft, setTextDraft] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
-  const storageKey    = `voted_${entryId}`
-  const feedbackKey   = `feedback_${entryId}`
-  const questions     = questionsProp ?? getQuestions(competition)
-
-  useEffect(() => {
-    if (localStorage.getItem(storageKey)) setVoted(true)
-  }, [storageKey])
+  const feedbackKey = `feedback_${entryId}`
+  const questions   = questionsProp ?? getQuestions(competition)
 
   async function handleVote(e: React.MouseEvent) {
     e.preventDefault()
     if (loading) return
+
+    if (!isSignedIn) {
+      openSignIn()
+      return
+    }
+
     setLoading(true)
 
     if (voted) {
@@ -46,7 +52,6 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
         const json = await res.json()
         setVotes(json.voteCount)
         setVoted(false)
-        localStorage.removeItem(storageKey)
       }
     } else {
       const res = await fetch(`/api/vote/${entryId}`, { method: 'POST' })
@@ -54,7 +59,6 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
         const json = await res.json()
         setVotes(json.voteCount)
         setVoted(true)
-        localStorage.setItem(storageKey, '1')
         if (questions.length > 0 && !localStorage.getItem(feedbackKey)) {
           setPhase('feedback')
           setCurrentQ(0)
@@ -125,9 +129,7 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
   }
 
   const q: Question | undefined = questions[currentQ]
-  const canAdvance = q
-    ? (!q.required || q.type === 'text' || !!answers[q.id])
-    : true
+  const canAdvance = q ? (!q.required || q.type === 'text' || !!answers[q.id]) : true
 
   return (
     <>
@@ -171,10 +173,7 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
       </article>
 
       {(phase === 'feedback' || phase === 'done') && (
-        <div
-          className="feedback-overlay"
-          onClick={e => { if (e.target === e.currentTarget) closeModal() }}
-        >
+        <div className="feedback-overlay" onClick={e => { if (e.target === e.currentTarget) closeModal() }}>
           <div className="feedback-modal">
             {phase === 'done' ? (
               <div className="feedback-thanks">
@@ -196,47 +195,25 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
 
                   {q.type === 'yes_no' && (
                     <div className="feedback-yn">
-                      <button
-                        className={`feedback-choice${answers[q.id] === 'YES' ? ' selected' : ''}`}
-                        onClick={() => selectAnswer('YES')}
-                      >YES</button>
-                      <button
-                        className={`feedback-choice${answers[q.id] === 'NO' ? ' selected' : ''}`}
-                        onClick={() => selectAnswer('NO')}
-                      >NO</button>
+                      <button className={`feedback-choice${answers[q.id] === 'YES' ? ' selected' : ''}`} onClick={() => selectAnswer('YES')}>YES</button>
+                      <button className={`feedback-choice${answers[q.id] === 'NO' ? ' selected' : ''}`} onClick={() => selectAnswer('NO')}>NO</button>
                     </div>
                   )}
 
                   {q.type === 'choice' && (
                     <div className="feedback-choices">
                       {q.options?.map(opt => (
-                        <button
-                          key={opt}
-                          className={`feedback-choice${answers[q.id] === opt ? ' selected' : ''}`}
-                          onClick={() => selectAnswer(opt)}
-                        >{opt}</button>
+                        <button key={opt} className={`feedback-choice${answers[q.id] === opt ? ' selected' : ''}`} onClick={() => selectAnswer(opt)}>{opt}</button>
                       ))}
                     </div>
                   )}
 
                   {q.type === 'text' && (
-                    <textarea
-                      className="feedback-textarea"
-                      value={textDraft}
-                      onChange={e => setTextDraft(e.target.value)}
-                      placeholder="Your thoughts..."
-                      rows={3}
-                    />
+                    <textarea className="feedback-textarea" value={textDraft} onChange={e => setTextDraft(e.target.value)} placeholder="Your thoughts..." rows={3} />
                   )}
 
-                  <button
-                    className="feedback-next"
-                    disabled={submitting || !canAdvance}
-                    onClick={advance}
-                  >
-                    {currentQ === questions.length - 1
-                      ? (submitting ? 'SENDING...' : 'SUBMIT →')
-                      : 'NEXT →'}
+                  <button className="feedback-next" disabled={submitting || !canAdvance} onClick={advance}>
+                    {currentQ === questions.length - 1 ? (submitting ? 'SENDING...' : 'SUBMIT →') : 'NEXT →'}
                   </button>
 
                   {!q.required && (

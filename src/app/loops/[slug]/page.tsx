@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { auth } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import VoteCard from '@/components/VoteCard'
 import CountdownTimer from '@/components/CountdownTimer'
@@ -24,11 +25,17 @@ export default async function LoopPublicPage({
   const loop = await prisma.loop.findUnique({ where: { slug } })
   if (!loop) notFound()
 
+  const { userId } = await auth()
+
   const entries = await prisma.entry.findMany({
     where: { competition: slug, status: 'approved' },
     orderBy: { voteCount: 'desc' },
     take: 6,
   })
+
+  const votedSet = userId
+    ? new Set((await prisma.vote.findMany({ where: { userId, competition: slug } })).map(v => v.entryId))
+    : new Set<string>()
 
   let guidelines: string[] = []
   let prizes: PrizeItem[] = []
@@ -215,6 +222,7 @@ export default async function LoopPublicPage({
                 designerName={entry.designerName}
                 imageUrl={entry.imageUrl}
                 initialVotes={entry.voteCount}
+                initialVoted={votedSet.has(entry.entryId)}
                 competition={slug}
                 questions={questions.length > 0 ? questions : undefined}
                 rank={i + 1}

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { auth } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import VoteCard from '@/components/VoteCard'
 import { getQuestions, type Question } from '@/lib/questions'
@@ -28,6 +29,8 @@ export default async function DesignsPage({
     } : {}),
   }
 
+  const { userId } = await auth()
+
   const [entries, brandRows, loopRows] = await Promise.all([
     prisma.entry.findMany({
       where: sort === 'hot'
@@ -53,6 +56,10 @@ export default async function DesignsPage({
       if (Array.isArray(qs) && qs.length > 0) loopQuestionsMap[l.slug] = qs
     } catch {}
   }
+
+  const votedSet = userId
+    ? new Set((await prisma.vote.findMany({ where: { userId } })).map(v => v.entryId))
+    : new Set<string>()
 
   return (
     <main className="page">
@@ -113,6 +120,7 @@ export default async function DesignsPage({
             designerName={entry.designerName}
             imageUrl={entry.imageUrl}
             initialVotes={entry.voteCount}
+            initialVoted={votedSet.has(entry.entryId)}
             competition={entry.competition}
             questions={loopQuestionsMap[entry.competition] ?? getQuestions(entry.competition)}
           />

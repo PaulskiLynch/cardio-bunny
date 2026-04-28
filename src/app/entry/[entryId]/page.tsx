@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { auth } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import { getQuestions, type Question } from '@/lib/questions'
 import VoteClient from './VoteClient'
@@ -24,6 +25,11 @@ export default async function EntryPage({
     try { questions = JSON.parse(loop.questions) } catch {}
   }
   if (questions.length === 0) questions = getQuestions(entry.competition)
+
+  const { userId } = await auth()
+  const existingVote = userId
+    ? await prisma.vote.findUnique({ where: { entryId_userId: { entryId: entry.entryId, userId } } })
+    : null
 
   const backHref = loop ? `/loops/${entry.competition}` : `/${entry.competition}`
 
@@ -52,6 +58,7 @@ export default async function EntryPage({
               entryId={entry.entryId}
               designerName={entry.designerName}
               initialVotes={entry.voteCount}
+              initialVoted={!!existingVote}
               competition={entry.competition}
               questions={questions}
             />

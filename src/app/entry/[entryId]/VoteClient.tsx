@@ -1,21 +1,26 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useUser, useClerk } from '@clerk/nextjs'
 import { type Question } from '@/lib/questions'
 
 interface Props {
   entryId: string
   designerName: string
   initialVotes: number
+  initialVoted: boolean
   competition: string
   questions: Question[]
 }
 
 type Phase = 'idle' | 'feedback' | 'done' | 'share'
 
-export default function VoteClient({ entryId, designerName, initialVotes, competition, questions }: Props) {
+export default function VoteClient({ entryId, designerName, initialVotes, initialVoted, competition, questions }: Props) {
+  const { isSignedIn } = useUser()
+  const { openSignIn } = useClerk()
+
   const [votes, setVotes]         = useState(initialVotes)
-  const [voted, setVoted]         = useState(false)
+  const [voted, setVoted]         = useState(initialVoted)
   const [phase, setPhase]         = useState<Phase>('idle')
   const [currentQ, setCurrentQ]   = useState(0)
   const [answers, setAnswers]     = useState<Record<string, string>>({})
@@ -23,22 +28,18 @@ export default function VoteClient({ entryId, designerName, initialVotes, compet
   const [submitting, setSubmitting] = useState(false)
   const [copied, setCopied]       = useState(false)
 
-  const storageKey  = `voted_${entryId}`
   const feedbackKey = `feedback_${entryId}`
   const shareUrl    = typeof window !== 'undefined' ? window.location.href : ''
 
-  useEffect(() => {
-    if (localStorage.getItem(storageKey)) setVoted(true)
-  }, [storageKey])
-
   async function handleVote() {
+    if (!isSignedIn) { openSignIn(); return }
+
     if (voted) {
       const res = await fetch(`/api/vote/${entryId}`, { method: 'DELETE' })
       if (res.ok) {
         const json = await res.json()
         setVotes(json.voteCount)
         setVoted(false)
-        localStorage.removeItem(storageKey)
       }
       return
     }
@@ -47,7 +48,6 @@ export default function VoteClient({ entryId, designerName, initialVotes, compet
       const json = await res.json()
       setVotes(json.voteCount)
       setVoted(true)
-      localStorage.setItem(storageKey, '1')
       if (questions.length > 0 && !localStorage.getItem(feedbackKey)) {
         setPhase('feedback')
         setCurrentQ(0)
