@@ -122,7 +122,9 @@ export default async function DesignsPage({
       <div className="mini-links">
         <Link href="/">Home</Link>
         <Link href="/help">FAQs & Rules</Link>
-        <Link href="/submit">Enter Now</Link>
+        {competition && (
+          <Link href={`/loops/${competition}/submit`}>Enter Now</Link>
+        )}
       </div>
     </main>
   )
