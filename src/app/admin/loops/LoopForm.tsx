@@ -21,6 +21,7 @@ interface FormQuestion {
 
 export interface LoopInitial {
   id?: string
+  inquiryId?: string
   slug: string
   status: string
   brandName: string
@@ -168,6 +169,7 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
       heroImageUrl,
       brief,
       autoApprove,
+      ...(initial?.inquiryId ? { inquiryId: initial.inquiryId } : {}),
       guidelines: JSON.stringify(guidelines.filter(g => g.trim())),
       prizes: JSON.stringify(prizes.map(({ _id, ...p }) => p)),
       questions: JSON.stringify(

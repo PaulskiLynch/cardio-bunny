@@ -16,8 +16,14 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   if (!await isAdmin()) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   try {
-    const body = await req.json()
-    const loop = await prisma.loop.create({ data: body })
+    const { inquiryId, ...data } = await req.json()
+    const loop = await prisma.loop.create({ data })
+    if (inquiryId) {
+      await prisma.loopInquiry.update({
+        where: { id: inquiryId },
+        data: { status: 'converted' },
+      }).catch(() => {})
+    }
     return NextResponse.json(loop, { status: 201 })
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : 'Failed to create loop'

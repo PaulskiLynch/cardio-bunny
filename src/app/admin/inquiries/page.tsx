@@ -79,7 +79,7 @@ export default async function InquiriesPage() {
 
               <div className="inq-actions">
                 <Link
-                  href={`/admin/loops/new`}
+                  href={`/admin/loops/new?from=${inq.id}`}
                   className="inq-action-btn"
                   style={{ background: '#111', color: '#fff' }}
                 >
