@@ -19,7 +19,9 @@ model DemoRequest {
   email     String
   phone     String?
   message   String
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("demo_requests")
 }
 
 model Loop {
