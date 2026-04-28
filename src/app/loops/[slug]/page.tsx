@@ -40,9 +40,9 @@ export default async function LoopPublicPage({
   let guidelines: string[] = []
   let prizes: PrizeItem[] = []
   let questions: Question[] = []
-  try { guidelines = JSON.parse(loop.guidelines) } catch { /* ignore */ }
-  try { prizes = JSON.parse(loop.prizes) } catch { /* ignore */ }
-  try { questions = JSON.parse(loop.questions) } catch { /* ignore */ }
+  try { const p = JSON.parse(loop.guidelines); if (Array.isArray(p)) guidelines = p.filter((g): g is string => typeof g === 'string') } catch { /* ignore */ }
+  try { const p = JSON.parse(loop.prizes); if (Array.isArray(p)) prizes = p.filter((p): p is PrizeItem => !!p && typeof p.style === 'string' && typeof p.badge === 'string') } catch { /* ignore */ }
+  try { const p = JSON.parse(loop.questions); if (Array.isArray(p)) questions = p.filter((q): q is Question => !!q && typeof q.id === 'string' && typeof q.text === 'string') } catch { /* ignore */ }
 
   const accent = loop.accentColor || '#e8325a'
   const isDemo = loop.status === 'demo'

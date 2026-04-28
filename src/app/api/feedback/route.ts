@@ -19,8 +19,7 @@ export async function POST(req: NextRequest) {
     })
 
     return NextResponse.json({ ok: true })
-  } catch (err) {
-    console.error(err)
+  } catch {
     return NextResponse.json({ error: 'Failed to save feedback' }, { status: 500 })
   }
 }

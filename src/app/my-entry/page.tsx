@@ -44,7 +44,8 @@ export default async function MyEntryPage({
       ? await prisma.entry.findFirst({ where: { contact: userEmail }, orderBy: { createdAt: 'desc' } }).catch(() => null)
       : null
 
-  const voteUrl = entry ? `${process.env.NEXT_PUBLIC_BASE_URL ?? 'https://crowdloops.com'}/entry/${entry.entryId}` : ''
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://crowdloops.com')
+  const voteUrl = entry ? `${baseUrl}/entry/${entry.entryId}` : ''
 
   const cfg = entry ? STATUS_CONFIG[entry.status as keyof typeof STATUS_CONFIG] ?? STATUS_CONFIG.pending : null
 

@@ -27,8 +27,7 @@ export async function POST(req: NextRequest) {
     })
 
     return NextResponse.json({ id: inquiry.id }, { status: 201 })
-  } catch (err: unknown) {
-    console.error(err)
+  } catch {
     return NextResponse.json({ error: 'Submission failed. Please try again.' }, { status: 500 })
   }
 }

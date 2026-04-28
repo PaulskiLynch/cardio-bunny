@@ -40,8 +40,7 @@ export async function POST(req: NextRequest) {
     })
 
     return Response.json({ entryId: entry.entryId }, { status: 201 })
-  } catch (err) {
-    console.error(err)
+  } catch {
     return Response.json({ error: 'Submission failed. Please try again.' }, { status: 500 })
   }
 }

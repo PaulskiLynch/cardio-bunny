@@ -26,6 +26,7 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
   const [votes, setVotes]       = useState(initialVotes)
   const [voted, setVoted]       = useState(initialVoted)
   const [loading, setLoading]   = useState(false)
+  const [voteError, setVoteError] = useState('')
   const [phase, setPhase]       = useState<Phase>('idle')
   const [currentQ, setCurrentQ] = useState(0)
   const [answers, setAnswers]   = useState<Record<string, string>>({})
@@ -45,27 +46,36 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
     }
 
     setLoading(true)
+    setVoteError('')
 
-    if (voted) {
-      const res = await fetch(`/api/vote/${entryId}`, { method: 'DELETE' })
-      if (res.ok) {
-        const json = await res.json()
-        setVotes(json.voteCount)
-        setVoted(false)
-      }
-    } else {
-      const res = await fetch(`/api/vote/${entryId}`, { method: 'POST' })
-      if (res.ok) {
-        const json = await res.json()
-        setVotes(json.voteCount)
-        setVoted(true)
-        if (questions.length > 0 && !localStorage.getItem(feedbackKey)) {
-          setPhase('feedback')
-          setCurrentQ(0)
-          setAnswers({})
-          setTextDraft('')
+    try {
+      if (voted) {
+        const res = await fetch(`/api/vote/${entryId}`, { method: 'DELETE' })
+        if (res.ok) {
+          const json = await res.json()
+          setVotes(json.voteCount)
+          setVoted(false)
+        } else {
+          setVoteError('Could not remove vote — please try again.')
+        }
+      } else {
+        const res = await fetch(`/api/vote/${entryId}`, { method: 'POST' })
+        if (res.ok) {
+          const json = await res.json()
+          setVotes(json.voteCount)
+          setVoted(true)
+          if (questions.length > 0 && !localStorage.getItem(feedbackKey)) {
+            setPhase('feedback')
+            setCurrentQ(0)
+            setAnswers({})
+            setTextDraft('')
+          }
+        } else if (res.status !== 409) {
+          setVoteError('Vote failed — please try again.')
         }
       }
+    } catch {
+      setVoteError('Network error — please check your connection.')
     }
     setLoading(false)
   }
@@ -168,6 +178,7 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
               ✈
             </Link>
           </div>
+          {voteError && <div style={{ fontSize: 11, color: '#c00', marginTop: 4 }}>{voteError}</div>}
           <div className="verified-badge">✓ Verified voting</div>
         </div>
       </article>

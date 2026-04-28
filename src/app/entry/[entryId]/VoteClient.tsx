@@ -21,6 +21,7 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
 
   const [votes, setVotes]         = useState(initialVotes)
   const [voted, setVoted]         = useState(initialVoted)
+  const [voteError, setVoteError] = useState('')
   const [phase, setPhase]         = useState<Phase>('idle')
   const [currentQ, setCurrentQ]   = useState(0)
   const [answers, setAnswers]     = useState<Record<string, string>>({})
@@ -34,28 +35,37 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
   async function handleVote() {
     if (!isSignedIn) { openSignIn({ fallbackRedirectUrl: window.location.href, signUpFallbackRedirectUrl: window.location.href }); return }
 
-    if (voted) {
-      const res = await fetch(`/api/vote/${entryId}`, { method: 'DELETE' })
+    setVoteError('')
+    try {
+      if (voted) {
+        const res = await fetch(`/api/vote/${entryId}`, { method: 'DELETE' })
+        if (res.ok) {
+          const json = await res.json()
+          setVotes(json.voteCount)
+          setVoted(false)
+        } else {
+          setVoteError('Could not remove vote — please try again.')
+        }
+        return
+      }
+      const res = await fetch(`/api/vote/${entryId}`, { method: 'POST' })
       if (res.ok) {
         const json = await res.json()
         setVotes(json.voteCount)
-        setVoted(false)
+        setVoted(true)
+        if (questions.length > 0 && !localStorage.getItem(feedbackKey)) {
+          setPhase('feedback')
+          setCurrentQ(0)
+          setAnswers({})
+          setTextDraft('')
+        } else {
+          setPhase('share')
+        }
+      } else if (res.status !== 409) {
+        setVoteError('Vote failed — please try again.')
       }
-      return
-    }
-    const res = await fetch(`/api/vote/${entryId}`, { method: 'POST' })
-    if (res.ok) {
-      const json = await res.json()
-      setVotes(json.voteCount)
-      setVoted(true)
-      if (questions.length > 0 && !localStorage.getItem(feedbackKey)) {
-        setPhase('feedback')
-        setCurrentQ(0)
-        setAnswers({})
-        setTextDraft('')
-      } else {
-        setPhase('share')
-      }
+    } catch {
+      setVoteError('Network error — please check your connection.')
     }
   }
 
@@ -144,6 +154,7 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
         </button>
       </div>
 
+      {voteError && <div style={{ fontSize: 12, color: '#c00', marginTop: 6 }}>{voteError}</div>}
       <div style={{ textAlign: 'right', fontWeight: 950, fontSize: 18, marginTop: 8 }}>
         {votes.toLocaleString()} Votes
       </div>
