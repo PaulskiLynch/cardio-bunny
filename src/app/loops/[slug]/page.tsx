@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { auth } from '@clerk/nextjs/server'
+import { auth, currentUser } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import VoteCard from '@/components/VoteCard'
 import CountdownTimer from '@/components/CountdownTimer'
@@ -25,7 +25,12 @@ export default async function LoopPublicPage({
   const loop = await prisma.loop.findUnique({ where: { slug } })
   if (!loop) notFound()
 
-  const { userId } = await auth()
+  const [{ userId }, clerkUser] = await Promise.all([auth(), currentUser()])
+  const userEmail = clerkUser?.emailAddresses?.[0]?.emailAddress?.toLowerCase() ?? ''
+
+  let moderatorEmails: string[] = []
+  try { moderatorEmails = JSON.parse(loop.moderatorEmails).map((e: string) => e.toLowerCase()) } catch {}
+  const isModerator = userEmail && moderatorEmails.includes(userEmail)
 
   const entries = await prisma.entry.findMany({
     where: { competition: slug, status: 'approved' },
@@ -54,6 +59,22 @@ export default async function LoopPublicPage({
         <div className="demo-notice">
           ⚠️ DEMO — This is not an active competition. Submissions, votes, and prizes are shown for demonstration purposes only.
         </div>
+      )}
+
+      {isModerator && (
+        <Link
+          href={`/studio/${loop.id}`}
+          style={{
+            display: 'flex', alignItems: 'center', gap: 8,
+            padding: '10px 16px', marginBottom: 8,
+            background: '#f5f5f5', borderRadius: 10,
+            fontSize: 13, fontWeight: 900, textDecoration: 'none', color: '#111',
+          }}
+        >
+          <span>📊</span>
+          <span>Open Studio for this loop</span>
+          <span style={{ marginLeft: 'auto', color: '#aaa' }}>→</span>
+        </Link>
       )}
 
       {/* ── Hero ──────────────────────────────────────────── */}
