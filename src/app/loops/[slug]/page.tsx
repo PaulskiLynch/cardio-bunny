@@ -59,13 +59,13 @@ export default async function LoopPublicPage({
       {/* ── Hero ──────────────────────────────────────────── */}
       <section className="hero" style={{ background: '#111', padding: 0, overflow: 'hidden' }}>
         {loop.heroImageUrl && (
-          <div style={{ position: 'relative', width: '100%', height: 200 }}>
+          <div style={{ position: 'relative', width: '100%' }}>
             <img
               src={loop.heroImageUrl}
               alt=""
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
             />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 80%, #111 100%)' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 75%, #111 100%)' }} />
           </div>
         )}
         <div style={{ padding: '24px 20px 28px' }}>
