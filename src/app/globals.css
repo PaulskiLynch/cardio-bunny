@@ -2504,6 +2504,29 @@ details p, details ul {
   padding: 10px 14px;
   line-height: 1.6;
 }
+.roster-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.roster-profile-card {
+  background: #fff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 18px 16px;
+}
+.roster-real-name {
+  font-size: 13px;
+  color: #555;
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
+.roster-specialty {
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
 
 /* ── Rules at a glance ──────────────────────────────── */
 .rules-list {

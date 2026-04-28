@@ -321,7 +321,7 @@ export default async function LoopPublicPage({
           <Link href={`/designs?competition=${slug}`}>All Entries</Link>
           <Link href="/legal">Rules &amp; Privacy</Link>
           <Link href="/my-entry">Track My Entry</Link>
-          {!isDemo && (
+          {!isDemo && loop.rosterEnabled && (
             <Link href={`/loops/${slug}/partner`}>Agency or Influencer? Join the Roster →</Link>
           )}
         </div>

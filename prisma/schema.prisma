@@ -45,6 +45,7 @@ model Loop {
   autoApprove      Boolean  @default(false) @map("auto_approve")
   pageBg           String   @default("") @map("page_bg")
   moderatorEmails  String   @default("[]") @map("moderator_emails")
+  rosterEnabled    Boolean  @default(true) @map("roster_enabled")
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
 
@@ -104,8 +105,10 @@ model Vote {
 
 model PartnerApplication {
   id           String   @id @default(cuid())
-  competition  String
+  competition  String   @default("")
   handle       String
+  name         String   @default("")
+  specialty    String   @default("")
   role         String
   reach        String
   platform     String

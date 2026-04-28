@@ -26,6 +26,8 @@ const PLATFORM_LABEL: Record<string, string> = {
 export interface RosterApp {
   id: string
   handle: string
+  name: string
+  specialty: string
   role: string
   reach: string
   platform: string
@@ -141,6 +143,8 @@ export default function RosterDeck({ initial, accentColor }: { initial: RosterAp
             )}
 
             <div className="roster-handle">{current.handle}</div>
+            {current.name && <div className="roster-real-name">{current.name}</div>}
+            {current.specialty && <div className="roster-specialty">{current.specialty}</div>}
 
             <div className="roster-badges">
               <span className="roster-badge">{ROLE_LABEL[current.role] ?? current.role}</span>

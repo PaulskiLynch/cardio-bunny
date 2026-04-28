@@ -333,20 +333,33 @@ export default async function StudioPage({
               </span>
             </div>
             <div style={{ fontSize: 13, color: '#888', marginBottom: 16, lineHeight: 1.6 }}>
-              Share this link so creators and agencies can apply:{' '}
-              <a
-                href={`/loops/${loop.slug}/partner`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ fontWeight: 900, textDecoration: 'underline', color: accent }}
-              >
-                crowdloops.com/loops/{loop.slug}/partner ↗
+              {loop.rosterEnabled ? (
+                <>
+                  Share this link so creators and agencies can apply to this loop:{' '}
+                  <a
+                    href={`/loops/${loop.slug}/partner`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontWeight: 900, textDecoration: 'underline', color: accent }}
+                  >
+                    /loops/{loop.slug}/partner ↗
+                  </a>
+                  <br />
+                </>
+              ) : (
+                <span style={{ color: '#c00' }}>Partner applications are disabled for this loop. Enable in Settings → Edit Loop.</span>
+              )}
+              {' '}Browse all talent on the{' '}
+              <a href="/roster" target="_blank" rel="noopener noreferrer" style={{ fontWeight: 900, textDecoration: 'underline', color: accent }}>
+                Global Roster ↗
               </a>
             </div>
             <RosterDeck
               initial={rosterApps.map(a => ({
                 id: a.id,
                 handle: a.handle,
+                name: a.name,
+                specialty: a.specialty,
                 role: a.role,
                 reach: a.reach,
                 platform: a.platform,

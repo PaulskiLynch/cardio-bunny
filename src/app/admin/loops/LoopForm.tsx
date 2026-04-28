@@ -40,6 +40,7 @@ export interface LoopInitial {
   questions: string
   autoApprove: boolean
   moderatorEmails: string
+  rosterEnabled: boolean
 }
 
 function uid() { return Math.random().toString(36).slice(2, 8) }
@@ -69,6 +70,7 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
   const [heroImageUrl, setHeroImageUrl] = useState(initial?.heroImageUrl ?? '')
   const [brief, setBrief]             = useState(initial?.brief ?? '')
   const [autoApprove, setAutoApprove] = useState(initial?.autoApprove ?? false)
+  const [rosterEnabled, setRosterEnabled] = useState(initial?.rosterEnabled ?? true)
   const [moderatorEmailsRaw, setModeratorEmailsRaw] = useState(() => {
     try { return (JSON.parse(initial?.moderatorEmails ?? '[]') as string[]).join('\n') } catch { return '' }
   })
@@ -173,6 +175,7 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
       heroImageUrl,
       brief,
       autoApprove,
+      rosterEnabled,
       moderatorEmails: JSON.stringify(
         moderatorEmailsRaw.split(/[\n,]+/).map(e => e.trim().toLowerCase()).filter(Boolean)
       ),
@@ -474,6 +477,17 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
               style={{ marginRight: 8 }}
             />
             Auto-approve submissions (skip moderation queue)
+          </label>
+        </div>
+        <div className="loop-field">
+          <label>
+            <input
+              type="checkbox"
+              checked={rosterEnabled}
+              onChange={e => setRosterEnabled(e.target.checked)}
+              style={{ marginRight: 8 }}
+            />
+            Allow partner applications (agencies &amp; influencers can apply to this loop)
           </label>
         </div>
         <div className="loop-field">
