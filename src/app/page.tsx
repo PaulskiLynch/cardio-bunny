@@ -76,7 +76,7 @@ export default function CrowdLoopsHome() {
           <Link href="#how-it-works" className="site-nav-link">How It Works</Link>
           <Link href="#examples" className="site-nav-link">Examples</Link>
           <Link href="#trust" className="site-nav-link">Brand Safety</Link>
-          <Link href="/roster" className="site-nav-link">The Roster</Link>
+          <Link href="/roster" className="site-nav-link">Loop Boosters</Link>
           <Link href="/contact" className="site-nav-link site-nav-cta">Book a Demo</Link>
           <Link href="/admin" className="site-nav-link" style={{ color: '#aaa', fontSize: 11 }}>Partner Sign In</Link>
         </div>
@@ -311,17 +311,17 @@ export default function CrowdLoopsHome() {
 
       {/* ── Roster CTA ───────────────────────────────────── */}
       <section className="section" style={{ background: '#111', borderRadius: 16, padding: '32px 24px', textAlign: 'center' }}>
-        <div className="b2b-label" style={{ color: '#aaa' }}>For Creators &amp; Agencies</div>
-        <h2 style={{ color: '#fff', marginBottom: 10 }}>Join the Roster</h2>
+        <div className="b2b-label" style={{ color: '#aaa' }}>Loop Boosters</div>
+        <h2 style={{ color: '#fff', marginBottom: 10 }}>Amplify every competition</h2>
         <div style={{ fontSize: 14, color: '#bbb', lineHeight: 1.6, marginBottom: 24 }}>
-          Are you a creator, influencer, or agency? List yourself once and get discovered by brands running competitions on CrowdLoops. No middlemen — brands reach out directly.
+          Loop Boosters is our network of creators, influencers, and agencies who help drive entries and votes. List yourself once — brands discover you and reach out directly. No middlemen.
         </div>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link className="cta" href="/roster/apply" style={{ background: '#fff', color: '#111', borderColor: '#fff' }}>
-            Join the Roster →
+            Join Loop Boosters →
           </Link>
           <Link className="cta cta-ghost" href="/roster" style={{ borderColor: '#555', color: '#bbb' }}>
-            Browse the Roster
+            Browse the Network
           </Link>
         </div>
       </section>

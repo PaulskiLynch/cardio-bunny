@@ -15,7 +15,7 @@ export default async function RosterPage() {
       <Link className="top-link" href="/">← Home</Link>
 
       <section className="feed-title">
-        <h1>The Roster</h1>
+        <h1>Loop Boosters</h1>
         <div className="subtitle">
           Creators, agencies, and designers available to amplify design competitions.
         </div>
@@ -32,7 +32,7 @@ export default async function RosterPage() {
             borderRadius: 8, textDecoration: 'none',
           }}
         >
-          Join the Roster →
+          Join Loop Boosters →
         </Link>
         <span style={{ fontSize: 12, color: '#aaa' }}>{profiles.length} profile{profiles.length !== 1 ? 's' : ''}</span>
       </div>

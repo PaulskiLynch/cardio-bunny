@@ -2512,7 +2512,7 @@ details p, details ul {
 }
 .roster-public-image {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 2 / 1;
   overflow: hidden;
   background: #f0f0f0;
   display: flex;
