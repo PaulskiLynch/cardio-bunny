@@ -62,20 +62,19 @@ export default async function LoopPublicPage({
   return (
     <main className={`page${dark ? ' page-dark' : ''}`} style={dark ? { background: loop.pageBg } : {}}>
       {isModerator && (
-        <Link
-          href={`/studio/${loop.id}`}
-          style={{
-            display: 'flex', alignItems: 'center', gap: 10,
-            padding: '10px 16px', marginBottom: 8,
-            background: accent + '18',
-            borderLeft: `4px solid ${accent}`,
-            borderRadius: 8,
-            fontSize: 13, fontWeight: 900, textDecoration: 'none', color: accent,
-          }}
-        >
-          <span>📊 Studio</span>
-          <span style={{ marginLeft: 'auto', fontWeight: 400, fontSize: 12, opacity: 0.7 }}>Admin access →</span>
-        </Link>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 8 }}>
+          <Link
+            href={`/studio/${loop.id}`}
+            style={{
+              fontSize: 12, fontWeight: 900, textDecoration: 'none',
+              color: dark ? '#fff' : '#111',
+              opacity: 0.6,
+              letterSpacing: '0.04em',
+            }}
+          >
+            Admin Studio Access →
+          </Link>
+        </div>
       )}
 
       {isDemo && (
