@@ -76,6 +76,7 @@ export default function CrowdLoopsHome() {
           <Link href="#how-it-works" className="site-nav-link">How It Works</Link>
           <Link href="#examples" className="site-nav-link">Examples</Link>
           <Link href="#trust" className="site-nav-link">Brand Safety</Link>
+          <Link href="/roster" className="site-nav-link">The Roster</Link>
           <Link href="/contact" className="site-nav-link site-nav-cta">Book a Demo</Link>
           <Link href="/admin" className="site-nav-link" style={{ color: '#aaa', fontSize: 11 }}>Partner Sign In</Link>
         </div>
@@ -305,6 +306,23 @@ export default function CrowdLoopsHome() {
             <summary>What does the output look like?</summary>
             <p>At the end of a campaign your team receives an exportable demand report: submission list, vote totals, voter feedback breakdowns, notify-me counts, and a ranked shortlist. The report is designed to go straight to a buying or product team for a production decision.</p>
           </details>
+        </div>
+      </section>
+
+      {/* ── Roster CTA ───────────────────────────────────── */}
+      <section className="section" style={{ background: '#111', borderRadius: 16, padding: '32px 24px', textAlign: 'center' }}>
+        <div className="b2b-label" style={{ color: '#aaa' }}>For Creators &amp; Agencies</div>
+        <h2 style={{ color: '#fff', marginBottom: 10 }}>Join the Roster</h2>
+        <div style={{ fontSize: 14, color: '#bbb', lineHeight: 1.6, marginBottom: 24 }}>
+          Are you a creator, influencer, or agency? List yourself once and get discovered by brands running competitions on CrowdLoops. No middlemen — brands reach out directly.
+        </div>
+        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Link className="cta" href="/roster/apply" style={{ background: '#fff', color: '#111', borderColor: '#fff' }}>
+            Join the Roster →
+          </Link>
+          <Link className="cta cta-ghost" href="/roster" style={{ borderColor: '#555', color: '#bbb' }}>
+            Browse the Roster
+          </Link>
         </div>
       </section>
 
