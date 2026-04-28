@@ -2242,6 +2242,35 @@ details p, details ul {
   .dashboard-metrics { grid-template-columns: repeat(4, 1fr); }
 }
 
+/* ── Demo loop grid ─────────────────────────────────── */
+.demo-loop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.demo-loop-card {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1 / 1;
+  padding: 16px;
+}
+
+.demo-loop-category {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 6px;
+}
+
+.demo-loop-output {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.45;
+}
+
 /* ── How it works steps ─────────────────────────────── */
 .how-steps {
   display: flex;

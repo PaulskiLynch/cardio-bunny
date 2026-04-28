@@ -247,35 +247,20 @@ export default function CrowdLoopsHome() {
         <div className="b2b-sub" style={{ marginBottom: 24 }}>
           These are demo competitions showing how CrowdLoops works across fashion, toys, beverages, and lifestyle. Each loop collects a different set of product signals.
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div className="demo-loop-grid">
           {DEMO_LOOPS.map(loop => (
             <Link key={loop.href} href={loop.href} style={{ textDecoration: 'none' }}>
               <div
-                className="event-card"
+                className="event-card demo-loop-card"
                 style={loop.dark ? { background: loop.bg, borderColor: loop.border } : {}}
               >
-                <div className="event-card-title" style={loop.dark ? { color: '#fff' } : {}}>
+                <div className="demo-loop-category" style={loop.dark ? { color: '#aaa' } : {}}>{loop.category}</div>
+                <div className="event-card-title" style={{ fontSize: 15, ...(loop.dark ? { color: '#fff' } : {}) }}>
                   {loop.title} {loop.flag}
                 </div>
-                <div className="demo-card-grid">
-                  <div className="demo-card-row">
-                    <span className="demo-card-label">Category</span>
-                    <span className="demo-card-val" style={loop.dark ? { color: '#ddd' } : {}}>{loop.category}</span>
-                  </div>
-                  <div className="demo-card-row">
-                    <span className="demo-card-label">Audience</span>
-                    <span className="demo-card-val" style={loop.dark ? { color: '#ddd' } : {}}>{loop.audience}</span>
-                  </div>
-                  <div className="demo-card-row">
-                    <span className="demo-card-label">Signal captured</span>
-                    <span className="demo-card-val" style={loop.dark ? { color: '#ddd' } : {}}>{loop.signal}</span>
-                  </div>
-                  <div className="demo-card-row">
-                    <span className="demo-card-label">Output</span>
-                    <span className="demo-card-val" style={loop.dark ? { color: '#ddd' } : {}}>{loop.output}</span>
-                  </div>
-                </div>
-                <div className="event-card-status open" style={{ marginTop: 12 }}>🟡 Demo</div>
+                <div style={{ flex: 1 }} />
+                <div className="demo-loop-output" style={loop.dark ? { color: '#bbb' } : {}}>{loop.output}</div>
+                <div className="event-card-status open" style={{ marginTop: 10 }}>🟡 Demo</div>
               </div>
             </Link>
           ))}
