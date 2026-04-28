@@ -55,12 +55,6 @@ export default async function LoopPublicPage({
 
   return (
     <main className={`page${dark ? ' page-dark' : ''}`} style={dark ? { background: loop.pageBg } : {}}>
-      {isDemo && (
-        <div className="demo-notice">
-          ⚠️ DEMO — This is not an active competition. Submissions, votes, and prizes are shown for demonstration purposes only.
-        </div>
-      )}
-
       {isModerator && (
         <Link
           href={`/studio/${loop.id}`}
@@ -75,6 +69,12 @@ export default async function LoopPublicPage({
           <span>Open Studio for this loop</span>
           <span style={{ marginLeft: 'auto', color: '#aaa' }}>→</span>
         </Link>
+      )}
+
+      {isDemo && (
+        <div className="demo-notice">
+          ⚠️ DEMO — This is not an active competition. Submissions, votes, and prizes are shown for demonstration purposes only.
+        </div>
       )}
 
       {/* ── Hero ──────────────────────────────────────────── */}
