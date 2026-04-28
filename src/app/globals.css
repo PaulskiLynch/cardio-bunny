@@ -2241,3 +2241,100 @@ details p, details ul {
 @media (min-width: 400px) {
   .dashboard-metrics { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* ── How it works steps ─────────────────────────────── */
+.how-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.how-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.how-step-num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 950;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.how-step-body { flex: 1; }
+
+.how-step-title {
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.how-step-desc {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ── Rules at a glance ──────────────────────────────── */
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.rules-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.rules-item:last-child { border-bottom: none; }
+
+.rules-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Verified voting badge ──────────────────────────── */
+.verified-badge {
+  font-size: 10px;
+  font-weight: 900;
+  color: #1a7a1a;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Rank badge ─────────────────────────────────────── */
+.entry-rank-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  background: #c8a400;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 950;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}

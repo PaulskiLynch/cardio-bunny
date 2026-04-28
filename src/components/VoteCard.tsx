@@ -12,11 +12,12 @@ interface Props {
   initialVotes: number
   competition: string
   questions?: Question[]
+  rank?: number
 }
 
 type Phase = 'idle' | 'feedback' | 'done'
 
-export default function VoteCard({ entryId, setName, designerName, imageUrl, initialVotes, competition, questions: questionsProp }: Props) {
+export default function VoteCard({ entryId, setName, designerName, imageUrl, initialVotes, competition, questions: questionsProp, rank }: Props) {
   const [votes, setVotes]       = useState(initialVotes)
   const [voted, setVoted]       = useState(false)
   const [loading, setLoading]   = useState(false)
@@ -132,6 +133,11 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
     <>
       <article className="entry-card">
         <Link href={`/entry/${entryId}`} className="entry-image" style={{ textDecoration: 'none', display: 'block' }}>
+          {rank && rank <= 3 && (
+            <span className="entry-rank-badge" style={{ background: rank === 1 ? '#c8a400' : rank === 2 ? '#888' : '#a05020' }}>
+              #{rank}
+            </span>
+          )}
           <span className="entry-id-badge">ID: {entryId}</span>
           {imageUrl
             ? <img src={imageUrl} alt={setName} />
@@ -160,6 +166,7 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
               ✈
             </Link>
           </div>
+          <div className="verified-badge">✓ Verified voting</div>
         </div>
       </article>
 
