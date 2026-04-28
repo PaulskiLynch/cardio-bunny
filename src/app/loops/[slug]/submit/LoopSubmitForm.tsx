@@ -169,9 +169,18 @@ export default function LoopSubmitForm({ slug, brandName, logoUrl, brief, guidel
                 <div className="stamp-id">ENTRY ID: {confirmed}</div>
               </div>
               <div className="live-text">
-                Your entry has been sent to moderators. Once approved, you&apos;ll get your live link to share for votes.
+                Your entry is in the moderation queue. We&apos;ll review it shortly.
               </div>
-              <button className="copy-button" disabled>LINK AVAILABLE AFTER APPROVAL</button>
+              <a
+                className="copy-button"
+                href={`/my-entry?id=${confirmed}`}
+                style={{ display: 'block', textDecoration: 'none', textAlign: 'center' }}
+              >
+                TRACK YOUR ENTRY →
+              </a>
+              <div style={{ marginTop: 12, fontSize: 12, color: '#aaa' }}>
+                Bookmark that page to check your status and vote count.
+              </div>
             </div>
           </div>
         )}
