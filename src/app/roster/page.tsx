@@ -21,7 +21,7 @@ export default async function RosterPage() {
         </div>
       </section>
 
-      <div style={{ marginBottom: 20 }}>
+      <div style={{ marginBottom: 20, display: 'flex', gap: 12, alignItems: 'center' }}>
         <Link
           href="/roster/apply"
           style={{
@@ -34,6 +34,7 @@ export default async function RosterPage() {
         >
           Join the Roster →
         </Link>
+        <span style={{ fontSize: 12, color: '#aaa' }}>{profiles.length} profile{profiles.length !== 1 ? 's' : ''}</span>
       </div>
 
       <RosterBrowser initial={profiles.map(p => ({
@@ -45,6 +46,7 @@ export default async function RosterPage() {
         reach: p.reach,
         platform: p.platform,
         portfolioUrl: p.portfolioUrl,
+        avatarUrl: p.avatarUrl,
       }))} />
     </main>
   )

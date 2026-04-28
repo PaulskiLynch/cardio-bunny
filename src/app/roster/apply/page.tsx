@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Link from 'next/link'
 
 const ROLES = [
@@ -32,9 +32,28 @@ export default function RosterApplyPage() {
   const [reach, setReach]         = useState('')
   const [platform, setPlatform]   = useState('')
   const [portfolio, setPortfolio] = useState('')
+  const [avatarUrl, setAvatarUrl] = useState('')
+  const [uploading, setUploading] = useState(false)
+  const fileRef = useRef<HTMLInputElement>(null)
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone]           = useState(false)
   const [error, setError]         = useState('')
+
+  async function uploadImage(file: File) {
+    setUploading(true)
+    try {
+      const fd = new FormData()
+      fd.append('file', file)
+      const res = await fetch('/api/upload', { method: 'POST', body: fd })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error)
+      setAvatarUrl(json.url)
+    } catch {
+      setError('Image upload failed — try again.')
+    } finally {
+      setUploading(false)
+    }
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault()
@@ -47,7 +66,7 @@ export default function RosterApplyPage() {
     const res = await fetch('/api/partner-apply', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ competition: '', handle, name, specialty, role, reach, platform, portfolioUrl: portfolio }),
+      body: JSON.stringify({ competition: '', handle, name, specialty, role, reach, platform, portfolioUrl: portfolio, avatarUrl }),
     })
     if (res.ok) {
       setDone(true)
@@ -153,6 +172,37 @@ export default function RosterApplyPage() {
                 <option value="">— Select —</option>
                 {PLATFORMS.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
               </select>
+            </div>
+
+            <div className="form-section">
+              <label className="form-label">
+                Content sample image
+                <span className="hint">One image that shows your style — a post, campaign shot, or portfolio piece</span>
+              </label>
+              <div
+                className="loop-image-picker"
+                onClick={() => fileRef.current?.click()}
+                style={{ cursor: 'pointer' }}
+              >
+                {avatarUrl ? (
+                  <img src={avatarUrl} alt="Sample" style={{ width: '100%', maxHeight: 220, objectFit: 'cover', borderRadius: 8 }} />
+                ) : (
+                  <div className="loop-image-placeholder">
+                    <span className="loop-image-plus">{uploading ? '…' : '+'}</span>
+                    <span>{uploading ? 'Uploading…' : 'Upload image'}</span>
+                  </div>
+                )}
+                <input
+                  ref={fileRef}
+                  type="file"
+                  accept="image/*"
+                  style={{ display: 'none' }}
+                  onChange={e => { const f = e.target.files?.[0]; if (f) uploadImage(f) }}
+                />
+              </div>
+              {avatarUrl && (
+                <button type="button" className="loop-image-remove" onClick={() => setAvatarUrl('')}>Remove image</button>
+              )}
             </div>
 
             <div className="form-section">

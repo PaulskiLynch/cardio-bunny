@@ -113,6 +113,7 @@ model PartnerApplication {
   reach        String
   platform     String
   portfolioUrl String   @default("") @map("portfolio_url")
+  avatarUrl    String   @default("") @map("avatar_url")
   status       String   @default("new")
   createdAt    DateTime @default(now()) @map("created_at")
 
