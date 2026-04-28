@@ -56,7 +56,7 @@ export default async function LoopPublicPage({
             <img
               src={loop.heroImageUrl}
               alt=""
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center bottom', display: 'block' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 30%, #111 100%)' }} />
           </div>
