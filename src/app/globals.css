@@ -761,6 +761,39 @@ details p, details ul {
 }
 
 /* ── Entry story box ─────────────────────────────────── */
+.entry-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 0 14px;
+}
+.entry-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #111;
+  background: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+.entry-nav-btn:hover:not(:disabled) { background: #111; color: #fff; }
+.entry-nav-btn:disabled { opacity: 0.25; cursor: default; }
+.entry-nav-counter {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #888;
+  min-width: 60px;
+  text-align: center;
+}
+.entry-nav-counter span { font-weight: 400; }
+
 .entry-story {
   background: #fff;
   border: 1px solid var(--line);

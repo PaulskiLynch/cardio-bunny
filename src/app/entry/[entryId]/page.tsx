@@ -4,6 +4,7 @@ import { auth } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import { getQuestions, type Question } from '@/lib/questions'
 import VoteClient from './VoteClient'
+import EntryNav from './EntryNav'
 
 export const dynamic = 'force-dynamic'
 
@@ -31,6 +32,17 @@ export default async function EntryPage({
     ? await prisma.vote.findUnique({ where: { entryId_userId: { entryId: entry.entryId, userId } } })
     : null
 
+  const allEntries = await prisma.entry.findMany({
+    where: { competition: entry.competition, status: 'approved' },
+    orderBy: { voteCount: 'desc' },
+    select: { entryId: true },
+  })
+
+  const currentIndex = allEntries.findIndex(e => e.entryId === entryId)
+  const prevId = currentIndex > 0 ? allEntries[currentIndex - 1].entryId : null
+  const nextId = currentIndex < allEntries.length - 1 ? allEntries[currentIndex + 1].entryId : null
+  const total = allEntries.length
+
   const backHref = loop ? `/loops/${entry.competition}` : `/${entry.competition}`
 
   return (
@@ -41,6 +53,15 @@ export default async function EntryPage({
         <h1>Vote for {entry.designerName}.</h1>
         <div className="subtitle">Help this design climb the leaderboard. One tap counts your vote.</div>
       </section>
+
+      {total > 1 && (
+        <EntryNav
+          prevId={prevId}
+          nextId={nextId}
+          current={currentIndex + 1}
+          total={total}
+        />
+      )}
 
       <section className="design-grid">
         <article className="entry-card featured">
@@ -73,7 +94,7 @@ export default async function EntryPage({
 
       <div className="mini-links">
         <Link href={backHref}>View leaderboard</Link>
-        <Link href="/help">FAQs & Rules</Link>
+        <Link href="/help">FAQs &amp; Rules</Link>
       </div>
     </main>
   )
