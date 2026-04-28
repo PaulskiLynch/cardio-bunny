@@ -32,7 +32,7 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
   const shareUrl    = typeof window !== 'undefined' ? window.location.href : ''
 
   async function handleVote() {
-    if (!isSignedIn) { openSignIn({ afterSignInUrl: window.location.href, afterSignUpUrl: window.location.href }); return }
+    if (!isSignedIn) { openSignIn({ fallbackRedirectUrl: window.location.href, signUpFallbackRedirectUrl: window.location.href }); return }
 
     if (voted) {
       const res = await fetch(`/api/vote/${entryId}`, { method: 'DELETE' })
