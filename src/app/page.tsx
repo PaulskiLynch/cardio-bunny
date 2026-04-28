@@ -30,6 +30,7 @@ const DEMO_LOOPS = [
     category: 'Fashion / Activewear',
     desc: 'Design a matching activewear set for the Polish market. The community votes, and the top concept may go into production with a retail partner.',
     dark: false,
+    logo: '/cardio-bunny-logo.png',
   },
   {
     href: '/loops/uk',
@@ -38,6 +39,7 @@ const DEMO_LOOPS = [
     category: 'Fashion / Activewear',
     desc: 'Design a matching activewear set for the UK market. Votes determine the shortlist, and the winning concept may be developed for a UK retail launch.',
     dark: false,
+    logo: '/cardio-bunny-logo.png',
   },
   {
     href: '/loops/konkerz',
@@ -48,6 +50,7 @@ const DEMO_LOOPS = [
     dark: true,
     bg: '#1a0800',
     border: '#8b3a00',
+    logo: '/konkerz-logo.png',
   },
   {
     href: '/loops/swomp',
@@ -58,6 +61,7 @@ const DEMO_LOOPS = [
     dark: true,
     bg: '#0d1a0f',
     border: '#3a6b3d',
+    logo: '/swomp-logo.png',
   },
 ]
 
@@ -252,7 +256,16 @@ export default function CrowdLoopsHome() {
                 </div>
                 <div className="demo-loop-desc" style={loop.dark ? { color: '#bbb' } : {}}>{loop.desc}</div>
                 <div style={{ flex: 1 }} />
-                <div className="event-card-status open" style={{ marginTop: 12 }}>🟡 Demo — view example</div>
+                <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: 12 }}>
+                  <div className="event-card-status open">🟡 Demo — view example</div>
+                  {loop.logo && (
+                    <img
+                      src={loop.logo}
+                      alt=""
+                      style={{ height: 28, maxWidth: 90, objectFit: 'contain', filter: loop.dark ? 'brightness(0) invert(1)' : 'brightness(0)', opacity: 0.75 }}
+                    />
+                  )}
+                </div>
               </div>
             </Link>
           ))}
