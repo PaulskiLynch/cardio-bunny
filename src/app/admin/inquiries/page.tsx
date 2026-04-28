@@ -2,6 +2,7 @@ import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { prisma } from '@/lib/db'
 import { LoginForm } from '../AdminClient'
+import InquiryActions from './InquiryActions'
 
 export const dynamic = 'force-dynamic'
 
@@ -85,6 +86,7 @@ export default async function InquiriesPage() {
                 >
                   + Create Loop
                 </Link>
+                <InquiryActions id={inq.id} status={inq.status} />
                 <span style={{ fontSize: 12, color: '#bbb' }}>ID: {inq.id.slice(-8)}</span>
               </div>
             </div>

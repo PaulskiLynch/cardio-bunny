@@ -24,7 +24,7 @@ const TRUST_ITEMS = [
 
 const DEMO_LOOPS = [
   {
-    href: '/biedronka',
+    href: '/loops/biedronka',
     title: 'Cardio Bunny Poland',
     flag: '🇵🇱',
     category: 'Fashion / Activewear',
@@ -32,7 +32,7 @@ const DEMO_LOOPS = [
     dark: false,
   },
   {
-    href: '/uk',
+    href: '/loops/uk',
     title: 'Cardio Bunny UK',
     flag: '🇬🇧',
     category: 'Fashion / Activewear',
@@ -40,7 +40,7 @@ const DEMO_LOOPS = [
     dark: false,
   },
   {
-    href: '/konkerz',
+    href: '/loops/konkerz',
     title: 'Konkerz',
     flag: '🧸',
     category: 'Toys / Character Design',
@@ -50,7 +50,7 @@ const DEMO_LOOPS = [
     border: '#8b3a00',
   },
   {
-    href: '/swomp',
+    href: '/loops/swomp',
     title: 'SWOMP WATER+',
     flag: '🥤',
     category: 'Beverages / Packaging',

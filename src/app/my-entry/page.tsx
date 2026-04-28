@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { currentUser } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import CopyLink from './CopyLink'
 
@@ -33,9 +34,15 @@ export default async function MyEntryPage({
   const { id = '' } = await searchParams
   const entryId = id.trim().toUpperCase()
 
+  const clerkUser = await currentUser()
+  const userEmail = clerkUser?.emailAddresses?.[0]?.emailAddress ?? ''
+
+  // Auto-find by Clerk email if no ID typed
   const entry = entryId
     ? await prisma.entry.findUnique({ where: { entryId } }).catch(() => null)
-    : null
+    : userEmail
+      ? await prisma.entry.findFirst({ where: { contact: userEmail }, orderBy: { createdAt: 'desc' } }).catch(() => null)
+      : null
 
   const voteUrl = entry ? `${process.env.NEXT_PUBLIC_BASE_URL ?? 'https://crowdloops.com'}/entry/${entry.entryId}` : ''
 
@@ -75,7 +82,14 @@ export default async function MyEntryPage({
           </div>
         </form>
 
-        {/* No result states */}
+        {/* Auto-found via signed-in email */}
+        {!entryId && userEmail && !entry && (
+          <div style={{ padding: '16px', background: '#f5f5f5', borderRadius: 10, fontSize: 14, color: '#555', marginBottom: 8 }}>
+            No entry found for <strong>{userEmail}</strong>. Try entering your Entry ID above.
+          </div>
+        )}
+
+        {/* Manual lookup — no result */}
         {entryId && !entry && (
           <div style={{ padding: '20px', background: '#fff0f0', borderRadius: 10, color: '#c00', fontWeight: 700, fontSize: 14 }}>
             No entry found for <strong>{entryId}</strong>. Check the ID on your confirmation screen.
