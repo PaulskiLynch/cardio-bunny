@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/db'
 import { LoginForm } from '@/app/admin/AdminClient'
 import { StudioEntriesTable, StudioModeration } from './StudioClient'
-import type { Question } from '@/lib/questions'
+import { getQuestions, type Question } from '@/lib/questions'
 
 export const dynamic = 'force-dynamic'
 
@@ -58,6 +58,7 @@ export default async function StudioPage({
 
   let questions: Question[] = []
   try { questions = JSON.parse(loop.questions) } catch { /* ignore */ }
+  if (questions.length === 0) questions = getQuestions(loop.slug)
 
   const grouped: Record<string, Record<string, number>> = {}
   for (const r of feedbackRows) {
@@ -265,8 +266,11 @@ export default async function StudioPage({
                     )}
                     {q.type === 'text' && (
                       <ul className="intel-responses">
-                        {Object.entries(qData).slice(0, 20).map(([answer], i) => (
-                          <li key={i} className="intel-response-item">&ldquo;{answer}&rdquo;</li>
+                        {Object.entries(qData).slice(0, 30).map(([answer, count], i) => (
+                          <li key={i} className="intel-response-item">
+                            &ldquo;{answer}&rdquo;
+                            {count > 1 && <span style={{ marginLeft: 8, fontSize: 11, color: '#aaa', fontWeight: 700 }}>×{count}</span>}
+                          </li>
                         ))}
                       </ul>
                     )}
