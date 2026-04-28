@@ -31,7 +31,7 @@ export default function ContactPage() {
       <div className="portal" style={{ maxWidth: 560, margin: '0 auto' }}>
         <header className="portal-header">
           <div className="brand">CrowdLoops</div>
-          <div className="phase">Book a Demo</div>
+          <div className="phase">Contact Us</div>
         </header>
 
         {done ? (
@@ -76,7 +76,7 @@ export default function ContactPage() {
             <div className="form-section">
               {error && <div style={{ color: '#c00', marginBottom: 12, fontWeight: 700 }}>{error}</div>}
               <button className="submit-button" type="submit" disabled={submitting}>
-                {submitting ? 'SENDING...' : 'REQUEST A DEMO'}
+                {submitting ? 'SENDING...' : 'SEND MESSAGE'}
               </button>
               <div className="button-note">We typically respond within one business day.</div>
             </div>

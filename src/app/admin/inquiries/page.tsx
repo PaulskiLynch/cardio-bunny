@@ -15,9 +15,10 @@ const STATUS_COLORS: Record<string, string> = {
 }
 
 const CAMPAIGN_LABEL: Record<string, string> = {
-  demo:  '🟡 Demo',
-  pilot: '🔵 Pilot',
-  live:  '🟢 Live',
+  contact: '✉️ Contact',
+  demo:    '🟡 Demo',
+  pilot:   '🔵 Pilot',
+  live:    '🟢 Live',
 }
 
 export default async function InquiriesPage() {
