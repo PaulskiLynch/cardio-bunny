@@ -4,6 +4,7 @@ import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 import { LoginForm } from '../AdminClient'
 import DeleteLoopButton from './[id]/edit/DeleteLoopButton'
+import ReconcileButton from './ReconcileButton'
 
 export const dynamic = 'force-dynamic'
 
@@ -33,6 +34,7 @@ export default async function LoopsAdminPage() {
           ← Moderation
         </Link>
         <Link href="/admin/loops/new" className="loop-create-btn">+ New Loop</Link>
+        <ReconcileButton />
       </div>
 
       {loops.length === 0 ? (

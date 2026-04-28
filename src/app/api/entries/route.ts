@@ -1,7 +1,8 @@
 import { NextRequest } from 'next/server'
 import { prisma } from '@/lib/db'
-import { saveImage } from '@/lib/upload'
+import { saveImage, validateEntryImage } from '@/lib/upload'
 import { generateEntryId } from '@/lib/entryId'
+import { notifyNewEntry } from '@/lib/email'
 
 export async function POST(req: NextRequest) {
   try {
@@ -22,9 +23,20 @@ export async function POST(req: NextRequest) {
       return Response.json({ error: 'A design image is required.' }, { status: 400 })
     }
 
+    const imageError = validateEntryImage(image)
+    if (imageError) return Response.json({ error: imageError }, { status: 400 })
+
+    // One entry per email per competition
+    const existing = await prisma.entry.findFirst({ where: { contact, competition } })
+    if (existing) {
+      return Response.json(
+        { error: 'You have already submitted an entry for this competition.' },
+        { status: 409 }
+      )
+    }
+
     const imageUrl = await saveImage(image)
 
-    // Collision-safe entry ID
     let entryId = generateEntryId()
     let attempt = 0
     while (await prisma.entry.findUnique({ where: { entryId } })) {
@@ -38,6 +50,10 @@ export async function POST(req: NextRequest) {
     const entry = await prisma.entry.create({
       data: { entryId, designerName, contact, setName, hook, imageUrl, competition, status },
     })
+
+    if (status === 'pending') {
+      await notifyNewEntry({ entryId: entry.entryId, designerName, competition, setName })
+    }
 
     return Response.json({ entryId: entry.entryId }, { status: 201 })
   } catch {
