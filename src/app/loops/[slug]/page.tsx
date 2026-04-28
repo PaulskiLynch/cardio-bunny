@@ -65,7 +65,7 @@ export default async function LoopPublicPage({
               alt=""
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
             />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 65%, #111 100%)' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 80%, #111 100%)' }} />
           </div>
         )}
         <div style={{ padding: '24px 20px 28px' }}>
