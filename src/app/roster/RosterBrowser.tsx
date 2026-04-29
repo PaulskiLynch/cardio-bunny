@@ -152,8 +152,16 @@ export default function RosterBrowser({ initial }: { initial: Profile[] }) {
                   }
                 </div>
                 <div className="roster-list-body">
-                  <div className="roster-handle" style={{ fontSize: 15, marginBottom: 2 }}>{p.handle}</div>
-                  {p.name && <div className="roster-real-name">{p.name}</div>}
+                  <div className="roster-handle" style={{ fontSize: 15, marginBottom: 2 }}>
+                    {p.name || p.handle}
+                  </div>
+                  {(() => {
+                    if (!p.name) return null
+                    const ch = p.handle.replace('@','').toLowerCase().replace(/[^a-z0-9]/g,'')
+                    const cn = p.name.toLowerCase().replace(/[^a-z0-9]/g,'')
+                    if (ch.includes(cn) || cn.includes(ch)) return null
+                    return <div className="roster-real-name">{p.handle}</div>
+                  })()}
                   {p.specialty && <div className="roster-specialty" style={{ marginBottom: 6 }}>{p.specialty}</div>}
                   {statParts.length > 0 && (
                     <div className="roster-stat-line">{statParts.join(' · ')}</div>

@@ -24,6 +24,9 @@ export default async function RosterPage() {
         <div className="subtitle">
           Creators, agencies, and PR partners available to amplify design competitions.
         </div>
+        <div className="roster-vetted-badge">
+          ✓ Every Booster is reviewed by CrowdLoops before joining
+        </div>
       </section>
 
       {/* CTAs */}
