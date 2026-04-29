@@ -55,10 +55,10 @@ export default function BrandDashboard({ loop, stats: initialStats }: { loop: Lo
   const [loading, setLoading]           = useState(false)
   const [exporting, setExporting]       = useState(false)
 
-  const loadEntries = useCallback(async (status: StatusFilter, p: number) => {
+  const loadEntries = useCallback(async (status: StatusFilter, p: number, sort = 'createdAt') => {
     setLoading(true)
     try {
-      const res  = await fetch(`/api/brand/${loop.id}/entries?status=${status}&page=${p}`)
+      const res  = await fetch(`/api/brand/${loop.id}/entries?status=${status}&page=${p}&sort=${sort}`)
       const data = await res.json()
       setEntries(prev => p === 1 ? data.entries : [...prev, ...data.entries])
       setHasMore(data.hasMore)
@@ -68,10 +68,12 @@ export default function BrandDashboard({ loop, stats: initialStats }: { loop: Lo
   }, [loop.id])
 
   useEffect(() => {
-    if (tab === 'entries' || tab === 'leaderboard') {
-      const s = tab === 'leaderboard' ? 'all' : statusFilter
+    if (tab === 'entries') {
       setPage(1)
-      loadEntries(s, 1)
+      loadEntries(statusFilter, 1)
+    } else if (tab === 'leaderboard') {
+      setPage(1)
+      loadEntries('approved', 1, 'votes')
     }
   }, [tab, statusFilter, loadEntries])
 
@@ -303,7 +305,7 @@ export default function BrandDashboard({ loop, stats: initialStats }: { loop: Lo
             <div className="brand-empty">No approved entries yet.</div>
           ) : (
             <div className="brand-leaderboard">
-              {entries.filter(e => e.status === 'approved').map((e, i) => (
+              {entries.map((e, i) => (
                 <div key={e.id} className="brand-lb-row">
                   <div className="brand-lb-rank">#{i + 1}</div>
                   {e.imageUrl && (
