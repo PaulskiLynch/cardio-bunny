@@ -40,6 +40,7 @@ export interface LoopInitial {
   questions: string
   autoApprove: boolean
   moderatorEmails: string
+  ownerEmail: string
   rosterEnabled: boolean
 }
 
@@ -69,7 +70,8 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
   const [logoUrl, setLogoUrl]         = useState(initial?.logoUrl ?? '')
   const [heroImageUrl, setHeroImageUrl] = useState(initial?.heroImageUrl ?? '')
   const [brief, setBrief]             = useState(initial?.brief ?? '')
-  const [autoApprove, setAutoApprove] = useState(initial?.autoApprove ?? false)
+  const [autoApprove, setAutoApprove]     = useState(initial?.autoApprove ?? false)
+  const [ownerEmail, setOwnerEmail]       = useState(initial?.ownerEmail ?? '')
   const [rosterEnabled, setRosterEnabled] = useState(initial?.rosterEnabled ?? true)
   const [moderatorEmailsRaw, setModeratorEmailsRaw] = useState(() => {
     try { return (JSON.parse(initial?.moderatorEmails ?? '[]') as string[]).join('\n') } catch { return '' }
@@ -175,6 +177,7 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
       heroImageUrl,
       brief,
       autoApprove,
+      ownerEmail: ownerEmail.trim().toLowerCase(),
       rosterEnabled,
       moderatorEmails: JSON.stringify(
         moderatorEmailsRaw.split(/[\n,]+/).map(e => e.trim().toLowerCase()).filter(Boolean)
@@ -489,6 +492,18 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
             />
             Allow partner applications (agencies &amp; influencers can apply to this loop)
           </label>
+        </div>
+        <div className="loop-field">
+          <label>
+            Brand Owner Email
+            <span className="loop-hint">This email gets access to the Brand Portal at /brand</span>
+          </label>
+          <input
+            value={ownerEmail}
+            onChange={e => setOwnerEmail(e.target.value)}
+            placeholder="brand@company.com"
+            type="email"
+          />
         </div>
         <div className="loop-field">
           <label>

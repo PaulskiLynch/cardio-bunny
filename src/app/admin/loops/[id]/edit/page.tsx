@@ -43,6 +43,7 @@ export default async function EditLoopPage({
     questions: loop.questions,
     autoApprove: loop.autoApprove,
     moderatorEmails: loop.moderatorEmails,
+    ownerEmail: loop.ownerEmail,
     rosterEnabled: loop.rosterEnabled,
   }
 

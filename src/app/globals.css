@@ -2712,6 +2712,332 @@ details p, details ul {
   line-height: 1.5;
 }
 
+/* ── Brand Portal ───────────────────────────────────── */
+.brand-portal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0 12px;
+  border-bottom: 1.5px solid #e8e8e8;
+  margin-bottom: 16px;
+}
+.brand-portal-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+.brand-portal-name {
+  font-size: 18px;
+  font-weight: 950;
+  letter-spacing: -0.03em;
+}
+.brand-portal-partner {
+  font-size: 12px;
+  color: #888;
+  font-weight: 700;
+}
+.brand-portal-status {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+}
+.brand-tab-bar {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #e8e8e8;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.brand-tab-bar::-webkit-scrollbar { display: none; }
+.brand-tab {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 900;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  background: none;
+  cursor: pointer;
+  color: #888;
+  white-space: nowrap;
+  margin-bottom: -2px;
+  position: relative;
+}
+.brand-tab.active {
+  color: #111;
+  border-bottom-color: currentColor;
+}
+.brand-tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e8325a;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.brand-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.brand-stat-card {
+  background: #fff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 14px;
+  padding: 16px 14px;
+}
+.brand-stat-value {
+  font-size: 28px;
+  font-weight: 950;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.brand-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.brand-quick-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.brand-quick-link {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 10px 16px;
+  background: #f4f4f4;
+  color: #111;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+}
+.brand-insight-box {
+  background: #111;
+  color: #fff;
+  border-radius: 14px;
+  padding: 20px 18px;
+  margin-bottom: 20px;
+}
+.brand-insight-title {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+.brand-insight-body {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.brand-insight-sub {
+  font-size: 12px;
+  font-style: italic;
+  color: #888;
+}
+.brand-filter-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.brand-filter-pill {
+  font-size: 12px;
+  font-weight: 900;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1.5px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  color: #555;
+}
+.brand-entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.brand-entry-item {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 12px;
+  align-items: flex-start;
+}
+.brand-entry-img {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+.brand-entry-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.brand-entry-body {
+  flex: 1;
+  min-width: 0;
+}
+.brand-entry-name {
+  font-size: 14px;
+  font-weight: 900;
+  margin-bottom: 2px;
+}
+.brand-entry-designer {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+}
+.brand-entry-hook {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.brand-entry-meta {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+}
+.brand-entry-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.brand-approve-btn {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.brand-reject-btn {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: 1.5px solid #ddd;
+  background: #fff;
+  color: #888;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.brand-load-more {
+  width: 100%;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 900;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.brand-loading { text-align: center; padding: 32px 0; color: #888; font-weight: 700; }
+.brand-empty   { text-align: center; padding: 32px 0; color: #888; font-weight: 700; }
+.brand-leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.brand-lb-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.brand-lb-rank {
+  font-size: 13px;
+  font-weight: 900;
+  color: #aaa;
+  min-width: 28px;
+}
+.brand-lb-img {
+  width: 40px; height: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #f0f0f0;
+  flex-shrink: 0;
+}
+.brand-lb-img img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.brand-lb-info { flex: 1; min-width: 0; }
+.brand-lb-name { font-size: 13px; font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand-lb-designer { font-size: 11px; color: #888; }
+.brand-lb-votes { text-align: right; flex-shrink: 0; }
+.brand-lb-vote-count { font-size: 18px; font-weight: 950; letter-spacing: -0.03em; }
+.brand-lb-vote-label { font-size: 10px; color: #aaa; font-weight: 700; }
+.brand-export-panel {
+  background: #fff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 28px 20px;
+  text-align: center;
+}
+.brand-export-title {
+  font-size: 18px;
+  font-weight: 950;
+  margin-bottom: 10px;
+}
+.brand-export-body {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.brand-export-btn {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 900;
+  padding: 12px 28px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.brand-export-note {
+  font-size: 12px;
+  color: #aaa;
+}
+
 /* ── Referral share block ───────────────────────────── */
 .referral-block {
   background: #f7fbf7;

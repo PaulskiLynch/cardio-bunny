@@ -53,6 +53,7 @@ export default async function NewLoopPage({
         questions: '[]',
         autoApprove: false,
         moderatorEmails: '[]',
+        ownerEmail: '',
         rosterEnabled: true,
         inquiryId: inquiry.id,
       }
