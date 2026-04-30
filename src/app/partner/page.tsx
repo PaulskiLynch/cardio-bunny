@@ -26,7 +26,7 @@ const PRIZES = [
 
 const BENEFITS = [
   { label: 'Viral PR',               desc: 'A positive story: you help discover the next generation of design talent.' },
-  { label: 'Consumer intelligence',  desc: 'Before your next season is produced, you\'ll know what price, colour, and style customers actually want.' },
+  { label: 'Consumer intelligence',  desc: 'Ask any question you want. Price, colour, sizing, occasions, features - real market data from real customers, before you commit to production.' },
   { label: 'Low risk',               desc: 'You don\'t commit to anything until you see the data and the designs.' },
   { label: 'Ready-made collection',  desc: 'A customer-validated activewear line - with a story behind every piece.' },
 ]
