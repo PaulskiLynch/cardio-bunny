@@ -18,7 +18,7 @@ const HOW_IT_WORKS = [
 ]
 
 const PRIZES = [
-  { label: '£5,000',            detail: 'Cash' },
+  { label: '£2,000',            detail: 'Cash' },
   { label: 'Production',        detail: 'Their design made real - sold with our retail partner' },
   { label: 'Miami photoshoot',  detail: 'Professional shoot of the outfit' },
   { label: 'Global showrooms',  detail: 'Their name and design displayed in NY, Miami, Montreal, Warsaw, India, China, Dubai' },
@@ -27,7 +27,7 @@ const PRIZES = [
 const BENEFITS = [
   { label: 'Viral PR',               desc: 'A positive story: you help discover the next generation of design talent.' },
   { label: 'Consumer intelligence',  desc: 'Ask any question you want. Price, colour, sizing, occasions, features - real market data from real customers, before you commit to production.' },
-  { label: 'Low risk',               desc: 'You don\'t commit to anything until you see the data and the designs.' },
+  { label: 'Low risk',               desc: 'You only commit to the winning design - hand-picked and curated by Cardio Bunny before it reaches you. You see the data, the designs, and the demand signals before saying yes.' },
   { label: 'Ready-made collection',  desc: 'A customer-validated activewear line - with a story behind every piece.' },
 ]
 
@@ -113,14 +113,13 @@ export default function PitchPage() {
         {/* Stats box */}
         <div style={{ background: '#f8f8f8', borderLeft: `4px solid ${PINK}`, borderRadius: 12, padding: '24px 28px', margin: '36px 0' }}>
           <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#888', marginBottom: 14 }}>
-            One number to know
+            The reach
           </div>
-          <div style={{ marginBottom: 10 }}>
-            <span style={{ fontSize: 28, fontWeight: 800, color: PINK, marginRight: 32 }}>1,400 submissions</span>
-            <span style={{ fontSize: 28, fontWeight: 800, color: PINK }}>12,000 votes</span>
+          <div style={{ fontSize: 28, fontWeight: 800, color: PINK, lineHeight: 1.2, marginBottom: 12 }}>
+            200,000 design-conscious young women
           </div>
           <div style={{ fontSize: 14, color: '#555' }}>
-            A full demand dashboard - from our last activewear competition in Poland.
+            Cardio Bunny will run a dedicated social media competition campaign targeting 200k design-conscious young women - generating submissions, votes, and real purchase-intent data for your brand.
           </div>
         </div>
 
