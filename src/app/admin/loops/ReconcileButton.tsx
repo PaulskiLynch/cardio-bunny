@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 
@@ -11,7 +11,7 @@ export default function ReconcileButton() {
     setResult('')
     const res = await fetch('/api/admin/reconcile-votes', { method: 'POST' })
     const json = await res.json()
-    setResult(`Checked ${json.checked} entries — ${json.fixed} corrected.`)
+    setResult(`Checked ${json.checked} entries - ${json.fixed} corrected.`)
     setBusy(false)
   }
 

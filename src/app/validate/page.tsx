@@ -1,9 +1,8 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import StickyBar from './StickyBar'
-import './mkt.css'
 
 export const metadata = {
-  title: 'CrowdLoops — Validate Products Before You Produce Them',
+  title: 'CrowdLoops - Validate Products Before You Produce Them',
   description: 'Launch a branded design competition. Get real consumer demand data. Then produce what the data proves will sell.',
 }
 
@@ -11,19 +10,19 @@ const USPS = [
   {
     num: '01',
     headline: 'Anyone can enter. AI, sketch, or photo.',
-    body: 'No design degree required. No expensive software. A teenager in Warsaw, a designer in Seoul, a parent in Texas — anyone with a phone and an idea can submit. AI-assisted concepts are welcome. Hand-drawn sketches are welcome. The best idea wins, not the best technical skills.',
-    benefit: 'Larger, more diverse entry pool. Better signals for your category — whether that is handbags, headphones, or hamster cages.',
+    body: 'No design degree required. No expensive software. A teenager in Warsaw, a designer in Seoul, a parent in Texas - anyone with a phone and an idea can submit. AI-assisted concepts are welcome. Hand-drawn sketches are welcome. The best idea wins, not the best technical skills.',
+    benefit: 'Larger, more diverse entry pool. Better signals for your category - whether that is handbags, headphones, or hamster cages.',
   },
   {
     num: '02',
     headline: 'Every entrant becomes a marketer. Every voter shares the loop.',
-    body: 'Traditional marketing: you pay to reach people. Community influencing: entrants share to win. Their friends vote. Their friends enter. The loop repeats — for free. One campaign generates organic reach that paid media cannot match.',
+    body: 'Traditional marketing: you pay to reach people. Community influencing: entrants share to win. Their friends vote. Their friends enter. The loop repeats - for free. One campaign generates organic reach that paid media cannot match.',
     benefit: 'Lower customer acquisition cost. Higher engagement. Built-in virality. Works for every category because people love showing off what they made.',
   },
   {
     num: '03',
-    headline: 'See what sells — before you make a single unit.',
-    body: 'Every competition generates a live dashboard. Submission volume. Verified voter demographics. Notify-me signups (purchase intent). Top style signals. Export a report for your buying team. Then decide what to produce — backed by data, not gut feeling.',
+    headline: 'See what sells - before you make a single unit.',
+    body: 'Every competition generates a live dashboard. Submission volume. Verified voter demographics. Notify-me signups (purchase intent). Top style signals. Export a report for your buying team. Then decide what to produce - backed by data, not gut feeling.',
     benefit: 'Reduce write-offs. Stop overproducing losers. Double down on winners. Toys that kids actually want. Beauty shades that customers crave. Electronics features users ask for.',
     callout: true,
   },
@@ -37,7 +36,7 @@ const USPS = [
   {
     num: '05',
     headline: 'Built for procurement, legal, and brand teams.',
-    body: 'Pre-moderation. Verified voting. IP and rights workflows. GDPR-friendly data capture. Country-specific eligibility rules. Private or invite-only options. Every control your legal and compliance teams require — built in, not bolted on.',
+    body: 'Pre-moderation. Verified voting. IP and rights workflows. GDPR-friendly data capture. Country-specific eligibility rules. Private or invite-only options. Every control your legal and compliance teams require - built in, not bolted on.',
     benefit: 'Launch without fear. Your brand stays safe. Your team stays happy. Toys need safety compliance? Configured. Beauty needs ingredient disclaimers? Configured. Alcohol needs age gating? Configured.',
   },
 ]
@@ -50,10 +49,10 @@ const CATEGORIES = [
 ]
 
 const FAQ = [
-  { q: 'Can we run a competition for toys?',    a: 'Yes. Character design, playset concepts, packaging — whatever you need. Age-gating and safety compliance built in.' },
+  { q: 'Can we run a competition for toys?',    a: 'Yes. Character design, playset concepts, packaging - whatever you need. Age-gating and safety compliance built in.' },
   { q: 'What about beauty?',                    a: 'Shade names, formula concepts, packaging design. Ingredient disclaimers and regional compliance supported.' },
   { q: 'Electronics?',                          a: 'Feature suggestions, industrial design concepts, accessory ideas. Works for hardware and soft goods.' },
-  { q: 'Home goods?',                           a: 'Furniture, decor, kitchenware — sketches, renders, or photos. Community votes on style and functionality.' },
+  { q: 'Home goods?',                           a: 'Furniture, decor, kitchenware - sketches, renders, or photos. Community votes on style and functionality.' },
   { q: 'Pet products?',                         a: 'Absolutely. Toys, beds, accessories, treats packaging. Pet owners love designing for their animals.' },
   { q: 'Beverages?',                            a: 'Flavour concepts, can or bottle design, limited edition branding. Age verification for alcohol categories available.' },
   { q: 'Sporting goods?',                       a: 'Apparel, equipment, accessories. Works for team sports, outdoor, fitness, and active lifestyle.' },
@@ -101,19 +100,19 @@ export default function ValidatePage() {
         <div className="mkt-pain-list">
           <div className="mkt-pain-item">
             <span className="mkt-pain-x">❌</span>
-            <span>You guess what will sell — then pray. No real data until it&apos;s on the shelf.</span>
+            <span>You guess what will sell - then pray. No real data until it&apos;s on the shelf.</span>
           </div>
           <div className="mkt-pain-item">
             <span className="mkt-pain-x">❌</span>
-            <span>You waste budget on marketing — that hopes to create demand after production.</span>
+            <span>You waste budget on marketing - that hopes to create demand after production.</span>
           </div>
           <div className="mkt-pain-item">
             <span className="mkt-pain-x">❌</span>
-            <span>You compete with brands who validate products in weeks — while you&apos;re still in internal review.</span>
+            <span>You compete with brands who validate products in weeks - while you&apos;re still in internal review.</span>
           </div>
         </div>
         <p className="mkt-problem-close">
-          There is a better way. Ask your customers what they want — before you cut a single unit.
+          There is a better way. Ask your customers what they want - before you cut a single unit.
           Doesn&apos;t matter if it is activewear, energy drinks, or dog beds.
         </p>
       </section>
@@ -122,7 +121,7 @@ export default function ValidatePage() {
       <section className="mkt-solution">
         <div className="mkt-solution-inner">
           <div className="mkt-label">The Solution</div>
-          <h2 className="mkt-h2">CrowdLoops lets you validate products with your customers — at scale, in weeks, for a fraction of traditional R&D.</h2>
+          <h2 className="mkt-h2">CrowdLoops lets you validate products with your customers - at scale, in weeks, for a fraction of traditional R&D.</h2>
           <p className="mkt-solution-sub">
             Launch a branded competition. Your audience submits designs. Their communities vote. Your buying team gets a demand dashboard.
             Then you produce what won. Toys. Beauty. Electronics. Home. Beverages. Pet. Sporting goods. Anything.
@@ -197,15 +196,15 @@ export default function ValidatePage() {
       <section className="mkt-proof">
         <div className="mkt-label">Trusted by teams preparing to launch</div>
         <p className="mkt-proof-text">
-          Piloting with leading retailers across fashion, toys, beverages, beauty, electronics, home goods, and pet products — in the UK, Poland, Germany, and Ireland.
+          Piloting with leading retailers across fashion, toys, beverages, beauty, electronics, home goods, and pet products - in the UK, Poland, Germany, and Ireland.
         </p>
         <blockquote className="mkt-quote">
           <p>
             &ldquo;We ran a CrowdLoops competition instead of our usual focus group. 1,400 submissions, 12k votes,
-            and 3,800 customers told us exactly what they wanted. That data saved us a $200k production mistake —
+            and 3,800 customers told us exactly what they wanted. That data saved us a $200k production mistake -
             and we are not even in fashion. We are in pet accessories.&rdquo;
           </p>
-          <cite>— Head of Product, European pet retailer (pilot partner)</cite>
+          <cite>- Head of Product, European pet retailer (pilot partner)</cite>
         </blockquote>
       </section>
 
@@ -224,7 +223,7 @@ export default function ValidatePage() {
             ['Cost of a mistake',                     '£100k–£500k+',                   '£5k–£15k per campaign'],
             ['Customer data before production',       'None (focus groups at best)',     '1,000+ votes, notify-me signals'],
             ['Marketing budget to launch',            '£50k–£200k',                     'Built-in virality'],
-            ['Works across categories',               'No — new process every time',    'Yes — one platform, any product'],
+            ['Works across categories',               'No - new process every time',    'Yes - one platform, any product'],
           ].map(([row, old, nw]) => (
             <div key={row} className="mkt-roi-row">
               <div className="mkt-roi-label">{row}</div>
@@ -234,7 +233,7 @@ export default function ValidatePage() {
           ))}
         </div>
         <p className="mkt-roi-close">
-          CrowdLoops does not just save you money. It helps you make products people actually want — in any category.
+          CrowdLoops does not just save you money. It helps you make products people actually want - in any category.
         </p>
       </section>
 
@@ -246,11 +245,11 @@ export default function ValidatePage() {
           {[
             {
               n: '1', title: 'Launch',
-              body: 'Deploy a branded competition portal on your domain in around 48 hours. Your logo. Your colours. Your rules. Configure for your category — beauty, toys, electronics, anything.',
+              body: 'Deploy a branded competition portal on your domain in around 48 hours. Your logo. Your colours. Your rules. Configure for your category - beauty, toys, electronics, anything.',
             },
             {
               n: '2', title: 'Validate',
-              body: 'Your audience submits designs. Verified voters rank them. The dashboard captures every signal — votes, demographics, purchase intent, style preferences. Category-specific signals too.',
+              body: 'Your audience submits designs. Verified voters rank them. The dashboard captures every signal - votes, demographics, purchase intent, style preferences. Category-specific signals too.',
             },
             {
               n: '3', title: 'Decide',
@@ -281,7 +280,7 @@ export default function ValidatePage() {
           ))}
         </div>
         <p className="mkt-faq-close">
-          If you can ask &ldquo;what should we make next?&rdquo; — CrowdLoops can validate the answer. Any category.
+          If you can ask &ldquo;what should we make next?&rdquo; - CrowdLoops can validate the answer. Any category.
         </p>
       </section>
 
@@ -297,7 +296,7 @@ export default function ValidatePage() {
           <Link href="/contact" className="mkt-btn-ghost">Or submit a competition brief →</Link>
         </div>
         <p className="mkt-final-small">
-          No pressure. No pitch for services you do not need. Just a walkthrough of how CrowdLoops works —
+          No pressure. No pitch for services you do not need. Just a walkthrough of how CrowdLoops works -
           for fashion, toys, beauty, electronics, home goods, beverages, pet products, and everything else.
         </p>
       </section>

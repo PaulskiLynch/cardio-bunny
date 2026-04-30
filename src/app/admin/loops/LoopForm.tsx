@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
@@ -508,7 +508,7 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
         <div className="loop-field">
           <label>
             Studio Moderators
-            <span className="loop-hint">One email per line — they get read-only studio access for this loop</span>
+            <span className="loop-hint">One email per line - they get read-only studio access for this loop</span>
           </label>
           <textarea
             value={moderatorEmailsRaw}

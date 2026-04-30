@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+﻿import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
@@ -16,7 +16,7 @@ const DEMOS = [
     retailPartner: 'Biedronka',
     market: 'pl',
     heroTitle: 'Twój Projekt. Zrealizowany.',
-    heroSubhead: 'Bez doświadczenia. Użyj AI, narysuj szkic lub zrób zdjęcie. Jeśli społeczność to pokocha — zrobimy to.',
+    heroSubhead: 'Bez doświadczenia. Użyj AI, narysuj szkic lub zrób zdjęcie. Jeśli społeczność to pokocha - zrobimy to.',
     ctaText: 'ZAPISZ SIĘ NA POWIADOMIENIA',
     deadline: '2026-05-31',
     accentColor: '#e8325a',
@@ -27,11 +27,11 @@ const DEMOS = [
     guidelines: JSON.stringify([
       'Prześlij projekt jako JPG, PNG lub PDF.',
       'Projekt musi zawierać komplet: top + legginsy.',
-      'Wszelkie style są akceptowane — od minimalistycznego po śmiały.',
+      'Wszelkie style są akceptowane - od minimalistycznego po śmiały.',
       'Dołącz krótki opis inspiracji (maks. 100 słów).',
     ]),
     prizes: JSON.stringify([
-      { style: 'top', badge: 'TOP 10', cash: '', description: 'Przykład — top 10 projektów może zostać wyróżnionych przez markę i partnerów detalicznych.' },
+      { style: 'top', badge: 'TOP 10', cash: '', description: 'Przykład - top 10 projektów może zostać wyróżnionych przez markę i partnerów detalicznych.' },
       { style: 'grand', badge: '🏆 Zwycięzca Główny', cash: '10 000 PLN', description: 'Sprzedaż ogólnopolska przez partnera detalicznego, globalna ekspozycja w kanałach marki, profil w mediach branżowych i profesjonalna sesja zdjęciowa zwycięskiego projektu.' },
     ]),
     questions: JSON.stringify([
@@ -59,13 +59,13 @@ const DEMOS = [
     guidelines: JSON.stringify([
       'Submit as JPG, PNG, or PDF.',
       'Design must include a matching top and leggings set.',
-      'All styles welcome — minimalist to bold.',
+      'All styles welcome - minimalist to bold.',
       'Include a short description of your inspiration (max 100 words).',
     ]),
     prizes: JSON.stringify([
-      { style: 'top', badge: 'TOP 10', cash: '', description: 'Example — top 10 designs may be featured by the brand and retail partner.' },
+      { style: 'top', badge: 'TOP 10', cash: '', description: 'Example - top 10 designs may be featured by the brand and retail partner.' },
       { style: 'grand', badge: '🏆 Grand Winner', cash: '£2,000', description: 'Global exposure across brand channels worldwide, press feature in fashion and lifestyle media, and a professional photo shoot of the winning design.' },
-      { style: 'special', badge: '🛍 Retail Partner', cash: '', description: 'Example — the winning design may be sold through a national UK retail partner. Partner TBA.' },
+      { style: 'special', badge: '🛍 Retail Partner', cash: '', description: 'Example - the winning design may be sold through a national UK retail partner. Partner TBA.' },
     ]),
     questions: JSON.stringify([
       { id: 'buy', text: 'Would you buy this set in a store?', type: 'yes_no', required: true },
@@ -92,13 +92,13 @@ const DEMOS = [
     guidelines: JSON.stringify([
       'JPG, PNG veya PDF olarak gönder.',
       'Tasarım eşleşen top ve tayt içermelidir.',
-      'Tüm stiller kabul edilir — minimalistten cesura.',
+      'Tüm stiller kabul edilir - minimalistten cesura.',
       'İlhamının kısa bir açıklamasını ekle (maks. 100 kelime).',
     ]),
     prizes: JSON.stringify([
-      { style: 'top', badge: 'İLK 10', cash: '', description: 'Örnek — ilk 10 tasarım marka ve perakende ortağı tarafından öne çıkarılabilir.' },
+      { style: 'top', badge: 'İLK 10', cash: '', description: 'Örnek - ilk 10 tasarım marka ve perakende ortağı tarafından öne çıkarılabilir.' },
       { style: 'grand', badge: '🏆 Büyük Kazanan', cash: '~125.000 TRY', description: 'Marka kanallarında küresel sergileme, moda medyasında basın haberi ve kazanan tasarım için profesyonel fotoğraf çekimi.' },
-      { style: 'special', badge: '🛍 Perakende Ortağı', cash: '', description: 'Örnek — kazanan tasarım ulusal bir perakende ortağı aracılığıyla satılabilir. Ortak duyurusu yakında.' },
+      { style: 'special', badge: '🛍 Perakende Ortağı', cash: '', description: 'Örnek - kazanan tasarım ulusal bir perakende ortağı aracılığıyla satılabilir. Ortak duyurusu yakında.' },
     ]),
     questions: JSON.stringify([
       { id: 'buy', text: 'Bu seti bir mağazada satın alır mıydın?', type: 'yes_no', required: true },
@@ -125,7 +125,7 @@ const DEMOS = [
     guidelines: JSON.stringify([
       'Submit your character design as JPG, PNG, or PDF.',
       'Show the face and key character features clearly.',
-      'All art styles welcome — cartoon, realistic, sketch, digital.',
+      'All art styles welcome - cartoon, realistic, sketch, digital.',
       'Include a short backstory for your Grumpy Grandpa (max 100 words).',
     ]),
     prizes: JSON.stringify([
@@ -152,7 +152,7 @@ const DEMOS = [
     pageBg: '#0d1a0f',
     logoUrl: '/swomp-logo.png',
     heroImageUrl: '/swomp-hero.png',
-    brief: 'Design an original artwork for the back panel of a SWOMP WATER+ electrolyte water can. The artwork should feel fresh, natural, and energetic — capturing the SWOMP brand spirit.',
+    brief: 'Design an original artwork for the back panel of a SWOMP WATER+ electrolyte water can. The artwork should feel fresh, natural, and energetic - capturing the SWOMP brand spirit.',
     guidelines: JSON.stringify([
       'Submit as JPG, PNG, or PDF.',
       'Artwork should work on a tall rectangular panel (portrait orientation).',
@@ -161,7 +161,7 @@ const DEMOS = [
     ]),
     prizes: JSON.stringify([
       { style: 'top', badge: 'TOP 10', cash: '', description: 'Your design featured in the SWOMP WATER+ community gallery and shared across all channels.' },
-      { style: 'grand', badge: '🏆 Grand Winner', cash: '€1,000', description: 'Your artwork printed on the back panel of the SWOMP WATER+ production can — in stores. Your name on every can that carries your design. Full profile feature across SWOMP WATER+ social and press channels.' },
+      { style: 'grand', badge: '🏆 Grand Winner', cash: '€1,000', description: 'Your artwork printed on the back panel of the SWOMP WATER+ production can - in stores. Your name on every can that carries your design. Full profile feature across SWOMP WATER+ social and press channels.' },
     ]),
     questions: JSON.stringify([
       { id: 'buy', text: 'Would you buy this can based on the design?', type: 'yes_no', required: true },
@@ -179,7 +179,7 @@ export async function POST() {
     try {
       const existing = await prisma.loop.findUnique({ where: { slug: demo.slug } })
       if (existing) {
-        results.push({ slug: demo.slug, status: 'skipped — already exists' })
+        results.push({ slug: demo.slug, status: 'skipped - already exists' })
         continue
       }
       await prisma.loop.create({ data: demo })

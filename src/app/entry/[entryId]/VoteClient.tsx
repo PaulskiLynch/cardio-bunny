@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useUser, useClerk } from '@clerk/nextjs'
@@ -50,7 +50,7 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
           setVotes(json.voteCount)
           setVoted(false)
         } else {
-          setVoteError('Could not remove vote — please try again.')
+          setVoteError('Could not remove vote - please try again.')
         }
         return
       }
@@ -73,10 +73,10 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
           setPhase('share')
         }
       } else if (res.status !== 409) {
-        setVoteError('Vote failed — please try again.')
+        setVoteError('Vote failed - please try again.')
       }
     } catch {
-      setVoteError('Network error — please check your connection.')
+      setVoteError('Network error - please check your connection.')
     }
   }
 
@@ -144,7 +144,7 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
 
   function whatsapp() {
     const url = buildShareUrl()
-    const text = `Vote for ${designerName} — every vote via this link earns them bonus votes: ${url}`
+    const text = `Vote for ${designerName} - every vote via this link earns them bonus votes: ${url}`
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
   }
 
@@ -165,7 +165,7 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
           onClick={handleVote}
           style={voted ? { background: '#222', color: '#fff' } : {}}
         >
-          {voted ? '✓ VOTED — tap to remove' : `♥ VOTE FOR ${designerName.toUpperCase()}`}
+          {voted ? '✓ VOTED - tap to remove' : `♥ VOTE FOR ${designerName.toUpperCase()}`}
         </button>
         <button className="share-button" style={{ marginTop: 10 }} onClick={() => setPhase('share')}>
           SHARE THIS ENTRY
@@ -251,7 +251,7 @@ export default function VoteClient({ entryId, designerName, initialVotes, initia
         <div className="sheet-handle" />
         <div className="success-title">Share This Entry</div>
         <div className="success-text">
-          Votes via this link earn {designerName} bonus votes — every 10 referral votes adds +5 to their total.
+          Votes via this link earn {designerName} bonus votes - every 10 referral votes adds +5 to their total.
         </div>
         <div className="share-actions">
           <button className="share-action" onClick={whatsapp}>SHARE ON WHATSAPP</button>

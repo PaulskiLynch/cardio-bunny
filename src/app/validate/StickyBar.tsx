@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -14,7 +14,7 @@ export default function StickyBar() {
 
   return (
     <div className={`mkt-sticky${visible ? ' visible' : ''}`}>
-      <span className="mkt-sticky-text">Validate products in any category — before you produce them.</span>
+      <span className="mkt-sticky-text">Validate products in any category - before you produce them.</span>
       <Link href="/contact" className="mkt-sticky-cta">Book a demo →</Link>
     </div>
   )

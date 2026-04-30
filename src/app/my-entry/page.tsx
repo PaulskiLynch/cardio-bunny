@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { currentUser } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import CopyLink from './CopyLink'
@@ -16,13 +16,13 @@ const STATUS_CONFIG = {
   approved: {
     stamp: '✅ LIVE',
     title: 'Your design is on the leaderboard!',
-    body: 'Share your vote link everywhere — every vote counts toward your final ranking.',
+    body: 'Share your vote link everywhere - every vote counts toward your final ranking.',
     color: '#1a5c1a',
   },
   rejected: {
     stamp: '❌ NOT SELECTED',
     title: 'Thank you for entering.',
-    body: 'Your design was reviewed but wasn\'t selected for this round. Keep creating — we run new competitions regularly.',
+    body: 'Your design was reviewed but wasn\'t selected for this round. Keep creating - we run new competitions regularly.',
     color: '#c00',
   },
 }
@@ -39,7 +39,7 @@ export default async function MyEntryPage({
   const userEmail = clerkUser?.emailAddresses?.[0]?.emailAddress ?? ''
   const userEmailLower = userEmail.toLowerCase()
 
-  // Auto-find by Clerk email if no ID typed — check both raw and lowercased stored value
+  // Auto-find by Clerk email if no ID typed - check both raw and lowercased stored value
   const entry = entryId
     ? await prisma.entry.findUnique({ where: { entryId } }).catch(() => null)
     : userEmail
@@ -98,7 +98,7 @@ export default async function MyEntryPage({
           </div>
         )}
 
-        {/* Manual lookup — no result */}
+        {/* Manual lookup - no result */}
         {entryId && !entry && (
           <div style={{ padding: '20px', background: '#fff0f0', borderRadius: 10, color: '#c00', fontWeight: 700, fontSize: 14 }}>
             No entry found for <strong>{entryId}</strong>. Check the ID on your confirmation screen.

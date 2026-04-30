@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+﻿import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { cookies } from 'next/headers'
 import { auth, currentUser } from '@clerk/nextjs/server'
@@ -79,7 +79,7 @@ export default async function LoopPublicPage({
 
       {isDemo && (
         <div className="demo-notice">
-          ⚠️ DEMO — This is not an active competition. Submissions, votes, and prizes are shown for demonstration purposes only.
+          ⚠️ DEMO - This is not an active competition. Submissions, votes, and prizes are shown for demonstration purposes only.
         </div>
       )}
 
@@ -101,7 +101,7 @@ export default async function LoopPublicPage({
               <img
                 src={loop.logoUrl}
                 alt={loop.brandName}
-                style={{ height: 48, maxWidth: 180, objectFit: 'contain' }}
+                style={{ width: '85%', maxWidth: 420, height: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)', display: 'block' }}
               />
             )}
             {!loop.logoUrl && (
@@ -144,7 +144,7 @@ export default async function LoopPublicPage({
             <div className="how-step-body">
               <div className="how-step-title">Submit your design</div>
               <div className="how-step-desc">
-                Upload your artwork as a JPG, PNG, or PDF — sketches, digital renders, and AI-assisted concepts are all welcome, as long as it is your original work. Include a short description of your inspiration.
+                Upload your artwork as a JPG, PNG, or PDF - sketches, digital renders, and AI-assisted concepts are all welcome, as long as it is your original work. Include a short description of your inspiration.
               </div>
             </div>
           </div>
@@ -153,7 +153,7 @@ export default async function LoopPublicPage({
             <div className="how-step-body">
               <div className="how-step-title">Community votes</div>
               <div className="how-step-desc">
-                Once approved, your design goes live. The community votes for their favourites. Voting is verified — one vote per person, with duplicate and suspicious activity detection.
+                Once approved, your design goes live. The community votes for their favourites. Voting is verified - one vote per person, with duplicate and suspicious activity detection.
               </div>
             </div>
           </div>
@@ -232,13 +232,13 @@ export default async function LoopPublicPage({
         <div style={{ marginBottom: 18 }}>
           <h2 style={{ margin: 0 }}>Community favourites</h2>
           <div className="card-text" style={{ marginTop: 6 }}>
-            Vote for the designs you want to see in stores. Voting is verified — one vote per person.
+            Vote for the designs you want to see in stores. Voting is verified - one vote per person.
           </div>
         </div>
         <div className="design-grid">
           {entries.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '48px 0', color: '#777', fontWeight: 700 }}>
-              No approved entries yet — be the first to submit!
+              No approved entries yet - be the first to submit!
             </div>
           ) : (
             entries.map((entry, i) => (
@@ -271,31 +271,31 @@ export default async function LoopPublicPage({
           <div className="rules-item">
             <span className="rules-icon">🎨</span>
             <div>
-              <strong>Any format welcome</strong> — JPG, PNG, or PDF. Hand-drawn sketches, digital renders, or AI-assisted concepts are all accepted, provided the design is your original creative work.
+              <strong>Any format welcome</strong> - JPG, PNG, or PDF. Hand-drawn sketches, digital renders, or AI-assisted concepts are all accepted, provided the design is your original creative work.
             </div>
           </div>
           <div className="rules-item">
             <span className="rules-icon">🤖</span>
             <div>
-              <strong>AI policy</strong> — You may use AI tools to develop your concept, but the final submission must represent your original creative direction. Unmodified AI outputs without your own creative input are not eligible.
+              <strong>AI policy</strong> - You may use AI tools to develop your concept, but the final submission must represent your original creative direction. Unmodified AI outputs without your own creative input are not eligible.
             </div>
           </div>
           <div className="rules-item">
             <span className="rules-icon">©️</span>
             <div>
-              <strong>Your rights</strong> — You retain ownership of your design. By entering, you grant {loop.brandName} a licence to display, promote, and — for selected entries — develop your design for production, per the official rules.
+              <strong>Your rights</strong> - You retain ownership of your design. By entering, you grant {loop.brandName} a licence to display, promote, and - for selected entries - develop your design for production, per the official rules.
             </div>
           </div>
           <div className="rules-item">
             <span className="rules-icon">🏆</span>
             <div>
-              <strong>Winner selection</strong> — The shortlist is determined by community votes. Final selection is made by the {loop.brandName} team based on votes, brand fit, and production viability.
+              <strong>Winner selection</strong> - The shortlist is determined by community votes. Final selection is made by the {loop.brandName} team based on votes, brand fit, and production viability.
             </div>
           </div>
           <div className="rules-item">
             <span className="rules-icon">✓</span>
             <div>
-              <strong>Verified voting</strong> — Each voter is limited to one vote per entry. Duplicate and suspicious votes are detected and removed. Vote counts reflect verified engagement only.
+              <strong>Verified voting</strong> - Each voter is limited to one vote per entry. Duplicate and suspicious votes are detected and removed. Vote counts reflect verified engagement only.
             </div>
           </div>
         </div>

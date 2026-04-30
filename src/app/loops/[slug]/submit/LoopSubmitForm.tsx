@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useRef, useState } from 'react'
 import Link from 'next/link'
@@ -56,7 +56,7 @@ export default function LoopSubmitForm({ slug, brandName, logoUrl, brief, guidel
         <header className="portal-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             {logoUrl && (
-              <img src={logoUrl} alt={brandName} style={{ height: 28, maxWidth: 100, objectFit: 'contain' }} />
+              <img src={logoUrl} alt={brandName} style={{ height: 64, maxWidth: 180, objectFit: 'contain' }} />
             )}
             <div className="brand">{brandName}</div>
           </div>
@@ -65,7 +65,7 @@ export default function LoopSubmitForm({ slug, brandName, logoUrl, brief, guidel
 
         {status === 'demo' && (
           <div style={{ background: '#fff8e1', border: '1px solid #f5c542', borderRadius: 8, padding: '10px 14px', fontSize: 13, color: '#7a5c00', marginBottom: 16, lineHeight: 1.5 }}>
-            ⚠️ Demo — This is not a live competition. Submissions are for demonstration purposes only.
+            ⚠️ Demo - This is not a live competition. Submissions are for demonstration purposes only.
           </div>
         )}
 
@@ -157,7 +157,7 @@ export default function LoopSubmitForm({ slug, brandName, logoUrl, brief, guidel
                 {submitting ? 'SUBMITTING...' : `🚀 ${ctaText || 'SUBMIT YOUR DESIGN'}`}
               </button>
               <div className="button-note">
-                By submitting, you confirm this is your own work and that you hold all necessary rights to it (including any AI-generated content). You grant a licence to display, promote, and — for selected entries — develop your design for production, subject to the official rules and technical, legal, and commercial review. You agree to the <a href="/legal" style={{ color: 'inherit' }}>competition terms and privacy policy</a>.
+                By submitting, you confirm this is your own work and that you hold all necessary rights to it (including any AI-generated content). You grant a licence to display, promote, and - for selected entries - develop your design for production, subject to the official rules and technical, legal, and commercial review. You agree to the <a href="/legal" style={{ color: 'inherit' }}>competition terms and privacy policy</a>.
               </div>
             </div>
           </form>

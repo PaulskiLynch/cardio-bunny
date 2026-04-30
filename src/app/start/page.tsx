@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -7,8 +7,8 @@ const CATEGORIES = ['Fashion / Apparel', 'Beverages', 'Toys & Games', 'Lifestyle
 const MARKETS = ['United Kingdom', 'Poland', 'Turkey', 'Ireland', 'Germany', 'France', 'United States', 'Other']
 const LANGUAGES = ['English', 'Polish', 'Turkish', 'German', 'French', 'Other']
 const CAMPAIGN_TYPES = [
-  { value: 'demo',  label: 'Demo',         desc: 'See how it works with a live example page — no real entries or prizes.' },
-  { value: 'pilot', label: 'Private Pilot', desc: 'Real entries, real votes — invitation only, not publicly listed.' },
+  { value: 'demo',  label: 'Demo',         desc: 'See how it works with a live example page - no real entries or prizes.' },
+  { value: 'pilot', label: 'Private Pilot', desc: 'Real entries, real votes - invitation only, not publicly listed.' },
   { value: 'live',  label: 'Live Campaign', desc: 'Fully public competition, open to all. We launch when you\'re ready.' },
 ]
 
@@ -60,16 +60,16 @@ export default function StartPage() {
       <section className="start-hero">
         <div className="b2b-eyebrow">Start a Competition</div>
         <h1 className="start-headline">Launch a branded product challenge. Let your customers help decide what gets made.</h1>
-        <p className="start-sub">CrowdLoops helps brands and retailers collect designs, votes, feedback, price signals, and notify-me intent — before production starts. Tell us about your brand and we&apos;ll turn it into a Loop.</p>
+        <p className="start-sub">CrowdLoops helps brands and retailers collect designs, votes, feedback, price signals, and notify-me intent - before production starts. Tell us about your brand and we&apos;ll turn it into a Loop.</p>
       </section>
 
       {done ? (
         <div className="start-success">
           <div className="start-success-icon">✓</div>
-          <h2>Thanks — we&apos;ll help turn this into a Loop.</h2>
+          <h2>Thanks - we&apos;ll help turn this into a Loop.</h2>
           <div className="start-next-steps">
             <div className="start-step"><span className="start-step-num">1</span><span>We review your brief and respond within one business day.</span></div>
-            <div className="start-step"><span className="start-step-num">2</span><span>We configure your branded page — hero, prizes, questions, rules.</span></div>
+            <div className="start-step"><span className="start-step-num">2</span><span>We configure your branded page - hero, prizes, questions, rules.</span></div>
             <div className="start-step"><span className="start-step-num">3</span><span>You approve the layout, rules, and launch date.</span></div>
             <div className="start-step"><span className="start-step-num">4</span><span>Your Loop goes live.</span></div>
           </div>
@@ -95,14 +95,14 @@ export default function StartPage() {
               <div className="start-field">
                 <label className="start-label" htmlFor="productCategory">Product category</label>
                 <select id="productCategory" value={form.productCategory} onChange={e => set('productCategory', e.target.value)}>
-                  <option value="">— Select —</option>
+                  <option value="">- Select -</option>
                   {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
               </div>
               <div className="start-field">
                 <label className="start-label" htmlFor="market">Market / country</label>
                 <select id="market" value={form.market} onChange={e => set('market', e.target.value)}>
-                  <option value="">— Select —</option>
+                  <option value="">- Select -</option>
                   {MARKETS.map(m => <option key={m} value={m}>{m}</option>)}
                 </select>
               </div>
@@ -126,13 +126,13 @@ export default function StartPage() {
                 value={form.brief}
                 onChange={e => set('brief', e.target.value)}
                 rows={4}
-                placeholder="e.g. A matching women's activewear set — top and leggings. Colourful, bold, gym-ready. Suitable for a 16–35 female audience."
+                placeholder="e.g. A matching women's activewear set - top and leggings. Colourful, bold, gym-ready. Suitable for a 16–35 female audience."
                 required
               />
             </div>
 
             <div className="start-field">
-              <label className="start-label" htmlFor="prize">Prize or reward idea <span className="start-hint">Optional — we can help design this</span></label>
+              <label className="start-label" htmlFor="prize">Prize or reward idea <span className="start-hint">Optional - we can help design this</span></label>
               <input id="prize" value={form.prize} onChange={e => set('prize', e.target.value)} placeholder="e.g. Cash prize + design goes into production, or just brand recognition" />
             </div>
           </div>

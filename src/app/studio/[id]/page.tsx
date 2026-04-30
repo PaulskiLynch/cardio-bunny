@@ -1,4 +1,4 @@
-import { cookies } from 'next/headers'
+﻿import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { currentUser } from '@clerk/nextjs/server'
@@ -133,7 +133,7 @@ export default async function StudioPage({
         <div className="studio-header-title">
           {loop.brandName}
           {loop.market && loop.market !== 'en' && (
-            <span className="studio-header-market"> — {loop.market.toUpperCase()}</span>
+            <span className="studio-header-market"> - {loop.market.toUpperCase()}</span>
           )}
         </div>
         <div className="studio-header-status">
@@ -376,7 +376,7 @@ export default async function StudioPage({
           <>
             <div className="studio-section-title">Exports</div>
             <div className="studio-export-card">
-              <div className="studio-export-title">All Entries — CSV</div>
+              <div className="studio-export-title">All Entries - CSV</div>
               <div className="studio-export-desc">
                 Entry ID, designer name, contact, set name, description, votes, status, submitted date.
                 {' '}{totalEntries} rows.

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 
@@ -48,7 +48,7 @@ export default function ReferralShare({ url, designerName, referralVotes, bonusV
             <div className="referral-progress-label">
               {progress === 0
                 ? `🎉 Bonus unlocked! Keep sharing.`
-                : `${progress} / 10 — ${toNextBonus} more to unlock +5 bonus votes`}
+                : `${progress} / 10 - ${toNextBonus} more to unlock +5 bonus votes`}
             </div>
           </div>
           <div className="referral-stats">
@@ -60,7 +60,7 @@ export default function ReferralShare({ url, designerName, referralVotes, bonusV
         </>
       ) : (
         <div className="referral-hint">
-          Share your link — {designerName}&apos;s friends are waiting.
+          Share your link - {designerName}&apos;s friends are waiting.
         </div>
       )}
     </div>

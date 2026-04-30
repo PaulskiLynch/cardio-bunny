@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 
@@ -41,7 +41,7 @@ export function AdminCard({ entry, onDone }: { entry: Entry; onDone: () => void 
           </span>
           <span>{entry.entryId}</span>
         </div>
-        <div className="admin-name">{entry.designerName} — {entry.setName}</div>
+        <div className="admin-name">{entry.designerName} - {entry.setName}</div>
         <div className="admin-meta">{entry.contact}</div>
         <div className="admin-hook">{entry.hook}</div>
         <div className="admin-actions">

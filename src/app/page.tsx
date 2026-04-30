@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 
 const INCLUDES = [
   'Branded competition portal',
@@ -85,7 +85,7 @@ export default function CrowdLoopsHome() {
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="hero b2b-hero">
         <div style={{ width: '100%' }}>
-          <div className="b2b-eyebrow">CrowdLoops — Retail Product Validation</div>
+          <div className="b2b-eyebrow">CrowdLoops - Retail Product Validation</div>
           <h1 className="b2b-headline">Validate product ideas with your customers before you produce them.</h1>
           <div className="b2b-sub">
             CrowdLoops is a white-label competition platform for retailers. Launch branded design challenges, collect verified votes and purchase-intent signals, and turn community creativity into a data-backed product shortlist.
@@ -118,9 +118,9 @@ export default function CrowdLoopsHome() {
       {/* ── Dashboard ────────────────────────────────────── */}
       <section className="section">
         <div className="b2b-label">Intelligence Dashboard</div>
-        <h2>A software tool — not a marketing agency.</h2>
+        <h2>A software tool - not a marketing agency.</h2>
         <div className="b2b-sub" style={{ marginBottom: 24 }}>
-          Every Loop generates a live demand dashboard. Buying teams see submission volume, voter demographics, notify-me intent, and top style signals — before committing to production.
+          Every Loop generates a live demand dashboard. Buying teams see submission volume, voter demographics, notify-me intent, and top style signals - before committing to production.
         </div>
         <div className="dashboard-frame" style={{ maxWidth: '100%' }}>
           <div className="dashboard-bar">
@@ -199,21 +199,21 @@ export default function CrowdLoopsHome() {
           <div className="integration-row">
             <div className="integration-step">01</div>
             <div className="integration-body">
-              <div className="integration-focus">Launch — Branded competition portal</div>
+              <div className="integration-focus">Launch - Branded competition portal</div>
               <div className="integration-benefit">Deploy a branded competition on your domain in around 48 hours once the brief, brand assets, eligibility rules, and approvals are confirmed. Your logo, your colours, your rules.</div>
             </div>
           </div>
           <div className="integration-row">
             <div className="integration-step">02</div>
             <div className="integration-body">
-              <div className="integration-focus">Validate — Collect submissions and votes</div>
-              <div className="integration-benefit">Your audience submits designs. Verified voters rank them. Feedback questions capture purchase intent, pricing sensitivity, and style preference — before a single unit is cut.</div>
+              <div className="integration-focus">Validate - Collect submissions and votes</div>
+              <div className="integration-benefit">Your audience submits designs. Verified voters rank them. Feedback questions capture purchase intent, pricing sensitivity, and style preference - before a single unit is cut.</div>
             </div>
           </div>
           <div className="integration-row">
             <div className="integration-step">03</div>
             <div className="integration-body">
-              <div className="integration-focus">Decide — Shortlist and produce</div>
+              <div className="integration-focus">Decide - Shortlist and produce</div>
               <div className="integration-benefit">Your buying team reviews the strongest concepts with full demand data. Export the report, brief production, and launch to an audience already engaged before the product hits the shelf.</div>
             </div>
           </div>
@@ -225,7 +225,7 @@ export default function CrowdLoopsHome() {
         <div className="b2b-label">Brand Safety</div>
         <h2>Built for retail approval workflows.</h2>
         <div className="b2b-sub" style={{ marginBottom: 24 }}>
-          CrowdLoops is designed for procurement, legal, and brand teams — not just marketing. Every control that enterprise retailers need is built in.
+          CrowdLoops is designed for procurement, legal, and brand teams - not just marketing. Every control that enterprise retailers need is built in.
         </div>
         <div className="trust-list">
           {TRUST_ITEMS.map(([title, desc]) => (
@@ -258,12 +258,12 @@ export default function CrowdLoopsHome() {
                 <div className="demo-loop-desc" style={loop.dark ? { color: '#bbb' } : {}}>{loop.desc}</div>
                 <div style={{ flex: 1 }} />
                 <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: 12 }}>
-                  <div className="event-card-status open">🟡 Demo — view example</div>
+                  <div className="event-card-status open">🟡 Demo - view example</div>
                   {loop.logo && (
                     <img
                       src={loop.logo}
                       alt=""
-                      style={{ height: 28, maxWidth: 90, objectFit: 'contain', filter: loop.dark ? 'brightness(0) invert(1)' : 'brightness(0)', opacity: 0.75 }}
+                      style={{ height: 64, maxWidth: 160, objectFit: 'contain', filter: loop.dark ? 'brightness(0) invert(1)' : 'brightness(0)', opacity: 0.9 }}
                     />
                   )}
                 </div>
@@ -300,7 +300,7 @@ export default function CrowdLoopsHome() {
           </details>
           <details>
             <summary>Can we run a private or invite-only competition?</summary>
-            <p>Yes. Loops can be password-protected, invite-only, or limited to a specific audience — for example, existing loyalty members or trade contacts. Public voting can also be disabled so only your team scores the entries.</p>
+            <p>Yes. Loops can be password-protected, invite-only, or limited to a specific audience - for example, existing loyalty members or trade contacts. Public voting can also be disabled so only your team scores the entries.</p>
           </details>
           <details>
             <summary>What does the output look like?</summary>
@@ -314,7 +314,7 @@ export default function CrowdLoopsHome() {
         <div className="b2b-label" style={{ color: '#aaa' }}>Loop Boosters</div>
         <h2 style={{ color: '#fff', marginBottom: 10 }}>Amplify every competition</h2>
         <div style={{ fontSize: 14, color: '#bbb', lineHeight: 1.6, marginBottom: 24 }}>
-          Loop Boosters is our network of creators, influencers, and agencies who help drive entries and votes. List yourself once — brands discover you and reach out directly. No middlemen.
+          Loop Boosters is our network of creators, influencers, and agencies who help drive entries and votes. List yourself once - brands discover you and reach out directly. No middlemen.
         </div>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link className="cta" href="/roster/apply" style={{ background: '#fff', color: '#111', borderColor: '#fff' }}>

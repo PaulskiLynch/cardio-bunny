@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { auth } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import VoteCard from '@/components/VoteCard'
@@ -85,7 +85,7 @@ export default async function DesignsPage({
         </form>
       </header>
 
-      {/* Brand tabs — only on the unfiltered /designs page, not when scoped to a competition */}
+      {/* Brand tabs - only on the unfiltered /designs page, not when scoped to a competition */}
       {!competition && brands.length > 1 && (
         <div className="intel-tabs" style={{ margin: '0 0 4px', padding: '0 0 2px' }}>
           <Link href="/designs" className="intel-tab active">All</Link>

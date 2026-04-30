@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 
@@ -177,7 +177,7 @@ export function StudioModeration({ initial }: { initial: EntryRow[] }) {
           </div>
           <div className="admin-body">
             <div className="admin-meta" style={{ fontFamily: 'monospace', fontSize: 11 }}>{e.entryId}</div>
-            <div className="admin-name">{e.designerName} — {e.setName}</div>
+            <div className="admin-name">{e.designerName} - {e.setName}</div>
             <div className="admin-meta">{e.contact}</div>
             <div className="admin-hook">{e.hook}</div>
             <div className="admin-actions">

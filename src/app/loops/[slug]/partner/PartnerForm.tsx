@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -11,10 +11,10 @@ const ROLES = [
 ]
 
 const REACHES = [
-  { value: 'nano',  label: 'Nano — under 10K' },
-  { value: 'micro', label: 'Micro — 10K to 100K' },
-  { value: 'mid',   label: 'Mid-tier — 100K to 500K' },
-  { value: 'macro', label: 'Macro — 500K+' },
+  { value: 'nano',  label: 'Nano - under 10K' },
+  { value: 'micro', label: 'Micro - 10K to 100K' },
+  { value: 'mid',   label: 'Mid-tier - 100K to 500K' },
+  { value: 'macro', label: 'Macro - 500K+' },
 ]
 
 const PLATFORMS = [
@@ -111,7 +111,7 @@ export default function PartnerForm({ slug, brandName }: { slug: string; brandNa
               What best describes you? <span style={{ color: '#c00' }}>*</span>
             </label>
             <select id="role" value={role} onChange={e => setRole(e.target.value)} required>
-              <option value="">— Select —</option>
+              <option value="">- Select -</option>
               {ROLES.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
             </select>
           </div>
@@ -121,7 +121,7 @@ export default function PartnerForm({ slug, brandName }: { slug: string; brandNa
               Approximate reach <span style={{ color: '#c00' }}>*</span>
             </label>
             <select id="reach" value={reach} onChange={e => setReach(e.target.value)} required>
-              <option value="">— Select —</option>
+              <option value="">- Select -</option>
               {REACHES.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
             </select>
           </div>
@@ -131,7 +131,7 @@ export default function PartnerForm({ slug, brandName }: { slug: string; brandNa
               Primary platform <span style={{ color: '#c00' }}>*</span>
             </label>
             <select id="platform" value={platform} onChange={e => setPlatform(e.target.value)} required>
-              <option value="">— Select —</option>
+              <option value="">- Select -</option>
               {PLATFORMS.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
             </select>
           </div>
@@ -139,7 +139,7 @@ export default function PartnerForm({ slug, brandName }: { slug: string; brandNa
           <div className="form-section">
             <label className="form-label" htmlFor="portfolio">
               Link to your work
-              <span className="hint">Instagram, TikTok, portfolio — anything that shows your style</span>
+              <span className="hint">Instagram, TikTok, portfolio - anything that shows your style</span>
             </label>
             <input id="portfolio" value={portfolio} onChange={e => setPortfolio(e.target.value)} placeholder="https://" type="url" />
           </div>

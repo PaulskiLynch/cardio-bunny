@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useRef } from 'react'
 import Link from 'next/link'
@@ -11,10 +11,10 @@ const ROLES = [
 ]
 
 const REACHES = [
-  { value: 'nano',  label: 'Nano — under 10K' },
-  { value: 'micro', label: 'Micro — 10K to 100K' },
-  { value: 'mid',   label: 'Mid-tier — 100K to 500K' },
-  { value: 'macro', label: 'Macro — 500K+' },
+  { value: 'nano',  label: 'Nano - under 10K' },
+  { value: 'micro', label: 'Micro - 10K to 100K' },
+  { value: 'mid',   label: 'Mid-tier - 100K to 500K' },
+  { value: 'macro', label: 'Macro - 500K+' },
 ]
 
 const PLATFORMS = [
@@ -52,7 +52,7 @@ export default function RosterApplyPage() {
       if (!res.ok) throw new Error(json.error)
       setAvatarUrl(json.url)
     } catch {
-      setError('Image upload failed — try again.')
+      setError('Image upload failed - try again.')
     } finally {
       setUploading(false)
     }
@@ -124,7 +124,7 @@ export default function RosterApplyPage() {
             <div className="form-section">
               <label className="form-label" htmlFor="name">
                 Your name
-                <span className="hint">Optional — shown alongside your handle</span>
+                <span className="hint">Optional - shown alongside your handle</span>
               </label>
               <input
                 id="name"
@@ -152,7 +152,7 @@ export default function RosterApplyPage() {
                 What best describes you? <span style={{ color: '#c00' }}>*</span>
               </label>
               <select id="role" value={role} onChange={e => setRole(e.target.value)} required>
-                <option value="">— Select —</option>
+                <option value="">- Select -</option>
                 {ROLES.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
               </select>
             </div>
@@ -162,7 +162,7 @@ export default function RosterApplyPage() {
                 Approximate reach <span style={{ color: '#c00' }}>*</span>
               </label>
               <select id="reach" value={reach} onChange={e => setReach(e.target.value)} required>
-                <option value="">— Select —</option>
+                <option value="">- Select -</option>
                 {REACHES.map(r => <option key={r.value} value={r.value}>{r.label}</option>)}
               </select>
             </div>
@@ -172,7 +172,7 @@ export default function RosterApplyPage() {
                 Primary platform <span style={{ color: '#c00' }}>*</span>
               </label>
               <select id="platform" value={platform} onChange={e => setPlatform(e.target.value)} required>
-                <option value="">— Select —</option>
+                <option value="">- Select -</option>
                 {PLATFORMS.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
               </select>
             </div>
@@ -219,7 +219,7 @@ export default function RosterApplyPage() {
             <div className="form-section">
               <label className="form-label">
                 Content sample image
-                <span className="hint">One image that shows your style — a post, campaign shot, or portfolio piece</span>
+                <span className="hint">One image that shows your style - a post, campaign shot, or portfolio piece</span>
               </label>
               <div
                 className="loop-image-picker"
@@ -250,7 +250,7 @@ export default function RosterApplyPage() {
             <div className="form-section">
               <label className="form-label" htmlFor="portfolio">
                 Link to your work
-                <span className="hint">Instagram, TikTok, portfolio — anything that shows your style</span>
+                <span className="hint">Instagram, TikTok, portfolio - anything that shows your style</span>
               </label>
               <input
                 id="portfolio"

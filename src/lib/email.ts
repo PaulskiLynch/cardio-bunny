@@ -1,4 +1,4 @@
-import { Resend } from 'resend'
+﻿import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -20,7 +20,7 @@ export async function notifyNewEntry({
   await resend.emails.send({
     from: FROM,
     to: ADMIN_EMAIL,
-    subject: `New entry pending review — ${competition}`,
+    subject: `New entry pending review - ${competition}`,
     html: `
       <p><strong>New submission on CrowdLoops</strong></p>
       <table>

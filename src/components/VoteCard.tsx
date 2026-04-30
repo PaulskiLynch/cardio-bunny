@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -56,7 +56,7 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
           setVotes(json.voteCount)
           setVoted(false)
         } else {
-          setVoteError('Could not remove vote — please try again.')
+          setVoteError('Could not remove vote - please try again.')
         }
       } else {
         const res = await fetch(`/api/vote/${entryId}`, { method: 'POST' })
@@ -71,11 +71,11 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
             setTextDraft('')
           }
         } else if (res.status !== 409) {
-          setVoteError('Vote failed — please try again.')
+          setVoteError('Vote failed - please try again.')
         }
       }
     } catch {
-      setVoteError('Network error — please check your connection.')
+      setVoteError('Network error - please check your connection.')
     }
     setLoading(false)
   }

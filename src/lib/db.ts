@@ -1,4 +1,4 @@
-import { PrismaClient } from '@/generated/prisma/client'
+﻿import { PrismaClient } from '@/generated/prisma/client'
 import { PrismaLibSql } from '@prisma/adapter-libsql'
 
 function makePrisma(): PrismaClient {
@@ -10,7 +10,7 @@ function makePrisma(): PrismaClient {
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient }
 
-// Proxy defers construction until first property access — safe during build
+// Proxy defers construction until first property access - safe during build
 export const prisma: PrismaClient = new Proxy({} as PrismaClient, {
   get(_target, prop) {
     if (!globalForPrisma.prisma) globalForPrisma.prisma = makePrisma()

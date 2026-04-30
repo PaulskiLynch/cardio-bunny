@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 
 export default function LegalPage() {
   return (
@@ -11,7 +11,7 @@ export default function LegalPage() {
 
         <div className="prompt-box" style={{ marginTop: 0 }}>
           <p style={{ color: '#c00', fontWeight: 700, marginBottom: 0 }}>
-            ⚠️ DEMO PLATFORM — These terms are illustrative only and do not constitute legally binding rules for any active competition. A qualified legal professional should draft final terms before any live event is launched.
+            ⚠️ DEMO PLATFORM - These terms are illustrative only and do not constitute legally binding rules for any active competition. A qualified legal professional should draft final terms before any live event is launched.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export default function LegalPage() {
           <section style={{ marginTop: 32 }}>
             <h2 style={{ fontSize: 18, fontWeight: 900, borderBottom: '2px solid #eee', paddingBottom: 8 }}>5. Voting &amp; Anti-Fraud Rules</h2>
             <p>One account may cast one vote per entry. Voting in bulk, using automated tools, purchasing votes, or coordinating mass voting through bots or fake accounts is prohibited and will result in disqualification of the relevant entry.</p>
-            <p>CrowdLoops uses layered signals — including login controls, device signals, rate limits, and pattern detection — to identify suspicious activity. Suspicious votes are flagged for review and may be excluded from winner selection where appropriate. No specific detection rate is guaranteed.</p>
+            <p>CrowdLoops uses layered signals - including login controls, device signals, rate limits, and pattern detection - to identify suspicious activity. Suspicious votes are flagged for review and may be excluded from winner selection where appropriate. No specific detection rate is guaranteed.</p>
           </section>
 
           {/* 6 */}
@@ -87,7 +87,7 @@ export default function LegalPage() {
             <ul style={{ paddingLeft: 20, lineHeight: 2 }}>
               <li>Hold all rights to the final submitted image (check the terms of your AI tool).</li>
               <li>Ensure the output does not reproduce copyrighted works, recognisable real people, or trademarked characters.</li>
-              <li>Be the human creator directing the work — you are responsible for its content.</li>
+              <li>Be the human creator directing the work - you are responsible for its content.</li>
             </ul>
             <p>CrowdLoops does not accept liability for third-party IP claims arising from AI-generated submissions.</p>
           </section>
@@ -105,10 +105,10 @@ export default function LegalPage() {
             <h2 style={{ fontSize: 18, fontWeight: 900, borderBottom: '2px solid #eee', paddingBottom: 8 }}>9. Privacy Policy</h2>
             <p>CrowdLoops collects the following personal data when you enter a competition:</p>
             <ul style={{ paddingLeft: 20, lineHeight: 2 }}>
-              <li><strong>Name and contact details</strong> — to administer your entry and contact you if you win.</li>
-              <li><strong>Design submission and description</strong> — to display on the platform and for moderation.</li>
-              <li><strong>Vote data</strong> — to count votes and detect fraud.</li>
-              <li><strong>Device and session signals</strong> — used for vote integrity; this is personal data and is handled accordingly.</li>
+              <li><strong>Name and contact details</strong> - to administer your entry and contact you if you win.</li>
+              <li><strong>Design submission and description</strong> - to display on the platform and for moderation.</li>
+              <li><strong>Vote data</strong> - to count votes and detect fraud.</li>
+              <li><strong>Device and session signals</strong> - used for vote integrity; this is personal data and is handled accordingly.</li>
             </ul>
             <p><strong>Legal basis:</strong> Contract performance (administering your entry) and legitimate interests (platform security and fraud prevention).</p>
             <p><strong>Retention:</strong> Entry data is retained for the duration of the event plus 12 months, unless you request deletion earlier or we are required to retain it by law.</p>

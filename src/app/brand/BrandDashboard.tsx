@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
@@ -204,7 +204,7 @@ export default function BrandDashboard({ loop, stats: initialStats }: { loop: Lo
             <div className="brand-insight-title">Your community reach</div>
             <div className="brand-insight-body">
               {stats.referralVotes > 0
-                ? `${stats.referralVotes.toLocaleString()} votes came via designer share links — each one represents a friend or follower pulled into the competition organically.`
+                ? `${stats.referralVotes.toLocaleString()} votes came via designer share links - each one represents a friend or follower pulled into the competition organically.`
                 : 'Once designers start sharing their entry links, referral votes will appear here.'}
             </div>
             <div className="brand-insight-sub">

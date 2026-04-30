@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { prisma } from '@/lib/db'
 import RosterBrowser from './RosterBrowser'
 
@@ -16,7 +16,7 @@ export default async function RosterPage() {
 
       {/* Demo badge */}
       <div className="roster-demo-badge">
-        ⚠️ DEMO — These are sample profiles. Actual availability, metrics, and rates vary by campaign.
+        ⚠️ DEMO - These are sample profiles. Actual availability, metrics, and rates vary by campaign.
       </div>
 
       <section className="feed-title">
@@ -73,7 +73,7 @@ export default async function RosterPage() {
             <div className="roster-how-num">3</div>
             <div>
               <div className="how-step-title">Amplify your competition</div>
-              <div className="how-step-body">They promote, share, and drive entries — more submissions, higher reach.</div>
+              <div className="how-step-body">They promote, share, and drive entries - more submissions, higher reach.</div>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default async function RosterPage() {
           <div className="roster-type-card">
             <div className="roster-type-icon">🏢</div>
             <div className="roster-type-title">Agencies</div>
-            <div className="roster-type-body">Full-service campaign support — strategy, creative, and distribution.</div>
+            <div className="roster-type-body">Full-service campaign support - strategy, creative, and distribution.</div>
           </div>
           <div className="roster-type-card">
             <div className="roster-type-icon">📰</div>

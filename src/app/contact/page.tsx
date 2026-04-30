@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -41,7 +41,7 @@ export default function ContactPage() {
                 <div className="stamp-title">GOT IT!</div>
               </div>
               <div className="live-text">
-                Thanks — we'll be in touch within one business day to set up your demo.
+                Thanks - we'll be in touch within one business day to set up your demo.
               </div>
             </div>
           </div>
