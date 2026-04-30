@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import { auth } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import VoteCard from '@/components/VoteCard'

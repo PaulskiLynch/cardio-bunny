@@ -1,4 +1,4 @@
-﻿import { notFound } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { cookies } from 'next/headers'
 import { auth, currentUser } from '@clerk/nextjs/server'

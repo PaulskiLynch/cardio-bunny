@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import { currentUser } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
 import CopyLink from './CopyLink'
