@@ -91,6 +91,12 @@ export default function PitchPage() {
           </tbody>
         </table>
 
+        <div style={{ marginTop: 16, marginBottom: 8 }}>
+          <Link href="/loops/uk" target="_blank" style={{ fontSize: 14, fontWeight: 900, color: PINK, textDecoration: 'none' }}>
+            See a live example of the competition page →
+          </Link>
+        </div>
+
         {/* What the winner gets */}
         <SectionHeading>What the winner gets</SectionHeading>
         <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: 12 }}>
