@@ -188,19 +188,12 @@ export default function DemoVoteCard() {
       </div>
 
       {/* What gets captured */}
-      <div style={{ marginTop: 20, padding: '14px 16px', background: '#f8f8f8', borderRadius: 12, maxWidth: 280 }}>
-        <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#aaa', marginBottom: 10 }}>Every vote captures</div>
-        {[
-          { icon: '💰', label: 'Price they\'d pay' },
-          { icon: '🎨', label: 'Style preference' },
-          { icon: '🛒', label: 'Purchase intent' },
-          { icon: '📍', label: 'Location' },
-        ].map(item => (
-          <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, fontSize: 13, color: '#444' }}>
-            <span>{item.icon}</span>
-            <span>{item.label}</span>
-          </div>
-        ))}
+      <div style={{ marginTop: 20, padding: '16px 18px', background: '#f8f8f8', borderRadius: 12, maxWidth: 280 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#aaa', marginBottom: 8 }}>Every vote captures</div>
+        <div style={{ fontSize: 14, fontWeight: 900, color: '#111', marginBottom: 6 }}>Up to 6 customised questions</div>
+        <div style={{ fontSize: 13, color: '#555', lineHeight: 1.5 }}>
+          Price, colour, sizing, occasions, features - you choose exactly what market data you need.
+        </div>
       </div>
     </div>
   )

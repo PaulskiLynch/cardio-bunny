@@ -70,6 +70,14 @@ export default function PitchPage() {
           </p>
         </div>
 
+        {/* Open call callout */}
+        <div style={{ background: '#fff5f8', border: `1.5px solid ${PINK}20`, borderRadius: 12, padding: '18px 20px', margin: '32px 0 8px' }}>
+          <div style={{ fontWeight: 900, fontSize: 15, marginBottom: 6 }}>Open to everyone. No experience needed.</div>
+          <div style={{ fontSize: 14, color: '#555', lineHeight: 1.6 }}>
+            A sketch on paper, a photo on a phone, an AI concept - any format is welcome. The competition is designed so that anyone can enter, which means a far larger and more diverse pool of ideas than a traditional design brief.
+          </div>
+        </div>
+
         {/* How it works */}
         <SectionHeading>How it works</SectionHeading>
         <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: 8 }}>
