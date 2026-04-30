@@ -101,7 +101,7 @@ export default async function LoopPublicPage({
               <img
                 src={loop.logoUrl}
                 alt={loop.brandName}
-                style={{ width: '85%', maxWidth: 420, height: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)', display: 'block' }}
+                style={{ width: '85%', maxWidth: 420, height: 'auto', objectFit: 'contain', display: 'block' }}
               />
             )}
             {!loop.logoUrl && (
