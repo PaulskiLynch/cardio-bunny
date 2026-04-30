@@ -9,7 +9,7 @@ export const metadata = {
 const PINK = '#FF2D6B'
 
 const HOW_IT_WORKS = [
-  { n: '1', text: 'We launch the competition. Your name on it. Our name on it.' },
+  { n: '1', text: 'We launch the competition. Your brand. Our brand. Together.' },
   { n: '2', text: 'Anyone can enter. Sketch. Photo. AI. No design degree needed.' },
   { n: '3', text: 'Entrants share to win. Friends vote. Friends enter. It goes viral - for free.' },
   { n: '4', text: 'Every vote collects answers to simple questions: Price? Colour? Gym only or everyday?' },
@@ -130,10 +130,10 @@ export default function PitchPage() {
             The reach
           </div>
           <div style={{ fontSize: 28, fontWeight: 800, color: PINK, lineHeight: 1.2, marginBottom: 12 }}>
-            200,000 design-conscious young women
+            200,000 design-conscious young women.
           </div>
           <div style={{ fontSize: 14, color: '#555' }}>
-            Cardio Bunny will run a dedicated social media competition campaign targeting 200k design-conscious young women - generating submissions, votes, and real purchase-intent data for your brand.
+            Cardio Bunny will run a dedicated social media competition campaign targeting them - generating submissions, votes, and real purchase-intent signals for your brand.
           </div>
         </div>
 
