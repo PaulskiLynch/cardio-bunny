@@ -104,7 +104,7 @@ export default function PitchPage() {
           </tbody>
         </table>
         <p style={{ fontSize: 14, color: '#555', marginBottom: 8 }}>
-          <strong>Top 10 entrants</strong> get a day's training with Cardio Bunny designers and your team - so final designs are production-ready.
+          <strong>Top 10 entrants</strong> get a day's training with Cardio Bunny designers and your team - so the final winning designs are curated and production-ready by both teams together.
         </p>
 
         {/* What our retail partner gets */}
