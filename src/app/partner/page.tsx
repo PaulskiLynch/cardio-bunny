@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import DemoVoteCard from './DemoVoteCard'
 
 export const metadata = {
   title: 'Cardio Bunny x Retail Partner | Next Top Ladies Activewear Designer',
@@ -122,6 +123,14 @@ export default function PitchPage() {
             A full demand dashboard - from our last activewear competition in Poland.
           </div>
         </div>
+
+        {/* Demo vote card */}
+        <SectionHeading>See how voting works</SectionHeading>
+        <p style={{ fontSize: 15, color: '#555', marginBottom: 24, lineHeight: 1.6 }}>
+          This is what your customers see. Every vote triggers three quick questions.
+          Their answers go straight into your demand dashboard.
+        </p>
+        <DemoVoteCard />
 
         {/* Next step */}
         <div style={{ border: '1px solid #eee', borderRadius: 16, padding: '36px 28px', textAlign: 'center', marginBottom: 48 }}>
