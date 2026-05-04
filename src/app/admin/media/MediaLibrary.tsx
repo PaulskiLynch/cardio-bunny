@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import { upload } from '@vercel/blob/client'
 
-interface Blob {
+interface BlobItem {
   url: string
   pathname: string
   size: number
@@ -10,7 +11,7 @@ interface Blob {
 }
 
 function isVideo(url: string) {
-  return url.match(/\.(mp4|webm)$/i)
+  return /\.(mp4|webm)$/i.test(url)
 }
 
 function formatSize(bytes: number) {
@@ -23,25 +24,24 @@ function fileName(pathname: string) {
   return pathname.split('/').pop() ?? pathname
 }
 
-export default function MediaLibrary({ initial }: { initial: Blob[] }) {
-  const [blobs, setBlobs]       = useState(initial)
-  const [copied, setCopied]     = useState('')
-  const [deleting, setDeleting] = useState('')
+export default function MediaLibrary({ initial }: { initial: BlobItem[] }) {
+  const [blobs, setBlobs]         = useState(initial)
+  const [copied, setCopied]       = useState('')
+  const [deleting, setDeleting]   = useState('')
   const [uploading, setUploading] = useState(false)
   const [uploadError, setUploadError] = useState('')
   const fileRef = useRef<HTMLInputElement>(null)
 
-  async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
+  async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (!file) return
     setUploading(true)
     setUploadError('')
-    const form = new FormData()
-    form.append('file', file)
     try {
-      const res = await fetch('/api/admin/media', { method: 'POST', body: form })
-      const json = await res.json()
-      if (!res.ok) throw new Error(json.error || 'Upload failed')
+      await upload(`loops/${file.name}`, file, {
+        access: 'public',
+        handleUploadUrl: '/api/admin/media',
+      })
       const refreshed = await fetch('/api/admin/media')
       const data = await refreshed.json()
       setBlobs(data.blobs)
@@ -87,7 +87,7 @@ export default function MediaLibrary({ initial }: { initial: Blob[] }) {
           type="file"
           accept="image/*,video/mp4,video/webm"
           style={{ display: 'none' }}
-          onChange={handleUpload}
+          onChange={handleFileChange}
         />
         {uploadError && <span style={{ fontSize: 13, color: '#c00', fontWeight: 700 }}>{uploadError}</span>}
       </div>
@@ -101,7 +101,6 @@ export default function MediaLibrary({ initial }: { initial: Blob[] }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 16 }}>
           {blobs.map(blob => (
             <div key={blob.url} style={{ border: '1.5px solid #eee', borderRadius: 12, overflow: 'hidden', background: '#fff' }}>
-              {/* Preview */}
               <div style={{ background: '#f5f5f5', aspectRatio: '4/3', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {isVideo(blob.url) ? (
                   <video
@@ -117,8 +116,6 @@ export default function MediaLibrary({ initial }: { initial: Blob[] }) {
                   <img src={blob.url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 )}
               </div>
-
-              {/* Info */}
               <div style={{ padding: '10px 12px' }}>
                 <div style={{ fontSize: 12, fontWeight: 700, marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={fileName(blob.pathname)}>
                   {fileName(blob.pathname)}
