@@ -116,7 +116,7 @@ export default function DemoVoteCard() {
               >
                 {isVoted ? '✓ VOTED' : '♥ VOTE'}
               </button>
-              <button style={{ width: 38, borderRadius: 8, border: '1.5px solid #eee', background: '#fff', fontSize: 16, cursor: 'default' }}>✈</button>
+              <button style={{ padding: '0 10px', borderRadius: 8, border: '1.5px solid #eee', background: '#fff', fontSize: 12, fontWeight: 900, cursor: 'default' }}>Share</button>
             </div>
             <div style={{ fontSize: 11, color: '#1a7a1a', fontWeight: 700 }}>✓ Verified voting</div>
           </div>

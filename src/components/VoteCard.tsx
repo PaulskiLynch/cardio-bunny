@@ -175,7 +175,7 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}
               aria-label="View entry"
             >
-              ✈
+              Share
             </Link>
           </div>
           {voteError && <div style={{ fontSize: 11, color: '#c00', marginTop: 4 }}>{voteError}</div>}
