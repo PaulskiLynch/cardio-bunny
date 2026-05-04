@@ -427,7 +427,9 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
           <label>Hero Image <span className="loop-hint">Banner shown inside the hero section</span></label>
           <div className="loop-image-picker loop-image-picker-wide" onClick={() => heroRef.current?.click()}>
             {heroImageUrl
-              ? <img src={heroImageUrl} alt="Hero" className="loop-image-preview loop-image-preview-wide" />
+              ? heroImageUrl.endsWith('.mp4')
+                ? <video src={heroImageUrl} muted autoPlay loop playsInline className="loop-image-preview loop-image-preview-wide" style={{ objectFit: 'cover' }} />
+                : <img src={heroImageUrl} alt="Hero" className="loop-image-preview loop-image-preview-wide" />
               : <div className="loop-image-placeholder">
                   <span className="loop-image-plus">{uploadingHero ? '…' : '+'}</span>
                   <span>Upload hero image</span>
@@ -444,6 +446,13 @@ export default function LoopForm({ initial }: { initial?: LoopInitial }) {
               }}
             />
           </div>
+          <input
+            type="text"
+            placeholder="Or paste a URL directly (e.g. /design_video.mp4)"
+            value={heroImageUrl}
+            onChange={e => setHeroImageUrl(e.target.value)}
+            style={{ marginTop: 8, width: '100%', fontSize: 13, padding: '8px 10px', border: '1.5px solid #ddd', borderRadius: 8, boxSizing: 'border-box' }}
+          />
           {heroImageUrl && (
             <button type="button" className="loop-image-remove" onClick={() => setHeroImageUrl('')}>Remove image</button>
           )}
