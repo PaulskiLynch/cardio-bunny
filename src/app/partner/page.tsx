@@ -95,7 +95,7 @@ export default function PitchPage() {
         </table>
 
         <div style={{ marginTop: 16, marginBottom: 8 }}>
-          <Link href="/loops/uk" target="_blank" style={{ fontSize: 14, fontWeight: 900, color: PINK, textDecoration: 'none' }}>
+          <Link href="/loops/uk" target="_blank" style={{ display: 'inline-block', fontSize: 14, fontWeight: 900, color: PINK, textDecoration: 'none', border: `2px solid ${PINK}`, borderRadius: 10, padding: '10px 20px' }}>
             See a live example of the competition page →
           </Link>
         </div>
