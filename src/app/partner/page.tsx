@@ -48,11 +48,14 @@ export default function PitchPage() {
           </span>
         </div>
 
-        {/* Hero image */}
+        {/* Hero video */}
         <div style={{ borderRadius: 16, overflow: 'hidden', marginBottom: 36 }}>
-          <img
-            src="/hero-image.png"
-            alt="Cardio Bunny activewear"
+          <video
+            src="/Crowd Loops.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
             style={{ width: '100%', height: 'auto', display: 'block', maxHeight: 340, objectFit: 'cover' }}
           />
         </div>
