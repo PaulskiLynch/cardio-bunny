@@ -23,23 +23,22 @@ export async function GET() {
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const body = (await request.json()) as HandleUploadBody
 
-  // Only check admin cookie on the browser token-request, not on Vercel's server callback
   if (body.type === 'blob.generate-client-token') {
     if (!await checkAdmin()) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
   try {
-    return await handleUpload({
+    const result = await handleUpload({
       body,
       request,
-      onBeforeGenerateToken: async (pathname) => ({
+      onBeforeGenerateToken: async () => ({
         allowedContentTypes: ALLOWED_TYPES,
         maximumSizeInBytes: 100 * 1024 * 1024,
         addRandomSuffix: true,
-        tokenPayload: pathname,
       }),
       onUploadCompleted: async () => {},
-    }) as NextResponse
+    })
+    return NextResponse.json(result)
   } catch (err) {
     return NextResponse.json({ error: (err as Error).message }, { status: 400 })
   }
