@@ -87,11 +87,22 @@ export default async function LoopPublicPage({
       <section className="hero" style={{ background: '#111', padding: 0, overflow: 'hidden' }}>
         {loop.heroImageUrl && (
           <div style={{ position: 'relative', width: '100%' }}>
-            <img
-              src={loop.heroImageUrl}
-              alt=""
-              style={{ width: '100%', height: 'auto', display: 'block' }}
-            />
+            {loop.heroImageUrl.endsWith('.mp4') ? (
+              <video
+                src={loop.heroImageUrl}
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            ) : (
+              <img
+                src={loop.heroImageUrl}
+                alt=""
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            )}
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 75%, #111 100%)' }} />
           </div>
         )}
