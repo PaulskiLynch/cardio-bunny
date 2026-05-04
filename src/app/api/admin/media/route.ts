@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import { isAdminCookie } from '@/lib/adminAuth'
 import { list, del } from '@vercel/blob'
-import { handleUpload, type HandleUploadBody } from '@vercel/blob/next'
+import { handleUpload, type HandleUploadBody } from '@vercel/blob/client'
 
 const ALLOWED_TYPES = [
   'image/jpeg', 'image/png', 'image/webp', 'image/gif',
