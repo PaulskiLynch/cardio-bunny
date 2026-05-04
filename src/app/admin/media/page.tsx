@@ -11,7 +11,8 @@ export default async function MediaPage() {
   const store = await cookies()
   if (!isAdminCookie(store.get('admin_auth')?.value)) redirect('/admin')
 
-  const { blobs } = await list({ prefix: 'loops/' })
+  const { blobs: raw } = await list({ prefix: 'loops/' })
+  const blobs = raw.map(b => ({ ...b, uploadedAt: b.uploadedAt.toISOString() }))
 
   return (
     <main className="page">
