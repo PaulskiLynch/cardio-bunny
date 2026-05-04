@@ -67,6 +67,9 @@ export default async function AdminPage({
         <Link href="/admin/intelligence" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
           📊 Loop Intelligence
         </Link>
+        <Link href="/admin/media" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
+          🖼️ Media Library
+        </Link>
         <Link href="/designs" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
           View public designs
         </Link>
