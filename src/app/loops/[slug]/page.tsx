@@ -199,7 +199,7 @@ export default async function LoopPublicPage({
                   <div key={i} className="prize-grand">
                     <div className="prize-grand-header">{p.badge}</div>
                     {p.cash && <div className="prize-cash">{p.cash}</div>}
-                    {p.description && <div style={{ fontSize: 14, lineHeight: 1.6, color: '#555', marginTop: 10 }}>{p.description}</div>}
+                    {p.description && <div style={{ fontSize: 14, lineHeight: 1.6, color: dark ? '#ccc' : '#555', marginTop: 10 }}>{p.description}</div>}
                   </div>
                 )
               }
@@ -207,12 +207,12 @@ export default async function LoopPublicPage({
                 <div key={i} className="prize-grand" style={{ marginTop: 12 }}>
                   <div className="prize-grand-header" style={{ fontSize: 16 }}>{p.badge}</div>
                   {p.cash && <div className="prize-cash" style={{ fontSize: 24 }}>{p.cash}</div>}
-                  {p.description && <div style={{ fontSize: 14, lineHeight: 1.6, color: '#555', marginTop: 10 }}>{p.description}</div>}
+                  {p.description && <div style={{ fontSize: 14, lineHeight: 1.6, color: dark ? '#ccc' : '#555', marginTop: 10 }}>{p.description}</div>}
                 </div>
               )
             })}
           </div>
-          <div style={{ marginTop: 14, padding: '12px 16px', background: '#f5f5f5', borderRadius: 8, fontSize: 12, color: '#666', lineHeight: 1.6 }}>
+          <div style={{ marginTop: 14, padding: '12px 16px', background: dark ? 'rgba(255,255,255,0.08)' : '#f5f5f5', borderRadius: 8, fontSize: 12, color: dark ? '#bbb' : '#666', lineHeight: 1.6 }}>
             Winners are selected based on public votes, eligibility verification, and brand review. The winning design may be developed for production following technical, legal, safety, and commercial review. Production is not guaranteed.
           </div>
         </section>
