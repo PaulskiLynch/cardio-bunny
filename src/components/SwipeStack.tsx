@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react'
 import { useUser, useClerk } from '@clerk/nextjs'
 import Link from 'next/link'
-import type { Question } from '@/lib/questions'
+import { getQuestions, type Question } from '@/lib/questions'
 
 export interface SwipeEntry {
   entryId: string
@@ -39,6 +39,11 @@ export default function SwipeStack({ entries, competition, questions, accent }: 
   const [answers, setAnswers]       = useState<Record<string, string>>({})
   const [textDraft, setTextDraft]   = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const activeQuestions = questions.length > 0 ? questions : getQuestions(competition)
+
+  // Filter out already-voted entries so the stack starts fresh on reload
+  const unseenEntries = entries.filter(e => !e.initialVoted)
+
   const [voted, setVoted]           = useState<Set<string>>(
     () => new Set(entries.filter(e => e.initialVoted).map(e => e.entryId))
   )
@@ -47,9 +52,9 @@ export default function SwipeStack({ entries, competition, questions, accent }: 
   const lockedAxis    = useRef<'h' | 'v' | null>(null)
   const votedEntryRef = useRef<SwipeEntry | null>(null)
 
-  const current = entries[index]
-  const next    = entries[index + 1]
-  const done    = index >= entries.length
+  const current = unseenEntries[index]
+  const next    = unseenEntries[index + 1]
+  const done    = index >= unseenEntries.length
 
   // ── Card advance ──────────────────────────────────────────
   function advanceCard() {
@@ -66,7 +71,7 @@ export default function SwipeStack({ entries, competition, questions, accent }: 
       if (res.ok) {
         setVoted(v => new Set([...v, entry.entryId]))
         const feedbackKey = `feedback_${entry.entryId}`
-        if (questions.length > 0 && !localStorage.getItem(feedbackKey)) {
+        if (activeQuestions.length > 0 && !localStorage.getItem(feedbackKey)) {
           votedEntryRef.current = entry
           setCurrentQ(0)
           setAnswers({})
@@ -144,7 +149,7 @@ export default function SwipeStack({ entries, competition, questions, accent }: 
   }
 
   // ── Feedback modal ────────────────────────────────────────
-  const q = questions[currentQ]
+  const q = activeQuestions[currentQ]
   const canAdvance = q ? (!q.required || q.type === 'text' || !!answers[q.id]) : true
 
   function selectAnswer(answer: string) {
@@ -152,20 +157,20 @@ export default function SwipeStack({ entries, competition, questions, accent }: 
   }
 
   function advanceFeedback() {
-    const fq = questions[currentQ]
+    const fq = activeQuestions[currentQ]
     let final = answers
     if (fq.type === 'text' && textDraft.trim()) {
       final = { ...answers, [fq.id]: textDraft.trim() }
       setAnswers(final)
     }
     setTextDraft('')
-    if (currentQ < questions.length - 1) setCurrentQ(c => c + 1)
+    if (currentQ < activeQuestions.length - 1) setCurrentQ(c => c + 1)
     else submitFeedback(final)
   }
 
   function skipFeedback() {
     setTextDraft('')
-    if (currentQ < questions.length - 1) setCurrentQ(c => c + 1)
+    if (currentQ < activeQuestions.length - 1) setCurrentQ(c => c + 1)
     else submitFeedback(answers)
   }
 
@@ -236,7 +241,7 @@ export default function SwipeStack({ entries, competition, questions, accent }: 
     <div className="swipe-stack">
       {/* Progress */}
       <div className="swipe-progress">
-        {index + 1} <span style={{ color: '#ccc' }}>/</span> {entries.length}
+        {index + 1} <span style={{ color: '#ccc' }}>/</span> {unseenEntries.length}
       </div>
 
       {/* Cards */}
@@ -306,7 +311,7 @@ export default function SwipeStack({ entries, competition, questions, accent }: 
                 <div className="feedback-modal-header">
                   <span className="feedback-entry-name">{votedEntryRef.current?.setName ?? ''}</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <span className="feedback-progress">Q{currentQ + 1} / {questions.length}</span>
+                    <span className="feedback-progress">Q{currentQ + 1} / {activeQuestions.length}</span>
                     <button className="feedback-close" onClick={closeModal}>✕</button>
                   </div>
                 </div>
@@ -329,7 +334,7 @@ export default function SwipeStack({ entries, competition, questions, accent }: 
                     <textarea className="feedback-textarea" value={textDraft} onChange={e => setTextDraft(e.target.value)} placeholder="Your thoughts..." rows={3} />
                   )}
                   <button className="feedback-next" disabled={submitting || !canAdvance} onClick={advanceFeedback}>
-                    {currentQ === questions.length - 1 ? (submitting ? 'SENDING...' : 'SUBMIT →') : 'NEXT →'}
+                    {currentQ === activeQuestions.length - 1 ? (submitting ? 'SENDING...' : 'SUBMIT →') : 'NEXT →'}
                   </button>
                   {!q.required && <button className="feedback-skip" onClick={skipFeedback}>Skip</button>}
                 </div>
