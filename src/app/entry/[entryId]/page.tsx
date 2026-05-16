@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { auth } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
@@ -70,7 +71,7 @@ export default async function EntryPage({
           <div className="entry-image">
             <span className="entry-id-badge">ID: {entry.entryId}</span>
             {entry.imageUrl
-              ? <img src={entry.imageUrl} alt={entry.setName} />
+              ? <Image src={entry.imageUrl} alt={entry.setName} width={520} height={520} style={{ width: '100%', height: 'auto', display: 'block' }} sizes="(max-width: 520px) 100vw, 520px" priority />
               : <span>{entry.setName}</span>}
           </div>
           <div className="entry-body">

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useUser, useClerk } from '@clerk/nextjs'
 import { getQuestions, type Question } from '@/lib/questions'
 
@@ -152,7 +153,7 @@ export default function VoteCard({ entryId, setName, designerName, imageUrl, ini
           )}
           <span className="entry-id-badge">ID: {entryId}</span>
           {imageUrl
-            ? <img src={imageUrl} alt={setName} />
+            ? <Image src={imageUrl} alt={setName} width={520} height={520} style={{ width: '100%', height: 'auto', display: 'block' }} sizes="(max-width: 520px) calc(50vw - 20px), 260px" />
             : <span>{setName}</span>}
         </Link>
         <div className="entry-body">

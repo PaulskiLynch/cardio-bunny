@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react'
 import { useUser, useClerk } from '@clerk/nextjs'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getQuestions, type Question } from '@/lib/questions'
 
 export interface SwipeEntry {
@@ -254,7 +255,7 @@ export default function SwipeStack({ entries, competition, questions, accent }: 
             key={`behind-${next.entryId}`}
             style={{ transform: `scale(${behindScale}) translateY(${behindY}px)` }}
           >
-            {next.imageUrl && <img src={next.imageUrl} alt={next.setName} className="swipe-card-img" draggable={false} />}
+            {next.imageUrl && <Image src={next.imageUrl} alt={next.setName} width={520} height={360} style={{ width: '100%', height: '360px', objectFit: 'cover', display: 'block' }} sizes="100vw" />}
             <div className="swipe-card-footer">
               <div className="swipe-card-name">{next.designerName}</div>
             </div>
@@ -274,7 +275,7 @@ export default function SwipeStack({ entries, competition, questions, accent }: 
           <div className="swipe-indicator swipe-skip" style={{ opacity: skipOpacity }}>SKIP ✕</div>
 
           {current.imageUrl
-            ? <img src={current.imageUrl} alt={current.setName} className="swipe-card-img" draggable={false} />
+            ? <Image src={current.imageUrl} alt={current.setName} width={520} height={360} style={{ width: '100%', height: '360px', objectFit: 'cover', display: 'block' }} sizes="100vw" />
             : <div className="swipe-card-placeholder">{current.setName}</div>
           }
 

@@ -39,11 +39,14 @@ export default async function LoopPublicPage({
   } catch {}
   const isModerator = isAdmin || (!!userEmail && moderatorEmails.includes(userEmail))
 
-  const entries = await prisma.entry.findMany({
+  const allEntries = await prisma.entry.findMany({
     where: { competition: slug, status: 'approved' },
     orderBy: { voteCount: 'desc' },
-    take: 6,
   })
+  // Top 6 by votes for the desktop grid showcase
+  const entries = allEntries.slice(0, 6)
+  // All entries in random order for the swipe stack — every entry gets fair exposure
+  const swipeEntries = [...allEntries].sort(() => Math.random() - 0.5)
 
   const votedSet = userId
     ? new Set((await prisma.vote.findMany({ where: { userId, competition: slug } })).map(v => v.entryId))
@@ -270,9 +273,9 @@ export default async function LoopPublicPage({
           )}
         </div>
 
-        {entries.length > 0 && (
+        {allEntries.length > 0 && (
           <SwipeStack
-            entries={entries.map(e => ({
+            entries={swipeEntries.map(e => ({
               entryId: e.entryId,
               setName: e.setName,
               designerName: e.designerName,
