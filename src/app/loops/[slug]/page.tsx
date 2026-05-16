@@ -5,6 +5,7 @@ import { auth, currentUser } from '@clerk/nextjs/server'
 import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 import VoteCard from '@/components/VoteCard'
+import SwipeStack from '@/components/SwipeStack'
 import CountdownTimer from '@/components/CountdownTimer'
 import NotifyForm from './NotifyForm'
 import type { Question } from '@/lib/questions'
@@ -268,6 +269,22 @@ export default async function LoopPublicPage({
             ))
           )}
         </div>
+
+        {entries.length > 0 && (
+          <SwipeStack
+            entries={entries.map(e => ({
+              entryId: e.entryId,
+              setName: e.setName,
+              designerName: e.designerName,
+              imageUrl: e.imageUrl,
+              voteCount: e.voteCount,
+              initialVoted: votedSet.has(e.entryId),
+            }))}
+            competition={slug}
+            questions={questions}
+            accent={accent}
+          />
+        )}
         <div style={{ textAlign: 'center', marginTop: 20 }}>
           <Link href={`/designs?competition=${slug}`} style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
             View all entries →

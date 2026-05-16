@@ -3569,3 +3569,154 @@ details p, details ul {
 .mkt-footer-links a { text-decoration: none; color: #555; }
 .mkt-footer-links a:hover { color: #111; }
 .mkt-footer-copy { font-size: 12px; color: #aaa; }
+
+/* ── Swipe Stack (mobile only) ───────────────────────── */
+.swipe-stack { display: none; }
+
+@media (max-width: 600px) {
+  .swipe-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 4px 0 8px;
+  }
+
+  /* Hide the regular grid on mobile */
+  .design-grid { display: none !important; }
+}
+
+.swipe-progress {
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #999;
+}
+
+.swipe-cards {
+  position: relative;
+  width: 100%;
+  height: 460px;
+}
+
+.swipe-card {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.13);
+  user-select: none;
+  touch-action: pan-y;
+  will-change: transform;
+}
+
+.swipe-card-behind {
+  z-index: 0;
+  pointer-events: none;
+  transition: transform 0.12s ease-out;
+}
+
+.swipe-card:not(.swipe-card-behind) { z-index: 1; }
+
+.swipe-card-img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.swipe-card-placeholder {
+  width: 100%;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 900;
+  color: #aaa;
+  background: #f0f0f0;
+}
+
+.swipe-card-footer {
+  padding: 12px 16px 14px;
+}
+
+.swipe-card-name { font-size: 17px; font-weight: 900; }
+.swipe-card-sub  { font-size: 13px; color: #777; margin-top: 2px; }
+.swipe-voted-badge { font-size: 12px; font-weight: 900; margin-top: 4px; }
+
+/* Swipe indicators */
+.swipe-indicator {
+  position: absolute;
+  top: 22px;
+  padding: 5px 13px;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 900;
+  border: 3px solid;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.05s;
+}
+
+.swipe-vote {
+  left: 16px;
+  color: #22c55e;
+  border-color: #22c55e;
+  transform: rotate(-12deg);
+}
+
+.swipe-skip {
+  right: 16px;
+  color: #ef4444;
+  border-color: #ef4444;
+  transform: rotate(12deg);
+}
+
+/* Tap action buttons */
+.swipe-actions {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+.swipe-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.swipe-btn:active { transform: scale(0.92); box-shadow: none; }
+
+.swipe-btn-skip  { border-color: #ef4444; color: #ef4444; }
+.swipe-btn-vote  { width: 68px; height: 68px; font-size: 28px; }
+
+.swipe-hint {
+  font-size: 11px;
+  color: #bbb;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+/* Done state */
+.swipe-done {
+  text-align: center;
+  padding: 56px 20px 32px;
+}
+.swipe-done-icon  { font-size: 52px; margin-bottom: 12px; }
+.swipe-done-title { font-size: 20px; font-weight: 900; }
+.swipe-done-sub   { font-size: 14px; color: #777; margin-top: 6px; }
+.swipe-done-link  { display: inline-block; margin-top: 20px; font-size: 14px; font-weight: 900; text-decoration: underline; }
