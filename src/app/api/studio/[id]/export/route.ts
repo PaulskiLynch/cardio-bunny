@@ -3,7 +3,12 @@ import { cookies } from 'next/headers'
 import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 
-function esc(v: string) { return `"${String(v).replace(/"/g, '""')}"` }
+function esc(v: string) {
+  const s = String(v)
+  // Prefix formula characters to prevent CSV injection in Excel/Sheets
+  const safe = /^[=+\-@\t]/.test(s) ? `\t${s}` : s
+  return `"${safe.replace(/"/g, '""')}"`
+}
 
 export async function GET(
   _req: NextRequest,

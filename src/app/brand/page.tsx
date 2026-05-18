@@ -9,11 +9,13 @@ export default async function BrandPage() {
   const user = await currentUser()
   if (!user) redirect('/sign-in?redirect_url=/brand')
 
-  const email = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
+  const emails = user.emailAddresses.map(e => e.emailAddress.toLowerCase())
 
   const loop = await prisma.loop.findFirst({
-    where: { ownerEmail: email },
+    where: { ownerEmail: { in: emails } },
   })
+
+  const email = emails[0] ?? ''
 
   if (!loop) {
     return (

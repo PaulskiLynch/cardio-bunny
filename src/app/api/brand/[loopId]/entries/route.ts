@@ -7,8 +7,8 @@ const PAGE_SIZE = 15
 async function verifyOwner(loopId: string) {
   const user = await currentUser()
   if (!user) return null
-  const email = user.emailAddresses[0]?.emailAddress?.toLowerCase() ?? ''
-  const loop  = await prisma.loop.findFirst({ where: { id: loopId, ownerEmail: email } })
+  const emails = user.emailAddresses.map(e => e.emailAddress.toLowerCase())
+  const loop   = await prisma.loop.findFirst({ where: { id: loopId, ownerEmail: { in: emails } } })
   return loop ?? null
 }
 

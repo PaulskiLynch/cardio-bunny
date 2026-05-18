@@ -61,6 +61,7 @@ model FeedbackResponse {
   answer      String
   createdAt   DateTime @default(now()) @map("created_at")
 
+  @@index([entryId])
   @@map("feedback_responses")
 }
 
@@ -90,6 +91,7 @@ model NotifySignup {
   email       String   @default("")
   createdAt   DateTime @default(now()) @map("created_at")
 
+  @@unique([competition, email])
   @@map("notify_signups")
 }
 
@@ -139,4 +141,7 @@ model Entry {
   bonusVotes    Int      @default(0) @map("bonus_votes")
   competition   String   @default("biedronka")
   createdAt     DateTime @default(now())
+
+  @@index([competition, status])
+  @@index([competition, contact])
 }

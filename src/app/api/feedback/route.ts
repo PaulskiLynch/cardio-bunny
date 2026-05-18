@@ -9,6 +9,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid payload' }, { status: 400 })
     }
 
+    const entry = await prisma.entry.findFirst({ where: { entryId, competition }, select: { id: true } })
+    if (!entry) return NextResponse.json({ error: 'Entry not found.' }, { status: 404 })
+
     await prisma.feedbackResponse.createMany({
       data: responses.map((r: { questionId: string; answer: string }) => ({
         entryId,

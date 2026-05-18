@@ -2,15 +2,23 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 
 export async function POST(req: NextRequest) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let body: any
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
+  }
+
   try {
     const {
       competition = '', handle, name = '', specialty = '',
       role, reach, platform,
       portfolioUrl, avatarUrl = '',
       followers = '', engagement = '', location = '',
-    } = await req.json()
+    } = body
 
-    if (!handle || !role || !reach || !platform) {
+    if (!handle?.trim() || !role?.trim() || !reach?.trim() || !platform?.trim()) {
       return NextResponse.json({ error: 'All fields are required.' }, { status: 400 })
     }
 

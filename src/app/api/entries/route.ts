@@ -19,11 +19,18 @@ export async function POST(req: NextRequest) {
       return Response.json({ error: 'All fields are required.' }, { status: 400 })
     }
 
+    if (contact.length > 255) {
+      return Response.json({ error: 'Contact field is too long.' }, { status: 400 })
+    }
+    if (designerName.length > 100 || setName.length > 200 || hook.length > 500) {
+      return Response.json({ error: 'One or more fields exceed the maximum length.' }, { status: 400 })
+    }
+
     if (!image || !image.size) {
       return Response.json({ error: 'A design image is required.' }, { status: 400 })
     }
 
-    const imageError = validateEntryImage(image)
+    const imageError = await validateEntryImage(image)
     if (imageError) return Response.json({ error: imageError }, { status: 400 })
 
     // One entry per email per competition
