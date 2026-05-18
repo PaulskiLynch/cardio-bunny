@@ -1,15 +1,11 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider     = "sqlite"
+  relationMode = "prisma"
 }
 
 model DemoRequest {
@@ -50,6 +46,10 @@ model Loop {
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
 
+  entries       Entry[]
+  votes         Vote[]
+  notifySignups NotifySignup[]
+
   @@map("loops")
 }
 
@@ -60,6 +60,8 @@ model FeedbackResponse {
   questionId  String   @map("question_id")
   answer      String
   createdAt   DateTime @default(now()) @map("created_at")
+
+  entry       Entry    @relation(fields: [entryId], references: [entryId], onDelete: Cascade)
 
   @@index([entryId])
   @@map("feedback_responses")
@@ -91,7 +93,10 @@ model NotifySignup {
   email       String   @default("")
   createdAt   DateTime @default(now()) @map("created_at")
 
+  loop        Loop     @relation(fields: [competition], references: [slug], onDelete: Cascade)
+
   @@unique([competition, email])
+  @@index([competition])
   @@map("notify_signups")
 }
 
@@ -103,7 +108,11 @@ model Vote {
   isReferral  Boolean  @default(false) @map("is_referral")
   createdAt   DateTime @default(now()) @map("created_at")
 
+  entry       Entry    @relation(fields: [entryId], references: [entryId], onDelete: Cascade)
+  loop        Loop     @relation(fields: [competition], references: [slug], onDelete: Cascade)
+
   @@unique([entryId, userId])
+  @@index([competition])
   @@map("votes")
 }
 
@@ -139,8 +148,12 @@ model Entry {
   voteCount     Int      @default(0)
   referralVotes Int      @default(0) @map("referral_votes")
   bonusVotes    Int      @default(0) @map("bonus_votes")
-  competition   String   @default("biedronka")
+  competition   String
   createdAt     DateTime @default(now())
+
+  loop          Loop               @relation(fields: [competition], references: [slug], onDelete: Cascade)
+  votes         Vote[]
+  feedbacks     FeedbackResponse[]
 
   @@index([competition, status])
   @@index([competition, contact])
