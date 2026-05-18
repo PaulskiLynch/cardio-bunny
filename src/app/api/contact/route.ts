@@ -1,7 +1,11 @@
 import { NextRequest } from 'next/server'
 import { prisma } from '@/lib/db'
+import { formLimiter, getIp } from '@/lib/ratelimit'
 
 export async function POST(req: NextRequest) {
+  const { success } = await formLimiter.limit(getIp(req))
+  if (!success) return Response.json({ error: 'Too many requests. Try again later.' }, { status: 429 })
+
   try {
     const form = await req.formData()
     const contactName = (form.get('name') as string)?.trim()

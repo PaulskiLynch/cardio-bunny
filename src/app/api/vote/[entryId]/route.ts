@@ -1,6 +1,7 @@
 import type { NextRequest } from 'next/server'
 import { auth } from '@clerk/nextjs/server'
 import { prisma } from '@/lib/db'
+import { voteLimiter } from '@/lib/ratelimit'
 
 export async function POST(
   req: NextRequest,
@@ -8,6 +9,9 @@ export async function POST(
 ) {
   const { userId } = await auth()
   if (!userId) return Response.json({ error: 'Sign in to vote.' }, { status: 401 })
+
+  const { success } = await voteLimiter.limit(userId)
+  if (!success) return Response.json({ error: 'Too many votes. Try again later.' }, { status: 429 })
 
   const { entryId } = await ctx.params
   const body = await req.json().catch(() => ({}))

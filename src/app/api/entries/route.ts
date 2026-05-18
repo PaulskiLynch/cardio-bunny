@@ -3,8 +3,12 @@ import { prisma } from '@/lib/db'
 import { saveImage, validateEntryImage } from '@/lib/upload'
 import { generateEntryId } from '@/lib/entryId'
 import { notifyNewEntry } from '@/lib/email'
+import { submitLimiter, getIp } from '@/lib/ratelimit'
 
 export async function POST(req: NextRequest) {
+  const { success } = await submitLimiter.limit(getIp(req))
+  if (!success) return Response.json({ error: 'Too many submissions. Try again later.' }, { status: 429 })
+
   try {
     const form = await req.formData()
 
