@@ -12,13 +12,11 @@ const INCLUDES = [
 ]
 
 const TRUST_ITEMS = [
-  ['Pre-live moderation', 'Every submission is reviewed before going public. Nothing appears without approval.'],
-  ['Profanity and image review', 'Automated flagging plus manual review before entries are published.'],
+  ['Pre-live moderation', 'Every submission is reviewed before going public. Nothing appears without your approval.'],
   ['Duplicate and suspicious vote detection', 'Rate limits, device signals, and pattern detection identify inauthentic activity.'],
   ['Country-specific eligibility rules', 'Age, location, and residency rules configured per market.'],
-  ['Entrant terms and winner agreements', 'Digital acceptance of competition terms at submission. IP and rights flow configured to your legal requirements.'],
+  ['Entrant terms and winner agreements', 'Digital acceptance of competition terms at submission. IP and rights configured to your legal requirements.'],
   ['GDPR-friendly data capture', 'Consent collected at submission. Data handling configured for your jurisdiction.'],
-  ['Brand approval before publication', 'Your team reviews and approves entries before they appear on the public page.'],
   ['Private and invite-only options', 'Loops can be password-protected or limited to invited participants.'],
 ]
 
@@ -119,9 +117,6 @@ export default function CrowdLoopsHome() {
       <section className="section">
         <div className="b2b-label">Intelligence Dashboard</div>
         <h2>A software tool - not a marketing agency.</h2>
-        <div className="b2b-sub" style={{ marginBottom: 24 }}>
-          Every Loop generates a live demand dashboard. Buying teams see submission volume, voter demographics, notify-me intent, and top style signals - before committing to production.
-        </div>
         <div className="dashboard-frame" style={{ maxWidth: '100%' }}>
           <div className="dashboard-bar">
             <span className="dashboard-dot red" /><span className="dashboard-dot amber" /><span className="dashboard-dot green" />
@@ -172,23 +167,6 @@ export default function CrowdLoopsHome() {
             </div>
           </div>
         </div>
-        <div className="dashboard-callouts">
-          {[
-            ['📥', 'Submission volume', 'Track entries in real time as the campaign runs.'],
-            ['🗳', 'Verified voter signals', 'Each vote is quality-scored. Suspicious patterns are flagged automatically.'],
-            ['🔔', 'Notify-me intent', 'Measure purchase intent from people who want the product but did not enter.'],
-            ['📊', 'Top design signals', 'See which styles, colours, and concepts dominate voting data.'],
-            ['📄', 'Exportable buying report', 'Download a structured report for your buying team at the end of the campaign.'],
-          ].map(([icon, title, desc]) => (
-            <div key={String(title)} className="dashboard-callout">
-              <span className="callout-icon">{icon}</span>
-              <div>
-                <div className="callout-title">{title}</div>
-                <div className="callout-desc">{desc}</div>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* ── How It Works ─────────────────────────────────── */}
@@ -200,7 +178,7 @@ export default function CrowdLoopsHome() {
             <div className="integration-step">01</div>
             <div className="integration-body">
               <div className="integration-focus">Launch - Branded competition portal</div>
-              <div className="integration-benefit">Deploy a branded competition on your domain in around 48 hours once the brief, brand assets, eligibility rules, and approvals are confirmed. Your logo, your colours, your rules.</div>
+              <div className="integration-benefit">Deploy a branded competition on your domain in around 48 hours once the brief, brand assets, and approvals are confirmed.</div>
             </div>
           </div>
           <div className="integration-row">
@@ -214,7 +192,7 @@ export default function CrowdLoopsHome() {
             <div className="integration-step">03</div>
             <div className="integration-body">
               <div className="integration-focus">Decide - Shortlist and produce</div>
-              <div className="integration-benefit">Your buying team reviews the strongest concepts with full demand data. Export the report, brief production, and launch to an audience already engaged before the product hits the shelf.</div>
+              <div className="integration-benefit">Your buying team reviews the strongest concepts with full demand data, exports the report, and briefs production.</div>
             </div>
           </div>
         </div>
@@ -224,9 +202,6 @@ export default function CrowdLoopsHome() {
       <section className="section" id="trust">
         <div className="b2b-label">Brand Safety</div>
         <h2>Built for retail approval workflows.</h2>
-        <div className="b2b-sub" style={{ marginBottom: 24 }}>
-          CrowdLoops is designed for procurement, legal, and brand teams - not just marketing. Every control that enterprise retailers need is built in.
-        </div>
         <div className="trust-list">
           {TRUST_ITEMS.map(([title, desc]) => (
             <div key={title} className="trust-item">
@@ -241,34 +216,33 @@ export default function CrowdLoopsHome() {
       <section className="section" id="examples">
         <div className="b2b-label">Example Loop Formats</div>
         <h2>Illustrative demos across four product categories.</h2>
-        <div className="b2b-sub" style={{ marginBottom: 24 }}>
-          These are demo competitions showing how CrowdLoops works across fashion, toys, beverages, and lifestyle. Each loop collects a different set of product signals.
-        </div>
-        <div className="demo-loop-grid">
+        <div className="demo-loop-slider">
           {DEMO_LOOPS.map(loop => (
-            <Link key={loop.href} href={loop.href} style={{ textDecoration: 'none' }}>
-              <div
-                className="event-card demo-loop-card"
-                style={loop.dark ? { background: loop.bg, borderColor: loop.border } : {}}
-              >
-                <div className="demo-loop-category" style={loop.dark ? { color: '#aaa' } : {}}>{loop.category}</div>
-                <div className="event-card-title" style={{ fontSize: 15, marginBottom: 8, ...(loop.dark ? { color: '#fff' } : {}) }}>
-                  {loop.title} {loop.flag}
+            <div key={loop.href} className="demo-loop-slider-item">
+              <Link href={loop.href} style={{ textDecoration: 'none' }}>
+                <div
+                  className="event-card demo-loop-card"
+                  style={loop.dark ? { background: loop.bg, borderColor: loop.border } : {}}
+                >
+                  <div className="demo-loop-category" style={loop.dark ? { color: '#aaa' } : {}}>{loop.category}</div>
+                  <div className="event-card-title" style={{ fontSize: 15, marginBottom: 8, ...(loop.dark ? { color: '#fff' } : {}) }}>
+                    {loop.title} {loop.flag}
+                  </div>
+                  <div className="demo-loop-desc" style={loop.dark ? { color: '#bbb' } : {}}>{loop.desc}</div>
+                  <div style={{ flex: 1 }} />
+                  <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: 12 }}>
+                    <div className="event-card-status open">🟡 Demo - view example</div>
+                    {loop.logo && (
+                      <img
+                        src={loop.logo}
+                        alt=""
+                        style={{ height: 64, maxWidth: 160, objectFit: 'contain', filter: loop.dark ? 'brightness(0) invert(1)' : 'brightness(0)', opacity: 0.9 }}
+                      />
+                    )}
+                  </div>
                 </div>
-                <div className="demo-loop-desc" style={loop.dark ? { color: '#bbb' } : {}}>{loop.desc}</div>
-                <div style={{ flex: 1 }} />
-                <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginTop: 12 }}>
-                  <div className="event-card-status open">🟡 Demo - view example</div>
-                  {loop.logo && (
-                    <img
-                      src={loop.logo}
-                      alt=""
-                      style={{ height: 64, maxWidth: 160, objectFit: 'contain', filter: loop.dark ? 'brightness(0) invert(1)' : 'brightness(0)', opacity: 0.9 }}
-                    />
-                  )}
-                </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
       </section>
@@ -280,31 +254,27 @@ export default function CrowdLoopsHome() {
         <div className="faq-list">
           <details open>
             <summary>Can we moderate entries before they go live?</summary>
-            <p>Yes. Competitions can be configured for pre-moderation, post-moderation, or shortlist-only public display. Your team reviews entries on a private dashboard before anything is published. Nothing goes live without your approval.</p>
+            <p>Yes. Your team reviews entries on a private dashboard before anything is published. Nothing goes live without your approval.</p>
           </details>
           <details>
             <summary>How do you prevent fake votes?</summary>
-            <p>CrowdLoops uses layered vote protection: verified email, rate limiting, device fingerprinting, duplicate-pattern detection, suspicious activity flags, and manual review. Flagged votes are excluded from the demand report and can be removed from winner selection entirely.</p>
+            <p>Layered protection: verified email, rate limiting, device fingerprinting, and duplicate-pattern detection. Flagged votes are excluded from the demand report.</p>
           </details>
           <details>
             <summary>How do you handle IP and design rights?</summary>
-            <p>Every entrant accepts event-specific terms before submitting. Those terms include the rights needed for the brand to review, promote, select, and produce winning designs. Licensing, transfer, and exclusivity are configured to match your legal requirements. We do not claim any rights to submissions.</p>
+            <p>Every entrant accepts event-specific terms before submitting. Licensing, transfer, and exclusivity are configured to match your legal requirements. We do not claim any rights to submissions.</p>
           </details>
           <details>
             <summary>How long does it take to launch?</summary>
-            <p>A standard Loop can be configured in around 48 hours once the brief, brand assets, eligibility rules, and approvals are confirmed. Multi-market campaigns, custom legal terms, or complex eligibility rules may take longer. We scope this during the onboarding call.</p>
-          </details>
-          <details>
-            <summary>What markets can we run in?</summary>
-            <p>CrowdLoops can be localised for different markets, languages, currency, and retail partners. Current demo Loops include Poland, the UK, and Türkiye. New markets are typically configured within 24–48 hours after assets and rules are approved.</p>
+            <p>Around 48 hours once the brief, brand assets, and approvals are confirmed. Multi-market campaigns or complex eligibility rules may take longer.</p>
           </details>
           <details>
             <summary>Can we run a private or invite-only competition?</summary>
-            <p>Yes. Loops can be password-protected, invite-only, or limited to a specific audience - for example, existing loyalty members or trade contacts. Public voting can also be disabled so only your team scores the entries.</p>
+            <p>Yes. Loops can be password-protected or limited to a specific audience — for example, existing loyalty members or trade contacts.</p>
           </details>
           <details>
             <summary>What does the output look like?</summary>
-            <p>At the end of a campaign your team receives an exportable demand report: submission list, vote totals, voter feedback breakdowns, notify-me counts, and a ranked shortlist. The report is designed to go straight to a buying or product team for a production decision.</p>
+            <p>An exportable demand report: submission list, vote totals, feedback breakdowns, notify-me counts, and a ranked shortlist — ready for your buying team.</p>
           </details>
         </div>
       </section>
@@ -329,9 +299,6 @@ export default function CrowdLoopsHome() {
       {/* ── Bottom CTA ───────────────────────────────────── */}
       <section className="section" style={{ textAlign: 'center', padding: '40px 24px' }}>
         <h2>Ready to validate your next product?</h2>
-        <div className="b2b-sub" style={{ marginBottom: 28 }}>
-          Book a 20-minute call and we will walk you through a live demo, answer your legal and moderation questions, and scope a pilot campaign for your brand.
-        </div>
         <Link className="cta" href="/contact" style={{ marginBottom: 14, display: 'inline-block' }}>
           Book a 20-minute demo
         </Link>

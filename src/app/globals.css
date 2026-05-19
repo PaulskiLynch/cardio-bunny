@@ -2329,11 +2329,23 @@ details p, details ul {
   .dashboard-metrics { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* ── Demo loop grid ─────────────────────────────────── */
-.demo-loop-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+/* ── Demo loop slider ───────────────────────────────── */
+.demo-loop-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   gap: 12px;
+  padding-bottom: 12px;
+  margin: 0 -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  scrollbar-width: none;
+}
+.demo-loop-slider::-webkit-scrollbar { display: none; }
+.demo-loop-slider-item {
+  flex: 0 0 82%;
+  scroll-snap-align: start;
 }
 
 .demo-loop-card {
