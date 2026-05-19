@@ -6,14 +6,6 @@ import { getQuestions } from '@/lib/questions'
 
 export const dynamic = 'force-dynamic'
 
-const COMPETITIONS = [
-  { id: 'biedronka', label: 'Cardio Bunny Poland 🇵🇱' },
-  { id: 'uk',        label: 'Cardio Bunny UK 🇬🇧' },
-  { id: 'turkiye',   label: 'Cardio Bunny Türkiye 🇹🇷' },
-  { id: 'swomp',     label: 'SWOMP WATER+' },
-  { id: 'konkerz',   label: 'Konkerz' },
-]
-
 function pct(n: number, total: number) {
   if (!total) return 0
   return Math.round((n / total) * 100)
@@ -26,7 +18,12 @@ export default async function IntelligencePage({
 }) {
   if (!await isAdmin()) redirect('/sign-in')
 
-  const { competition = 'biedronka' } = await searchParams
+  const loops = await prisma.loop.findMany({
+    select: { slug: true, brandName: true },
+    orderBy: { createdAt: 'desc' },
+  })
+
+  const { competition = loops[0]?.slug ?? '' } = await searchParams
   const questions = getQuestions(competition)
 
   const responses = await prisma.feedbackResponse.findMany({
@@ -63,13 +60,13 @@ export default async function IntelligencePage({
 
       {/* Competition tabs */}
       <div className="intel-tabs">
-        {COMPETITIONS.map(c => (
+        {loops.map(l => (
           <Link
-            key={c.id}
-            href={`/admin/intelligence?competition=${c.id}`}
-            className={`intel-tab${competition === c.id ? ' active' : ''}`}
+            key={l.slug}
+            href={`/admin/intelligence?competition=${l.slug}`}
+            className={`intel-tab${competition === l.slug ? ' active' : ''}`}
           >
-            {c.label}
+            {l.brandName}
           </Link>
         ))}
       </div>

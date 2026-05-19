@@ -32,3 +32,40 @@ export async function notifyNewEntry({
     `,
   }).catch(() => { /* don't let email failure block the submission */ })
 }
+
+export async function notifyEntryDecision({
+  to,
+  designerName,
+  setName,
+  competition,
+  status,
+}: {
+  to: string
+  designerName: string
+  setName: string
+  competition: string
+  status: 'approved' | 'rejected'
+}) {
+  if (!process.env.RESEND_API_KEY) return
+  const resend = new Resend(process.env.RESEND_API_KEY)
+  const approved = status === 'approved'
+  await resend.emails.send({
+    from: FROM,
+    to,
+    subject: approved
+      ? `Your entry has been approved — ${competition}`
+      : `Update on your entry — ${competition}`,
+    html: approved ? `
+      <p>Hi ${designerName},</p>
+      <p>Great news — your entry <strong>${setName}</strong> has been <strong>approved</strong> for the ${competition} competition and is now live for voting!</p>
+      <p><a href="https://crowdloops.com/loops/${competition}">View the competition →</a></p>
+      <p>Good luck!</p>
+      <p>— The CrowdLoops Team</p>
+    ` : `
+      <p>Hi ${designerName},</p>
+      <p>Thank you for submitting <strong>${setName}</strong> to the ${competition} competition.</p>
+      <p>After review, your entry was not selected to move forward this time. We hope you'll join us again in future competitions.</p>
+      <p>— The CrowdLoops Team</p>
+    `,
+  }).catch(() => {})
+}
