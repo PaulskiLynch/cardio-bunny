@@ -2329,7 +2329,7 @@ details p, details ul {
   .dashboard-metrics { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* ── Demo loop slider ───────────────────────────────── */
+/* ── Demo loop slider (mobile) / grid (desktop) ─────── */
 .demo-loop-slider {
   display: flex;
   overflow-x: auto;
@@ -2346,6 +2346,23 @@ details p, details ul {
 .demo-loop-slider-item {
   flex: 0 0 82%;
   scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .demo-loop-slider {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow-x: visible;
+    scroll-snap-type: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+  .demo-loop-slider-item {
+    flex: none;
+    scroll-snap-align: none;
+  }
 }
 
 .demo-loop-card {
