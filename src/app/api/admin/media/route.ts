@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
-import { isAdminCookie } from '@/lib/adminAuth'
+import { isAdmin } from '@/lib/adminAuth'
 import { list, del } from '@vercel/blob'
 import { handleUpload, type HandleUploadBody } from '@vercel/blob/client'
 
@@ -9,13 +8,8 @@ const ALLOWED_TYPES = [
   'video/mp4', 'video/webm',
 ]
 
-async function checkAdmin() {
-  const store = await cookies()
-  return isAdminCookie(store.get('admin_auth')?.value)
-}
-
 export async function GET() {
-  if (!await checkAdmin()) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!await isAdmin()) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const { blobs } = await list({ prefix: 'loops/' })
   return NextResponse.json({ blobs })
 }
@@ -24,7 +18,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   const body = (await request.json()) as HandleUploadBody
 
   if (body.type === 'blob.generate-client-token') {
-    if (!await checkAdmin()) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    if (!await isAdmin()) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
   try {
@@ -45,7 +39,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 }
 
 export async function DELETE(req: NextRequest) {
-  if (!await checkAdmin()) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  if (!await isAdmin()) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const { url } = await req.json()
   if (!url) return NextResponse.json({ error: 'No URL provided' }, { status: 400 })
   await del(url)

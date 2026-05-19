@@ -1,15 +1,13 @@
-import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { isAdminCookie } from '@/lib/adminAuth'
+import { redirect } from 'next/navigation'
+import { isAdmin } from '@/lib/adminAuth'
 import { list } from '@vercel/blob'
 import MediaLibrary from './MediaLibrary'
 
 export const dynamic = 'force-dynamic'
 
 export default async function MediaPage() {
-  const store = await cookies()
-  if (!isAdminCookie(store.get('admin_auth')?.value)) redirect('/admin')
+  if (!await isAdmin()) redirect('/sign-in')
 
   const { blobs: raw } = await list({ prefix: 'loops/' })
   const blobs = raw.map(b => ({ ...b, uploadedAt: b.uploadedAt.toISOString() }))

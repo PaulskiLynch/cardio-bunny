@@ -1,11 +1,6 @@
-import { createHmac } from 'crypto'
+import { currentUser } from '@clerk/nextjs/server'
 
-export function adminToken(): string {
-  return createHmac('sha256', process.env.ADMIN_PASSWORD ?? 'no-secret')
-    .update('crowdloops-admin-v1')
-    .digest('hex')
-}
-
-export function isAdminCookie(value: string | undefined): boolean {
-  return !!value && value === adminToken()
+export async function isAdmin(): Promise<boolean> {
+  const user = await currentUser()
+  return user?.publicMetadata?.role === 'admin'
 }

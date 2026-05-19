@@ -1,9 +1,8 @@
-import { cookies } from 'next/headers'
 import Link from 'next/link'
-import { isAdminCookie } from '@/lib/adminAuth'
+import { redirect } from 'next/navigation'
+import { isAdmin } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 import { getQuestions } from '@/lib/questions'
-import { LoginForm } from '../AdminClient'
 
 export const dynamic = 'force-dynamic'
 
@@ -25,11 +24,7 @@ export default async function IntelligencePage({
 }: {
   searchParams: Promise<{ competition?: string }>
 }) {
-  const cookieStore = await cookies()
-  const auth = cookieStore.get('admin_auth')?.value
-  if (!isAdminCookie(auth)) {
-    return <main className="page"><LoginForm /></main>
-  }
+  if (!await isAdmin()) redirect('/sign-in')
 
   const { competition = 'biedronka' } = await searchParams
   const questions = getQuestions(competition)

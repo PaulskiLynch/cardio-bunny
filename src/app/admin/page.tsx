@@ -1,8 +1,8 @@
-import { cookies } from 'next/headers'
 import Link from 'next/link'
-import { isAdminCookie } from '@/lib/adminAuth'
+import { redirect } from 'next/navigation'
+import { isAdmin } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
-import { AdminList, LoginForm } from './AdminClient'
+import { AdminList } from './AdminClient'
 
 export const dynamic = 'force-dynamic'
 
@@ -11,16 +11,7 @@ export default async function AdminPage({
 }: {
   searchParams: Promise<{ brand?: string }>
 }) {
-  const cookieStore = await cookies()
-  const auth = cookieStore.get('admin_auth')?.value
-
-  if (!isAdminCookie(auth)) {
-    return (
-      <main className="page">
-        <LoginForm />
-      </main>
-    )
-  }
+  if (!await isAdmin()) redirect('/sign-in')
 
   const { brand } = await searchParams
   const competitionFilter = brand ?? undefined
@@ -69,6 +60,9 @@ export default async function AdminPage({
         </Link>
         <Link href="/admin/media" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
           🖼️ Media Library
+        </Link>
+        <Link href="/admin/users" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
+          👥 Users
         </Link>
         <Link href="/designs" style={{ fontWeight: 900, fontSize: 14, textDecoration: 'underline' }}>
           View public designs

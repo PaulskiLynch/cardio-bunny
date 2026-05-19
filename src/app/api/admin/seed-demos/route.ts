@@ -1,12 +1,6 @@
 import { NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
-import { isAdminCookie } from '@/lib/adminAuth'
+import { isAdmin } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
-
-async function isAdmin() {
-  const store = await cookies()
-  return isAdminCookie(store.get('admin_auth')?.value)
-}
 
 const DEMOS = [
   {

@@ -1,8 +1,7 @@
-import { cookies } from 'next/headers'
 import Link from 'next/link'
-import { isAdminCookie } from '@/lib/adminAuth'
+import { redirect } from 'next/navigation'
+import { isAdmin } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
-import { LoginForm } from '../AdminClient'
 import DeleteLoopButton from './[id]/edit/DeleteLoopButton'
 import ReconcileButton from './ReconcileButton'
 
@@ -15,10 +14,7 @@ const STATUS_LABEL: Record<string, string> = {
 }
 
 export default async function LoopsAdminPage() {
-  const cookieStore = await cookies()
-  if (!isAdminCookie(cookieStore.get('admin_auth')?.value)) {
-    return <main className="page"><LoginForm /></main>
-  }
+  if (!await isAdmin()) redirect('/sign-in')
 
   const loops = await prisma.loop.findMany({ orderBy: { createdAt: 'desc' } })
 

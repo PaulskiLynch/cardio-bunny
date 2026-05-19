@@ -1,11 +1,9 @@
 import { NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
-import { isAdminCookie } from '@/lib/adminAuth'
+import { isAdmin } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 
 export async function POST() {
-  const store = await cookies()
-  if (!isAdminCookie(store.get('admin_auth')?.value)) {
+  if (!await isAdmin()) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

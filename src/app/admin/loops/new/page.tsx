@@ -1,8 +1,7 @@
-import { cookies } from 'next/headers'
 import Link from 'next/link'
-import { isAdminCookie } from '@/lib/adminAuth'
+import { redirect } from 'next/navigation'
+import { isAdmin } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
-import { LoginForm } from '../../AdminClient'
 import LoopForm, { type LoopInitial } from '../LoopForm'
 
 export const dynamic = 'force-dynamic'
@@ -21,10 +20,7 @@ export default async function NewLoopPage({
 }: {
   searchParams: Promise<{ from?: string }>
 }) {
-  const cookieStore = await cookies()
-  if (!isAdminCookie(cookieStore.get('admin_auth')?.value)) {
-    return <main className="page"><LoginForm /></main>
-  }
+  if (!await isAdmin()) redirect('/sign-in')
 
   const { from } = await searchParams
   const inquiry = from

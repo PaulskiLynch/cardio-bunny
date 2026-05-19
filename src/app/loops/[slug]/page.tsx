@@ -1,8 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { cookies } from 'next/headers'
 import { auth, currentUser } from '@clerk/nextjs/server'
-import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 import VoteCard from '@/components/VoteCard'
 import SwipeStack from '@/components/SwipeStack'
@@ -28,8 +26,8 @@ export default async function LoopPublicPage({
   const loop = await prisma.loop.findUnique({ where: { slug } })
   if (!loop) notFound()
 
-  const [{ userId }, clerkUser, cookieStore] = await Promise.all([auth(), currentUser(), cookies()])
-  const isAdmin = isAdminCookie(cookieStore.get('admin_auth')?.value)
+  const [{ userId }, clerkUser] = await Promise.all([auth(), currentUser()])
+  const isAdmin = clerkUser?.publicMetadata?.role === 'admin'
   const userEmail = clerkUser?.emailAddresses?.[0]?.emailAddress?.toLowerCase() ?? ''
 
   let moderatorEmails: string[] = []

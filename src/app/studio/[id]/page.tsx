@@ -1,8 +1,6 @@
-import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { currentUser } from '@clerk/nextjs/server'
-import { isAdminCookie } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 import { StudioEntriesTable, StudioModeration } from './StudioClient'
 import { StudioSignInGate, StudioDeniedGate } from './StudioGate'
@@ -42,14 +40,13 @@ export default async function StudioPage({
   params: Promise<{ id: string }>
   searchParams: Promise<{ tab?: string }>
 }) {
-  const [cookieStore, clerkUser, { id }, { tab = 'overview' }] = await Promise.all([
-    cookies(),
+  const [clerkUser, { id }, { tab = 'overview' }] = await Promise.all([
     currentUser(),
     params,
     searchParams,
   ])
 
-  const isAdmin = isAdminCookie(cookieStore.get('admin_auth')?.value)
+  const isAdmin = clerkUser?.publicMetadata?.role === 'admin'
   const userEmail = clerkUser?.emailAddresses?.[0]?.emailAddress?.toLowerCase() ?? ''
 
   const loop = await prisma.loop.findUnique({ where: { id } })

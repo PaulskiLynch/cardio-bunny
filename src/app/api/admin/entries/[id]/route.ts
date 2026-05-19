@@ -1,14 +1,12 @@
 import type { NextRequest } from 'next/server'
-import { cookies } from 'next/headers'
-import { isAdminCookie } from '@/lib/adminAuth'
+import { isAdmin } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
 
 export async function PATCH(
   req: NextRequest,
   ctx: RouteContext<'/api/admin/entries/[id]'>
 ) {
-  const cookieStore = await cookies()
-  if (!isAdminCookie(cookieStore.get('admin_auth')?.value)) {
+  if (!await isAdmin()) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

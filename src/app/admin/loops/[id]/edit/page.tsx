@@ -1,9 +1,8 @@
-import { cookies } from 'next/headers'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 import { notFound } from 'next/navigation'
-import { isAdminCookie } from '@/lib/adminAuth'
+import { isAdmin } from '@/lib/adminAuth'
 import { prisma } from '@/lib/db'
-import { LoginForm } from '../../../AdminClient'
 import LoopForm, { type LoopInitial } from '../../LoopForm'
 import DeleteLoopButton from './DeleteLoopButton'
 
@@ -14,10 +13,7 @@ export default async function EditLoopPage({
 }: {
   params: Promise<{ id: string }>
 }) {
-  const cookieStore = await cookies()
-  if (!isAdminCookie(cookieStore.get('admin_auth')?.value)) {
-    return <main className="page"><LoginForm /></main>
-  }
+  if (!await isAdmin()) redirect('/sign-in')
 
   const { id } = await params
   const loop = await prisma.loop.findUnique({ where: { id } })
