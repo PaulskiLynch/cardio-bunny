@@ -329,7 +329,7 @@ export default async function LoopPublicPage({
           </div>
         </div>
         <div style={{ marginTop: 12, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-          <Link href="/legal" style={{ fontSize: 13, fontWeight: 700, textDecoration: 'underline', color: '#888' }}>Full rules →</Link>
+          <Link href={`/rules/${slug}`} style={{ fontSize: 13, fontWeight: 700, textDecoration: 'underline', color: '#888' }}>Full competition rules →</Link>
           <Link href="/privacy" style={{ fontSize: 13, fontWeight: 700, textDecoration: 'underline', color: '#888' }}>Privacy policy →</Link>
           <Link href="/cookies" style={{ fontSize: 13, fontWeight: 700, textDecoration: 'underline', color: '#888' }}>Cookie policy →</Link>
         </div>
@@ -348,7 +348,7 @@ export default async function LoopPublicPage({
         </Link>
         <div className="footer-links">
           <Link href={`/designs?competition=${slug}`}>All Entries</Link>
-          <Link href="/legal">Rules</Link>
+          <Link href={`/rules/${slug}`}>Rules</Link>
           <Link href="/privacy">Privacy</Link>
           <Link href="/cookies">Cookies</Link>
           <Link href="/my-entry">Track My Entry</Link>
