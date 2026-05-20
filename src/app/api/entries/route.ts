@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
     const designerName = (form.get('designerName') as string)?.trim()
     const contact      = (form.get('contact') as string)?.trim().toLowerCase()
     const hook         = (form.get('hook') as string)?.trim()
-    const competition  = (form.get('competition') as string)?.trim() || 'biedronka'
+    const competition  = (form.get('competition') as string)?.trim() || 'CBpolska'
     const image        = form.get('image') as File | null
 
     if (!setName || !designerName || !contact || !hook) {

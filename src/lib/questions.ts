@@ -45,7 +45,7 @@ const CARDIO_BUNNY_QUESTIONS_EN: Question[] = [
 ]
 
 const QUESTIONS: Record<string, Question[]> = {
-  biedronka: [
+  CBpolska: [
     {
       id: 'wear_it',
       text: 'Czy nosiłabyś/nosiłbyś ten zestaw?',
