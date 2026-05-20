@@ -1,2 +1,2 @@
 import { redirect } from 'next/navigation'
-export default function BiedronkaSubmitPage() { redirect('/loops/CBpolska/submit') }
+export default function BiedronkaSubmitPage() { redirect('/loops/cbpolska/submit') }

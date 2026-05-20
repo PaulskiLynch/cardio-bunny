@@ -22,7 +22,7 @@ const TRUST_ITEMS = [
 
 const DEMO_LOOPS = [
   {
-    href: '/loops/CBpolska',
+    href: '/loops/cbpolska',
     title: 'Cardio Bunny Poland',
     flag: '🇵🇱',
     category: 'Fashion / Activewear',

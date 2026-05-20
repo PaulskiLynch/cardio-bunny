@@ -4,7 +4,7 @@ import { prisma } from '@/lib/db'
 
 const DEMOS = [
   {
-    slug: 'CBpolska',
+    slug: 'cbpolska',
     status: 'demo',
     brandName: 'Cardio Bunny Polska',
     retailPartner: 'Biedronka',

@@ -45,7 +45,7 @@ const CARDIO_BUNNY_QUESTIONS_EN: Question[] = [
 ]
 
 const QUESTIONS: Record<string, Question[]> = {
-  CBpolska: [
+  cbpolska: [
     {
       id: 'wear_it',
       text: 'Czy nosiłabyś/nosiłbyś ten zestaw?',

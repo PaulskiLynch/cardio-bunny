@@ -44,7 +44,7 @@ export default function SubmitPage() {
 
   return (
     <main className="page">
-      <Link className="top-link" href="/loops/CBpolska">← Back</Link>
+      <Link className="top-link" href="/loops/cbpolska">← Back</Link>
 
       <div className="portal">
         <header className="portal-header">
@@ -74,7 +74,7 @@ export default function SubmitPage() {
 
         {!confirmed ? (
           <form onSubmit={handleSubmit}>
-            <input type="hidden" name="competition" value="CBpolska" />
+            <input type="hidden" name="competition" value="cbpolska" />
             <div className="form-section">
               <label className="form-label" htmlFor="setName">
                 1. What do you call this set?
