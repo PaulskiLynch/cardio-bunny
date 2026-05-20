@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import BackButton from '@/components/BackButton'
 
 export const metadata = { title: 'Cookie Policy — CrowdLoops' }
 
@@ -9,6 +10,7 @@ export default function CookiesPage() {
   return (
     <main className="page">
       <div className="portal" style={{ maxWidth: 720 }}>
+        <BackButton />
         <header className="portal-header">
           <div className="brand">CrowdLoops</div>
           <div className="phase">Cookie Policy</div>

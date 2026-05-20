@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { prisma } from '@/lib/db'
 import { buildRulesVars, statusLabel } from '@/lib/rulesTemplate'
+import BackButton from '@/components/BackButton'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
@@ -35,6 +36,7 @@ export default async function RulesPage({
   return (
     <main className="page">
       <div className="portal" style={{ maxWidth: 720 }}>
+        <BackButton />
         <header className="portal-header">
           <div className="brand">{v.brandName}</div>
           <div className="phase">Competition Rules &amp; Privacy Notice</div>
