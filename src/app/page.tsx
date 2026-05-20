@@ -309,6 +309,17 @@ export default function CrowdLoopsHome() {
         </div>
       </section>
 
+      {/* ── Site Footer ──────────────────────────────────── */}
+      <footer style={{ borderTop: '1px solid #eee', padding: '24px 20px', textAlign: 'center' }}>
+        <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap', fontSize: 13, color: '#888' }}>
+          <Link href="/privacy" style={{ color: '#888', textDecoration: 'underline' }}>Privacy Policy</Link>
+          <Link href="/cookies" style={{ color: '#888', textDecoration: 'underline' }}>Cookie Policy</Link>
+          <Link href="/legal" style={{ color: '#888', textDecoration: 'underline' }}>Platform Rules</Link>
+          <Link href="/contact" style={{ color: '#888', textDecoration: 'underline' }}>Contact</Link>
+        </div>
+        <div style={{ marginTop: 10, fontSize: 12, color: '#bbb' }}>© {new Date().getFullYear()} CrowdLoops</div>
+      </footer>
+
     </main>
   )
 }
