@@ -81,8 +81,8 @@ export default function CrowdLoopsHome() {
       </nav>
 
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="hero b2b-hero">
-        <div style={{ width: '100%' }}>
+      <section className="hero b2b-hero" style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: 32 }}>
+        <div>
           <div className="b2b-eyebrow">CrowdLoops - Retail Product Validation</div>
           <h1 className="b2b-headline">Validate product ideas with your customers before you produce them.</h1>
           <div className="b2b-sub">
@@ -92,6 +92,13 @@ export default function CrowdLoopsHome() {
             <Link className="cta" href="/contact">Book a 20-minute demo</Link>
             <Link className="cta cta-ghost" href="#examples">See example loops</Link>
           </div>
+        </div>
+        <div style={{ flexShrink: 0 }}>
+          <img
+            src="/crowdloops-logo.png"
+            alt="CrowdLoops"
+            style={{ width: 260, maxWidth: '100%', display: 'block' }}
+          />
         </div>
       </section>
 
