@@ -16,7 +16,7 @@ const DEMOS = [
     accentColor: '#e8325a',
     pageBg: '',
     logoUrl: '/cardio-bunny-logo.png',
-    heroImageUrl: '/design_video.mp4',
+    heroImageUrl: 'https://www.youtube.com/embed/kS0-hwfSUPQ?autoplay=1&mute=1&loop=1&playlist=kS0-hwfSUPQ&controls=0&modestbranding=1',
     brief: 'Zaprojektuj kompletny zestaw odzieży sportowej dla polskiego rynku. Zwycięski projekt może zostać wprowadzony do produkcji i sprzedany we współpracy z partnerem detalicznym.',
     guidelines: JSON.stringify([
       'Prześlij projekt jako JPG, PNG lub PDF.',
@@ -48,7 +48,7 @@ const DEMOS = [
     accentColor: '#e8325a',
     pageBg: '',
     logoUrl: '/cardio-bunny-logo.png',
-    heroImageUrl: '/design_video.mp4',
+    heroImageUrl: 'https://www.youtube.com/embed/kS0-hwfSUPQ?autoplay=1&mute=1&loop=1&playlist=kS0-hwfSUPQ&controls=0&modestbranding=1',
     brief: 'Design a matching activewear set for the UK market. The community votes, and the top concept may go into production with a UK retail partner.',
     guidelines: JSON.stringify([
       'Submit as JPG, PNG, or PDF.',
@@ -81,7 +81,7 @@ const DEMOS = [
     accentColor: '#e8325a',
     pageBg: '',
     logoUrl: '/cardio-bunny-logo.png',
-    heroImageUrl: '/design_video.mp4',
+    heroImageUrl: 'https://www.youtube.com/embed/kS0-hwfSUPQ?autoplay=1&mute=1&loop=1&playlist=kS0-hwfSUPQ&controls=0&modestbranding=1',
     brief: 'Türkiye pazarı için eşleşen bir spor giyim seti tasarla. Topluluk oy verir ve en iyi konsept bir perakende ortağıyla üretime girebilir.',
     guidelines: JSON.stringify([
       'JPG, PNG veya PDF olarak gönder.',

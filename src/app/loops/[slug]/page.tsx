@@ -89,7 +89,17 @@ export default async function LoopPublicPage({
       <section className="hero" style={{ background: '#111', padding: 0, overflow: 'hidden' }}>
         {loop.heroImageUrl && (
           <div style={{ position: 'relative', width: '100%' }}>
-            {loop.heroImageUrl.endsWith('.mp4') ? (
+            {loop.heroImageUrl.includes('youtube.com/embed') ? (
+              <iframe
+                src={loop.heroImageUrl}
+                title="Loop hero"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{ width: '100%', aspectRatio: '16/9', display: 'block' }}
+              />
+            ) : loop.heroImageUrl.endsWith('.mp4') ? (
               <video
                 src={loop.heroImageUrl}
                 autoPlay
