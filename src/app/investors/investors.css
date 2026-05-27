@@ -1,0 +1,40 @@
+@keyframes inv-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.9); }
+}
+
+@keyframes inv-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.inv-live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #22C55E;
+  border-radius: 50%;
+  animation: inv-pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.inv-pill {
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.inv-pill:hover {
+  transform: translateY(-2px);
+}
+
+.inv-tab {
+  transition: all 0.15s ease;
+}
+
+.inv-step-card:hover {
+  background: #f8f8f8;
+  transition: background 0.2s;
+}
+
+.inv-feature-row:hover {
+  background: #f9f7f4;
+  transition: background 0.2s;
+}
