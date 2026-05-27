@@ -68,7 +68,7 @@ export default function InvestorsPage() {
             <h1 style={{ fontSize: 'clamp(2.8rem, 5vw, 4.5rem)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.04, color: '#fff', marginBottom: 24 }}>
               Customers are<br />becoming product<br />creators.
             </h1>
-            <p style={{ fontSize: 18, lineHeight: 1.75, color: '#777', marginBottom: 40, maxWidth: 460 }}>
+            <p style={{ fontSize: 18, lineHeight: 1.75, color: '#aaa', marginBottom: 40, maxWidth: 460 }}>
               CrowdLoops helps brands launch AI-accessible product competitions that generate demand signals, customer insight, and validated product shortlists before production begins.
             </p>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' as const, marginBottom: 56 }}>
@@ -83,7 +83,7 @@ export default function InvestorsPage() {
               ].map(m => (
                 <div key={m.label} className="inv-pill" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 40, padding: '7px 16px', display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ fontWeight: 900, fontSize: 14, color: '#fff' }}>{m.val}</span>
-                  <span style={{ fontSize: 12, color: '#555' }}>{m.label}</span>
+                  <span style={{ fontSize: 12, color: '#999' }}>{m.label}</span>
                 </div>
               ))}
             </div>
@@ -205,7 +205,7 @@ export default function InvestorsPage() {
       {/* ── WHY NOW ─────────────────────────────────────── */}
       <section style={{ background: DARK, padding: '120px 40px' }}>
         <div style={{ maxWidth: 1120, margin: '0 auto' }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#444', marginBottom: 16, textAlign: 'center' as const }}>Why Now</div>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#777', marginBottom: 16, textAlign: 'center' as const }}>Why Now</div>
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 900, letterSpacing: '-0.03em', color: '#fff', textAlign: 'center' as const, marginBottom: 64 }}>Four forces converging.</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 2 }}>
             {[
@@ -217,7 +217,7 @@ export default function InvestorsPage() {
               <div key={item.n} style={{ background: '#111', padding: '40px 28px', borderTop: `2px solid ${RED}` }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: RED, marginBottom: 20, letterSpacing: '0.08em' }}>{item.n}</div>
                 <div style={{ fontSize: 17, fontWeight: 800, color: '#fff', marginBottom: 14, lineHeight: 1.3, letterSpacing: '-0.01em' }}>{item.title}</div>
-                <div style={{ fontSize: 13, color: '#555', lineHeight: 1.75 }}>{item.desc}</div>
+                <div style={{ fontSize: 13, color: '#aaa', lineHeight: 1.75 }}>{item.desc}</div>
               </div>
             ))}
           </div>
@@ -323,7 +323,7 @@ export default function InvestorsPage() {
               <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 900, letterSpacing: '-0.03em', color: '#fff', marginBottom: 24, lineHeight: 1.2 }}>
                 Cardio Bunny has green-lit the first CrowdLoops pilot.
               </h2>
-              <p style={{ fontSize: 16, color: '#666', lineHeight: 1.85, marginBottom: 40 }}>
+              <p style={{ fontSize: 16, color: '#aaa', lineHeight: 1.85, marginBottom: 40 }}>
                 Cardio Bunny is an international activewear brand operating across EU, UK, and GCC markets. They are running the first live CrowdLoops competition — validating a new product line with their community before a single unit goes into production.
               </p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 40 }}>
@@ -334,7 +334,7 @@ export default function InvestorsPage() {
                 ].map(m => (
                   <div key={m.label} style={{ borderTop: '1px solid #222', paddingTop: 20 }}>
                     <div style={{ fontSize: 28, fontWeight: 900, color: '#fff', letterSpacing: '-0.03em', marginBottom: 4 }}>{m.val}</div>
-                    <div style={{ fontSize: 12, color: '#444' }}>{m.label}</div>
+                    <div style={{ fontSize: 12, color: '#777' }}>{m.label}</div>
                   </div>
                 ))}
               </div>
@@ -347,7 +347,7 @@ export default function InvestorsPage() {
             <div style={{ background: '#111', border: '1px solid #1e1e1e', borderRadius: 20, padding: '40px' }}>
               <img src="/crowdloops-logo.png" alt="Cardio Bunny" style={{ height: 36, objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.7, marginBottom: 24, display: 'block' }} />
               <div style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 8 }}>Cardio Bunny Design Challenge</div>
-              <div style={{ fontSize: 13, color: '#444', marginBottom: 28, lineHeight: 1.65 }}>
+              <div style={{ fontSize: 13, color: '#999', marginBottom: 28, lineHeight: 1.65 }}>
                 Design a matching activewear set. The community votes. The winning concept goes into production.
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 24 }}>
@@ -358,7 +358,7 @@ export default function InvestorsPage() {
                 ].map(m => (
                   <div key={m.l} style={{ background: '#1a1a1a', borderRadius: 10, padding: '16px 8px', textAlign: 'center' as const }}>
                     <div style={{ fontSize: 20, fontWeight: 900, color: '#fff' }}>{m.v}</div>
-                    <div style={{ fontSize: 10, color: '#444', marginTop: 3 }}>{m.l}</div>
+                    <div style={{ fontSize: 10, color: '#777', marginTop: 3 }}>{m.l}</div>
                   </div>
                 ))}
               </div>
@@ -431,14 +431,14 @@ export default function InvestorsPage() {
       {/* ── BIG VISION ──────────────────────────────────── */}
       <section id="vision" style={{ background: DARK, padding: '140px 40px', textAlign: 'center' as const }}>
         <div style={{ maxWidth: 880, margin: '0 auto' }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#333', marginBottom: 40 }}>The Vision</div>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#666', marginBottom: 40 }}>The Vision</div>
           <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 5rem)', fontWeight: 900, letterSpacing: '-0.04em', color: '#fff', lineHeight: 1.05, marginBottom: 48 }}>
             The future of product development will be community-driven.
           </h2>
-          <p style={{ fontSize: 18, color: '#444', lineHeight: 1.85, marginBottom: 20, maxWidth: 680, margin: '0 auto 20px' }}>
+          <p style={{ fontSize: 18, color: '#aaa', lineHeight: 1.85, marginBottom: 20, maxWidth: 680, margin: '0 auto 20px' }}>
             AI has made product imagination accessible to everyone.
           </p>
-          <p style={{ fontSize: 18, color: '#555', lineHeight: 1.85, maxWidth: 680, margin: '0 auto' }}>
+          <p style={{ fontSize: 18, color: '#aaa', lineHeight: 1.85, maxWidth: 680, margin: '0 auto' }}>
             CrowdLoops gives brands the infrastructure to safely harness that creativity at scale — building a new layer of intelligence between customers and production decisions.
           </p>
         </div>
@@ -472,16 +472,16 @@ export default function InvestorsPage() {
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 900, letterSpacing: '-0.03em', color: '#fff', marginBottom: 20, lineHeight: 1.1 }}>
             Ready to validate products before production?
           </h2>
-          <p style={{ fontSize: 16, color: '#555', marginBottom: 40 }}>Book a 20-minute call or explore the platform with a live demo.</p>
+          <p style={{ fontSize: 16, color: '#aaa', marginBottom: 40 }}>Book a 20-minute call or explore the platform with a live demo.</p>
           <div style={{ display: 'flex', gap: 10, justifyContent: 'center' as const, flexWrap: 'wrap' as const, marginBottom: 80 }}>
             <Link href="/contact" style={{ background: '#fff', color: DARK, padding: '14px 28px', borderRadius: 40, fontWeight: 800, fontSize: 15, textDecoration: 'none' }}>Book Demo</Link>
             <Link href="/contact" style={{ background: 'rgba(255,255,255,0.06)', color: '#fff', padding: '14px 28px', borderRadius: 40, fontWeight: 800, fontSize: 15, textDecoration: 'none', border: '1px solid rgba(255,255,255,0.12)' }}>Partner With CrowdLoops</Link>
           </div>
           <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: 40 }}>
             <div style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginBottom: 4 }}>Paul Lynch</div>
-            <div style={{ fontSize: 13, color: '#444', marginBottom: 8 }}>Founder</div>
-            <a href="mailto:paul@crowdloops.com" style={{ fontSize: 13, color: '#555', textDecoration: 'none' }}>paul@crowdloops.com</a>
-            <div style={{ marginTop: 32, fontSize: 12, color: '#2a2a2a' }}>© 2026 CrowdLoops</div>
+            <div style={{ fontSize: 13, color: '#777', marginBottom: 8 }}>Founder</div>
+            <a href="mailto:paul@crowdloops.com" style={{ fontSize: 13, color: '#999', textDecoration: 'none' }}>paul@crowdloops.com</a>
+            <div style={{ marginTop: 32, fontSize: 12, color: '#555' }}>© 2026 CrowdLoops</div>
           </div>
         </div>
       </section>
